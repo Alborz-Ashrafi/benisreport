@@ -332,6 +332,24 @@
       font-size: 12px;
       line-height: 2;
     }
+    /* Brand Health */
+
+.card-brand:hover {
+  border-color: #8b5cf6;
+
+  box-shadow:
+    0 12px 40px rgba(139, 92, 246, 0.18);
+}
+
+.card-brand:hover .icon {
+  background: rgba(139, 92, 246, 0.12);
+
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.card-brand .arrow {
+  color: #8b5cf6;
+}
   </style>
 </head>
 
@@ -348,70 +366,49 @@
       </p>
     </header>
 
-    <div class="grid">
+ <div class="grid">
 
-      <!-- تحلیل رقبا -->
-      <a
-        href="./competitor analysis.html"
-        class="card card-competitor"
-      >
-        <div class="icon">📊</div>
+  <!-- تحلیل رقبا -->
+  <a href="./competitor analysis.html" class="card card-competitor">
+    <div class="icon">📊</div>
+    <h2>تحلیل رقبا</h2>
+    <p>بررسی سهم بازار، استراتژی ارتباطی، مزیت رقابتی و نقاط ضعف برندهای فعال صنعت کیک و شکلات.</p>
+    <div class="arrow">مشاهده خروجی <span>←</span></div>
+  </a>
 
-        <h2>تحلیل رقبا</h2>
+  <!-- استراتژی -->
+  <a href="./benis strategy.html" class="card card-strategy">
+    <div class="icon">🎯</div>
+    <h2>برنامه راهبردی برند</h2>
+    <p>طراحی مسیر رشد برند، اهداف توسعه بازار، استراتژی فروش و سناریوهای توسعه برای برند بنیس.</p>
+    <div class="arrow">مشاهده خروجی <span>←</span></div>
+  </a>
 
-        <p>
-          بررسی سهم بازار، استراتژی ارتباطی، مزیت رقابتی
-          و نقاط ضعف برندهای فعال صنعت کیک و شکلات.
-        </p>
+  <!-- داشبورد -->
+  <a href="./sales-dashboard.html" class="card card-dashboard">
+    <div class="icon">📈</div>
+    <h2>گزارش جامع فروش</h2>
+    <p>پایش و تحلیل داده‌های فروش، دسته‌بندی محصولات، فیلتر هوشمند و تحلیل پارتو بر اساس فایل اکسل فروش.</p>
+    <div class="arrow">مشاهده داشبورد <span>←</span></div>
+  </a>
 
-        <div class="arrow">
-          مشاهده خروجی
-          <span>←</span>
-        </div>
-      </a>
+  <!-- تحلیل سلامت برند بنیس -->
+  <a href="./benis_brand_report.html" class="card card-brand">
+    <div class="icon">🧠</div>
 
-      <!-- استراتژی -->
-      <a
-        href="./benis strategy.html"
-        class="card card-strategy"
-      >
-        <div class="icon">🎯</div>
+    <h2>تحلیل سلامت برند بنیس</h2>
 
-        <h2>برنامه راهبردی برند</h2>
+    <p>
+      بررسی جایگاه مصرف‌کننده و تحلیل وضعیت برند در بازار کیک، کلوچه و شیرینی بسته‌بندی ایران
+      بر اساس داده‌های رفتاری و رقابتی.
+    </p>
 
-        <p>
-          طراحی مسیر رشد برند، اهداف توسعه بازار،
-          استراتژی فروش و سناریوهای توسعه برای برند بنیس.
-        </p>
-
-        <div class="arrow">
-          مشاهده خروجی
-          <span>←</span>
-        </div>
-      </a>
-
-      <!-- داشبورد -->
-      <a
-        href="./sales-dashboard.html"
-        class="card card-dashboard"
-      >
-        <div class="icon">📈</div>
-
-        <h2>گزارش جامع فروش</h2>
-
-        <p>
-          پایش و تحلیل داده‌های فروش، دسته‌بندی محصولات،
-          فیلتر هوشمند و تحلیل پارتو بر اساس فایل اکسل فروش.
-        </p>
-
-        <div class="arrow">
-          مشاهده داشبورد
-          <span>←</span>
-        </div>
-      </a>
-
+    <div class="arrow">
+      مشاهده خروجی <span>←</span>
     </div>
+  </a>
 
+</div>
     <footer>
       توسعه یافته توسط تیم مشاورین مارکتینگ رهنگاشت ©
       <br>
