@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>گزارش هوش برند بنیس ۱۴۰۵ تهیه شده توسط تیم مشاوره مارکتینگ رهنگاشت</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brown-dark: #3B2314;
+    --brown-mid: #6B3F22;
+    --brown-light: #A0622E;
+    --cream: #F7F1E8;
+    --cream-dark: #EDE3D0;
+    --cream-border: #D6C8AE;
+    --gold: #C89A3A;
+    --gold-light: #F0D080;
+    --rust: #C24B1A;
+    --rust-light: #F4A070;
+    --green: #2E6B48;
+    --green-light: #D4EDDF;
+    --text-primary: #1E1208;
+    --text-secondary: #5C3D20;
+    --text-muted: #8A6540;
+    --white: #FFFFFF;
+    --shadow: rgba(59,35,20,0.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Vazirmatn', sans-serif;
+    background: var(--cream);
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 1.8;
+    direction: rtl;
+  }
+  /* HEADER */
+  .site-header {
+    background: var(--brown-dark);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 3px solid var(--gold);
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--gold-light);
+    letter-spacing: -0.5px;
+  }
+  .logo span { color: var(--cream); font-weight: 300; }
+  nav { display: flex; gap: 0; }
+  nav a {
+    color: var(--cream-dark);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 0 1rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid rgba(255,255,255,0.08);
+    transition: background 0.2s, color 0.2s;
+  }
+  nav a:hover { background: rgba(255,255,255,0.06); color: var(--gold-light); }
+
+  /* HERO */
+  .hero {
+    background: var(--brown-dark);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(200,154,58,0.08) 0%, transparent 70%),
+                radial-gradient(ellipse at 70% 30%, rgba(194,75,26,0.06) 0%, transparent 60%);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(200,154,58,0.15);
+    border: 1px solid rgba(200,154,58,0.3);
+    color: var(--gold-light);
+    font-size: 12px;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    color: var(--cream);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--gold-light);
+  }
+  .hero p {
+    color: rgba(247,241,232,0.65);
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    position: relative;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+  }
+  .hero-meta-item {
+    text-align: center;
+  }
+  .hero-meta-item .num {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--gold-light);
+    display: block;
+    line-height: 1;
+  }
+  .hero-meta-item .lbl {
+    font-size: 12px;
+    color: rgba(247,241,232,0.5);
+    margin-top: 4px;
+    display: block;
+  }
+  .hero-divider {
+    width: 1px;
+    background: rgba(255,255,255,0.1);
+    height: 50px;
+  }
+
+  /* LAYOUT */
+  .main-layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  /* SIDEBAR */
+  .sidebar {
+    position: sticky;
+    top: 80px;
+  }
+  .sidebar-nav {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--cream-border);
+    overflow: hidden;
+  }
+  .sidebar-nav-title {
+    background: var(--brown-dark);
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 12px 16px;
+    letter-spacing: 0.5px;
+  }
+  .sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 16px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 13.5px;
+    border-bottom: 1px solid var(--cream-dark);
+    transition: background 0.15s, color 0.15s;
+  }
+  .sidebar-nav a:last-child { border-bottom: none; }
+  .sidebar-nav a:hover { background: var(--cream); color: var(--brown-dark); }
+  .sidebar-nav a .icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .confidence-box {
+    margin-top: 1rem;
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--cream-border);
+    padding: 1rem;
+  }
+  .confidence-box h4 {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+  .confidence-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .confidence-bar-wrap label {
+    font-size: 12px;
+    color: var(--text-muted);
+    width: 90px;
+    flex-shrink: 0;
+  }
+  .confidence-track {
+    flex: 1;
+    height: 6px;
+    background: var(--cream-dark);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .confidence-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--gold);
+  }
+  .confidence-score {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--brown-mid);
+    width: 28px;
+    text-align: left;
+  }
+
+  /* CONTENT */
+  .content > section {
+    margin-bottom: 3.5rem;
+    scroll-margin-top: 80px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--cream-border);
+  }
+  .section-num {
+    background: var(--brown-dark);
+    color: var(--gold-light);
+    font-size: 11px;
+    font-weight: 700;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--brown-dark);
+    line-height: 1.3;
+  }
+  .section-header .section-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--cream-border);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .card-grid {
+    display: grid;
+    gap: 1rem;
+  }
+  .card-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+  .card-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .card-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+  /* METRIC CARDS */
+  .metric-card {
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--cream-border);
+    padding: 1.2rem;
+    text-align: center;
+  }
+  .metric-card .m-val {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--brown-dark);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .metric-card .m-lbl {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* BULLETS */
+  .bullet-list {
+    list-style: none;
+    padding: 0;
+  }
+  .bullet-list li {
+    display: flex;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--cream-dark);
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .bullet-list li:last-child { border-bottom: none; }
+  .bullet-list li::before {
+    content: '•';
+    color: var(--gold);
+    font-size: 18px;
+    line-height: 1.3;
+    flex-shrink: 0;
+  }
+
+  /* SWOT */
+  .swot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--cream-border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .swot-cell {
+    padding: 1.5rem;
+    background: var(--white);
+  }
+  .swot-cell h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .swot-cell.s h3 { color: #1B5E3B; }
+  .swot-cell.w h3 { color: #9A2B0E; }
+  .swot-cell.o h3 { color: #185A9D; }
+  .swot-cell.t h3 { color: #7A4A0A; }
+  .swot-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 800;
+  }
+  .swot-cell.s .swot-icon { background: #D4EDDF; color: #1B5E3B; }
+  .swot-cell.w .swot-icon { background: #FCE8E4; color: #9A2B0E; }
+  .swot-cell.o .swot-icon { background: #DDEAF8; color: #185A9D; }
+  .swot-cell.t .swot-icon { background: #FEF0D4; color: #7A4A0A; }
+  .swot-cell ul {
+    list-style: none;
+    padding: 0;
+  }
+  .swot-cell ul li {
+    font-size: 13.5px;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--cream-dark);
+    color: var(--text-secondary);
+    display: flex;
+    gap: 8px;
+  }
+  .swot-cell ul li:last-child { border-bottom: none; }
+  .swot-cell ul li::before {
+    content: '—';
+    color: var(--cream-border);
+    flex-shrink: 0;
+  }
+
+  /* TABLE */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  .data-table th {
+    background: var(--brown-dark);
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 10px 14px;
+    text-align: right;
+    letter-spacing: 0.3px;
+  }
+  .data-table th:first-child { border-radius: 0 8px 0 0; }
+  .data-table th:last-child { border-radius: 8px 0 0 0; }
+  .data-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--cream-dark);
+    color: var(--text-secondary);
+    vertical-align: top;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:nth-child(even) td { background: rgba(247,241,232,0.4); }
+  .table-wrap {
+    border-radius: 10px;
+    border: 1px solid var(--cream-border);
+    overflow: hidden;
+  }
+
+  /* BADGES */
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+  .badge-green { background: #D4EDDF; color: #1B5E3B; }
+  .badge-red { background: #FCE8E4; color: #9A2B0E; }
+  .badge-amber { background: #FEF0D4; color: #7A4A0A; }
+  .badge-blue { background: #DDEAF8; color: #185A9D; }
+  .badge-gray { background: #EDE3D0; color: #5C3D20; }
+
+  /* SENTIMENT */
+  .sentiment-bar {
+    display: flex;
+    height: 36px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .sentiment-bar .seg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    transition: flex 0.3s;
+  }
+  .seg-pos { background: #2E7D4F; flex: 55; }
+  .seg-neu { background: #8A7250; flex: 35; }
+  .seg-neg { background: #B84444; flex: 10; }
+
+  /* QUOTE CARDS */
+  .quote-card {
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--cream-border);
+    border-right: 4px solid var(--gold);
+    padding: 1rem 1.25rem;
+    margin-bottom: 10px;
+  }
+  .quote-card.neg { border-right-color: var(--rust); }
+  .quote-card.neutral { border-right-color: var(--text-muted); }
+  .quote-card blockquote {
+    font-size: 14px;
+    color: var(--text-primary);
+    font-style: normal;
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+  .quote-card .source {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .quote-card .source::before {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 1px;
+    background: var(--cream-border);
+  }
+
+  /* PLATFORM CARDS */
+  .platform-card {
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--cream-border);
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .platform-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    font-weight: 800;
+    color: var(--brown-mid);
+  }
+  .platform-info { flex: 1; }
+  .platform-info h4 { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 3px; }
+  .platform-info p { font-size: 12.5px; color: var(--text-muted); }
+  .platform-level {
+    display: flex;
+    gap: 3px;
+  }
+  .platform-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cream-border);
+  }
+  .platform-dot.on { background: var(--gold); }
+
+  /* PRODUCT TABLE */
+  .product-tag {
+    display: inline-block;
+    font-size: 11px;
+    background: var(--cream);
+    color: var(--brown-mid);
+    border: 1px solid var(--cream-border);
+    border-radius: 4px;
+    padding: 1px 8px;
+    margin: 1px 2px;
+  }
+
+  /* RECOMMENDATIONS */
+  .rec-group { margin-bottom: 2rem; }
+  .rec-group-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .rec-group-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--cream-border);
+  }
+  .rec-item {
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--cream-border);
+    padding: 1.1rem 1.25rem;
+    margin-bottom: 8px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .rec-num {
+    background: var(--brown-dark);
+    color: var(--gold-light);
+    font-size: 11px;
+    font-weight: 700;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .rec-body h4 { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+  .rec-body p { font-size: 13.5px; color: var(--text-secondary); line-height: 1.65; }
+
+  /* ACTION PLAN */
+  .action-table td:first-child { font-weight: 600; color: var(--brown-dark); width: 40px; text-align: center; }
+
+  /* FOOTER */
+  footer {
+    background: var(--brown-dark);
+    color: rgba(247,241,232,0.5);
+    text-align: center;
+    padding: 2rem;
+    font-size: 13px;
+    border-top: 3px solid var(--gold);
+    margin-top: 3rem;
+  }
+  footer strong { color: var(--gold-light); }
+
+  /* ALERT BOX */
+  .alert {
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13.5px;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    line-height: 1.6;
+  }
+  .alert-amber { background: #FEF8E7; border: 1px solid #F4D47A; color: #6B4A10; }
+  .alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  @media (max-width: 900px) {
+    .main-layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .card-grid.cols-2,
+    .card-grid.cols-3,
+    .card-grid.cols-4 { grid-template-columns: 1fr; }
+    .swot-grid { grid-template-columns: 1fr; }
+    nav { display: none; }
+    .hero-meta { gap: 1.2rem; flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">بنیس <span>— گزارش هوش برند</span></div>
+    <nav>
+      <a href="#exec">خلاصه اجرایی</a>
+      <a href="#health">سلامت برند</a>
+      <a href="#products">محصولات</a>
+      <a href="#reviews">نظرات</a>
+      <a href="#swot">SWOT</a>
+      <a href="#recs">توصیه‌ها</a>
+      <a href="#action">برنامه عملیاتی</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-badge">گزارش هوش برند FMCG — خرداد ۱۴۰۵</div>
+  <h1>گزارش جامع سلامت برند <em>بنیس</em></h1>
+  <p>تحلیل جایگاه مصرف‌کننده در بازار کیک، کلوچه و شیرینی بسته‌بندی ایران</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="num">۷۴+</span>
+      <span class="lbl">SKU محصول</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta-item">
+      <span class="num">۵۰+</span>
+      <span class="lbl">سال سابقه</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta-item">
+      <span class="num">۲۰۰۰+</span>
+      <span class="lbl">نیروی کار</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta-item">
+      <span class="num">۳۸</span>
+      <span class="lbl">منبع بررسی‌شده</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-meta-item">
+      <span class="num">۶/۱۰</span>
+      <span class="lbl">سطح اطمینان</span>
+    </div>
+  </div>
+</div>
+
+<div class="main-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-nav">
+      <div class="sidebar-nav-title">فهرست مطالب</div>
+      <a href="#exec"><div class="icon">الف</div> خلاصه اجرایی</a>
+      <a href="#health"><div class="icon">ب</div> سلامت برند</a>
+      <a href="#sources"><div class="icon">پ</div> موجودی منابع</a>
+      <a href="#products"><div class="icon">ت</div> محصولات</a>
+      <a href="#reviews"><div class="icon">ث</div> نظرات مصرف‌کننده</a>
+      <a href="#voice"><div class="icon">ج</div> صدای مصرف‌کننده</a>
+      <a href="#competitor"><div class="icon">چ</div> جایگاه رقابتی</a>
+      <a href="#swot"><div class="icon">ح</div> تحلیل SWOT</a>
+      <a href="#recs"><div class="icon">خ</div> توصیه‌های استراتژیک</a>
+      <a href="#action"><div class="icon">د</div> برنامه عملیاتی</a>
+    </div>
+    <div class="confidence-box">
+      <h4>سطح اطمینان داده</h4>
+      <div class="confidence-bar-wrap">
+        <label>محصولات</label>
+        <div class="confidence-track"><div class="confidence-fill" style="width:80%"></div></div>
+        <span class="confidence-score">۸/۱۰</span>
+      </div>
+      <div class="confidence-bar-wrap">
+        <label>توزیع</label>
+        <div class="confidence-track"><div class="confidence-fill" style="width:75%"></div></div>
+        <span class="confidence-score">۷.۵/۱۰</span>
+      </div>
+      <div class="confidence-bar-wrap">
+        <label>نظر مصرف‌کننده</label>
+        <div class="confidence-track"><div class="confidence-fill" style="width:15%"></div></div>
+        <span class="confidence-score">۱.۵/۱۰</span>
+      </div>
+      <div class="confidence-bar-wrap">
+        <label>رقبا</label>
+        <div class="confidence-track"><div class="confidence-fill" style="width:55%"></div></div>
+        <span class="confidence-score">۵.۵/۱۰</span>
+      </div>
+      <div class="confidence-bar-wrap">
+        <label>اجتماعی</label>
+        <div class="confidence-track"><div class="confidence-fill" style="width:10%"></div></div>
+        <span class="confidence-score">۱/۱۰</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- SECTION A: EXECUTIVE SUMMARY -->
+    <section id="exec">
+      <div class="section-header">
+        <div class="section-num">الف</div>
+        <div>
+          <h2>خلاصه اجرایی</h2>
+          <div class="section-sub">۱۲ یافته کلیدی</div>
+        </div>
+      </div>
+      <ul class="bullet-list">
+        <li>بنیس یکی از برندهای معتبر و باسابقه صنعت شیرینی ایران با سابقه‌ای بیش از ۵۰ سال است؛ مؤسس آن با لقب «پدر کیک ایران» شناخته می‌شود.</li>
+        <li>پرتفوی محصول بسیار متنوع با ۷۴+ محصول در ۱۰ دسته (کیک اسفنجی، لایه‌ای، روغنی، کاپ‌کیک، رول‌کیک، کلوچه، ویفر، بیسکویت، شکلات، پودر کیک).</li>
+        <li>گواهینامه‌های بین‌المللی قوی: ISO 9001، ISO 22000، HACCP از TÜV Nord آلمان، گواهینامه حلال.</li>
+        <li><strong>ضعف کلیدی:</strong> حضور دیجیتال بسیار ضعیف؛ صفحات محصول در دیجی‌کالا عملاً فاقد نظر کاربر هستند.</li>
+        <li>بنیس در کنار شیرین‌عسل، درنا، مینو، و شیرین‌نوین در فهرست برترین تولیدکنندگان کیک ایران ذکر می‌شود.</li>
+        <li>دو برند موازی (بنیس + ناربن) برای پوشش بازارهای داخلی و صادراتی.</li>
+        <li>زیرساخت توزیع قوی با شعب سراسری، هایپرمارکت‌ها و فروشگاه‌های زنجیره‌ای.</li>
+        <li>ارتباط پیچیده با درنا: شرکت درنا یک کارخانه با نام «درنای بنیس» در صوفیان تبریز دارد.</li>
+        <li>داستان «پدر کیک ایران» یک دارایی برندینگی نوستالژیک ارزشمند است که کمتر از آن استفاده می‌شود.</li>
+        <li>اسنپ اکسپرس بنیس را در کنار درنا، مینو، و نان‌آوران به‌عنوان برند کیک و کلوچه لیست کرده است.</li>
+        <li><strong>ریسک اصلی:</strong> عدم حضور مؤثر در فضای دیجیتال در مقایسه با رقبا.</li>
+        <li><strong>فرصت اصلی:</strong> تبدیل شدن به گزینه «نوستالژیک‌پریمیوم» برای مصرف‌کننده ایرانی.</li>
+      </ul>
+    </section>
+
+    <!-- SECTION B: BRAND HEALTH -->
+    <section id="health">
+      <div class="section-header">
+        <div class="section-num">ب</div>
+        <div>
+          <h2>تصویر کلی سلامت برند</h2>
+          <div class="section-sub">احساسات، حضور، و ویژگی‌های برجسته</div>
+        </div>
+      </div>
+
+      <div class="alert alert-amber">
+        <span class="alert-icon">⚠</span>
+        <span>توزیع احساسات زیر <strong>تخمینی</strong> است؛ به دلیل محدودیت دسترسی به نظرات واقعی مصرف‌کننده در پلتفرم‌های ایرانی، این اعداد بر اساس سیگنال‌های پراکنده محاسبه شده‌اند.</span>
+      </div>
+
+      <div class="card" style="margin-bottom:1.5rem">
+        <h4 style="font-size:13px;color:var(--text-muted);margin-bottom:10px;font-weight:600">توزیع احساسات (تخمینی)</h4>
+        <div class="sentiment-bar">
+          <div class="seg seg-pos">۵۵٪ مثبت</div>
+          <div class="seg seg-neu">۳۵٪ خنثی</div>
+          <div class="seg seg-neg">۱۰٪ منفی</div>
+        </div>
+        <div style="display:flex;gap:1rem;font-size:12px;color:var(--text-muted)">
+          <span style="display:flex;align-items:center;gap:5px"><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#2E7D4F"></span> مثبت</span>
+          <span style="display:flex;align-items:center;gap:5px"><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#8A7250"></span> خنثی</span>
+          <span style="display:flex;align-items:center;gap:5px"><span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#B84444"></span> منفی</span>
+        </div>
+      </div>
+
+      <h3 style="font-size:15px;font-weight:700;color:var(--brown-dark);margin-bottom:12px">حضور در پلتفرم‌ها</h3>
+      <div class="card-grid cols-2" style="margin-bottom:1.5rem">
+        <div class="platform-card">
+          <div class="platform-icon">دک</div>
+          <div class="platform-info">
+            <h4>دیجی‌کالا</h4>
+            <p>۶+ SKU — نظرات: نزدیک صفر</p>
+          </div>
+          <div class="platform-level">
+            <div class="platform-dot on"></div>
+            <div class="platform-dot on"></div>
+            <div class="platform-dot"></div>
+            <div class="platform-dot"></div>
+            <div class="platform-dot"></div>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-icon">اسنپ</div>
+          <div class="platform-info">
+            <h4>اسنپ مارکت</h4>
+            <p>حضور تأیید‌شده — جزئیات نامشخص</p>
+          </div>
+          <div class="platform-level">
+            <div class="platform-dot on"></div>
+            <div class="platform-dot"></div>
+            <div class="platform-dot"></div>
+            <div class="platform-dot"></div>
+            <div class="platform-dot"></div>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-icon">ترب</div>
+          <div class="platform-info">
+            <h4>ترب</h4>
+            <p>۵+ محصول — نظر مصرف‌کننده: صفر</p>
+          </div>
+          <div class="platform-level">
+            <div class="platform-dot on"></div>
+            <div class="platform-dot on"></div>
+            <div class="platform-dot"></div>
+            <div class="platform-dot"></div>
+            <div class="platform-dot"></div>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-icon">سایت</div>
+          <div class="platform-info">
+            <h4>سایت رسمی benis.ir</h4>
+            <p>محتوای غنی — بدون UGC</p>
+          </div>
+          <div class="platform-level">
+            <div class="platform-dot on"></div>
+            <div class="platform-dot on"></div>
+            <div class="platform-dot on"></div>
+            <div class="platform-dot on"></div>
+            <div class="platform-dot"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-grid cols-2">
+        <div class="card">
+          <h4 style="font-size:13.5px;font-weight:700;color:#1B5E3B;margin-bottom:10px">✦ قوی‌ترین ویژگی‌های مثبت</h4>
+          <ul class="bullet-list" style="font-size:13.5px">
+            <li>سابقه و اعتبار تاریخی ۵۰+ ساله</li>
+            <li>تنوع محصول بسیار بالا</li>
+            <li>استانداردهای بین‌المللی کیفیت</li>
+            <li>ماندگاری بالای محصولات</li>
+            <li>قیمت‌گذاری مناسب و در دسترس</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4 style="font-size:13.5px;font-weight:700;color:#9A2B0E;margin-bottom:10px">✦ قوی‌ترین ویژگی‌های منفی</h4>
+          <ul class="bullet-list" style="font-size:13.5px">
+            <li>ضعف جدی در حضور دیجیتال</li>
+            <li>فقدان social proof آنلاین</li>
+            <li>موجودی پراکنده در کانال آنلاین</li>
+            <li>بسته‌بندی ظاهراً سنتی (نیاز به تأیید)</li>
+            <li>بدون استراتژی واضح D2C</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: SOURCE INVENTORY -->
+    <section id="sources">
+      <div class="section-header">
+        <div class="section-num">پ</div>
+        <div>
+          <h2>موجودی منابع تحقیق</h2>
+          <div class="section-sub">۳۸ منبع بررسی‌شده</div>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>پلتفرم</th>
+              <th>جستجو انجام‌شده</th>
+              <th>نتیجه</th>
+              <th>وضعیت</th>
+              <th>یادداشت</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>دیجی‌کالا</strong></td>
+              <td>بنیس کیک، براونی، کاپ‌کیک</td>
+              <td>۶+ صفحه</td>
+              <td><span class="badge badge-amber">محدود</span></td>
+              <td>صفحات render نمی‌شوند</td>
+            </tr>
+            <tr>
+              <td><strong>اسنپ مارکت</strong></td>
+              <td>بنیس کیک</td>
+              <td>۱ صفحه</td>
+              <td><span class="badge badge-red">مسدود</span></td>
+              <td>JavaScript-only</td>
+            </tr>
+            <tr>
+              <td><strong>ترب</strong></td>
+              <td>بنیس کیک، ناپولی، کوکی</td>
+              <td>۵+ صفحه</td>
+              <td><span class="badge badge-green">قابل دسترس</span></td>
+              <td>نظرات: صفر</td>
+            </tr>
+            <tr>
+              <td><strong>benis.ir</strong></td>
+              <td>کاتالوگ، محصولات، درباره ما</td>
+              <td>۷۴+ محصول</td>
+              <td><span class="badge badge-green">کاملاً قابل دسترس</span></td>
+              <td>منبع اصلی اطلاعات</td>
+            </tr>
+            <tr>
+              <td><strong>arasparbenis.com</strong></td>
+              <td>کاتالوگ، توزیع، استانداردها</td>
+              <td>۳۶ آیتم</td>
+              <td><span class="badge badge-green">قابل دسترس</span></td>
+              <td>اطلاعات سازمانی</td>
+            </tr>
+            <tr>
+              <td><strong>اینستاگرام</strong></td>
+              <td>بنیس کیک، نظرات</td>
+              <td>—</td>
+              <td><span class="badge badge-red">مسدود</span></td>
+              <td>فیلتر در ایران</td>
+            </tr>
+            <tr>
+              <td><strong>تلگرام</strong></td>
+              <td>کانال بنیس</td>
+              <td>—</td>
+              <td><span class="badge badge-red">یافت نشد</span></td>
+              <td>کانال عمومی ندارد</td>
+            </tr>
+            <tr>
+              <td><strong>فروشگاه‌های خرد</strong></td>
+              <td>بنیس — فروشگاه‌های مختلف</td>
+              <td>۸ فروشگاه</td>
+              <td><span class="badge badge-amber">محدود</span></td>
+              <td>۰ نظر مستقل</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION: PRODUCTS -->
+    <section id="products">
+      <div class="section-header">
+        <div class="section-num">ت</div>
+        <div>
+          <h2>فهرست محصولات شناسایی‌شده</h2>
+          <div class="section-sub">۲۲+ محصول از ۷۴ SKU اعلام‌شده</div>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>نام محصول</th>
+              <th>دسته</th>
+              <th>وزن</th>
+              <th>طعم</th>
+              <th>منبع</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>کیک روغنی براونی و وانیلی (توتام)</strong></td>
+              <td><span class="product-tag">کیک روغنی</span></td>
+              <td>۶۵ گرم</td>
+              <td>براونی + وانیل</td>
+              <td><span class="badge badge-blue">دیجی‌کالا، ترب</span></td>
+            </tr>
+            <tr>
+              <td><strong>کیک روغنی پرتقالی</strong></td>
+              <td><span class="product-tag">کیک روغنی</span></td>
+              <td>۴۳-۵۵ گرم</td>
+              <td>پرتقال</td>
+              <td><span class="badge badge-blue">دیجی‌کالا، ترب</span></td>
+            </tr>
+            <tr>
+              <td><strong>کیک براونی</strong></td>
+              <td><span class="product-tag">کیک روغنی</span></td>
+              <td>۸۰ گرم</td>
+              <td>شکلات</td>
+              <td><span class="badge badge-blue">دیجی‌کالا</span></td>
+            </tr>
+            <tr>
+              <td><strong>کیک لایه‌ای کاکائویی</strong></td>
+              <td><span class="product-tag">کیک لایه‌ای</span></td>
+              <td>۶۰ گرم</td>
+              <td>کاکائو</td>
+              <td><span class="badge badge-blue">دیجی‌کالا</span></td>
+            </tr>
+            <tr>
+              <td><strong>کیک ناپولی ۳ لایه</strong></td>
+              <td><span class="product-tag">کیک لایه‌ای</span></td>
+              <td>متغیر</td>
+              <td>ناپولی</td>
+              <td><span class="badge badge-blue">ترب</span></td>
+            </tr>
+            <tr>
+              <td><strong>کیک سه لایه با دکور شکلات</strong></td>
+              <td><span class="product-tag">کیک لایه‌ای</span></td>
+              <td>متغیر</td>
+              <td>شکلات</td>
+              <td><span class="badge badge-gray">کاتالوگ</span></td>
+            </tr>
+            <tr>
+              <td><strong>کیک موتلو</strong></td>
+              <td><span class="product-tag">کیک اسفنجی</span></td>
+              <td>متغیر</td>
+              <td>متنوع (فیلینگ)</td>
+              <td><span class="badge badge-gray">سایت رسمی</span></td>
+            </tr>
+            <tr>
+              <td><strong>کاپ‌کیک پنیری (چیزکیک)</strong></td>
+              <td><span class="product-tag">کاپ‌کیک</span></td>
+              <td>۸۵ گرم × ۲۴</td>
+              <td>پنیری</td>
+              <td><span class="badge badge-blue">دیجی‌کالا</span></td>
+            </tr>
+            <tr>
+              <td><strong>کیک عصرانه پرتقالی</strong></td>
+              <td><span class="product-tag">کیک عصرانه</span></td>
+              <td>۹۰ گرم</td>
+              <td>پرتقال</td>
+              <td><span class="badge badge-gray">دیابت‌شاپ</span></td>
+            </tr>
+            <tr>
+              <td><strong>کلوچه موز</strong></td>
+              <td><span class="product-tag">کلوچه</span></td>
+              <td>متغیر</td>
+              <td>موز</td>
+              <td><span class="badge badge-gray">کاتالوگ، ترب</span></td>
+            </tr>
+            <tr>
+              <td><strong>کلوچه نارگیلی</strong></td>
+              <td><span class="product-tag">کلوچه</span></td>
+              <td>متغیر</td>
+              <td>نارگیل</td>
+              <td><span class="badge badge-gray">کاتالوگ</span></td>
+            </tr>
+            <tr>
+              <td><strong>کلوچه گردویی مخصوص</strong></td>
+              <td><span class="product-tag">کلوچه</span></td>
+              <td>متغیر</td>
+              <td>گردو</td>
+              <td><span class="badge badge-gray">کاتالوگ</span></td>
+            </tr>
+            <tr>
+              <td><strong>کوکی گردویی</strong></td>
+              <td><span class="product-tag">کوکی</span></td>
+              <td>۹۵ گرم</td>
+              <td>گردو</td>
+              <td><span class="badge badge-blue">ترب</span></td>
+            </tr>
+            <tr>
+              <td><strong>شوکو بیسکویت لبخند</strong></td>
+              <td><span class="product-tag">بیسکویت شکلاتی</span></td>
+              <td>تکی/دوتایی</td>
+              <td>شکلات</td>
+              <td><span class="badge badge-gray">سایت رسمی</span></td>
+            </tr>
+            <tr>
+              <td><strong>شوکو بیسکویت ماتریکس</strong></td>
+              <td><span class="product-tag">بیسکویت شکلاتی</span></td>
+              <td>متغیر</td>
+              <td>شکلات</td>
+              <td><span class="badge badge-gray">کاتالوگ</span></td>
+            </tr>
+            <tr>
+              <td><strong>ویفر دارک شکلات و موز</strong></td>
+              <td><span class="product-tag">ویفر</span></td>
+              <td>متغیر</td>
+              <td>شکلات‌تلخ ۷۰٪ + موز</td>
+              <td><span class="badge badge-gray">سایت رسمی</span></td>
+            </tr>
+            <tr>
+              <td><strong>شکلات دورکیت ۷۲٪</strong></td>
+              <td><span class="product-tag">شکلات</span></td>
+              <td>متغیر</td>
+              <td>تلخ ۷۲٪</td>
+              <td><span class="badge badge-blue">ترب، دیجی‌کالا</span></td>
+            </tr>
+            <tr>
+              <td><strong>شکلات تخته‌ای (سه طعم)</strong></td>
+              <td><span class="product-tag">شکلات</span></td>
+              <td>۵۰۰ گرم</td>
+              <td>دارک، شیری، سفید</td>
+              <td><span class="badge badge-gray">سایت رسمی</span></td>
+            </tr>
+            <tr>
+              <td><strong>پودر کیک</strong></td>
+              <td><span class="product-tag">مواد اولیه</span></td>
+              <td>متغیر</td>
+              <td>متنوع</td>
+              <td><span class="badge badge-gray">سایت رسمی</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION: REVIEW MINING -->
+    <section id="reviews">
+      <div class="section-header">
+        <div class="section-num">ث</div>
+        <div>
+          <h2>تحلیل نظرات مصرف‌کننده</h2>
+          <div class="section-sub">۹ بُعد تحلیل‌شده</div>
+        </div>
+      </div>
+      <div class="alert alert-amber">
+        <span class="alert-icon">⚠</span>
+        <span>به دلیل محدودیت دسترسی به نظرات واقعی مصرف‌کننده در پلتفرم‌های ایرانی، این بخش ترکیبی از توضیحات رسمی محصول و سیگنال‌های پراکنده است.</span>
+      </div>
+      <div class="card-grid cols-2">
+        <div class="card">
+          <h4 style="font-size:14px;font-weight:700;color:var(--brown-dark);margin-bottom:10px">🍰 طعم</h4>
+          <p style="font-size:13.5px;color:var(--text-secondary)">توصیف رسمی به «طعم بی‌نظیر»، «طعم جذاب» اشاره دارد. کیک توتام با دو طعم براونی+وانیلی «هیجان‌انگیز» توصیف شده. نظر مستقل مصرف‌کننده: یافت نشد.</p>
+          <span class="badge badge-amber" style="margin-top:8px">شواهد: ضعیف</span>
+        </div>
+        <div class="card">
+          <h4 style="font-size:14px;font-weight:700;color:var(--brown-dark);margin-bottom:10px">🌿 تازگی</h4>
+          <p style="font-size:13.5px;color:var(--text-secondary)">بنیس ادعا می‌کند «بهترین و تازه‌ترین مواد اولیه» و «ماندگاری بالا» از طریق روش‌های مدرن. قابل تأیید توسط مصرف‌کننده: خیر.</p>
+          <span class="badge badge-amber" style="margin-top:8px">شواهد: ادعای برند</span>
+        </div>
+        <div class="card">
+          <h4 style="font-size:14px;font-weight:700;color:var(--brown-dark);margin-bottom:10px">🧁 بافت</h4>
+          <p style="font-size:13.5px;color:var(--text-secondary)">توصیف رسمی: «بافت لطیف و دوست‌داشتنی» در کیک لایه‌ای؛ «بافت ترد و نرم» در کیک پرتقالی.</p>
+          <span class="badge badge-amber" style="margin-top:8px">شواهد: توصیف رسمی</span>
+        </div>
+        <div class="card">
+          <h4 style="font-size:14px;font-weight:700;color:var(--brown-dark);margin-bottom:10px">🍬 سطح شیرینی</h4>
+          <p style="font-size:13.5px;color:var(--text-secondary)">اطلاعات تغذیه‌ای کیک پرتقالی ۵۵گرمی: قند ۱۲گرم (متوسط). این سطح در دسته عادی بازار قرار دارد.</p>
+          <span class="badge badge-green" style="margin-top:8px">شواهد: داده تغذیه‌ای</span>
+        </div>
+        <div class="card">
+          <h4 style="font-size:14px;font-weight:700;color:var(--brown-dark);margin-bottom:10px">📦 بسته‌بندی</h4>
+          <p style="font-size:13.5px;color:var(--text-secondary)">شوکو بیسکویت دارای «محفظه محکم» توصیف شده. نام‌های جذاب محصولات (لبخند، توتام، موتلو) در بسته‌بندی استفاده شده.</p>
+          <span class="badge badge-amber" style="margin-top:8px">شواهد: محدود</span>
+        </div>
+        <div class="card">
+          <h4 style="font-size:14px;font-weight:700;color:var(--brown-dark);margin-bottom:10px">💰 ارزش/قیمت</h4>
+          <p style="font-size:13.5px;color:var(--text-secondary)">اندازه محصولات: ۴۳-۹۵گرم. بنیس به‌عنوان تولیدکننده‌ای با «کیفیت و قیمت مناسب» معرفی شده است.</p>
+          <span class="badge badge-green" style="margin-top:8px">شواهد: منابع B2B</span>
+        </div>
+        <div class="card">
+          <h4 style="font-size:14px;font-weight:700;color:var(--brown-dark);margin-bottom:10px">👧 مناسب برای کودک/خانواده</h4>
+          <p style="font-size:13.5px;color:var(--text-secondary)">شوکو بیسکویت لبخند صریحاً «برای کودکان و بزرگسالان» معرفی شده. کیک‌های روغنی تکی مناسب جعبه مدرسه.</p>
+          <span class="badge badge-green" style="margin-top:8px">شواهد: متوسط</span>
+        </div>
+        <div class="card">
+          <h4 style="font-size:14px;font-weight:700;color:var(--brown-dark);margin-bottom:10px">⚠ موجودی</h4>
+          <p style="font-size:13.5px;color:var(--text-secondary)">چند محصول در فروشگاه‌های آنلاین با «اتمام موجودی» (کیک سوئیس کرم وانیل در اسف‌استور) دیده شد.</p>
+          <span class="badge badge-red" style="margin-top:8px">ریسک: مدیریت موجودی</span>
+        </div>
+        <div class="card">
+          <h4 style="font-size:14px;font-weight:700;color:var(--brown-dark);margin-bottom:10px">🔄 ثبات کیفیت</h4>
+          <p style="font-size:13.5px;color:var(--text-secondary)">بر اساس سیستم‌های ISO و HACCP، ثبات کیفیت ادعا می‌شود. شواهد میدانی از مصرف‌کننده: ناکافی.</p>
+          <span class="badge badge-amber" style="margin-top:8px">شواهد: سیستم‌های کیفیت</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: CONSUMER VOICE -->
+    <section id="voice">
+      <div class="section-header">
+        <div class="section-num">ج</div>
+        <div>
+          <h2>صدای مصرف‌کننده</h2>
+          <div class="section-sub">نقل‌قول‌های نمونه — اکثراً از توصیف‌های رسمی برند</div>
+        </div>
+      </div>
+      <h4 style="font-size:13px;color:#1B5E3B;font-weight:700;margin-bottom:10px">✦ نقل‌قول‌های مثبت</h4>
+      <div class="quote-card">
+        <blockquote>«کیک‌های موتلو بنیس خیلی پرطرفدارند چون ساختار خاص و طعم جذابی دارند. ما درون کیک اسفنجی خوش‌پخت و تازه با مایه‌ای خوشمزه پر کرده‌ایم و با هر گازی که به آن بزنید شما را هیجان‌زده خواهد کرد.»</blockquote>
+        <div class="source">سایت رسمی بنیس — توصیف محصول کیک موتلو</div>
+      </div>
+      <div class="quote-card">
+        <blockquote>«در بین محصولات بنیس، شوکو بیسکویت لبخند از پرطرفدارترین‌هاست. این محصول ترکیبی از یک بیسکویت و لایه‌ی ضخیم شکلاتی است که روی آن را پوشانده است.»</blockquote>
+        <div class="source">سایت رسمی بنیس — توصیف شوکو بیسکویت لبخند</div>
+      </div>
+      <div class="quote-card">
+        <blockquote>«این کیک از قدیمی‌ترین محصولات بنیس است که کیکی سالم با طعم خوب و بافتی نرم است.»</blockquote>
+        <div class="source">سایت رسمی بنیس — توصیف کیک لایه‌ای</div>
+      </div>
+      <div class="quote-card">
+        <blockquote>«از سوی دیگر، با کمک روش‌های مدرن، ماندگاری چیزکیک را بالا برده‌ایم تا بتوانید هر بار که بسته‌بندی را باز می‌کنید، از پیچیدن عطر خوش کیک لذت ببرید.»</blockquote>
+        <div class="source">سایت رسمی بنیس — توصیف کاپ‌کیک پنیری</div>
+      </div>
+
+      <h4 style="font-size:13px;color:var(--text-muted);font-weight:700;margin:16px 0 10px">◆ نقل‌قول‌های خنثی/توصیفی</h4>
+      <div class="quote-card neutral">
+        <blockquote>«کیک و کلوچه شامل کلوچه سنتی، اشترودل، کیک کرم کاکائو، کلوچه پرتقالی، وانیلی... از برندهای درنا، مینو، بنیس، نان‌آوران، سلامت و پچ‌پچ.»</blockquote>
+        <div class="source">mopon.ir — توصیف دسته‌بندی اسنپ اکسپرس</div>
+      </div>
+      <div class="quote-card neutral">
+        <blockquote>«گروه بنیس، یکی از کارخانه‌های تولید انواع کیک، کلوچه و شکلات است که به صورت خانوادگی راه‌اندازی و توسعه داده شده است.»</blockquote>
+        <div class="source">namayeshgahha.ir — فهرست برترین تولیدکنندگان کیک ایران</div>
+      </div>
+
+      <h4 style="font-size:13px;color:#9A2B0E;font-weight:700;margin:16px 0 10px">✗ سیگنال‌های منفی/ریسک</h4>
+      <div class="quote-card neg">
+        <blockquote>«بنیس کیک سوئیس کرم وانیل — اتمام موجودی»</blockquote>
+        <div class="source">asefstore.ir — مشکل موجودی در کانال آنلاین</div>
+      </div>
+      <div class="quote-card neg">
+        <blockquote>«نظرات کاربران: ۰ نظر ارسال شده» — برای تمام محصولات بررسی‌شده در فروشگاه‌های خرد آنلاین</blockquote>
+        <div class="source">شهروند.ir، شهسوارمارکت، ورزنه‌کالا — نشانه ضعف engagement دیجیتال</div>
+      </div>
+    </section>
+
+    <!-- SECTION: COMPETITOR -->
+    <section id="competitor">
+      <div class="section-header">
+        <div class="section-num">چ</div>
+        <div>
+          <h2>جایگاه رقابتی</h2>
+          <div class="section-sub">موقعیت بنیس در ذهن مصرف‌کننده و مقایسه با رقبا</div>
+        </div>
+      </div>
+
+      <div class="card-grid cols-3" style="margin-bottom:1.5rem">
+        <div class="metric-card">
+          <span class="m-val" style="font-size:1.3rem;color:var(--brown-mid)">مقرون‌به‌صرفه</span>
+          <span class="m-lbl">موقعیت قیمتی</span>
+        </div>
+        <div class="metric-card">
+          <span class="m-val" style="font-size:1.3rem;color:var(--brown-mid)">نوستالژیک</span>
+          <span class="m-lbl">تصویر برند</span>
+        </div>
+        <div class="metric-card">
+          <span class="m-val" style="font-size:1.3rem;color:var(--brown-mid)">خانوادگی</span>
+          <span class="m-lbl">سگمنت مصرف</span>
+        </div>
+      </div>
+
+      <div class="table-wrap" style="margin-bottom:1.5rem">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>برند رقیب</th>
+              <th>نقطه قوت مشاهده‌شده</th>
+              <th>رابطه با بنیس</th>
+              <th>وضعیت</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>شیرین‌عسل</strong></td>
+              <td>تنوع بالا، حضور آنلاین قوی، تاینی و کیک‌های متنوع</td>
+              <td>همیشه در کنار بنیس ذکر می‌شود</td>
+              <td><span class="badge badge-red">رقیب اصلی آنلاین</span></td>
+            </tr>
+            <tr>
+              <td><strong>درنا</strong></td>
+              <td>پیشگام صنعت کیک، تندیس سلامت، ۵۰ سال سابقه</td>
+              <td>کارخانه «درنای بنیس» در صوفیان ← ارتباط خانوادگی!</td>
+              <td><span class="badge badge-amber">ارتباط پیچیده</span></td>
+            </tr>
+            <tr>
+              <td><strong>مینو</strong></td>
+              <td>برند ملی قدیمی، توزیع گسترده، متنوع</td>
+              <td>همتراز در سبد خرید مصرف‌کننده</td>
+              <td><span class="badge badge-amber">رقیب توده‌ای</span></td>
+            </tr>
+            <tr>
+              <td><strong>نادری</strong></td>
+              <td>نوستالژی، ریشه سنتی</td>
+              <td>در لیست‌های برند ذکر می‌شود</td>
+              <td><span class="badge badge-gray">رقیب نوستالژیک</span></td>
+            </tr>
+            <tr>
+              <td><strong>شیرین‌نوین</strong></td>
+              <td>ظرفیت بالا، صادرات</td>
+              <td>رقیب تکنولوژیک و تولیدی</td>
+              <td><span class="badge badge-amber">رقیب تولیدی</span></td>
+            </tr>
+            <tr>
+              <td><strong>نظری</strong></td>
+              <td>شبستر تبریز، ۵۰ سال سابقه</td>
+              <td>همزیستی جغرافیایی (هر دو تبریز)</td>
+              <td><span class="badge badge-gray">رقیب منطقه‌ای</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card" style="background:var(--cream);border-color:var(--gold)">
+        <h4 style="font-size:14px;font-weight:700;color:var(--brown-dark);margin-bottom:8px">⚡ یافته مهم: ارتباط درنا-بنیس</h4>
+        <p style="font-size:13.5px;color:var(--text-secondary)">شرکت درنا یک کارخانه فرعی با نام «درنای بنیس» در سال ۱۳۹۱ در صوفیان تبریز راه‌اندازی کرده است. مدیر درنا (صمد رسولوی) نیز از خانواده رسولوی است — همان خانواده بنیس. این ارتباط از نظر استراتژیک قابل توجه است.</p>
+      </div>
+    </section>
+
+    <!-- SECTION: SWOT -->
+    <section id="swot">
+      <div class="section-header">
+        <div class="section-num">ح</div>
+        <div>
+          <h2>تحلیل SWOT</h2>
+          <div class="section-sub">بر اساس شواهد موجود</div>
+        </div>
+      </div>
+      <div class="swot-grid">
+        <div class="swot-cell s">
+          <h3><div class="swot-icon">S</div> نقاط قوت</h3>
+          <ul>
+            <li>سابقه ۵۰+ ساله و داستان «پدر کیک ایران»</li>
+            <li>پرتفوی بسیار گسترده (۷۴+ محصول)</li>
+            <li>گواهینامه‌های ISO، HACCP از TÜV Nord آلمان</li>
+            <li>زیرساخت تولیدی بزرگ (۲۷,۰۰۰ م² و ۲۰۰۰+ نیرو)</li>
+            <li>شبکه توزیع ملی با شعب سراسری</li>
+            <li>دو برند موازی (بنیس + ناربن)</li>
+            <li>قیمت‌گذاری رقابتی برای بازار توده</li>
+          </ul>
+        </div>
+        <div class="swot-cell w">
+          <h3><div class="swot-icon">W</div> نقاط ضعف</h3>
+          <ul>
+            <li>حضور دیجیتال بسیار ضعیف</li>
+            <li>فقدان Social Proof آنلاین</li>
+            <li>محتوای وب‌سایت نامنسجم (placeholder)</li>
+            <li>موجودی پراکنده در کانال آنلاین</li>
+            <li>بدون استراتژی واضح D2C</li>
+            <li>ضعف در محصولات ویژه/محدود مناسبتی</li>
+          </ul>
+        </div>
+        <div class="swot-cell o">
+          <h3><div class="swot-icon">O</div> فرصت‌ها</h3>
+          <ul>
+            <li>رشد بازار FMCG در کانال آنلاین ایران</li>
+            <li>فضای نوستالژی — مصرف‌کننده ایرانی وفادار است</li>
+            <li>کاپ‌کیک و چیزکیک — دسته‌های با رشد بالا</li>
+            <li>بسته‌های هدیه و مناسبتی (عید، یلدا)</li>
+            <li>سگمنت سالم/رژیمی — بازار اشباع‌نشده</li>
+            <li>Micro-Influencer در حوزه خانه و کودک</li>
+            <li>اسنپ مارکت و دیجی‌جت — تحویل سریع</li>
+          </ul>
+        </div>
+        <div class="swot-cell t">
+          <h3><div class="swot-icon">T</div> تهدیدها</h3>
+          <ul>
+            <li>رقبا با حضور دیجیتال قوی‌تر (شیرین‌عسل)</li>
+            <li>برندهای خارجی (اولکر ترکی) در بازار ایران</li>
+            <li>تورم و کاهش قدرت خرید مصرف‌کننده</li>
+            <li>افزایش آگاهی سلامتی — فشار بر قند/چربی</li>
+            <li>رابطه پیچیده با درنا — سردرگمی برند</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: RECOMMENDATIONS -->
+    <section id="recs">
+      <div class="section-header">
+        <div class="section-num">خ</div>
+        <div>
+          <h2>توصیه‌های استراتژیک</h2>
+          <div class="section-sub">۱۵ توصیه در ۳ حوزه</div>
+        </div>
+      </div>
+
+      <div class="rec-group">
+        <div class="rec-group-title">🍰 محصول</div>
+        <div class="rec-item">
+          <div class="rec-num">۱</div>
+          <div class="rec-body">
+            <h4>توسعه خط «صبحانه سالم بنیس»</h4>
+            <p>یک خط جداگانه با برچسب‌گذاری واضح «کمتر شکر»، «سبوس‌دار» یا «پروتئین بالا» ایجاد کنید. بازار سلامت‌محور ایران در حال رشد است و رقبا هنوز در این فضا سنگر محکمی ندارند.</p>
+          </div>
+        </div>
+        <div class="rec-item">
+          <div class="rec-num">۲</div>
+          <div class="rec-body">
+            <h4>بازطراحی بسته‌بندی با هویت بصری مدرن‌تر</h4>
+            <p>بسته‌بندی‌ها باید برای عکس‌برداری اینستاگرامی و محیط دیجیتال جذاب باشند. اضافه کردن QR کد برای لینک به محتوا، دستور استفاده، یا کمپین.</p>
+          </div>
+        </div>
+        <div class="rec-item">
+          <div class="rec-num">۳</div>
+          <div class="rec-body">
+            <h4>معرفی بسته‌های هدیه و مناسبتی</h4>
+            <p>ست‌های هدیه ترکیبی (کیک + شکلات + کلوچه) در قوطی‌های جذاب برای عید، یلدا، تولد، و جعبه‌های مدرسه‌ای. این بازار در ایران اشباع نشده.</p>
+          </div>
+        </div>
+        <div class="rec-item">
+          <div class="rec-num">۴</div>
+          <div class="rec-body">
+            <h4>گسترش خط کاپ‌کیک</h4>
+            <p>کاپ‌کیک پنیری بنیس یک نوآوری است. این خط باید با طعم‌های بیشتر (اسپرسو، توت‌فرنگی، لیمو) گسترش یابد و در کافه‌ها نیز عرضه شود.</p>
+          </div>
+        </div>
+        <div class="rec-item">
+          <div class="rec-num">۵</div>
+          <div class="rec-body">
+            <h4>کاهش SKU با تمرکز روی Star Products</h4>
+            <p>از ۷۴ محصول، ۸-۱۰ «ستاره» شناسایی و روی آن‌ها تمرکز بازاریابی صورت گیرد. پراکندگی زیاد توجه بازاریابی را کاهش می‌دهد.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-group">
+        <div class="rec-group-title">📣 بازاریابی و برندینگ</div>
+        <div class="rec-item">
+          <div class="rec-num">۶</div>
+          <div class="rec-body">
+            <h4>روایت داستان «پدر کیک ایران» را زنده کنید</h4>
+            <p>یک مستند کوتاه، یک کمپین «اولین کیک ایران»، یا محتوای تاریخی می‌تواند بنیس را از رقبا متمایز کند. این داستان هم نوستالژیک است، هم ملی‌گرایانه.</p>
+          </div>
+        </div>
+        <div class="rec-item">
+          <div class="rec-num">۷</div>
+          <div class="rec-body">
+            <h4>راه‌اندازی کمپین User Generated Content (UGC)</h4>
+            <p>مسابقات عکاسی صبحانه با بنیس، چالش «صبحانه بنیسی»، هشتگ برندینگ. این محتوا ارزان‌ترین و معتبرترین social proof است.</p>
+          </div>
+        </div>
+        <div class="rec-item">
+          <div class="rec-num">۸</div>
+          <div class="rec-body">
+            <h4>سرمایه‌گذاری روی Micro-Influencerهای خانه‌داری و کودک</h4>
+            <p>اینفلوئنسرهای کوچک (۱۰-۵۰هزار فالوور) در حوزه «خانه»، «کودک»، «صبحانه» بهترین بازگشت سرمایه را دارند.</p>
+          </div>
+        </div>
+        <div class="rec-item">
+          <div class="rec-num">۹</div>
+          <div class="rec-body">
+            <h4>تعریف واضح پیام برند</h4>
+            <p>پیشنهاد: «بنیس — کیک ایرانی اصیل؛ از اولین کارخانه کیک ایران». این پیام هم نوستالژی دارد، هم افتخار ملی، هم اعتماد.</p>
+          </div>
+        </div>
+        <div class="rec-item">
+          <div class="rec-num">۱۰</div>
+          <div class="rec-body">
+            <h4>فعال‌سازی در مناسبت‌های ملی</h4>
+            <p>عید نوروز، یلدا، ماه رمضان — بنیس باید در این مناسبت‌ها کمپین‌های اختصاصی داشته باشد؛ نه فقط پست بلکه بسته‌های محصولی ویژه.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rec-group">
+        <div class="rec-group-title">🛒 فروش آنلاین</div>
+        <div class="rec-item">
+          <div class="rec-num">۱۱</div>
+          <div class="rec-body">
+            <h4>بازسازی فوری صفحات دیجی‌کالا</h4>
+            <p>هر صفحه محصول باید: عکس‌های با کیفیت بالا، توضیح کامل، ارزش‌های تغذیه‌ای جدول‌بندی‌شده، و حداقل ۵-۱۰ نظر اولیه داشته باشد.</p>
+          </div>
+        </div>
+        <div class="rec-item">
+          <div class="rec-num">۱۲</div>
+          <div class="rec-body">
+            <h4>حضور فعال در اسنپ مارکت/دیجی‌جت</h4>
+            <p>محصولات پرفروش باید در قفسه دیجیتال سوپرمارکت‌های شریک این پلتفرم‌ها با موجودی پایدار حاضر باشند.</p>
+          </div>
+        </div>
+        <div class="rec-item">
+          <div class="rec-num">۱۳</div>
+          <div class="rec-body">
+            <h4>Partnership برای تحویل فوری در تهران</h4>
+            <p>یک همکاری با اسنپ اکسپرس یا دیجی‌جت برای تحویل ۳۰ دقیقه‌ای محصولات بنیس در تهران — تجربه جدیدی ایجاد می‌کند.</p>
+          </div>
+        </div>
+        <div class="rec-item">
+          <div class="rec-num">۱۴</div>
+          <div class="rec-body">
+            <h4>برنامه ترغیب به نظردهی</h4>
+            <p>یک برگه کوچک داخل هر بسته که مشتری را به ثبت نظر در دیجی‌کالا تشویق کند. قرعه‌کشی ماهانه بین نظردهندگان.</p>
+          </div>
+        </div>
+        <div class="rec-item">
+          <div class="rec-num">۱۵</div>
+          <div class="rec-body">
+            <h4>پورتال آنلاین فروش عمده B2B</h4>
+            <p>بنیس دپارتمان فروش عمده دارد اما پورتال آنلاین منظمی برای سفارش‌گیری عمده وجود ندارد. این کانال ارزش زیادی ایجاد می‌کند.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: ACTION PLAN -->
+    <section id="action">
+      <div class="section-header">
+        <div class="section-num">د</div>
+        <div>
+          <h2>برنامه عملیاتی فوری</h2>
+          <div class="section-sub">اقدامات اولویت‌بندی‌شده</div>
+        </div>
+      </div>
+
+      <h4 style="font-size:14px;font-weight:700;color:var(--brown-dark);margin-bottom:12px">⚡ اقدامات ۳۰ روزه (فوری)</h4>
+      <div class="table-wrap" style="margin-bottom:1.5rem">
+        <table class="data-table action-table">
+          <thead>
+            <tr>
+              <th width="50">اولویت</th>
+              <th>اقدام</th>
+              <th>مسئول</th>
+              <th>اثر</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>۱</td>
+              <td>عکاسی حرفه‌ای از ۱۰ محصول اصلی برای دیجی‌کالا</td>
+              <td>بازاریابی + عکاس</td>
+              <td><span class="badge badge-red">فوری</span></td>
+            </tr>
+            <tr>
+              <td>۲</td>
+              <td>تکمیل توضیحات محصول در دیجی‌کالا</td>
+              <td>محتوا</td>
+              <td><span class="badge badge-red">فوری</span></td>
+            </tr>
+            <tr>
+              <td>۳</td>
+              <td>باز کردن حساب رسمی اینستاگرام</td>
+              <td>دیجیتال</td>
+              <td><span class="badge badge-amber">مهم</span></td>
+            </tr>
+            <tr>
+              <td>۴</td>
+              <td>شناسایی ۵ micro-influencer مناسب برای نمونه‌پاشی</td>
+              <td>بازاریابی</td>
+              <td><span class="badge badge-amber">مهم</span></td>
+            </tr>
+            <tr>
+              <td>۵</td>
+              <td>بررسی و رفع مشکل موجودی محصولات در کانال آنلاین</td>
+              <td>لجستیک</td>
+              <td><span class="badge badge-red">فوری</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 style="font-size:14px;font-weight:700;color:var(--brown-dark);margin-bottom:12px">📅 اقدامات ۶۰-۹۰ روزه</h4>
+      <div class="table-wrap">
+        <table class="data-table action-table">
+          <thead>
+            <tr>
+              <th width="50">اولویت</th>
+              <th>اقدام</th>
+              <th>مسئول</th>
+              <th>اثر</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>۶</td>
+              <td>تولید محتوای تاریخی برند (ویدیو، مقاله «پدر کیک ایران»)</td>
+              <td>محتوا + تولید</td>
+              <td><span class="badge badge-amber">مهم</span></td>
+            </tr>
+            <tr>
+              <td>۷</td>
+              <td>راه‌اندازی کمپین UGC با هشتگ اختصاصی</td>
+              <td>بازاریابی دیجیتال</td>
+              <td><span class="badge badge-amber">مهم</span></td>
+            </tr>
+            <tr>
+              <td>۸</td>
+              <td>طراحی و تولید بسته‌های هدیه یلدا/نوروز</td>
+              <td>محصول + طراحی</td>
+              <td><span class="badge badge-green">فرصت</span></td>
+            </tr>
+            <tr>
+              <td>۹</td>
+              <td>بررسی امکان راه‌اندازی D2C تحویل سریع در تهران</td>
+              <td>استراتژی + لجستیک</td>
+              <td><span class="badge badge-green">فرصت</span></td>
+            </tr>
+            <tr>
+              <td>۱۰</td>
+              <td>تحقیق کیفی (focus group) با ۲۰ مصرف‌کننده درباره تصویر برند</td>
+              <td>تحقیقات بازار</td>
+              <td><span class="badge badge-blue">اطلاعات</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <p>گزارش هوش برند <strong>بنیس</strong> — تهیه‌شده خرداد ۱۴۰۵ توسط تیم مشاوره مارکتینگ رهنگاشت| سطح اطمینان کلی: <strong>۶ از ۱۰</strong> | ۳۸ منبع بررسی‌شده</p>
+  <p style="margin-top:6px;font-size:12px">این گزارش بر اساس داده‌های عمومی اینترنتی تهیه شده؛ نظرات واقعی مصرف‌کننده به دلیل محدودیت‌های فنی استخراج نشد.</p>
+</footer>
+
+</body>
+</html>
