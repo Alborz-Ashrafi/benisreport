@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>داشبورد عملکرد فروش - بنیس</title>
+    <title>گزارش کامل فروش کالاهای بنیس</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- کتابخانه خواندن اکسل -->
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/pinar-font@v1.0.0-alpha1/dist/font-face.css" rel="stylesheet" type="text/css" />
     <style>
@@ -15,123 +15,142 @@
 <body class="p-6 text-slate-800">
 
     <div class="max-w-7xl mx-auto">
+        <!-- دکمه بازگشت -->
         <div class="mb-4">
             <a href="index.html" class="inline-flex items-center text-sm font-medium text-slate-500 hover:text-slate-800 transition">
                 <span class="ml-1">←</span> بازگشت به صفحه اصلی
             </a>
         </div>
 
-        <header class="bg-slate-900 text-white p-8 rounded-2xl shadow-sm mb-6">
-            <h1 class="text-3xl font-black">📊 داشبورد عملکرد فروش و بودجه بازاریابی</h1>
-            <p class="text-slate-400 mt-2 text-sm">برنامه توزیع و تارگت زنده از روی فایل اکسل آپلود شده | صنایع غذایی بنیس</p>
+        <!-- هدر گزارش -->
+        <header class="bg-slate-900 text-white p-8 rounded-2xl shadow-xs mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div>
+                <h1 class="text-3xl font-black">📊 گزارش جامع آمار فروش محصولات بنیس</h1>
+                <p class="text-slate-400 mt-2 text-sm">دیتای زنده بارگذاری شده مستقیم از فایل اکسل (sheet2.xlsx)</p>
+            </div>
+            <!-- باکس جستجو زنده -->
+            <div class="w-full md:w-72">
+                <input type="text" id="search-input" onkeyup="filterTable()" placeholder="🔍 جستجوی نام یا کد کالا..." class="w-full px-4 py-2.5 bg-slate-800 text-white rounded-xl border border-slate-700 text-sm focus:outline-none focus:border-indigo-500 transition-colors">
+            </div>
         </header>
 
-        <div id="status-message" class="bg-blue-50 text-blue-700 p-4 rounded-xl mb-6 font-bold text-center animate-pulse">
-            ⏳ در حال خواندن و پردازش فایل اکسل...
+        <!-- وضعیت لودینگ / خطا -->
+        <div id="status-message" class="bg-blue-50 text-blue-700 p-6 rounded-2xl font-bold text-center animate-pulse border border-blue-100">
+            ⏳ در حال خواندن و استخراج کل اطلاعات از فایل اکسل...
         </div>
 
-        <div id="dashboard-content" class="hidden">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-xs">
-                    <span class="text-slate-400 text-xs font-bold block mb-1">تارگت ماهانه</span>
-                    <h3 class="text-2xl font-black text-slate-900">۸۰۰,۰۰۰ کارتن</h3>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-xs">
-                    <span class="text-slate-400 text-xs font-bold block mb-1">سهم کانال اصلی (ریتیل)</span>
-                    <h3 class="text-2xl font-black text-indigo-600">۸۵ درصد</h3>
-                </div>
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-xs">
-                    <span class="text-slate-400 text-xs font-bold block mb-1">وضعیت موجود اولیه</span>
-                    <h3 class="text-2xl font-black text-emerald-600">۴۰۰,۰۰۰ کارتن/ماه</h3>
-                </div>
-            </div>
-
-            <div class="flex space-x-2 space-x-reverse bg-slate-100 p-1 rounded-xl mb-6">
-                <button onclick="switchTab('sales-tab')" id="btn-sales-tab" class="tab-btn flex-1 py-2.5 text-sm font-bold rounded-lg bg-white shadow-xs text-slate-900">📈 دیتای فروش ماهانه کالاها</button>
-                <button onclick="switchTab('category-tab')" id="btn-category-tab" class="tab-btn flex-1 py-2.5 text-sm font-medium rounded-lg text-slate-500 hover:bg-white/50">🏆 تحلیل کتگوری و پارتو</button>
-            </div>
-
-            <div id="sales-tab" class="tab-content block">
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-xs">
-                    <h2 class="text-lg font-bold text-slate-900 mb-4">نمودار مقایسه‌ای فروش ماهانه (براونی بنیس)</h2>
-                    <div class="h-96"><canvas id="salesChart"></canvas></div>
-                </div>
-            </div>
-
-            <div id="category-tab" class="tab-content hidden">
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-xs">
-                    <h2 class="text-lg font-bold text-slate-900 mb-4">میانگین فروش ماهانه کالاها (شیت کتگوری)</h2>
-                    <div class="h-96"><canvas id="categoryChart"></canvas></div>
-                </div>
+        <!-- جدول اطلاعات (در ابتدا پنهان است) -->
+        <div id="table-container" class="hidden bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="w-full text-right border-collapse text-xs md:text-sm">
+                    <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200 sticky top-0">
+                        <tr>
+                            <th class="p-4 whitespace-nowrap">کد کالا</th>
+                            <th class="p-4 min-w-[220px]">نام کالا</th>
+                            <th class="p-3 text-center">فروردین</th>
+                            <th class="p-3 text-center">اردیبهشت</th>
+                            <th class="p-3 text-center">خرداد</th>
+                            <th class="p-3 text-center">تیر</th>
+                            <th class="p-3 text-center">مرداد</th>
+                            <th class="p-3 text-center">شهریور</th>
+                            <th class="p-3 text-center">مهر</th>
+                            <th class="p-3 text-center">آبان</th>
+                            <th class="p-3 text-center">آذر/آذیر</th>
+                            <th class="p-3 text-center">دی</th>
+                            <th class="p-3 text-center">بهمن</th>
+                            <th class="p-3 text-center">اسفند</th>
+                            <th class="p-4 text-center bg-indigo-50 text-indigo-950 font-black rounded-tl-xl">جمع کل (Total)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="excel-table-body" class="divide-y divide-slate-100 text-slate-600">
+                        <!-- ردیف‌های اکسل اینجا تزریق میشن -->
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
     <script>
-        // سیستم سوئیچ کردن تب‌ها
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(el => { el.classList.add('hidden'); el.classList.remove('block'); });
-            document.getElementById(tabId).classList.remove('hidden');
-            document.getElementById(tabId).classList.add('block');
-
-            document.querySelectorAll('.tab-btn').forEach(el => {
-                el.classList.remove('bg-white', 'shadow-xs', 'text-slate-900');
-                el.classList.add('text-slate-500', 'hover:bg-white/50');
-            });
-            document.getElementById('btn-' + tabId).classList.add('bg-white', 'shadow-xs', 'text-slate-900');
-            document.getElementById('btn-' + tabId).classList.remove('text-slate-500', 'hover:bg-white/50');
-        }
-
-        // خواندن خودکار فایل اکسل زنده از کنار همین فایل
-        // توجه: اسم فایل اکسل شما باید دقیقاً sheet2.xlsx باشد
+        // خواندن زنده فایل اکسل شما
         fetch('sheet2.xlsx')
             .then(res => {
-                if(!res.ok) throw new Error("فایل sheet2.xlsx پیدا نشد!");
+                if(!res.ok) throw new Error();
                 return res.arrayBuffer();
             })
             .then(ab => {
                 const workbook = XLSX.read(new Uint8Array(ab), {type: 'array'});
-                
-                // ۱. پردازش شیت اول (دیتای فروش)
-                const salesSheet = workbook.Sheets[workbook.SheetNames[0]];
-                const salesData = XLSX.utils.sheet_to_json(salesSheet);
-                
-                // استخراج اطلاعات ماه‌ها و فروش دو محصول اول بنیس
-                const months = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
-                
-                // محصول ۱: براونی آلبالویی (ردیف اول)
-                const p1 = salesData[0];
-                const p1Data = months.map(m => p1[m] || 0);
-                
-                // محصول ۲: براونی کاکائویی (ردیف دوم)
-                const p2 = salesData[1];
-                const p2Data = months.map(m => p2[m] || 0);
+                // باز کردن اولین شیت اکسل شما
+                const firstSheetName = workbook.SheetNames[0];
+                const worksheet = workbook.Sheets[firstSheetName];
+                // تبدیل اطلاعات به لیست آرایه‌ها
+                const rows = XLSX.utils.sheet_to_json(worksheet);
 
-                // رسم نمودار خطی فروش ماهانه
-                const ctxSales = document.getElementById('salesChart').getContext('2d');
-                new Chart(ctxSales, {
-                    type: 'line',
-                    data: {
-                        labels: months,
-                        datasets: [
-                            { label: p1['نام كالا'] || 'براونی آلبالویی', data: p1Data, borderColor: '#ec4899', backgroundColor: 'transparent', tension: 0.2 },
-                            { label: p2['نام كالا'] || 'براونی کاکائویی', data: p2Data, borderColor: '#4f46e5', backgroundColor: 'transparent', tension: 0.2 }
-                        ]
-                    },
-                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { font: { family: 'Pinar' } } } } }
+                const tableBody = document.getElementById('excel-table-body');
+                tableBody.innerHTML = ''; // پاک کردن دیتای فیک قبلی
+
+                // چرخیدن روی تمام ردیف‌های فایل اکسل شما
+                rows.forEach(row => {
+                    // اگر سطر معتبری باشه رندرش کن
+                    if (row['نام كالا'] || row['كد كالا']) {
+                        const tr = document.createElement('tr');
+                        tr.className = "hover:bg-slate-50/80 transition-colors";
+
+                        // فرمت دهی اعداد برای نمایش با ویرگول (سه رقم سه رقم)
+                        const fmt = (val) => val !== undefined && val !== null ? Number(val).toLocaleString('fa-IR') : '۰';
+
+                        tr.innerHTML = `
+                            <td class="p-4 font-mono text-slate-400 whitespace-nowrap">${row['كد كالا'] || '-'}</td>
+                            <td class="p-4 font-bold text-slate-900">${row['نام كالا'] || '-'}</td>
+                            <td class="p-3 text-center">${fmt(row['فروردین'])}</td>
+                            <td class="p-3 text-center">${fmt(row['اردیبهشت'])}</td>
+                            <td class="p-3 text-center">${fmt(row['خرداد'])}</td>
+                            <td class="p-3 text-center">${fmt(row['تیر'])}</td>
+                            <td class="p-3 text-center">${fmt(row['مرداد'])}</td>
+                            <td class="p-3 text-center">${fmt(row['شهریور'])}</td>
+                            <td class="p-3 text-center">${fmt(row['مهر'])}</td>
+                            <td class="p-3 text-center">${fmt(row['آبان'])}</td>
+                            <td class="p-3 text-center">${fmt(row['آذر'] || row['آذیر'])}</td>
+                            <td class="p-3 text-center">${fmt(row['دی'])}</td>
+                            <td class="p-3 text-center">${fmt(row['بهمن'])}</td>
+                            <td class="p-3 text-center">${fmt(row['اسفند'])}</td>
+                            <td class="p-4 text-center bg-indigo-50/40 text-indigo-600 font-bold">${fmt(row['Total'])}</td>
+                        `;
+                        tableBody.appendChild(tr);
+                    }
                 });
 
-                // پنهان کردن پیام لودینگ و نمایش داشبورد
+                // پنهان کردن پیام لودینگ و فعال‌سازی جدول اصلی
                 document.getElementById('status-message').classList.add('hidden');
-                document.getElementById('dashboard-content').classList.remove('hidden');
+                document.getElementById('table-container').classList.remove('hidden');
             })
             .catch(err => {
-                console.error(err);
                 const msg = document.getElementById('status-message');
                 msg.classList.remove('bg-blue-50', 'text-blue-700', 'animate-pulse');
                 msg.classList.add('bg-red-50', 'text-red-700');
-                msg.innerText = "❌ خطا: فایل اکسل با نام 'sheet2.xlsx' در کنار این فایل پیدا نشد یا فرمت آن درست نیست.";
+                msg.innerText = "❌ خطا: فایل اکسل با نام دقیق 'sheet2.xlsx' پیدا نشد. لطفاً آن را آپلود کنید.";
             });
+
+        // جاوااسکریپت برای سرچ همزمان در جدول
+        function filterTable() {
+            const input = document.getElementById("search-input");
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById("excel-table-body");
+            const tr = table.getElementsByTagName("tr");
+
+            for (let i = 0; i < tr.length; i++) {
+                const tdCode = tr[i].getElementsByTagName("td")[0];
+                const tdName = tr[i].getElementsByTagName("td")[1];
+                if (tdCode || tdName) {
+                    const textCode = tdCode.textContent || tdCode.innerText;
+                    const textName = tdName.textContent || tdName.innerText;
+                    if (textCode.toLowerCase().indexOf(filter) > -1 || textName.toLowerCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
     </script>
 </body>
 </html>
