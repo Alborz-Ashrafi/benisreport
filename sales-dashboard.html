@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داشبورد عملکرد فروش - بنیس</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/pinar-font@v1.0.0-alpha1/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        body { font-family: 'Pinar', 'Tahoma', sans-serif; background-color: #f8fafc; }
+    </style>
+</head>
+<body class="p-6 text-slate-800">
+
+    <div class="max-w-7xl mx-auto">
+        <div class="mb-4">
+            <a href="index.html" class="inline-flex items-center text-sm font-medium text-slate-500 hover:text-slate-800 transition">
+                <span class="ml-1">←</span> بازگشت به صفحه اصلی
+            </a>
+        </div>
+
+        <header class="bg-slate-900 text-white p-8 rounded-2xl shadow-sm mb-6">
+            <h1 class="text-3xl font-black">📊 داشبورد عملکرد فروش و بودجه بازاریابی</h1>
+            <p class="text-slate-400 mt-2 text-sm">برنامه توزیع و تارگت زنده از روی فایل اکسل آپلود شده | صنایع غذایی بنیس</p>
+        </header>
+
+        <div id="status-message" class="bg-blue-50 text-blue-700 p-4 rounded-xl mb-6 font-bold text-center animate-pulse">
+            ⏳ در حال خواندن و پردازش فایل اکسل...
+        </div>
+
+        <div id="dashboard-content" class="hidden">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-xs">
+                    <span class="text-slate-400 text-xs font-bold block mb-1">تارگت ماهانه</span>
+                    <h3 class="text-2xl font-black text-slate-900">۸۰۰,۰۰۰ کارتن</h3>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-xs">
+                    <span class="text-slate-400 text-xs font-bold block mb-1">سهم کانال اصلی (ریتیل)</span>
+                    <h3 class="text-2xl font-black text-indigo-600">۸۵ درصد</h3>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-xs">
+                    <span class="text-slate-400 text-xs font-bold block mb-1">وضعیت موجود اولیه</span>
+                    <h3 class="text-2xl font-black text-emerald-600">۴۰۰,۰۰۰ کارتن/ماه</h3>
+                </div>
+            </div>
+
+            <div class="flex space-x-2 space-x-reverse bg-slate-100 p-1 rounded-xl mb-6">
+                <button onclick="switchTab('sales-tab')" id="btn-sales-tab" class="tab-btn flex-1 py-2.5 text-sm font-bold rounded-lg bg-white shadow-xs text-slate-900">📈 دیتای فروش ماهانه کالاها</button>
+                <button onclick="switchTab('category-tab')" id="btn-category-tab" class="tab-btn flex-1 py-2.5 text-sm font-medium rounded-lg text-slate-500 hover:bg-white/50">🏆 تحلیل کتگوری و پارتو</button>
+            </div>
+
+            <div id="sales-tab" class="tab-content block">
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-xs">
+                    <h2 class="text-lg font-bold text-slate-900 mb-4">نمودار مقایسه‌ای فروش ماهانه (براونی بنیس)</h2>
+                    <div class="h-96"><canvas id="salesChart"></canvas></div>
+                </div>
+            </div>
+
+            <div id="category-tab" class="tab-content hidden">
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-xs">
+                    <h2 class="text-lg font-bold text-slate-900 mb-4">میانگین فروش ماهانه کالاها (شیت کتگوری)</h2>
+                    <div class="h-96"><canvas id="categoryChart"></canvas></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // سیستم سوئیچ کردن تب‌ها
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => { el.classList.add('hidden'); el.classList.remove('block'); });
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById(tabId).classList.add('block');
+
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-white', 'shadow-xs', 'text-slate-900');
+                el.classList.add('text-slate-500', 'hover:bg-white/50');
+            });
+            document.getElementById('btn-' + tabId).classList.add('bg-white', 'shadow-xs', 'text-slate-900');
+            document.getElementById('btn-' + tabId).classList.remove('text-slate-500', 'hover:bg-white/50');
+        }
+
+        // خواندن خودکار فایل اکسل زنده از کنار همین فایل
+        // توجه: اسم فایل اکسل شما باید دقیقاً sheet2.xlsx باشد
+        fetch('sheet2.xlsx')
+            .then(res => {
+                if(!res.ok) throw new Error("فایل sheet2.xlsx پیدا نشد!");
+                return res.arrayBuffer();
+            })
+            .then(ab => {
+                const workbook = XLSX.read(new Uint8Array(ab), {type: 'array'});
+                
+                // ۱. پردازش شیت اول (دیتای فروش)
+                const salesSheet = workbook.Sheets[workbook.SheetNames[0]];
+                const salesData = XLSX.utils.sheet_to_json(salesSheet);
+                
+                // استخراج اطلاعات ماه‌ها و فروش دو محصول اول بنیس
+                const months = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
+                
+                // محصول ۱: براونی آلبالویی (ردیف اول)
+                const p1 = salesData[0];
+                const p1Data = months.map(m => p1[m] || 0);
+                
+                // محصول ۲: براونی کاکائویی (ردیف دوم)
+                const p2 = salesData[1];
+                const p2Data = months.map(m => p2[m] || 0);
+
+                // رسم نمودار خطی فروش ماهانه
+                const ctxSales = document.getElementById('salesChart').getContext('2d');
+                new Chart(ctxSales, {
+                    type: 'line',
+                    data: {
+                        labels: months,
+                        datasets: [
+                            { label: p1['نام كالا'] || 'براونی آلبالویی', data: p1Data, borderColor: '#ec4899', backgroundColor: 'transparent', tension: 0.2 },
+                            { label: p2['نام كالا'] || 'براونی کاکائویی', data: p2Data, borderColor: '#4f46e5', backgroundColor: 'transparent', tension: 0.2 }
+                        ]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { font: { family: 'Pinar' } } } } }
+                });
+
+                // پنهان کردن پیام لودینگ و نمایش داشبورد
+                document.getElementById('status-message').classList.add('hidden');
+                document.getElementById('dashboard-content').classList.remove('hidden');
+            })
+            .catch(err => {
+                console.error(err);
+                const msg = document.getElementById('status-message');
+                msg.classList.remove('bg-blue-50', 'text-blue-700', 'animate-pulse');
+                msg.classList.add('bg-red-50', 'text-red-700');
+                msg.innerText = "❌ خطا: فایل اکسل با نام 'sheet2.xlsx' در کنار این فایل پیدا نشد یا فرمت آن درست نیست.";
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>استراتژی محتوا | برند بنیس</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --surface2: #1c1c28;
+    --surface3: #242436;
+    --accent: #ff6b35;
+    --accent2: #ffd166;
+    --accent3: #06d6a0;
+    --accent4: #118ab2;
+    --accent5: #ef476f;
+    --text: #f0f0f8;
+    --text2: #a0a0c0;
+    --text3: #6060a0;
+    --border: rgba(255,255,255,0.07);
+    --glow: rgba(255,107,53,0.15);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Vazirmatn', sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,107,53,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(255,209,102,0.10) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 50% at 10% 60%, rgba(6,214,160,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    background: rgba(255,107,53,0.15);
+    border: 1px solid rgba(255,107,53,0.3);
+    color: var(--accent);
+    padding: 6px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 28px;
+    display: inline-block;
+  }
+  .hero h1 {
+    font-size: clamp(42px, 8vw, 96px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero-sub {
+    font-size: clamp(15px, 2vw, 19px);
+    color: var(--text2);
+    max-width: 600px;
+    margin: 0 auto 48px;
+    font-weight: 400;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 56px;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--accent);
+    display: block;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--text3);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* NAV PILLS */
+  .nav-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    padding: 24px 20px;
+    background: rgba(19,19,26,0.9);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .pill {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text2);
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Vazirmatn', sans-serif;
+  }
+  .pill:hover, .pill.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  /* SECTIONS */
+  .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 24px;
+    display: none;
+  }
+  .section.active { display: block; }
+
+  .section-header {
+    margin-bottom: 56px;
+  }
+  .section-tag {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .section-title {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .section-desc {
+    color: var(--text2);
+    font-size: 16px;
+    max-width: 600px;
+  }
+
+  /* CARDS */
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .card:hover {
+    border-color: rgba(255,107,53,0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px var(--glow);
+  }
+  .card:hover::before { opacity: 1; }
+
+  .card-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+  .card-body {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.8;
+  }
+
+  /* COMPETITOR TABLE */
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin-top: 32px;
+  }
+  .comp-table th {
+    background: var(--surface2);
+    padding: 14px 16px;
+    text-align: right;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--accent);
+    border-bottom: 2px solid var(--border);
+  }
+  .comp-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text2);
+    vertical-align: top;
+    line-height: 1.7;
+  }
+  .comp-table tr:hover td {
+    background: var(--surface2);
+  }
+  .comp-table .brand-name {
+    font-weight: 700;
+    color: var(--text);
+    font-size: 15px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    margin: 2px;
+  }
+  .badge-red { background: rgba(239,71,111,0.2); color: var(--accent5); border: 1px solid rgba(239,71,111,0.3); }
+  .badge-green { background: rgba(6,214,160,0.15); color: var(--accent3); border: 1px solid rgba(6,214,160,0.25); }
+  .badge-yellow { background: rgba(255,209,102,0.15); color: var(--accent2); border: 1px solid rgba(255,209,102,0.25); }
+  .badge-blue { background: rgba(17,138,178,0.2); color: #4fc3f7; border: 1px solid rgba(17,138,178,0.3); }
+  .badge-orange { background: rgba(255,107,53,0.15); color: var(--accent); border: 1px solid rgba(255,107,53,0.3); }
+
+  /* INSIGHT BLOCKS */
+  .insight-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-right: 4px solid var(--accent);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    transition: all 0.2s;
+  }
+  .insight-block:hover { border-right-color: var(--accent2); background: var(--surface2); }
+  .insight-num {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .insight-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .insight-body {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.8;
+  }
+
+  /* PILLAR CARDS */
+  .pillar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pillar-accent {
+    position: absolute;
+    top: 0; right: 0;
+    width: 100px; height: 100px;
+    border-radius: 0 20px 0 100%;
+    opacity: 0.15;
+  }
+  .pillar-num {
+    font-size: 48px;
+    font-weight: 900;
+    opacity: 0.08;
+    position: absolute;
+    bottom: 16px;
+    left: 20px;
+    line-height: 1;
+  }
+  .pillar-title {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  .pillar-desc {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .pillar-formats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* CALENDAR */
+  .month-block {
+    margin-bottom: 48px;
+  }
+  .month-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .month-name {
+    font-size: 24px;
+    font-weight: 900;
+  }
+  .month-theme {
+    font-size: 13px;
+    color: var(--text2);
+    background: var(--surface2);
+    padding: 4px 14px;
+    border-radius: 100px;
+  }
+  .content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .content-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    transition: all 0.25s;
+  }
+  .content-card:hover {
+    border-color: rgba(255,107,53,0.25);
+    transform: translateY(-2px);
+  }
+  .content-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+  .content-type {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(255,107,53,0.1);
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+  .viral-score {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent2);
+  }
+  .content-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .content-meta {
+    font-size: 12px;
+    color: var(--text3);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .meta-item { display: flex; align-items: center; gap: 4px; }
+
+  /* TOP CAMPAIGNS */
+  .campaign-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: all 0.3s;
+  }
+  .campaign-card:hover {
+    border-color: rgba(255,107,53,0.3);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+  .campaign-rank {
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--accent);
+    opacity: 0.4;
+    line-height: 1;
+    min-width: 40px;
+    text-align: center;
+  }
+  .campaign-content { flex: 1; }
+  .campaign-title {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .campaign-desc {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+  .campaign-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* ROADMAP */
+  .roadmap-phase {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .roadmap-phase::before {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 52px;
+    bottom: -32px;
+    width: 2px;
+    background: var(--border);
+  }
+  .roadmap-phase:last-child::before { display: none; }
+  .roadmap-dot {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 15px;
+    color: #fff;
+    flex-shrink: 0;
+    margin-top: 4px;
+    box-shadow: 0 0 20px rgba(255,107,53,0.4);
+  }
+  .roadmap-content {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 24px;
+  }
+  .roadmap-title {
+    font-size: 17px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .roadmap-tasks {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.9;
+  }
+  .roadmap-tasks li { margin-right: 16px; }
+
+  /* TONE BOX */
+  .tone-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .tone-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+  }
+  .tone-emoji { font-size: 36px; margin-bottom: 12px; display: block; }
+  .tone-name { font-size: 16px; font-weight: 800; margin-bottom: 8px; }
+  .tone-desc { font-size: 13px; color: var(--text2); line-height: 1.6; }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 48px 0;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .comp-table { font-size: 12px; }
+    .comp-table th, .comp-table td { padding: 10px 10px; }
+    .roadmap-phase::before { display: none; }
+  }
+
+  /* ANIMATE IN */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .section.active > * {
+    animation: fadeUp 0.4s ease forwards;
+  }
+
+  /* SCROLL */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--surface3); border-radius: 3px; }
+
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(255,107,53,0.08), rgba(255,209,102,0.05));
+    border: 1px solid rgba(255,107,53,0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 24px 0;
+  }
+  .highlight-box strong { color: var(--accent2); }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media(max-width:700px) { .two-col { grid-template-columns: 1fr; } }
+
+  ul.fancy {
+    list-style: none;
+    padding: 0;
+  }
+  ul.fancy li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--text2);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  ul.fancy li::before {
+    content: '▸';
+    color: var(--accent);
+    font-size: 12px;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+  ul.fancy li strong { color: var(--text); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag"> استراتژی کامل برند | 1404-1405</div>
+  <h1>برند <span>بنیس</span><br>مسیر سلطه</h1>
+  <p class="hero-sub">تحلیل رقبا · فرصت‌های محتوایی · تقویم کامل · کمپین‌های ویروسی<br>ساخته‌شده برای بازار ایران با نگاه به فرهنگ دیجیتال نسل Z</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">۴</span><span class="stat-label">فاز استراتژیک</span></div>
+    <div class="stat"><span class="stat-num">۱۲</span><span class="stat-label">ماه تقویم</span></div>
+    <div class="stat"><span class="stat-num">۶</span><span class="stat-label">رقیب تحلیل‌شده</span></div>
+    <div class="stat"><span class="stat-num">+۱۰۰</span><span class="stat-label">ایده محتوایی</span></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav-pills">
+  <button class="pill active" onclick="show('research')">فاز ۱ — تحقیق</button>
+  <button class="pill" onclick="show('insight')">فاز ۲ — بینش‌ها</button>
+  <button class="pill" onclick="show('pillars')">فاز ۳ — سیستم محتوا</button>
+  <button class="pill" onclick="show('calendar')">فاز ۴ — تقویم</button>
+  <button class="pill" onclick="show('top20')">۲۰ کمپین برتر</button>
+  <button class="pill" onclick="show('roadmap')">نقشه رشد</button>
+</nav>
+
+<!-- ============================= PHASE 1 ============================= -->
+<section class="section active" id="research">
+  <div class="section-header">
+    <span class="section-tag">فاز اول</span>
+    <h2 class="section-title">تحقیق صنعت، فرهنگ<br>و تحلیل رقبا</h2>
+    <p class="section-desc">نگاه عمیق به رفتار مصرف‌کننده ایرانی، مناسبت‌های فرهنگی و رقبای کلیدی بازار</p>
+  </div>
+
+  <h3 style="font-size:20px;font-weight:800;margin-bottom:24px;color:var(--accent2)">📅 فرصت‌های فصلی و فرهنگی</h3>
+  <div class="grid-3">
+    <div class="card">
+      <span class="card-icon">🌸</span>
+      <div class="card-title">نوروز و بهار</div>
+      <div class="card-body">بزرگ‌ترین پنجره فروش سال. خانواده‌ها در حال خرید عیدی، دورهمی‌های خانوادگی و سفر هستند. محتوای احساسی درباره «مزه عید» و «خاطره کودکی» در این فصل بیشترین اثر را دارد. فرصت ویژه: بسته‌بندی محدود عید.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🌙</span>
+      <div class="card-title">رمضان و افطار</div>
+      <div class="card-body">فرصت طلایی سنک‌گذاری. بعد از افطار، میل به شیرینی و خوراکی اوج می‌گیرد. محتوای «اول افطار، بعد بنیس» یا «سحری جا نذار بنیس» می‌تونه viral بشه. استوری‌های ساعت ۱۱ شب پربازده‌ترین زمان هستند.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">📚</span>
+      <div class="card-title">امتحانات و کنکور</div>
+      <div class="card-body">نسل Z در فصل امتحانات به snack پناه می‌برد. «بنیس همراه شب‌بیداری» یک positioning قوی است. مینی سایز ایده‌آل برای روی میز درس. محتوای امتحانی/کنکوری engagement بالایی از خانواده‌ها و دانش‌آموزان دارد.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🌜</span>
+      <div class="card-title">یلدا — شب گواهی</div>
+      <div class="card-body">شب دورهمی خانواده و share. محتوای مشترک «یلدا و بنیس» — اتصال محصول به خاطرات دوران کودکی. Poll در استوری: «شب یلدا بنیس می‌خوری یا آجیل؟» engagement بسیار بالا.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🎒</span>
+      <div class="card-title">بازگشت به مدرسه</div>
+      <div class="card-body">مرداد–شهریور: خرید مدرسه، لایحه‌های بهتر. محور: «بنیس توی جعبه غذام» — UGC از بچه‌ها. والدین content را share می‌کنند. قدرتمندترین moment برای targeting مادران.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">⚽</span>
+      <div class="card-title">فوتبال و بازی‌های ملی</div>
+      <div class="card-body">زمان بازی ملی ایران: اوج snacking. Reactive content در حین بازی. «گل شد، بنیس سهمت» — فرمت مشارکتی. لحظه‌های real-time برندینگ با meme خودجوش بسیار قوی است.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">❄️</span>
+      <div class="card-title">پاییز و زمستان</div>
+      <div class="card-body">«mood زمستونی» و «روزهای ابری» فرصت‌های طلایی هستند. محتوا: بنیس + چای + بارون. فرهنگ cozy ایرانی با snacking اتصال طبیعی دارد. این فصل engagement احساسی بالاتری دارد.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">💕</span>
+      <div class="card-title">ولنتاین ایرانی</div>
+      <div class="card-body">۲۵ بهمن (روز عشق) + ۱۴ فوریه در ایران هر دو منتشر هستند. محتوا با زوایای طنز ایرانی بیشتر از محتوای romantic جواب می‌دهد. «بنیس هدیه عشق» + طنز «بودجه محدود» = viral مطمئن.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🎮</span>
+      <div class="card-title">فرهنگ گیمینگ و استریم</div>
+      <div class="card-body">گیمرهای ایرانی بازار snack بزرگی هستند. اسپانسری استریمرها، محتوای مشترک «گیم + بنیس»، بسته‌بندی Gaming Edition. این بازار توسط رقبا کاملاً نادیده گرفته شده است.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3 style="font-size:20px;font-weight:800;margin-bottom:24px;color:var(--accent2)">🌍 ترندهای جهانی FMCG</h3>
+  <div class="grid-3">
+    <div class="card">
+      <span class="card-icon">🍫</span>
+      <div class="card-title">Oreo — استادِ collabs</div>
+      <div class="card-body">هر ماه یک limited edition. Pokemon، Star Wars، Lady Gaga. درسش برای بنیس: هر مناسبت ملی یا ترند اینترنتی = طرح محدود. حتی بدون تغییر طعم، بسته‌بندی متفاوت کافی است.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🍫</span>
+      <div class="card-title">KitKat — Have a Break</div>
+      <div class="card-body">۹۰ سال روی یک کانسپت: لحظه استراحت. برای بنیس: «بنیس، وقفه داری؟» — اتصال به لحظه‌های بین کار. ژاپن با ۳۰۰+ طعم، gamification خرید ایجاد کرد. طعم‌های فصلی / منطقه‌ای = FOMO.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🍬</span>
+      <div class="card-title">Pocky — سبک‌ست کره‌ای</div>
+      <div class="card-body">«Pocky Day» (۱۱ نوامبر) = holiday که خود برند ساخت. برای بنیس: «روز بنیس» در یک تاریخ خاص ایرانی. همچنین Pocky با share کردن بیتی محصول را تبدیل به ritual کرد.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">📱</span>
+      <div class="card-title">TikTok Snack Trends</div>
+      <div class="card-body">محتوای «ASMR باز کردن بسته»، «snack combination هاش»، «این طعمو اشتباه می‌خوردی» — همه viral بالقوه. رقبای ایرانی از این فرمت‌ها استفاده نمی‌کنند.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">😂</span>
+      <div class="card-title">Absurdist Marketing</div>
+      <div class="card-body">Wendy's Twitter، Duolingo TikTok، Ryanair Instagram — برندهایی که «دیوانه» شدند و viral شدند. ایران آماده این نوع برند است. بنیس می‌تواند اولین باشد.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🎁</span>
+      <div class="card-title">Collectible Packaging</div>
+      <div class="card-body">Pringles با طرح‌های مختلف روی درب، Kinder با اسباب‌بازی داخل. برای بنیس: کارت‌های کلکسیونی داخل بسته، طرح‌های مختلف بسته‌بندی که مصرف‌کننده set کامل می‌خواهد.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3 style="font-size:20px;font-weight:800;margin-bottom:24px;color:var(--accent2)">🔍 تحلیل عمیق رقبا</h3>
+  <div style="overflow-x:auto">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>برند</th>
+          <th>نقاط قوت</th>
+          <th>استراتژی محتوا</th>
+          <th>نقاط ضعف</th>
+          <th>فرصت‌های از دست‌رفته</th>
+          <th>خطر برای بنیس</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="brand-name">دُرنا</div></td>
+          <td><span class="badge badge-green">توزیع قوی</span><span class="badge badge-green">آگاهی برند</span></td>
+          <td>محتوای خانوادگی سنتی، تبلیغ تلویزیونی</td>
+          <td><span class="badge badge-red">دیجیتال ضعیف</span><span class="badge badge-red">نسل Z نه</span></td>
+          <td>هیچ حضور Gen Z ندارد. Meme‌ها از آنها ساخته می‌شود نه توسط آنها.</td>
+          <td><span class="badge badge-yellow">متوسط</span></td>
+        </tr>
+        <tr>
+          <td><div class="brand-name">معینی‌پور</div></td>
+          <td><span class="badge badge-green">کیفیت</span><span class="badge badge-green">سابقه</span></td>
+          <td>Focus روی محصول، کمتر storytelling</td>
+          <td><span class="badge badge-red">شخصیت ندارد</span><span class="badge badge-red">boring visual</span></td>
+          <td>هیچ emotional territory تعریف نکرده. برند «خالی» است.</td>
+          <td><span class="badge badge-yellow">متوسط</span></td>
+        </tr>
+        <tr>
+          <td><div class="brand-name">مازماز</div></td>
+          <td><span class="badge badge-green">طنز</span><span class="badge badge-green">اسم به‌یادماندنی</span></td>
+          <td>تلاش‌هایی برای طنز، نتیجه ناهماهنگ</td>
+          <td><span class="badge badge-red">inconsistent</span><span class="badge badge-red">استراتژی ندارد</span></td>
+          <td>اسم برند ظرفیت طنز دارد اما از آن استفاده نمی‌کنند.</td>
+          <td><span class="badge badge-orange">بالا در طنز</span></td>
+        </tr>
+        <tr>
+          <td><div class="brand-name">شیرین اصل</div></td>
+          <td><span class="badge badge-green">تنوع محصول</span><span class="badge badge-green">پخش</span></td>
+          <td>تبلیغات سنتی، کمتر دیجیتال</td>
+          <td><span class="badge badge-red">هویت مبهم</span><span class="badge badge-red">positioning ضعیف</span></td>
+          <td>هیچ community نساخته. مصرف‌کننده‌هایش loyal نیستند.</td>
+          <td><span class="badge badge-yellow">کم</span></td>
+        </tr>
+        <tr>
+          <td><div class="brand-name">نادری</div></td>
+          <td><span class="badge badge-green">نوستالژی</span><span class="badge badge-green">اعتماد</span></td>
+          <td>ارزش‌های سنتی و خانوادگی</td>
+          <td><span class="badge badge-red">قدیمی</span><span class="badge badge-red">جوان‌ها نه</span></td>
+          <td>نوستالژی دارد اما آن را به محتوای دیجیتال تبدیل نمی‌کند.</td>
+          <td><span class="badge badge-yellow">در نوستالژی</span></td>
+        </tr>
+        <tr>
+          <td><div class="brand-name">نیکا</div></td>
+          <td><span class="badge badge-green">ظاهر تازه</span><span class="badge badge-green">رشد سریع</span></td>
+          <td>دیجیتال‌تر، اما هنوز template-driven</td>
+          <td><span class="badge badge-red">بی‌شخصیت</span><span class="badge badge-red">کپی‌کار</span></td>
+          <td>سریع رشد می‌کند اما soul ندارد. آسیب‌پذیر در برابر برندی با personality.</td>
+          <td><span class="badge badge-orange">رقیب رشد</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="highlight-box" style="margin-top:32px">
+    <strong>🎯 نتیجه کلیدی تحلیل رقبا:</strong> هیچ برند ایرانی snack/کیک هنوز territory «برند اینترنتی با شخصیت» را تصاحب نکرده. اولین برندی که این را بکند، یک سال جلوتر از رقبا خواهد بود. این فرصت بنیس است.
+  </div>
+</section>
+
+<!-- ============================= PHASE 2 ============================= -->
+<section class="section" id="insight">
+  <div class="section-header">
+    <span class="section-tag">فاز دوم</span>
+    <h2 class="section-title">بینش‌های استراتژیک<br>و هویت برند</h2>
+    <p class="section-desc">فرصت‌هایی که رقبا نمی‌بینند + تعریف دقیق شخصیت بنیس</p>
+  </div>
+
+  <h3 style="font-size:18px;font-weight:800;margin-bottom:20px;color:var(--accent2)">💡 ۱۰ فرصت طلایی نادیده‌گرفته‌شده</h3>
+
+  <div class="insight-block">
+    <span class="insight-num">فرصت ۰۱</span>
+    <div class="insight-title">🎮 بازار گیمرها — خالی از رقیب</div>
+    <div class="insight-body">هیچ برند snack ایرانی اسپانسری یا محتوای مشترک با گیمرها و استریمرهای ایرانی ندارد. جامعه گیمرها در ایران بزرگ، جوان، و پولدار هستند و به صورت ساعت‌های طولانی Snack می‌خورند. <strong>اقدام:</strong> اسپانسری ۵ استریمر متوسط ایرانی به جای ۱ بزرگ = ROI بیشتر + authenticity بیشتر.</div>
+  </div>
+
+  <div class="insight-block">
+    <span class="insight-num">فرصت ۰۲</span>
+    <div class="insight-title">😴 Late Night Snacking Culture</div>
+    <div class="insight-body">ایران یک کشور شب‌بیدار است. اینستاگرام در ساعت ۱۱–۲ شب بیشترین ترافیک را دارد. هیچ برندی محتوای «شب‌های دیروقت» منتشر نمی‌کند. <strong>اقدام:</strong> Post زمان‌بندی‌شده ۱۱ شب با لحن «می‌دونم هنوز بیداری» — این قالب در اینستاگرام ایرانی بارها viral شده.</div>
+  </div>
+
+  <div class="insight-block">
+    <span class="insight-num">فرصت ۰۳</span>
+    <div class="insight-title">🧠 Meme-First Branding</div>
+    <div class="insight-body">برندهای ایرانی meme می‌سازند اما برای آنها meme ساخته نمی‌شود. فرق این دو عمیق است. برندی که به اندازه کافی جالب، weird یا personality دار باشد، مخاطبان برایش meme می‌سازند. <strong>اقدام:</strong> بنیس باید character/mascot ایجاد کند که memeable باشد — مثل Duolingo Owl.</div>
+  </div>
+
+  <div class="insight-block">
+    <span class="insight-num">فرصت ۰۴</span>
+    <div class="insight-title">📦 Packaging = Content</div>
+    <div class="insight-body">بسته‌بندی بنیس می‌تواند خودش content generator باشد. اگر روی پاکت چیزی بنویسی که مردم بخواهند عکسش بگیرند و share کنند، هر فروشگاه یک billboard دیجیتال می‌شود. <strong>مثال:</strong> نوشته‌های کوچک طنزآمیز پشت بسته، QR code به surprise، کدهای پنهان در طرح.</div>
+  </div>
+
+  <div class="insight-block">
+    <span class="insight-num">فرصت ۰۵</span>
+    <div class="insight-title">🎓 دانشگاه و خوابگاه</div>
+    <div class="insight-body">دانشجویان خوابگاهی یکی از بالاترین مصرف‌کنندگان snack هستند. محتوای «خوابگاه‌بازی»، «آخر ماهی»، «امتحان داری؟» — این ترکیب humor + empathy + snacking در این segment بسیار قوی است.</div>
+  </div>
+
+  <div class="insight-block">
+    <span class="insight-num">فرصت ۰۶</span>
+    <div class="insight-title">☕ کافه‌نشینی و Aesthetic Culture</div>
+    <div class="insight-body">فرهنگ کافه در ایران در حال رشد انفجاری است. محصول بنیس در کنار قهوه/چای با نور خوب = محتوای aesthetic که مخاطبان خودشان می‌سازند. <strong>اقدام:</strong> کمپین «بنیس + کافه» برای encourage کردن UGC.</div>
+  </div>
+
+  <div class="insight-block">
+    <span class="insight-num">فرصت ۰۷</span>
+    <div class="insight-title">🔄 Nostalgia Mining</div>
+    <div class="insight-body">بنیس احتمالاً خاطرات کودکی نسل ۷۰–۸۰ را دارد. «یادته اون زمان که…» — این فرمت در ایران بارها viral شده. نوستالژی + محصول = engagement عاطفی عمیق. رقبا دارند این را waste می‌کنند.</div>
+  </div>
+
+  <div class="insight-block">
+    <span class="insight-num">فرصت ۰۸</span>
+    <div class="insight-title">🎭 Anti-advertising Tone</div>
+    <div class="insight-body">نسل Z از تبلیغات کلاسیک متنفر است. برندی که «به نظر نمی‌رسد تبلیغ می‌کند» — که raw، honest، و weird باشد — engagement ۳–۵ برابر بیشتر دارد. بنیس می‌تواند اولین برند FMCG ایرانی با این صدا باشد.</div>
+  </div>
+
+  <div class="insight-block">
+    <span class="insight-num">فرصت ۰۹</span>
+    <div class="insight-title">🤝 Micro-Influencer Network</div>
+    <div class="insight-body">۱۰۰ میکروینفلوئنسر ۱۰–۵۰ هزار نفری بهتر از ۱ مگاینفلوئنسر عمل می‌کنند. هزینه کمتر، authenticity بیشتر، reach واقعی‌تر. رقبا همه بودجه را روی ۲–۳ چهره بزرگ می‌ریزند.</div>
+  </div>
+
+  <div class="insight-block">
+    <span class="insight-num">فرصت ۱۰</span>
+    <div class="insight-title">📲 Comment Section as Content</div>
+    <div class="insight-body">برندهایی مثل Wendy's با reply به comment‌ها viral شدند. یک حساب بنیس که با کامنت‌ها به شکل طنزآمیز/هوشمندانه بازی می‌کند می‌تواند خودش یک داستان شود که رسانه‌ها درباره‌اش می‌نویسند.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3 style="font-size:18px;font-weight:800;margin-bottom:24px;color:var(--accent2)">🎨 هویت و شخصیت برند بنیس</h3>
+  <div class="tone-grid">
+    <div class="tone-card">
+      <span class="tone-emoji">😄</span>
+      <div class="tone-name">لحن: شیطون محترم</div>
+      <div class="tone-desc">نه بی‌ادبانه، نه رسمی. مثل یه دوست باهوش که می‌دونه چی بگه که بخندی. Sarcasm ایرانی با ذکاوت.</div>
+    </div>
+    <div class="tone-card">
+      <span class="tone-emoji">🌈</span>
+      <div class="tone-name">ویژوال: Bold & Playful</div>
+      <div class="tone-desc">رنگ‌های تند با کنتراست بالا. تایپوگرافی بزرگ. Layout‌های غیرمنتظره. هر پست باید در ۰.۵ ثانیه متوقف‌کننده باشد.</div>
+    </div>
+    <div class="tone-card">
+      <span class="tone-emoji">🧬</span>
+      <div class="tone-name">DNA: اصالت ایرانی + ذهن اینترنتی</div>
+      <div class="tone-desc">از فرهنگ ایرانی خجالت نمی‌کشد اما ذهنش اینترنتی است. نه کپی غرب، نه سنتی خالص.</div>
+    </div>
+    <div class="tone-card">
+      <span class="tone-emoji">💬</span>
+      <div class="tone-name">صدا: یه بنیس، نه یه شرکت</div>
+      <div class="tone-desc">حساب‌های برند باید مثل یه آدم صحبت کنند. «ما» ممنوع. «بنیس» جایگزین می‌شود یا اول شخص مفرد.</div>
+    </div>
+    <div class="tone-card">
+      <span class="tone-emoji">🎯</span>
+      <div class="tone-name">Positioning احساسی</div>
+      <div class="tone-desc">«لحظه‌های کوچک خوش» — بنیس برند لحظه‌های غیرمهم زندگی است. وقتی اتفاق بزرگی نیفتاده ولی خوشحالی.</div>
+    </div>
+    <div class="tone-card">
+      <span class="tone-emoji">👤</span>
+      <div class="tone-name">آرکتایپ مخاطب</div>
+      <div class="tone-desc">دانش‌آموز/دانشجو — گیمر — کارمند جوان — مادر مدرن. هر چهار با «لحظه کوچک خوش» connect می‌کنند.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= PHASE 3 ============================= -->
+<section class="section" id="pillars">
+  <div class="section-header">
+    <span class="section-tag">فاز سوم</span>
+    <h2 class="section-title">سیستم محتوا<br>و ستون‌های برند</h2>
+    <p class="section-desc">معماری کامل محتوا برای یک سال</p>
+  </div>
+
+  <h3 style="font-size:18px;font-weight:800;margin-bottom:20px;color:var(--accent2)">🏛 ۶ ستون اصلی محتوا</h3>
+  <div class="grid-2">
+    <div class="pillar">
+      <div class="pillar-accent" style="background:var(--accent)"></div>
+      <span class="pillar-num">۱</span>
+      <div class="pillar-title" style="color:var(--accent)">😂 بنیس می‌خنده</div>
+      <div class="pillar-desc">محتوای طنز خالص. Meme‌های اینترنتی با زاویه ایرانی. Reactive content درباره اتفاقات روز. لحن: شیطنت‌آمیز و هوشمند.</div>
+      <div class="pillar-formats">
+        <span class="badge badge-orange">Meme</span>
+        <span class="badge badge-orange">Reactive Post</span>
+        <span class="badge badge-orange">Absurdist Reel</span>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-accent" style="background:var(--accent2)"></div>
+      <span class="pillar-num">۲</span>
+      <div class="pillar-title" style="color:var(--accent2)">🌙 بنیس شبا</div>
+      <div class="pillar-desc">محتوای late-night. استوری‌های ۱۱–۲ شب. احساسی‌تر، صادقانه‌تر. «می‌دونم بیداری...» — ارتباط عمیق‌تر با مخاطب.</div>
+      <div class="pillar-formats">
+        <span class="badge badge-yellow">Night Story</span>
+        <span class="badge badge-yellow">Mood Post</span>
+        <span class="badge badge-yellow">Confessional</span>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-accent" style="background:var(--accent3)"></div>
+      <span class="pillar-num">۳</span>
+      <div class="pillar-title" style="color:var(--accent3)">📸 بنیس در زندگی</div>
+      <div class="pillar-desc">UGC محور. تشویق مخاطبان به share کردن لحظاتشان با بنیس. Repost بهترین‌ها. جامعه‌سازی از طریق محتوای واقعی.</div>
+      <div class="pillar-formats">
+        <span class="badge badge-green">UGC Repost</span>
+        <span class="badge badge-green">Challenge</span>
+        <span class="badge badge-green">Lifestyle</span>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-accent" style="background:var(--accent4)"></div>
+      <span class="pillar-num">۴</span>
+      <div class="pillar-title" style="color:#4fc3f7">🕹 بنیس بازی می‌کنه</div>
+      <div class="pillar-desc">Gamified content. نظرسنجی‌های چالشی، بازی‌های کامنتی، giveaway‌های خلاقانه، Polls احساسی. مشارکت فعال مخاطب.</div>
+      <div class="pillar-formats">
+        <span class="badge badge-blue">Poll</span>
+        <span class="badge badge-blue">Comment Game</span>
+        <span class="badge badge-blue">Giveaway</span>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-accent" style="background:var(--accent5)"></div>
+      <span class="pillar-num">۵</span>
+      <div class="pillar-title" style="color:var(--accent5)">💌 بنیس یادته؟</div>
+      <div class="pillar-desc">نوستالژی محور. خاطرات کودکی. «اون زمان که...» با بنیس. احساسی‌ترین ستون. بیشترین share و save را دارد.</div>
+      <div class="pillar-formats">
+        <span class="badge badge-red">Nostalgia</span>
+        <span class="badge badge-red">Memory</span>
+        <span class="badge badge-red">Emotional</span>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-accent" style="background:linear-gradient(var(--accent),var(--accent2))"></div>
+      <span class="pillar-num">۶</span>
+      <div class="pillar-title" style="color:var(--accent)">⚡ بنیس واکنش</div>
+      <div class="pillar-desc">Reactive/Real-time content. بازی‌های ملی، ترندهای اینترنتی، اخبار روز. باید سریع باشد. زمان‌بندی مهم‌تر از کیفیت است.</div>
+      <div class="pillar-formats">
+        <span class="badge badge-orange">Breaking</span>
+        <span class="badge badge-orange">Trend Jack</span>
+        <span class="badge badge-orange">Real-time</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3 style="font-size:18px;font-weight:800;margin-bottom:20px;color:var(--accent2)">📅 تم‌های ماهانه</h3>
+  <div style="overflow-x:auto">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>ماه</th>
+          <th>تم اصلی</th>
+          <th>مناسبت‌ها</th>
+          <th>کانسپت کمپین</th>
+          <th>قالب‌های پیشنهادی</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>فروردین</strong></td><td>🌸 طعم نوروز</td><td>نوروز، تعطیلات بهاری</td><td>«بنیس طعم عید داره» — بسته محدود نوروزی + محتوای خانوادگی احساسی</td><td><span class="badge badge-orange">Reel</span><span class="badge badge-green">UGC</span></td></tr>
+        <tr><td><strong>اردیبهشت</strong></td><td>🌿 بهار و طبیعت</td><td>روز طبیعت، پیک‌نیک</td><td>«بنیس برو بیرون» — بنیس در طبیعت + challenge پیک‌نیک</td><td><span class="badge badge-green">UGC</span><span class="badge badge-blue">Challenge</span></td></tr>
+        <tr><td><strong>خرداد</strong></td><td>📚 فصل امتحان</td><td>امتحانات مدرسه/دانشگاه</td><td>«همراه شب‌بیداری» — empathy marketing برای دانش‌آموزان</td><td><span class="badge badge-yellow">Night Story</span><span class="badge badge-orange">Meme</span></td></tr>
+        <tr><td><strong>تیر</strong></td><td>☀️ تابستون بنیس</td><td>تعطیلات تابستان، سفر</td><td>«بنیس تو راهه» — روایت سفر و جاده با بنیس</td><td><span class="badge badge-green">UGC</span><span class="badge badge-orange">Reel</span></td></tr>
+        <tr><td><strong>مرداد</strong></td><td>🎒 آماده مدرسه</td><td>بازگشت به مدرسه</td><td>«جعبه غذام» — کمپین UGC از بچه‌ها + استوری مادران</td><td><span class="badge badge-green">UGC</span><span class="badge badge-red">Nostalgia</span></td></tr>
+        <tr><td><strong>شهریور</strong></td><td>🍂 خداحافظی تابستون</td><td>پایان تعطیلات</td><td>«آخرین بنیس تابستون» — محتوای بیتر‌سوئیت احساسی</td><td><span class="badge badge-red">Emotional</span><span class="badge badge-orange">Reel</span></td></tr>
+        <tr><td><strong>مهر</strong></td><td>🖊 فصل جدید</td><td>شروع مدرسه، دانشگاه</td><td>«بنیس سال جدیدم» — positioning برای شروع‌های تازه</td><td><span class="badge badge-blue">Engagement</span><span class="badge badge-green">UGC</span></td></tr>
+        <tr><td><strong>آبان</strong></td><td>🌧 روزهای ابری</td><td>آغاز پاییز</td><td>«بنیس + چای + بارون» — mood content احساسی</td><td><span class="badge badge-yellow">Mood</span><span class="badge badge-red">Nostalgia</span></td></tr>
+        <tr><td><strong>آذر</strong></td><td>❄️ اولین سرما</td><td>شروع زمستون، یلدا نزدیک</td><td>«گرم‌ترین کنج خونه» — Cozy vibes با بنیس</td><td><span class="badge badge-yellow">Mood</span><span class="badge badge-orange">Reel</span></td></tr>
+        <tr><td><strong>دی</strong></td><td>🌙 یلدا و دورهمی</td><td>یلدا، کریسمس</td><td>«شب یلدا با بنیس» — کمپین خانوادگی + giveaway</td><td><span class="badge badge-blue">Giveaway</span><span class="badge badge-red">Emotional</span></td></tr>
+        <tr><td><strong>بهمن</strong></td><td>💕 عشق ایرانی</td><td>روز عشق ۲۵ بهمن</td><td>«بودجه‌مون محدوده ولی بنیس بی‌نهایته» — طنز ولنتاین ایرانی</td><td><span class="badge badge-orange">Meme</span><span class="badge badge-blue">Poll</span></td></tr>
+        <tr><td><strong>اسفند</strong></td><td>🎊 آخرین ماه</td><td>اسفند، آستانه نوروز</td><td>«خانه‌تکونی با بنیس» — hype برای نوروز + lookback سال</td><td><span class="badge badge-orange">Reel</span><span class="badge badge-green">UGC</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+  <h3 style="font-size:18px;font-weight:800;margin-bottom:20px;color:var(--accent2)">📆 قالب‌های هفتگی</h3>
+  <div class="grid-3">
+    <div class="card">
+      <span class="card-icon">😂</span>
+      <div class="card-title">شنبه — شروع با خنده</div>
+      <div class="card-body">Meme هفته. ترند اینترنتی هفته قبل + فیلتر بنیس. لحن: «شنبه‌ست، ما می‌دونیم.» هدف: start the week با engagement.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">💡</span>
+      <div class="card-title">دوشنبه — بنیس پیشنهاد</div>
+      <div class="card-body">ترکیب‌های خلاقانه با بنیس. «بنیس + نوشیدنی X» یا «وقت خوردن بنیسو چیکار می‌کنی؟» Poll محور.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">📸</span>
+      <div class="card-title">سه‌شنبه — محتوای کاربران</div>
+      <div class="card-body">Repost بهترین UGC هفته. تبدیل فالوورها به ستاره. «عکس هفته» — participation محور.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🎲</span>
+      <div class="card-title">چهارشنبه — بازی بنیس</div>
+      <div class="card-body">Comment game، Quiz، نظرسنجی چالشی. هدف: جهش در comment. «اول کامنت بزار بعد ببین چی گفتی.»</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🎬</span>
+      <div class="card-title">پنج‌شنبه — ریل هفته</div>
+      <div class="card-body">یک Reel با effort بالا. Story-driven، احساسی یا طنز. بهترین روز هفته برای Reach.</div>
+    </div>
+    <div class="card">
+      <span class="card-icon">🌙</span>
+      <div class="card-title">جمعه شب — شب‌بیداری</div>
+      <div class="card-body">استوری ۱۱ شب. لحن آرام، صادقانه. «جمعه شب، بیداری؟ ما هم.» — این slot رقیب ندارد.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= PHASE 4 ============================= -->
+<section class="section" id="calendar">
+  <div class="section-header">
+    <span class="section-tag">فاز چهارم</span>
+    <h2 class="section-title">تقویم محتوای کامل<br>۱۴۰۳–۱۴۰۴</h2>
+    <p class="section-desc">ایده‌های روزانه با جزئیات کامل اجرایی</p>
+  </div>
+
+  <!-- FARVARDIN -->
+  <div class="month-block">
+    <div class="month-header">
+      <div class="month-name">🌸 فروردین</div>
+      <div class="month-theme">تم: طعم نوروز | هدف: آگاهی از برند + احساس</div>
+    </div>
+    <div class="content-grid">
+      <div class="content-card">
+        <div class="content-card-top">
+          <span class="content-type">Reel احساسی</span>
+          <div class="viral-score">🔥 ۹/۱۰</div>
+        </div>
+        <div class="content-card-title">«اول فروردین، اول بنیس»</div>
+        <div class="card-body" style="font-size:13px">ریل سریع: خانواده دور سفره هفت‌سین. وسط میز یه بنیس. بدون دیالوگ، فقط موزیک ایرانی نوستالژیک. Hook: «عیدت مبارک — از طرف ما و بنیس»</div>
+        <div class="content-meta">
+          <span class="meta-item">🎯 خانواده‌ها</span>
+          <span class="meta-item">💡 نوستالژی</span>
+          <span class="meta-item">⚙️ تولید آسان</span>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="content-card-top">
+          <span class="content-type">Poll استوری</span>
+          <div class="viral-score">🔥 ۷/۱۰</div>
+        </div>
+        <div class="content-card-title">«بنیس عیدی بهتره یا پول؟»</div>
+        <div class="card-body" style="font-size:13px">Poll ساده با گزینه‌های «بنیس — ۱۰۰ تا» و «پول — ۵۰ تومن» — نتیجه جالب و shareable. در کامنت بخواهید جواب بدهند.</div>
+        <div class="content-meta">
+          <span class="meta-item">🎯 همه</span>
+          <span class="meta-item">💡 طنز</span>
+          <span class="meta-item">⚙️ خیلی آسان</span>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="content-card-top">
+          <span class="content-type">UGC Campaign</span>
+          <div class="viral-score">🔥 ۸/۱۰</div>
+        </div>
+        <div class="content-card-title">«بنیس رو عیدی بده»</div>
+        <div class="card-body" style="font-size:13px">کمپین: به دوستت بنیس هدیه بده. تگ کن. بهترین ویدیو هدیه می‌گیره. Hook: «عیدی گرون‌قیمت؟ نه. عیدی به‌یادموندنی؟ بله.»</div>
+        <div class="content-meta">
+          <span class="meta-item">🎯 جوانان</span>
+          <span class="meta-item">💡 سرگرمی</span>
+          <span class="meta-item">⚙️ متوسط</span>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="content-card-top">
+          <span class="content-type">Meme Post</span>
+          <div class="viral-score">🔥 ۸/۱۰</div>
+        </div>
+        <div class="content-card-title">مِم تحویل سال</div>
+        <div class="card-body" style="font-size:13px">فرمت مشهور «این کی هستم من / این که باید باشم» — کاراکتر رو شخصیت‌دهی کن. مثل: «من توی لحظه تحویل سال» vs «بنیس توی دستم».</div>
+        <div class="content-meta">
+          <span class="meta-item">🎯 Gen Z</span>
+          <span class="meta-item">💡 طنز</span>
+          <span class="meta-item">⚙️ آسان</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KHORDAD -->
+  <div class="month-block">
+    <div class="month-header">
+      <div class="month-name">📚 خرداد</div>
+      <div class="month-theme">تم: فصل امتحان | هدف: empathy + برند دوست‌داشتنی</div>
+    </div>
+    <div class="content-grid">
+      <div class="content-card">
+        <div class="content-card-top">
+          <span class="content-type">Night Story</span>
+          <div class="viral-score">🔥 ۹/۱۰</div>
+        </div>
+        <div class="content-card-title">«ساعت ۳ صبح. داری می‌خونی؟»</div>
+        <div class="card-body" style="font-size:13px">استوری ساعت ۱:۳۰ شب. متن ساده روی پس‌زمینه تاریک: «می‌دونیم هنوز بیداری. بنیس هم بیداره.» خیلی ساده، خیلی قدرتمند.</div>
+        <div class="content-meta">
+          <span class="meta-item">🎯 دانش‌آموز</span>
+          <span class="meta-item">💡 همدلی</span>
+          <span class="meta-item">⚙️ آسان</span>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="content-card-top">
+          <span class="content-type">Meme Series</span>
+          <div class="viral-score">🔥 ۱۰/۱۰</div>
+        </div>
+        <div class="content-card-title">سری «امتحان‌بازی» — ۷ پست</div>
+        <div class="card-body" style="font-size:13px">هر روز یه meme درباره وضعیت امتحان. «وقتی سوال پنج‌ام هم نمی‌دونی» — «بنیس بخور، درس نخوندنت عوض نمیشه» — طنز empathy-based.</div>
+        <div class="content-meta">
+          <span class="meta-item">🎯 دانش‌آموز/دانشجو</span>
+          <span class="meta-item">💡 طنز + همدلی</span>
+          <span class="meta-item">⚙️ آسان</span>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="content-card-top">
+          <span class="content-type">Engagement Post</span>
+          <div class="viral-score">🔥 ۸/۱۰</div>
+        </div>
+        <div class="content-card-title">«درسا رو امتیازبندی کن»</div>
+        <div class="card-body" style="font-size:13px">Post: «کدوم درس = بنیس تلخ؟ کدوم = بنیس شیرین؟» کامنت‌ها پر از خاطره امتحانی می‌شه. بالاترین comment rate فصل.</div>
+        <div class="content-meta">
+          <span class="meta-item">🎯 دانش‌آموز</span>
+          <span class="meta-item">💡 تعامل</span>
+          <span class="meta-item">⚙️ آسان</span>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="content-card-top">
+          <span class="content-type">Reel واقعی</span>
+          <div class="viral-score">🔥 ۹/۱۰</div>
+        </div>
+        <div class="content-card-title">«اتاق درس + بنیس» ASMR</div>
+        <div class="card-body" style="font-size:13px">ریل کوتاه: میز درس شب. نور مطالعه. کتاب‌ها. بنیس باز می‌شه — صدای ASMR. هیچ حرفی نمی‌زنه. فقط aesthetic + sound. save rate بالا.</div>
+        <div class="content-meta">
+          <span class="meta-item">🎯 Gen Z</span>
+          <span class="meta-item">💡 Aesthetic</span>
+          <span class="meta-item">⚙️ متوسط</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY -->
+  <div class="month-block">
+    <div class="month-header">
+      <div class="month-name">🌙 دی — یلدا</div>
+      <div class="month-theme">تم: دورهمی + نوستالژی | هدف: احساسی‌ترین ماه</div>
+    </div>
+    <div class="content-grid">
+      <div class="content-card">
+        <div class="content-card-top">
+          <span class="content-type">Emotional Reel</span>
+          <div class="viral-score">🔥 ۱۰/۱۰</div>
+        </div>
+        <div class="content-card-title">«شب یلدا، طولانی‌ترین شب خوشحالی»</div>
+        <div class="card-body" style="font-size:13px">ریل ۳۰ ثانیه‌ای. خانواده‌ای دور هم. بنیس روی میز. بدون ادعا، بدون لوگوی بزرگ. فقط لحظه. در پایان: «یلدا مبارک — بنیس» بیشترین save/share سال.</div>
+        <div class="content-meta">
+          <span class="meta-item">🎯 همه</span>
+          <span class="meta-item">💡 احساسی</span>
+          <span class="meta-item">⚙️ متوسط</span>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="content-card-top">
+          <span class="content-type">Poll + Giveaway</span>
+          <div class="viral-score">🔥 ۹/۱۰</div>
+        </div>
+        <div class="content-card-title">«شب یلدا بنیس یا آجیل؟»</div>
+        <div class="card-body" style="font-size:13px">Poll استوری + اعلام نتیجه. اگه بنیس برنده شد، ۱۴ نفر گیفت کارت می‌برند. تعداد شرکت‌کننده بسیار بالا. خبر مشارکت خودش خبر می‌شه.</div>
+        <div class="content-meta">
+          <span class="meta-item">🎯 همه</span>
+          <span class="meta-item">💡 سرگرمی</span>
+          <span class="meta-item">⚙️ آسان</span>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="content-card-top">
+          <span class="content-type">Nostalgia Post</span>
+          <div class="viral-score">🔥 ۹/۱۰</div>
+        </div>
+        <div class="content-card-title">«یلدای بچگی»</div>
+        <div class="card-body" style="font-size:13px">کارت‌پستال retro-style. «یادته بچه که بودی، یلدا با بنیس؟» — بازخورد: هر نسلی خاطره‌اش را share می‌کند. فرمت قابل share بین نسل‌ها.</div>
+        <div class="content-meta">
+          <span class="meta-item">🎯 ۲۵–۴۵ ساله</span>
+          <span class="meta-item">💡 نوستالژی</span>
+          <span class="meta-item">⚙️ آسان</span>
+        </div>
+      </div>
+      <div class="content-card">
+        <div class="content-card-top">
+          <span class="content-type">Reactive Meme</span>
+          <div class="viral-score">🔥 ۸/۱۰</div>
+        </div>
+        <div class="content-card-title">«فال حافظ و بنیس»</div>
+        <div class="card-body" style="font-size:13px">یک بیت معروف حافظ + تفسیر بنیسی طنزآمیز. «گفتا که چاره دل بشکسته بنیس است». این محتوا در یلدا viral می‌شه چون همه درباره حافظ پست می‌زنند.</div>
+        <div class="content-meta">
+          <span class="meta-item">🎯 جوانان تحصیلکرده</span>
+          <span class="meta-item">💡 طنز ادبی</span>
+          <span class="meta-item">⚙️ آسان</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <strong>📌 نکته اجرایی مهم:</strong> برای هر ماه حداقل ۱۲–۱۵ پست نیاز است. توزیش: ۴ Reel + ۴ Post اصلی + ۵ استوری + ۲ Engagement محور. در هر هفته یک قالب از هر ستون باید اجرا شود. Reactive content باید ظرف ۲–۴ ساعت از رویداد منتشر شود.
+  </div>
+</section>
+
+<!-- ============================= TOP 20 ============================= -->
+<section class="section" id="top20">
+  <div class="section-header">
+    <span class="section-tag">خلاصه استراتژیک</span>
+    <h2 class="section-title">۲۰ کمپین برتر<br>و مکانیک‌های ویروسی</h2>
+    <p class="section-desc">ایده‌هایی با بالاترین پتانسیل در بازار ایران</p>
+  </div>
+
+  <h3 style="font-size:18px;font-weight:800;margin-bottom:20px;color:var(--accent2)">🏆 ۲۰ کمپین با بالاترین پتانسیل</h3>
+  <div class="grid-2">
+    <div class="campaign-card">
+      <div class="campaign-rank">۱</div>
+      <div class="campaign-content">
+        <div class="campaign-title">«روز بنیس» — holiday ساخته‌شده توسط برند</div>
+        <div class="campaign-desc">یک تاریخ خاص (مثلاً ۱۷ بهمن) را «روز بنیس» اعلام کن. هر سال این روز با event بزرگ‌تری جشن بگیر. Pocky Day این کار را کرد و الان یک national holiday ژاپن است.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-orange">بلندمدت</span><span class="badge badge-green">سالانه</span><span class="badge badge-yellow">🔥 ۱۰/۱۰</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-rank">۲</div>
+      <div class="campaign-content">
+        <div class="campaign-title">«بنیس‌بازی» — گیمینگ کمپین</div>
+        <div class="campaign-desc">اسپانسری استریمرهای ایرانی. محتوای «بنیس + گیمینگ». بسته‌بندی Gaming Edition. این بازار کاملاً نادیده‌گرفته شده توسط رقبا.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-blue">Gen Z</span><span class="badge badge-orange">Influencer</span><span class="badge badge-yellow">🔥 ۹/۱۰</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-rank">۳</div>
+      <div class="campaign-content">
+        <div class="campaign-title">«شب‌بیداری‌های بنیس» — Late Night Series</div>
+        <div class="campaign-desc">محتوای منظم ۱۱ شب تا ۲ بامداد. لحن متفاوت، صمیمانه‌تر. «می‌دونیم بیداری» — این slot رقیب ندارد. مخاطب این ساعت loyalty بیشتری ایجاد می‌کند.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-red">جوانان</span><span class="badge badge-yellow">شبانه</span><span class="badge badge-yellow">🔥 ۹/۱۰</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-rank">۴</div>
+      <div class="campaign-content">
+        <div class="campaign-title">«بنیس نوشت» — بسته‌بندی محتواساز</div>
+        <div class="campaign-desc">جملات کوتاه طنزآمیز/احساسی پشت و کنار بسته‌بندی. مردم عکس می‌گیرند، share می‌کنند. هر فروشگاه تبدیل به یک content distribution point می‌شود.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-green">Packaging</span><span class="badge badge-orange">Organic</span><span class="badge badge-yellow">🔥 ۱۰/۱۰</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-rank">۵</div>
+      <div class="campaign-content">
+        <div class="campaign-title">کارت‌های کلکسیونی داخل بسته</div>
+        <div class="campaign-desc">۵۰ کارت مختلف — شخصیت‌های طنز ایرانی، واقعیت‌های جالب، humor cards. مردم برای تکمیل collection بیشتر می‌خرند. FOMO mechanism قوی.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-green">Packaging</span><span class="badge badge-blue">FOMO</span><span class="badge badge-yellow">🔥 ۹/۱۰</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-rank">۶</div>
+      <div class="campaign-content">
+        <div class="campaign-title">«بنیس‌مپ» — نقشه خاطرات ایران</div>
+        <div class="campaign-desc">UGC کمپین: هر استان یه خاطره بنیس. نقشه ایران پر از خاطرات مردم می‌شه. Cultural pride + nostalgia + community = viral مطمئن.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-red">ملی</span><span class="badge badge-green">UGC</span><span class="badge badge-yellow">🔥 ۸/۱۰</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-rank">۷</div>
+      <div class="campaign-content">
+        <div class="campaign-title">Mascot «بنیسی» — شخصیت memeable</div>
+        <div class="campaign-desc">یک کاراکتر طنز با شخصیت قوی. مثل Duolingo Owl. باید weird باشد. باید از خودش سوال‌های absurd بپرسد. مردم برایش meme می‌سازند.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-orange">Brand Building</span><span class="badge badge-blue">Long-term</span><span class="badge badge-yellow">🔥 ۹/۱۰</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-rank">۸</div>
+      <div class="campaign-content">
+        <div class="campaign-title">«بنیس + چای» — ritual branding</div>
+        <div class="campaign-desc">مثل «شیر + اوریو» — یک ritual رسمی برای بنیس تعریف کن. چای + بنیس به عنوان «لحظه ایرانی». این ritual قابل انتشار و teachable است.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-red">فرهنگی</span><span class="badge badge-orange">Ritual</span><span class="badge badge-yellow">🔥 ۸/۱۰</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-rank">۹</div>
+      <div class="campaign-content">
+        <div class="campaign-title">«امتحانات بنیس» — سریال محتوایی</div>
+        <div class="campaign-desc">هر روز امتحانات یک محتوای مرتبط. سری ۲۰ پستی. از «یه روز مونده» تا «بعد از آخرین امتحان». داستان دارد، اپیزودیک است، دنبال‌کردنی است.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-blue">دانش‌آموز</span><span class="badge badge-orange">Series</span><span class="badge badge-yellow">🔥 ۸/۱۰</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-rank">۱۰</div>
+      <div class="campaign-content">
+        <div class="campaign-title">بسته‌بندی محدود نوروز با طرح‌های هنرمندان</div>
+        <div class="campaign-desc">همکاری با ۵ هنرمند دیجیتال ایرانی. هر کدام یک طرح نوروزی روی بسته‌بندی. Collection محدود. هنرمندان به مخاطبانشان معرفی می‌کنند. دو‌طرفه سود می‌برند.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-green">Collab</span><span class="badge badge-blue">Limited</span><span class="badge badge-yellow">🔥 ۹/۱۰</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-rank">۱۱</div>
+      <div class="campaign-content">
+        <div class="campaign-title">«حساب بنیس در X/توییتر» — Wendy's ایرانی</div>
+        <div class="campaign-desc">یک حساب Twitter/X که با برندهای دیگر، رویدادها و کاربران شوخی می‌کند. این strategy در ایران هنوز انجام نشده. اولین برند FMCG با lively social presence.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-orange">Social</span><span class="badge badge-red">Bold</span><span class="badge badge-yellow">🔥 ۱۰/۱۰</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-rank">۱۲</div>
+      <div class="campaign-content">
+        <div class="campaign-title">«چالش بنیس» — TikTok/Reels</div>
+        <div class="campaign-desc">یک حرکت یا ترکیب خاص با بنیس که viral می‌شود. مثال: ترکیب بنیس + یک نوشیدنی خاص. Influencerها آن را می‌کنند، دیگران کپی. Branded challenge.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-blue">Gen Z</span><span class="badge badge-orange">Viral</span><span class="badge badge-yellow">🔥 ۸/۱۰</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-rank">۱۳</div>
+      <div class="campaign-content">
+        <div class="campaign-title">«بنیس رو زمین» — Anti-ad Campaign</div>
+        <div class="campaign-desc">یه ریل که مثل تبلیغ نیست. یه دختر که بنیس می‌خوره و خیلی صادقانه می‌گه «چیز خاصی نیست، ولی خوبه.» Raw و صادقانه بهتر از هر تبلیغ براق.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-red">Anti-ad</span><span class="badge badge-green">Authentic</span><span class="badge badge-yellow">🔥 ۸/۱۰</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-rank">۱۴</div>
+      <div class="campaign-content">
+        <div class="campaign-title">«بنیس به عزیزانت» — Gift Economy</div>
+        <div class="campaign-desc">کمپین: بنیس رو برای کسی که دوستش داری بخر. محتوای UGC از هدیه دادن بنیس به بچه‌ها، دوستان، همکاران. Word of mouth + emotional marketing.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-red">احساسی</span><span class="badge badge-green">Gift</span><span class="badge badge-yellow">🔥 ۷/۱۰</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-rank">۱۵</div>
+      <div class="campaign-content">
+        <div class="campaign-title">مسابقه «طراح بسته‌بندی بنیس»</div>
+        <div class="campaign-desc">فراخوان از دانشجویان گرافیک/طراحی. بهترین طرح واقعاً تولید می‌شود. Mass participation + رسانه رایگان + برند خلاق + جامعه هنری.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-blue">Community</span><span class="badge badge-orange">UGC</span><span class="badge badge-yellow">🔥 ۸/۱۰</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-rank">۱۶</div>
+      <div class="campaign-content">
+        <div class="campaign-title">«بنیس تو هر سریال» — Product Placement</div>
+        <div class="campaign-desc">Product placement در وب‌سریال‌های ایرانی. هر بار شخصیت بنیس می‌خورد، یک لحظه خوش است. این association در ذهن بیننده ثبت می‌شود بدون تبلیغ مستقیم.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-red">Placement</span><span class="badge badge-blue">Long-term</span><span class="badge badge-yellow">🔥 ۷/۱۰</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-rank">۱۷</div>
+      <div class="campaign-content">
+        <div class="campaign-title">«فال بنیس» — Quiz ویروسی</div>
+        <div class="campaign-desc">«بر اساس نحوه خوردن بنیست، شخصیتت رو بگو.» یا «کدوم بنیس هستی؟» فرمت quiz در ایران بارها viral شده. ساده، قابل share، engaging.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-orange">Quiz</span><span class="badge badge-green">Viral</span><span class="badge badge-yellow">🔥 ۸/۱۰</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-rank">۱۸</div>
+      <div class="campaign-content">
+        <div class="campaign-title">«بنیس اکسپرس» — Delivery Partnership</div>
+        <div class="campaign-desc">همکاری با اسنپ‌فود/دیجیکالا: «بنیس ۱۵ دقیقه‌ای». تبدیل یه crave moment به action. بنر «الان می‌خوای؟» در پست‌های شبانه direct conversion ایجاد می‌کند.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-blue">Commerce</span><span class="badge badge-orange">Delivery</span><span class="badge badge-yellow">🔥 ۷/۱۰</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-rank">۱۹</div>
+      <div class="campaign-content">
+        <div class="campaign-title">«معلم بنیس» — آموزشی طنز</div>
+        <div class="campaign-desc">ریل‌های کوتاه آموزشی درباره موضوعات جالب — با لحن بنیسی. «آیا می‌دانستید...» ولی weird و سرگرم‌کننده. این فرمت save و share بالا دارد.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-green">Edu-tainment</span><span class="badge badge-orange">Reel</span><span class="badge badge-yellow">🔥 ۷/۱۰</span>
+        </div>
+      </div>
+    </div>
+    <div class="campaign-card">
+      <div class="campaign-rank">۲۰</div>
+      <div class="campaign-content">
+        <div class="campaign-title">«بنیس سایز یلدا» — محصول + رویداد</div>
+        <div class="campaign-desc">یه بسته بزرگ ویژه برای شب یلدا. داخلش ۱۴ عدد برای ۱۴ نفر. بسته‌بندی با طرح شب یلدا. این یه product-market fit عالی است که هیچ رقیبی هنوز نکرده.</div>
+        <div class="campaign-meta">
+          <span class="badge badge-red">Seasonal</span><span class="badge badge-blue">Product</span><span class="badge badge-yellow">🔥 ۸/۱۰</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3 style="font-size:18px;font-weight:800;margin-bottom:20px;color:var(--accent2)">⚡ ۱۰ مکانیک ویروسی برتر</h3>
+  <div class="grid-2">
+    <div class="insight-block">
+      <span class="insight-num">مکانیک ۰۱</span>
+      <div class="insight-title">«تگ کن بریم» — Chain Tagging</div>
+      <div class="insight-body">Post: «اگه امشب بخوای با این آدم بنیس بخوری کیه؟ تگ کن.» — هر تگ یک ایمپرشن رایگان است. ساده‌ترین و موثرترین مکانیک.</div>
+    </div>
+    <div class="insight-block">
+      <span class="insight-num">مکانیک ۰۲</span>
+      <div class="insight-title">«کامنت اول» — Comment Race</div>
+      <div class="insight-body">در استوری اعلام کن که نفر اول کامنت‌گذار جایزه می‌گیرد. Algorithm پست‌هایی با comment سریع را بیشتر نشان می‌دهد. Double win.</div>
+    </div>
+    <div class="insight-block">
+      <span class="insight-num">مکانیک ۰۳</span>
+      <div class="insight-title">«این من نیستم» — Relatability Meme</div>
+      <div class="insight-body">فرمت «من اون آدمم که...» با تصویر یا gif بنیسی. بالاترین share rate در بین meme formats چون مخاطب «این منم» در کامنت می‌زند.</div>
+    </div>
+    <div class="insight-block">
+      <span class="insight-num">مکانیک ۰۴</span>
+      <div class="insight-title">Cliffhanger Series</div>
+      <div class="insight-body">یه داستان ادامه‌دار درباره بنیس (جدی یا طنز). «ادامه در پست بعدی...» — مردم follow می‌کنند تا ادامه ببینند. Algorithm دوست دارد.</div>
+    </div>
+    <div class="insight-block">
+      <span class="insight-num">مکانیک ۰۵</span>
+      <div class="insight-title">«اکثریت vs اقلیت»</div>
+      <div class="insight-body">Poll: «۷۸٪ بنیس رو اینجوری می‌خورند» — نتیجه غافلگیرکننده. مردم برای دیدن اینکه در کدام دسته هستند رای می‌دهند.</div>
+    </div>
+    <div class="insight-block">
+      <span class="insight-num">مکانیک ۰۶</span>
+      <div class="insight-title">Real-time Reactive</div>
+      <div class="insight-body">وقتی اتفاق مهم می‌افتد (گل ملی، ترند اینترنتی، اخبار بزرگ) — بنیس اول از همه واکنش نشان می‌دهد. سرعت = relevance = reach.</div>
+    </div>
+    <div class="insight-block">
+      <span class="insight-num">مکانیک ۰۷</span>
+      <div class="insight-title">Controversy Bait (ایمن)</div>
+      <div class="insight-body">«بنیس شیرین بهتره یا تلخ؟» — یه بحث بی‌ضرر که engagement می‌سازد. دو طرف داستان وجود دارد. هر دو برنده‌اند.</div>
+    </div>
+    <div class="insight-block">
+      <span class="insight-num">مکانیک ۰۸</span>
+      <div class="insight-title">Sound-On ASMR Content</div>
+      <div class="insight-body">ریل‌های ASMR با صدای باز کردن بنیس، خوردن، صدای بسته‌بندی. «Volume بالا» در caption. این فرمت save و completion rate بالا دارد.</div>
+    </div>
+    <div class="insight-block">
+      <span class="insight-num">مکانیک ۰۹</span>
+      <div class="insight-title">Behind the Scenes Authenticity</div>
+      <div class="insight-body">«دوربین در کارخانه بنیس» — مردم عاشق پشت صحنه هستند. این فرمت trust می‌سازد و بیشتر از هر تبلیغ رسمی اثر می‌گذارد.</div>
+    </div>
+    <div class="insight-block">
+      <span class="insight-num">مکانیک ۱۰</span>
+      <div class="insight-title">Fill in the Blank</div>
+      <div class="insight-body">«وقتی بنیس دستمه، احساس می‌کنم ___» — هزاران جواب مختلف. Content خودش generate می‌شود. Engagement محور خالص.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= ROADMAP ============================= -->
+<section class="section" id="roadmap">
+  <div class="section-header">
+    <span class="section-tag">نقشه رشد</span>
+    <h2 class="section-title">سریع‌ترین مسیر رشد<br>شبکه‌های اجتماعی بنیس</h2>
+    <p class="section-desc">از صفر تا سلطه — یک نقشه عملی</p>
+  </div>
+
+  <h3 style="font-size:18px;font-weight:800;margin-bottom:28px;color:var(--accent2)">🗺 نقشه ۶ ماهه اجرایی</h3>
+
+  <div class="roadmap-phase">
+    <div class="roadmap-dot">۱</div>
+    <div class="roadmap-content">
+      <div class="roadmap-title" style="color:var(--accent)">ماه اول — پایه‌گذاری هویت (Foundation)</div>
+      <ul class="roadmap-tasks">
+        <li>تعریف دقیق tone of voice و visual identity برند</li>
+        <li>ساخت template‌های محتوا برای ۶ ستون اصلی</li>
+        <li>تحقیق کامل از micro-influencerها (۳۰–۵۰ نفر)</li>
+        <li>راه‌اندازی content calendar نخست</li>
+        <li>تعریف KPI و ابزارهای اندازه‌گیری</li>
+        <li>تست ۳ لحن مختلف برای یافتن best performer</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="roadmap-phase">
+    <div class="roadmap-dot">۲</div>
+    <div class="roadmap-content">
+      <div class="roadmap-title" style="color:var(--accent2)">ماه دوم — حضور روزانه (Presence)</div>
+      <ul class="roadmap-tasks">
+        <li>انتشار روزانه منظم — حتما consistency</li>
+        <li>شروع Night Story series — هر شب ۱۱ شب</li>
+        <li>اولین موج micro-influencer collaborations (۱۰ نفر)</li>
+        <li>اولین meme series بر اساس اتفاقات جاری</li>
+        <li>شروع جمع‌آوری UGC و repost</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="roadmap-phase">
+    <div class="roadmap-dot">۳</div>
+    <div class="roadmap-content">
+      <div class="roadmap-title" style="color:var(--accent3)">ماه سوم — ویروسی کردن اول (First Viral)</div>
+      <ul class="roadmap-tasks">
+        <li>اجرای اولین کمپین viral-designed (مکانیک Chain Tag)</li>
+        <li>راه‌اندازی «چالش بنیس» با ۱۵ influencer همزمان</li>
+        <li>اولین quiz ویروسی: «کدوم بنیس هستی؟»</li>
+        <li>شروع reactive content با monitoring اخبار</li>
+        <li>گزارش و آنالیز: چه چیزی بهترین نتیجه داد؟</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="roadmap-phase">
+    <div class="roadmap-dot">۴</div>
+    <div class="roadmap-content">
+      <div class="roadmap-title" style="color:#4fc3f7">ماه چهارم — جامعه‌سازی (Community)</div>
+      <ul class="roadmap-tasks">
+        <li>معرفی mascot «بنیسی» با داستان‌گویی سریالی</li>
+        <li>اجرای مسابقه «طراح بسته‌بندی» با جامعه</li>
+        <li>ایجاد hashtag اختصاصی برند</li>
+        <li>شروع reply-first strategy در کامنت‌ها</li>
+        <li>اولین giveaway بزرگ با participation بالا</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="roadmap-phase">
+    <div class="roadmap-dot">۵</div>
+    <div class="roadmap-content">
+      <div class="roadmap-title" style="color:var(--accent5)">ماه پنجم — تثبیت رهبری (Leadership)</div>
+      <ul class="roadmap-tasks">
+        <li>اجرای کمپین سزنال بزرگ (یلدا یا نوروز)</li>
+        <li>اعلام «روز بنیس» — اول جشن کوچک</li>
+        <li>گسترش influencer network به ۵۰+ نفر</li>
+        <li>شروع product placement در وب‌سریال</li>
+        <li>تبدیل بهترین UGC به content رسمی برند</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="roadmap-phase">
+    <div class="roadmap-dot">۶</div>
+    <div class="roadmap-content">
+      <div class="roadmap-title" style="color:var(--accent)">ماه ششم — سلطه دیجیتال (Dominance)</div>
+      <ul class="roadmap-tasks">
+        <li>بنیس اولین برند FMCG با حضور «internet-native» در ایران</li>
+        <li>معرفی limited edition با هنرمندان — media coverage رایگان</li>
+        <li>راه‌اندازی Gaming Edition packaging</li>
+        <li>تحلیل کامل ۶ ماهه + تنظیم استراتژی سال دوم</li>
+        <li>هدف: ۳x رشد engagement نسبت به ماه اول</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3 style="font-size:18px;font-weight:800;margin-bottom:20px;color:var(--accent2)">⚠️ بزرگ‌ترین ضعف‌های رقبا (که بنیس باید exploit کند)</h3>
+  <div class="two-col">
+    <div>
+      <ul class="fancy">
+        <li><strong>هیچ‌کس Gen Z را جدی نمی‌گیرد</strong> — همه برندها برای خانواده‌های ۳۵+ تولید محتوا می‌کنند</li>
+        <li><strong>هیچ‌کس late-night content ندارد</strong> — ساعت ۱۱ شب تا ۲ بامداد خالی است</li>
+        <li><strong>هیچ‌کس شخصیت ندارد</strong> — همه برندها «شرکتی» هستند، نه «آدم»</li>
+        <li><strong>هیچ‌کس از meme استفاده درست نمی‌کند</strong> — meme‌های برندی یا خنک هستند یا وجود ندارند</li>
+        <li><strong>هیچ‌کس reactive نیست</strong> — هیچ برند snack ایرانی real-time content ندارد</li>
+      </ul>
+    </div>
+    <div>
+      <ul class="fancy">
+        <li><strong>هیچ‌کس گیمرها را target نمی‌کند</strong> — یک market segment کاملاً بدون رقیب</li>
+        <li><strong>هیچ‌کس community نساخته</strong> — فالوور دارند ولی community ندارند</li>
+        <li><strong>بسته‌بندی passive است</strong> — هیچ‌کس از packaging به عنوان content استفاده نمی‌کند</li>
+        <li><strong>هیچ‌کس «holiday» نساخته</strong> — هیچ برندی یه روز اختصاصی ندارد</li>
+        <li><strong>influencer marketing سطحی است</strong> — همه با mega-influencer کار می‌کنند، micro ندیده</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="highlight-box" style="margin-top:32px;background:linear-gradient(135deg,rgba(6,214,160,0.08),rgba(17,138,178,0.05));border-color:rgba(6,214,160,0.3)">
+    <strong style="color:var(--accent3)">🎯 نتیجه نهایی:</strong> بنیس در بازاری قرار دارد که رقبا همه در یک خط ایستاده‌اند. اولین برندی که از این خط خارج شود، کل بازی را می‌برد. این بازی زمان‌بر نیست — ۶ ماه برنامه‌ریزی درست کافی است تا بنیس به یاد‌ماندنی‌ترین برند snack ایرانی شود.
+  </div>
+</section>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({ top: document.querySelector('.nav-pills').offsetTop - 10, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

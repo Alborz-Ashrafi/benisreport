@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تحلیل رقبا | بنیس</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0d0d0d;
+  --paper: #f5f0e8;
+  --paper2: #ede7d9;
+  --paper3: #e3dccb;
+  --accent: #c8390a;
+  --accent2: #e8a020;
+  --accent3: #1a6b3c;
+  --accent4: #1a4a7a;
+  --text: #1a1a1a;
+  --text2: #4a4a4a;
+  --text3: #7a7a7a;
+  --border: rgba(0,0,0,0.12);
+  --red-light: rgba(200,57,10,0.08);
+  --green-light: rgba(26,107,60,0.08);
+  --blue-light: rgba(26,74,122,0.08);
+  --yellow-light: rgba(232,160,32,0.1);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--paper);
+  color: var(--text);
+  font-family: 'Vazirmatn', sans-serif;
+  line-height: 1.75;
+}
+
+/* GRAIN TEXTURE */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* HEADER */
+.masthead {
+  background: var(--ink);
+  color: #f5f0e8;
+  padding: 48px 60px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.masthead::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--accent);
+}
+.masthead-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.masthead-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 5px 14px;
+  display: inline-block;
+}
+.masthead-date {
+  font-size: 11px;
+  color: #888;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.masthead h1 {
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+.masthead h1 em {
+  color: var(--accent);
+  font-style: normal;
+}
+.masthead-sub {
+  font-size: 15px;
+  color: #aaa;
+  font-weight: 400;
+  max-width: 700px;
+  line-height: 1.6;
+}
+.masthead-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid #333;
+  margin-top: 36px;
+  padding-top: 24px;
+}
+.mstat {
+  border-right: 1px solid #333;
+  padding: 0 24px 0 0;
+  margin-right: 24px;
+}
+.mstat:last-child { border-right: none; }
+.mstat-n {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--accent);
+  display: block;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.mstat-l {
+  font-size: 11px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* NAV */
+.nav {
+  background: var(--ink);
+  border-bottom: 1px solid #222;
+  padding: 0 60px;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav button {
+  background: none;
+  border: none;
+  color: #666;
+  padding: 16px 20px;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+.nav button:hover { color: #ccc; }
+.nav button.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* MAIN */
+.main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 56px 60px;
+}
+
+/* SECTIONS */
+.section { display: none; }
+.section.active { display: block; }
+
+/* SECTION HEADER */
+.sec-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 32px;
+  margin-bottom: 48px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--ink);
+}
+.sec-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+  display: block;
+}
+.sec-title {
+  font-size: clamp(24px, 4vw, 42px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.sec-num {
+  font-size: 96px;
+  font-weight: 900;
+  color: var(--paper3);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  user-select: none;
+}
+
+/* BRAND CARD */
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 2px;
+  background: var(--ink);
+  border: 2px solid var(--ink);
+}
+.brand-card {
+  background: var(--paper);
+  padding: 32px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.brand-card:hover { background: var(--paper2); }
+.brand-card.expanded {
+  grid-column: 1 / -1;
+  background: var(--paper2);
+}
+.brand-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+.brand-name-wrap {}
+.brand-name {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  display: block;
+}
+.brand-type {
+  font-size: 11px;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+.brand-score {
+  text-align: center;
+}
+.score-ring {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 900;
+  margin: 0 auto 4px;
+}
+.score-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text3);
+}
+
+.brand-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 20px 0;
+}
+
+.brand-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.metric {
+  background: var(--paper3);
+  padding: 12px;
+  border-radius: 4px;
+  text-align: center;
+}
+.metric-val {
+  font-size: 18px;
+  font-weight: 800;
+  display: block;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.metric-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text3);
+}
+
+.swot-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--ink);
+  margin-top: 20px;
+}
+.swot-cell {
+  padding: 16px 20px;
+  background: var(--paper);
+}
+.swot-cell.s { background: rgba(26,107,60,0.06); }
+.swot-cell.w { background: rgba(200,57,10,0.06); }
+.swot-cell.o { background: rgba(26,74,122,0.06); }
+.swot-cell.t { background: rgba(232,160,32,0.08); }
+.swot-title {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.swot-cell.s .swot-title { color: var(--accent3); }
+.swot-cell.w .swot-title { color: var(--accent); }
+.swot-cell.o .swot-title { color: var(--accent4); }
+.swot-cell.t .swot-title { color: var(--accent2); }
+.swot-list {
+  list-style: none;
+  padding: 0;
+}
+.swot-list li {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.6;
+  padding: 3px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+.swot-list li::before {
+  content: '—';
+  font-size: 10px;
+  color: var(--text3);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.social-bar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.social-pill {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border: 1.5px solid var(--ink);
+  border-radius: 2px;
+  background: var(--paper);
+}
+.social-pill.strong { background: var(--ink); color: var(--paper); }
+.social-pill.medium { background: var(--paper3); }
+.social-pill.weak { opacity: 0.5; }
+
+.expand-btn {
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 8px 20px;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  margin-top: 16px;
+  transition: background 0.2s;
+}
+.expand-btn:hover { background: var(--accent); }
+
+/* COMPARISON TABLE */
+.comp-wrap { overflow-x: auto; }
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 900px;
+}
+.comp-table th {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 14px 16px;
+  text-align: right;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-left: 1px solid #333;
+}
+.comp-table td {
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  color: var(--text2);
+  vertical-align: top;
+  line-height: 1.65;
+}
+.comp-table tr:nth-child(even) td { background: var(--paper2); }
+.comp-table tr:hover td { background: var(--paper3); }
+.td-brand {
+  font-weight: 800;
+  color: var(--ink);
+  font-size: 15px;
+}
+.td-sub {
+  font-size: 11px;
+  color: var(--text3);
+  display: block;
+  margin-top: 2px;
+}
+
+/* TAGS */
+.tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border: 1px solid;
+  border-radius: 2px;
+  margin: 2px;
+}
+.tag-r { color: var(--accent); border-color: var(--accent); background: var(--red-light); }
+.tag-g { color: var(--accent3); border-color: var(--accent3); background: var(--green-light); }
+.tag-b { color: var(--accent4); border-color: var(--accent4); background: var(--blue-light); }
+.tag-y { color: #8a6000; border-color: var(--accent2); background: var(--yellow-light); }
+.tag-k { color: var(--ink); border-color: var(--ink); background: transparent; }
+
+/* INSIGHT BLOCKS */
+.insights-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--ink);
+  border: 2px solid var(--ink);
+  margin-bottom: 32px;
+}
+.ins-block {
+  background: var(--paper);
+  padding: 28px 32px;
+  position: relative;
+}
+.ins-block::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 4px; height: 100%;
+  background: var(--accent);
+}
+.ins-num {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 8px;
+  display: block;
+}
+.ins-title {
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+.ins-body {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.8;
+}
+.ins-block.wide {
+  grid-column: 1 / -1;
+  background: var(--ink);
+  color: var(--paper);
+}
+.ins-block.wide::before { background: var(--accent2); }
+.ins-block.wide .ins-body { color: #bbb; }
+.ins-block.wide .ins-num { color: var(--accent); }
+
+/* VERDICT */
+.verdict-wrap {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 56px 60px;
+  margin: 0 -60px;
+  position: relative;
+  overflow: hidden;
+}
+.verdict-wrap::before {
+  content: 'BENIS';
+  position: absolute;
+  font-size: 240px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.03);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.verdict-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 40px;
+}
+.v-block {
+  border: 1px solid #333;
+  padding: 28px;
+  position: relative;
+}
+.v-block::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  height: 3px; width: 60px;
+  background: var(--accent);
+}
+.v-title {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.v-list {
+  list-style: none;
+  padding: 0;
+}
+.v-list li {
+  font-size: 14px;
+  color: #bbb;
+  padding: 10px 0;
+  border-bottom: 1px solid #222;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.6;
+}
+.v-list li .num {
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 13px;
+  min-width: 24px;
+  font-variant-numeric: tabular-nums;
+}
+.v-list li strong { color: var(--paper); }
+
+.priority-list {
+  list-style: none;
+  padding: 0;
+  counter-reset: pri;
+}
+.priority-list li {
+  counter-increment: pri;
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid #222;
+  align-items: flex-start;
+}
+.priority-list li::before {
+  content: counter(pri, decimal-leading-zero);
+  font-size: 28px;
+  font-weight: 900;
+  color: #333;
+  line-height: 1;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.pri-content {}
+.pri-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--paper);
+}
+.pri-desc {
+  font-size: 13px;
+  color: #888;
+  line-height: 1.7;
+}
+.pri-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  background: var(--accent);
+  color: white;
+  margin-bottom: 6px;
+}
+
+/* SOCIAL RADAR */
+.radar-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.radar-table th {
+  background: var(--paper3);
+  padding: 12px 16px;
+  text-align: right;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text3);
+  border-bottom: 2px solid var(--ink);
+}
+.radar-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.radar-table tr:hover td { background: var(--paper2); }
+.bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.bar {
+  height: 8px;
+  border-radius: 1px;
+  background: var(--ink);
+  transition: width 0.3s;
+}
+.bar-val {
+  font-size: 12px;
+  font-weight: 700;
+  min-width: 30px;
+  color: var(--text2);
+}
+
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 48px 0;
+}
+.divider-thick {
+  height: 2px;
+  background: var(--ink);
+  margin: 56px 0;
+}
+
+/* CALLOUT */
+.callout {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 28px 36px;
+  border-right: 6px solid var(--accent);
+  margin: 32px 0;
+  position: relative;
+}
+.callout-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+  display: block;
+}
+.callout-text {
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 500;
+}
+.callout-text strong { color: var(--accent2); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .masthead, .main, .nav { padding-left: 20px; padding-right: 20px; }
+  .masthead-stats { grid-template-columns: repeat(2,1fr); }
+  .insights-col { grid-template-columns: 1fr; }
+  .verdict-wrap { padding: 40px 20px; margin: 0 -20px; }
+  .verdict-grid { grid-template-columns: 1fr; }
+  .brands-grid { grid-template-columns: 1fr; }
+  .swot-grid { grid-template-columns: 1fr; }
+  .sec-num { display: none; }
+}
+
+@keyframes fadeIn {
+  from { opacity:0; transform:translateY(12px); }
+  to { opacity:1; transform:translateY(0); }
+}
+.section.active { animation: fadeIn 0.3s ease forwards; }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-top">
+    <span class="masthead-label">گزارش استراتژیک محرمانه</span>
+    <span class="masthead-date">1404-1405 | بنیس</span>
+  </div>
+  <h1>تحلیل عمیق رقبا<br>در بازار <em>کیک صنعتی</em> ایران</h1>
+  <p class="masthead-sub">بررسی کامل سوشال مدیا، مزیت‌های رقابتی، نقاط ضعف فروش و رسانه‌ای هشت برند رقیب — به همراه نقشه اجرایی برای بنیس</p>
+  <div class="masthead-stats">
+    <div class="mstat">
+      <span class="mstat-n">۸</span>
+      <span class="mstat-l">برند تحلیل‌شده</span>
+    </div>
+    <div class="mstat">
+      <span class="mstat-n">۳۵+</span>
+      <span class="mstat-l">شاخص ارزیابی</span>
+    </div>
+    <div class="mstat">
+      <span class="mstat-n">۴۷۰K</span>
+      <span class="mstat-l">فالوور کل رقبا</span>
+    </div>
+    <div class="mstat">
+      <span class="mstat-n">۱۵</span>
+      <span class="mstat-l">اقدام اولویت‌دار</span>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav">
+  <button class="active" onclick="show('brands', this)">پروفایل رقبا</button>
+  <button onclick="show('social', this)">رادار سوشال</button>
+  <button onclick="show('compare', this)">جدول مقایسه</button>
+  <button onclick="show('gaps', this)">گپ‌های بازار</button>
+  <button onclick="show('verdict', this)">حکم نهایی</button>
+</nav>
+
+<main class="main">
+
+<!-- ======= BRANDS ======= -->
+<div class="section active" id="brands">
+  <div class="sec-header">
+    <div>
+      <span class="sec-eyebrow">فاز اول</span>
+      <h2 class="sec-title">پروفایل کامل<br>هشت رقیب اصلی</h2>
+    </div>
+    <span class="sec-num">۰۱</span>
+  </div>
+
+  <div class="brands-grid">
+
+    <!-- DORNA -->
+    <div class="brand-card" id="bc-dorna">
+      <div class="brand-top">
+        <div class="brand-name-wrap">
+          <span class="brand-name">دُرنا</span>
+          <span class="brand-type">بیسکولارج | تأسیس ۱۳۵۰</span>
+        </div>
+        <div class="brand-score">
+          <div class="score-ring" style="border-color:#1a4a7a;color:#1a4a7a">۶۵</div>
+          <span class="score-label">امتیاز کل</span>
+        </div>
+      </div>
+      <div class="brand-metrics">
+        <div class="metric">
+          <span class="metric-val" style="color:#1a6b3c">قوی</span>
+          <span class="metric-label">توزیع</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val" style="color:#c8390a">ضعیف</span>
+          <span class="metric-label">دیجیتال</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val">~۵۶۰</span>
+          <span class="metric-label">اینستاگرام</span>
+        </div>
+      </div>
+      <div class="brand-divider"></div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.8">اولین تولیدکننده صنعتی کیک در ایران با سابقه‌ای طولانی. کارخانه در کیلومتر ۲۸ جاده مخصوص تهران-کرج. توزیع سراسری قوی از طریق شبکه مویرگی. برند TV-first که هنوز از TV به دیجیتال migrate نکرده.</p>
+      <div class="social-bar">
+        <span class="social-pill weak">اینستاگرام ۵۶۰ فالوور</span>
+        <span class="social-pill weak">بدون محتوای منظم</span>
+        <span class="social-pill medium">تلویزیون قوی</span>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('dorna')">مشاهده تحلیل کامل ▼</button>
+      <div id="exp-dorna" style="display:none;margin-top:24px">
+        <div class="swot-grid">
+          <div class="swot-cell s">
+            <div class="swot-title">نقاط قوت</div>
+            <ul class="swot-list">
+              <li>قدیمی‌ترین برند — آگاهی برند ملی بالا</li>
+              <li>شبکه توزیع مویرگی بسیار گسترده</li>
+              <li>سابقه تبلیغات تلویزیونی</li>
+              <li>اعتماد نسل‌های قبلی به برند</li>
+              <li>ظرفیت تولید صنعتی بالا</li>
+            </ul>
+          </div>
+          <div class="swot-cell w">
+            <div class="swot-title">نقاط ضعف</div>
+            <ul class="swot-list">
+              <li>حضور دیجیتال تقریباً صفر (۵۶۰ فالوور)</li>
+              <li>هیچ استراتژی سوشال مدیا مشخصی ندارد</li>
+              <li>طراحی بسته‌بندی قدیمی و کم‌جذابیت</li>
+              <li>Gen Z را کاملاً از دست داده</li>
+              <li>هیچ نوآوری محصولی قابل توجهی ندارد</li>
+              <li>برند aging — تصویر «کیک بابا‌بزرگ»</li>
+            </ul>
+          </div>
+          <div class="swot-cell o">
+            <div class="swot-title">فرصت‌ها</div>
+            <ul class="swot-list">
+              <li>نوستالژی قابل بهره‌برداری دیجیتال</li>
+              <li>توزیع قوی = لانچ محصول سریع</li>
+            </ul>
+          </div>
+          <div class="swot-cell t">
+            <div class="swot-title">تهدیدها</div>
+            <ul class="swot-list">
+              <li>از دست دادن نسل جوان به سمت رقبا</li>
+              <li>کاهش تأثیر تبلیغات TV</li>
+              <li>برندهای دیجیتال‌محور در حال پیشروی</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:20px">
+          <span class="callout-label">فرصت برای بنیس</span>
+          <div class="callout-text">دُرنا بزرگترین <strong>پنجره بلاپوشیده</strong> در بازار است. نسلی که با دُرنا بزرگ شده اما الان دیجیتال است، هیچ جایگزین فارسی آشنا نمی‌بیند. بنیس می‌تواند این خلأ را پر کند.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIRANG -->
+    <div class="brand-card" id="bc-sirang">
+      <div class="brand-top">
+        <div class="brand-name-wrap">
+          <span class="brand-name">سیرنگ</span>
+          <span class="brand-type">گروه کارخانجات | تأسیس ۱۳۸۸</span>
+        </div>
+        <div class="brand-score">
+          <div class="score-ring" style="border-color:#1a6b3c;color:#1a6b3c">۷۲</div>
+          <span class="score-label">امتیاز کل</span>
+        </div>
+      </div>
+      <div class="brand-metrics">
+        <div class="metric">
+          <span class="metric-val" style="color:#1a6b3c">۱۵۰+</span>
+          <span class="metric-label">محصول SKU</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val" style="color:#1a6b3c">متوسط</span>
+          <span class="metric-label">دیجیتال</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val">~۵۱K</span>
+          <span class="metric-label">اینستاگرام</span>
+        </div>
+      </div>
+      <div class="brand-divider"></div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.8">یکی از بزرگترین تولیدکنندگان کیک ایران — کارخانه ۳۰ هزار متری در مشهد. تنوع بسیار بالای محصول (کیک، کلوچه، ویفر، بیسکویت، تافی). دو حساب اینستاگرام — یکی با ۵۱K و یکی با ۱۶K فالوور. محتوا محصول‌محور و بدون استراتژی مشخص.</p>
+      <div class="social-bar">
+        <span class="social-pill medium">اینستاگرام ۵۱K</span>
+        <span class="social-pill medium">وب‌سایت فعال</span>
+        <span class="social-pill weak">محتوای template-driven</span>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('sirang')">مشاهده تحلیل کامل ▼</button>
+      <div id="exp-sirang" style="display:none;margin-top:24px">
+        <div class="swot-grid">
+          <div class="swot-cell s">
+            <div class="swot-title">نقاط قوت</div>
+            <ul class="swot-list">
+              <li>تنوع ۱۵۰+ محصول — بیشترین SKU در بازار</li>
+              <li>زیرساخت تولید بزرگ و مدرن</li>
+              <li>حضور اینستاگرام قابل توجه نسبت به رقبا</li>
+              <li>وب‌سایت با محتوای بلاگ</li>
+              <li>صادرات فعال</li>
+            </ul>
+          </div>
+          <div class="swot-cell w">
+            <div class="swot-title">نقاط ضعف</div>
+            <ul class="swot-list">
+              <li>هویت برند مبهم — تنوع زیاد = شخصیت کم</li>
+              <li>محتوا کاملاً محصول‌محور، بدون storytelling</li>
+              <li>engagement نسبت به فالوور بسیار پایین</li>
+              <li>دو حساب موازی — برند پراکنده</li>
+              <li>هیچ emotional territory تعریف نشده</li>
+            </ul>
+          </div>
+          <div class="swot-cell o">
+            <div class="swot-title">فرصت‌ها</div>
+            <ul class="swot-list">
+              <li>تنوع محصول ظرفیت collabs دارد</li>
+            </ul>
+          </div>
+          <div class="swot-cell t">
+            <div class="swot-title">تهدیدها</div>
+            <ul class="swot-list">
+              <li>برندهای focused با شخصیت قوی‌تر</li>
+              <li>تنوع زیاد = هزینه مارکتینگ پراکنده</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:20px">
+          <span class="callout-label">فرصت برای بنیس</span>
+          <div class="callout-text">سیرنگ یک کارخانه است که برند می‌فروشد، نه یک برند که از کارخانه حمایت می‌کند. بنیس باید <strong>برعکس</strong> عمل کند: اول برند، بعد محصول.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHIRIN ASAL -->
+    <div class="brand-card" id="bc-shirinasal">
+      <div class="brand-top">
+        <div class="brand-name-wrap">
+          <span class="brand-name">شیرین‌عسل</span>
+          <span class="brand-type">گروه صنایع غذایی | تأسیس ۱۳۶۹</span>
+        </div>
+        <div class="brand-score">
+          <div class="score-ring" style="border-color:#c8390a;color:#c8390a">۷۸</div>
+          <span class="score-label">امتیاز کل</span>
+        </div>
+      </div>
+      <div class="brand-metrics">
+        <div class="metric">
+          <span class="metric-val" style="color:#1a6b3c">۲۰,۰۰۰</span>
+          <span class="metric-label">کارمند</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val" style="color:#1a6b3c">۶۵ کشور</span>
+          <span class="metric-label">صادرات</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val">~۹۳K</span>
+          <span class="metric-label">اینستاگرام</span>
+        </div>
+      </div>
+      <div class="brand-divider"></div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.8">غول بازار — ۱۲۰۰ SKU، ۲۰ هزار کارمند، صادرات به ۶۵ کشور. تنها شرکت با زنجیره کاملاً عمودی از دانه کاکائو تا فروشگاه خرده‌فروشی (همسایه آریا). اینستاگرام ۹۳K فالوور ولی engagement پایین. محتوا محصول‌محور با کیفیت متوسط.</p>
+      <div class="social-bar">
+        <span class="social-pill strong">اینستاگرام ۹۳K</span>
+        <span class="social-pill medium">فروشگاه‌های زنجیره‌ای</span>
+        <span class="social-pill medium">وب‌سایت انگلیسی-فارسی</span>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('shirinasal')">مشاهده تحلیل کامل ▼</button>
+      <div id="exp-shirinasal" style="display:none;margin-top:24px">
+        <div class="swot-grid">
+          <div class="swot-cell s">
+            <div class="swot-title">نقاط قوت</div>
+            <ul class="swot-list">
+              <li>بزرگترین برند — اعتبار سازمانی بالا</li>
+              <li>زیرساخت کامل‌ترین زنجیره تأمین ایران</li>
+              <li>فروشگاه‌های خرده‌فروشی اختصاصی (همسایه آریا)</li>
+              <li>صادرات به ۶۵ کشور = اعتبار بین‌المللی</li>
+              <li>بیشترین فالوور اینستاگرام در دسته</li>
+            </ul>
+          </div>
+          <div class="swot-cell w">
+            <div class="swot-title">نقاط ضعف</div>
+            <ul class="swot-list">
+              <li>خیلی بزرگ برای agile بودن</li>
+              <li>محتوای سوشال بی‌روح و corporate</li>
+              <li>engagement rate بسیار پایین روی ۹۳K</li>
+              <li>هیچ شخصیت دیجیتال مشخصی ندارد</li>
+              <li>برای Gen Z «برند سازمانی» است، نه «برند من»</li>
+            </ul>
+          </div>
+          <div class="swot-cell o">
+            <div class="swot-title">فرصت‌ها</div>
+            <ul class="swot-list">
+              <li>فروشگاه‌های زنجیره‌ای = کانال مستقیم</li>
+            </ul>
+          </div>
+          <div class="swot-cell t">
+            <div class="swot-title">تهدیدها</div>
+            <ul class="swot-list">
+              <li>برندهای کوچکتر و چابک‌تر</li>
+              <li>تصویر برند بزرگ و سرد</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:20px">
+          <span class="callout-label">فرصت برای بنیس</span>
+          <div class="callout-text">شیرین‌عسل یک کنگلومرا است. بنیس می‌تواند <strong>focused، گرم و انسانی</strong> باشد — دقیقاً جایی که شیرین‌عسل نمی‌تواند برود.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAZMAZ -->
+    <div class="brand-card" id="bc-mazmaz">
+      <div class="brand-top">
+        <div class="brand-name-wrap">
+          <span class="brand-name">مزمز</span>
+          <span class="brand-type">کیک و شیرینی</span>
+        </div>
+        <div class="brand-score">
+          <div class="score-ring" style="border-color:#e8a020;color:#8a6000">۵۸</div>
+          <span class="score-label">امتیاز کل</span>
+        </div>
+      </div>
+      <div class="brand-metrics">
+        <div class="metric">
+          <span class="metric-val" style="color:#1a6b3c">قوی</span>
+          <span class="metric-label">اسم برند</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val" style="color:#c8390a">ضعیف</span>
+          <span class="metric-label">استراتژی</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val">پراکنده</span>
+          <span class="metric-label">دیجیتال</span>
+        </div>
+      </div>
+      <div class="brand-divider"></div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.8">اسم «مزمز» به خودی خود یک دارایی برند است — طنزآمیز، به‌یادماندنی، خاص. اما برند از این ظرفیت هیچ استفاده‌ای نمی‌کند. محتوای سوشال پراکنده و بدون استراتژی مشخص. تلاش‌های گاه‌وبیگاه برای طنز اما inconsistent.</p>
+      <div class="social-bar">
+        <span class="social-pill weak">حضور دیجیتال پراکنده</span>
+        <span class="social-pill weak">محتوای بی‌استراتژی</span>
+        <span class="social-pill medium">اسم برند قوی</span>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('mazmaz')">مشاهده تحلیل کامل ▼</button>
+      <div id="exp-mazmaz" style="display:none;margin-top:24px">
+        <div class="swot-grid">
+          <div class="swot-cell s">
+            <div class="swot-title">نقاط قوت</div>
+            <ul class="swot-list">
+              <li>اسم برند بسیار به‌یادماندنی و طنزآمیز</li>
+              <li>ظرفیت برندینگ شخصیتی بالا</li>
+            </ul>
+          </div>
+          <div class="swot-cell w">
+            <div class="swot-title">نقاط ضعف</div>
+            <ul class="swot-list">
+              <li>هیچ استراتژی محتوایی مشخصی ندارد</li>
+              <li>از ظرفیت اسم برند استفاده نمی‌کند</li>
+              <li>تلاش‌های طنز ناهماهنگ و گاه‌وبیگاه</li>
+              <li>هویت بصری ضعیف</li>
+              <li>غیاب در بازار دیجیتال</li>
+            </ul>
+          </div>
+          <div class="swot-cell o">
+            <div class="swot-title">فرصت‌ها</div>
+            <ul class="swot-list">
+              <li>اگر استراتژی بگیرد، تهدید مستقیم است</li>
+            </ul>
+          </div>
+          <div class="swot-cell t">
+            <div class="swot-title">تهدیدها</div>
+            <ul class="swot-list">
+              <li>بنیس می‌تواند قبل از مزمز فضای طنز را بگیرد</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:20px">
+          <span class="callout-label">هشدار برای بنیس</span>
+          <div class="callout-text">مزمز تنها رقیبی است که اگر بیدار شود، می‌تواند خطرناک باشد. اسمش از بنیس برای طنز مناسب‌تر است. <strong>بنیس باید territory طنز را سریع تصاحب کند</strong> قبل از اینکه مزمز جدی بشود.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAZARI -->
+    <div class="brand-card" id="bc-nazari">
+      <div class="brand-top">
+        <div class="brand-name-wrap">
+          <span class="brand-name">نظری (آذرنان)</span>
+          <span class="brand-type">کیک و کلوچه | شمال‌غرب</span>
+        </div>
+        <div class="brand-score">
+          <div class="score-ring" style="border-color:#1a6b3c;color:#1a6b3c">۷۰</div>
+          <span class="score-label">امتیاز کل</span>
+        </div>
+      </div>
+      <div class="brand-metrics">
+        <div class="metric">
+          <span class="metric-val" style="color:#1a6b3c">۱۵۸K</span>
+          <span class="metric-label">اینستاگرام</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val" style="color:#1a6b3c">بالا</span>
+          <span class="metric-label">engagement</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val">احساسی</span>
+          <span class="metric-label">سبک محتوا</span>
+        </div>
+      </div>
+      <div class="brand-divider"></div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.8">قوی‌ترین حضور سوشال مدیا در بین رقبا — ۱۵۸K فالوور با engagement بالاتر از میانگین صنعت. محتوای احساسی و lifestyle محور. اسلوگان «یک اتفاق شیرین» کار می‌کند. اما coverage جغرافیایی محدودتر از برندهای ملی است.</p>
+      <div class="social-bar">
+        <span class="social-pill strong">اینستاگرام ۱۵۸K</span>
+        <span class="social-pill strong">محتوای احساسی</span>
+        <span class="social-pill medium">نمایندگی استانی</span>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('nazari')">مشاهده تحلیل کامل ▼</button>
+      <div id="exp-nazari" style="display:none;margin-top:24px">
+        <div class="swot-grid">
+          <div class="swot-cell s">
+            <div class="swot-title">نقاط قوت</div>
+            <ul class="swot-list">
+              <li>بیشترین فالوور واقعی در دسته رقبا</li>
+              <li>محتوای احساسی و lifestyle که کار می‌کند</li>
+              <li>اسلوگان «یک اتفاق شیرین» مناسب</li>
+              <li>engagement rate بالاتر از رقبا</li>
+              <li>تیم محتوای منظم و حرفه‌ای‌تر</li>
+            </ul>
+          </div>
+          <div class="swot-cell w">
+            <div class="swot-title">نقاط ضعف</div>
+            <ul class="swot-list">
+              <li>محتوا خیلی serious — شوخ‌طبعی ندارد</li>
+              <li>توزیع محدودتر از برندهای ملی</li>
+              <li>هیچ viral moment قابل‌توجهی ندارد</li>
+              <li>تبلیغات influencer محدود</li>
+              <li>Gen Z را target نمی‌کند</li>
+            </ul>
+          </div>
+          <div class="swot-cell o">
+            <div class="swot-title">فرصت‌ها</div>
+            <ul class="swot-list">
+              <li>گسترش جغرافیایی با بودجه سوشال</li>
+            </ul>
+          </div>
+          <div class="swot-cell t">
+            <div class="swot-title">تهدیدها</div>
+            <ul class="swot-list">
+              <li>نزدیک‌ترین رقیب برای بنیس در سوشال</li>
+              <li>اگر طنز اضافه کنند، خطرناک‌تر می‌شوند</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:20px">
+          <span class="callout-label">رقیب اول بنیس</span>
+          <div class="callout-text">نظری <strong>تنها رقیب واقعی در سوشال مدیا</strong> است. ۱۵۸K فالوور با محتوای احساسی. بنیس باید با زبان متفاوت (طنز + احساس) بخش‌هایی از مخاطبان نظری را جذب کند.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOEINIPOUR -->
+    <div class="brand-card" id="bc-moeinipour">
+      <div class="brand-top">
+        <div class="brand-name-wrap">
+          <span class="brand-name">معینی‌پور</span>
+          <span class="brand-type">صنایع غذایی</span>
+        </div>
+        <div class="brand-score">
+          <div class="score-ring" style="border-color:#e8a020;color:#8a6000">۶۲</div>
+          <span class="score-label">امتیاز کل</span>
+        </div>
+      </div>
+      <div class="brand-metrics">
+        <div class="metric">
+          <span class="metric-val" style="color:#1a6b3c">ویروسی</span>
+          <span class="metric-label">دهان‌به‌دهان</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val" style="color:#c8390a">ضعیف</span>
+          <span class="metric-label">سوشال رسمی</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val">UGC بالا</span>
+          <span class="metric-label">محتوا</span>
+        </div>
+      </div>
+      <div class="brand-divider"></div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.8">پدیده جالب بازار — معینی‌پور هیچ استراتژی دیجیتال قوی ندارد اما مصرف‌کنندگان خودشان ویدیوهای «کشف» کیک معینی‌پور می‌سازند. محصول خودش وایرال می‌شود. این یعنی محصول واقعاً خوب است ولی برند از آن سوء استفاده نمی‌کند.</p>
+      <div class="social-bar">
+        <span class="social-pill strong">UGC ارگانیک بالا</span>
+        <span class="social-pill weak">سوشال رسمی ضعیف</span>
+        <span class="social-pill medium">محصول quality</span>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('moeinipour')">مشاهده تحلیل کامل ▼</button>
+      <div id="exp-moeinipour" style="display:none;margin-top:24px">
+        <div class="swot-grid">
+          <div class="swot-cell s">
+            <div class="swot-title">نقاط قوت</div>
+            <ul class="swot-list">
+              <li>محصول واقعاً خوشمزه — word-of-mouth قوی</li>
+              <li>UGC ارگانیک بدون هزینه بازاریابی</li>
+              <li>وفاداری مصرف‌کننده بالا</li>
+              <li>شعار «کیفیت، سپاس خالق است» معنادار</li>
+            </ul>
+          </div>
+          <div class="swot-cell w">
+            <div class="swot-title">نقاط ضعف</div>
+            <ul class="swot-list">
+              <li>سوشال مدیا رسمی بسیار ضعیف</li>
+              <li>از UGC ارگانیک تقریباً استفاده نمی‌کند</li>
+              <li>هیچ استراتژی تبدیل طرفدار به مبلغ ندارد</li>
+              <li>هویت بصری قدیمی</li>
+              <li>غیاب در کمپین‌های فصلی</li>
+            </ul>
+          </div>
+          <div class="swot-cell o">
+            <div class="swot-title">فرصت‌ها</div>
+            <ul class="swot-list">
+              <li>اگر UGC را سازمان دهند، می‌ترکند</li>
+            </ul>
+          </div>
+          <div class="swot-cell t">
+            <div class="swot-title">تهدیدها</div>
+            <ul class="swot-list">
+              <li>برند بدون مدیریت = هر روایتی شکل می‌گیرد</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:20px">
+          <span class="callout-label">درس برای بنیس</span>
+          <div class="callout-text">معینی‌پور نشان می‌دهد که <strong>محصول خوب + هیچ استراتژی = UGC ارگانیک</strong>. بنیس باید همین را داشته باشد اما با استراتژی روی آن سوار شود.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MINO -->
+    <div class="brand-card" id="bc-mino">
+      <div class="brand-top">
+        <div class="brand-name-wrap">
+          <span class="brand-name">مینو</span>
+          <span class="brand-type">گروه صنعتی | ۶۰ سال سابقه</span>
+        </div>
+        <div class="brand-score">
+          <div class="score-ring" style="border-color:#1a4a7a;color:#1a4a7a">۶۸</div>
+          <span class="score-label">امتیاز کل</span>
+        </div>
+      </div>
+      <div class="brand-metrics">
+        <div class="metric">
+          <span class="metric-val" style="color:#1a6b3c">۶۰ سال</span>
+          <span class="metric-label">سابقه</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val" style="color:#e8a020">متوسط</span>
+          <span class="metric-label">دیجیتال</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val">ملی</span>
+          <span class="metric-label">توزیع</span>
+        </div>
+      </div>
+      <div class="brand-divider"></div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.8">یکی از قدیمی‌ترین و معتبرترین گروه‌های صنایع غذایی ایران با ۶۰ سال سابقه. تنوع بالای محصول. محبوبیت عمومی بالا اما مثل سایر رقبا، digital presence به اندازه برند قدیمی‌اش نیست.</p>
+      <div class="social-bar">
+        <span class="social-pill medium">اینستاگرام فعال</span>
+        <span class="social-pill strong">آگاهی برند ملی</span>
+        <span class="social-pill weak">محتوای نه‌چندان خلاق</span>
+      </div>
+      <button class="expand-btn" onclick="toggleExpand('mino')">مشاهده تحلیل کامل ▼</button>
+      <div id="exp-mino" style="display:none;margin-top:24px">
+        <div class="swot-grid">
+          <div class="swot-cell s">
+            <div class="swot-title">نقاط قوت</div>
+            <ul class="swot-list">
+              <li>۶۰ سال سابقه = بالاترین brand equity</li>
+              <li>آگاهی برند ملی بسیار بالا</li>
+              <li>تنوع محصول گسترده</li>
+              <li>شبکه توزیع ملی بسیار قوی</li>
+            </ul>
+          </div>
+          <div class="swot-cell w">
+            <div class="swot-title">نقاط ضعف</div>
+            <ul class="swot-list">
+              <li>تصویر برند aging و قدیمی</li>
+              <li>دیجیتال به اندازه برند قوی نیست</li>
+              <li>Gen Z اتصالی با مینو ندارد</li>
+              <li>محتوا کلیشه‌ای و خلاقیت پایین</li>
+            </ul>
+          </div>
+          <div class="swot-cell o">
+            <div class="swot-title">فرصت‌ها</div>
+            <ul class="swot-list">
+              <li>نوستالژی قابل بهره‌برداری</li>
+            </ul>
+          </div>
+          <div class="swot-cell t">
+            <div class="swot-title">تهدیدها</div>
+            <ul class="swot-list">
+              <li>برندهای جوان‌تر در حال جذب Gen Z</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:20px">
+          <span class="callout-label">فرصت برای بنیس</span>
+          <div class="callout-text">مینو یک غول است که نمی‌تواند سریع حرکت کند. بنیس باید <strong>چابک‌تر</strong> عمل کند — در فضاهایی که مینو نمی‌تواند وارد شود.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NADERI -->
+    <div class="brand-card" id="bc-naderi">
+      <div class="brand-top">
+        <div class="brand-name-wrap">
+          <span class="brand-name">نادری</span>
+          <span class="brand-type">کیک و شیرینی سنتی</span>
+        </div>
+        <div class="brand-score">
+          <div class="score-ring" style="border-color:#7a7a7a;color:#7a7a7a">۵۲</div>
+          <span class="score-label">امتیاز کل</span>
+        </div>
+      </div>
+      <div class="brand-metrics">
+        <div class="metric">
+          <span class="metric-val" style="color:#1a6b3c">نوستالژی</span>
+          <span class="metric-label">قدرت</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val" style="color:#c8390a">خیلی ضعیف</span>
+          <span class="metric-label">دیجیتال</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val">سنتی</span>
+          <span class="metric-label">موقعیت</span>
+        </div>
+      </div>
+      <div class="brand-divider"></div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.8">برند با ارزش نوستالژیک بالا اما کاملاً در دنیای دیجیتال غایب. محصول در بازار دیده می‌شود ولی برند هیچ ارتباطی با مصرف‌کننده امروزی برقرار نمی‌کند. درحال از دست دادن جوانان.</p>
+      <div class="social-bar">
+        <span class="social-pill weak">غیاب دیجیتال</span>
+        <span class="social-pill medium">نوستالژی قوی</span>
+        <span class="social-pill weak">برند در حال کاهش</span>
+      </div>
+    </div>
+
+  </div><!-- /brands-grid -->
+</div>
+
+<!-- ======= SOCIAL RADAR ======= -->
+<div class="section" id="social">
+  <div class="sec-header">
+    <div>
+      <span class="sec-eyebrow">فاز دوم</span>
+      <h2 class="sec-title">رادار سوشال مدیا<br>رقبا</h2>
+    </div>
+    <span class="sec-num">۰۲</span>
+  </div>
+
+  <div class="callout">
+    <span class="callout-label">یافته کلیدی</span>
+    <div class="callout-text">مجموع فالوور واقعی همه رقبا در اینستاگرام کمتر از <strong>۵۰۰ هزار نفر</strong> است — برای صنعتی که روزانه به میلیون‌ها نفر می‌فروشد، این یک شکاف دیجیتال تاریخی است. بنیس می‌تواند در ۶ ماه به این رقم برسد.</div>
+  </div>
+
+  <div style="margin-top:36px">
+    <table class="radar-table">
+      <thead>
+        <tr>
+          <th>برند</th>
+          <th>اینستاگرام</th>
+          <th>کیفیت محتوا</th>
+          <th>engagement</th>
+          <th>استراتژی مشخص</th>
+          <th>influencer</th>
+          <th>UGC</th>
+          <th>امتیاز دیجیتال</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>نظری</strong></td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar" style="width:90px;background:#1a6b3c"></div>
+              <span class="bar-val">۱۵۸K</span>
+            </div>
+          </td>
+          <td><span class="tag tag-g">خوب</span></td>
+          <td><span class="tag tag-g">بالا</span></td>
+          <td><span class="tag tag-g">بله</span></td>
+          <td><span class="tag tag-y">محدود</span></td>
+          <td><span class="tag tag-y">متوسط</span></td>
+          <td><strong style="color:var(--accent3)">۷۲/۱۰۰</strong></td>
+        </tr>
+        <tr>
+          <td><strong>شیرین‌عسل</strong></td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar" style="width:53px;background:#1a4a7a"></div>
+              <span class="bar-val">۹۳K</span>
+            </div>
+          </td>
+          <td><span class="tag tag-y">متوسط</span></td>
+          <td><span class="tag tag-r">پایین</span></td>
+          <td><span class="tag tag-y">ناقص</span></td>
+          <td><span class="tag tag-y">متوسط</span></td>
+          <td><span class="tag tag-r">کم</span></td>
+          <td><strong style="color:var(--accent4)">۵۵/۱۰۰</strong></td>
+        </tr>
+        <tr>
+          <td><strong>سیرنگ</strong></td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar" style="width:30px;background:#888"></div>
+              <span class="bar-val">۵۱K</span>
+            </div>
+          </td>
+          <td><span class="tag tag-r">ضعیف</span></td>
+          <td><span class="tag tag-r">پایین</span></td>
+          <td><span class="tag tag-r">خیر</span></td>
+          <td><span class="tag tag-r">نه</span></td>
+          <td><span class="tag tag-r">کم</span></td>
+          <td><strong style="color:var(--text3)">۳۸/۱۰۰</strong></td>
+        </tr>
+        <tr>
+          <td><strong>معینی‌پور</strong></td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar" style="width:15px;background:#aaa"></div>
+              <span class="bar-val">کم</span>
+            </div>
+          </td>
+          <td><span class="tag tag-r">ضعیف</span></td>
+          <td><span class="tag tag-r">پایین</span></td>
+          <td><span class="tag tag-r">خیر</span></td>
+          <td><span class="tag tag-r">نه</span></td>
+          <td><span class="tag tag-g">بالا*</span></td>
+          <td><strong style="color:var(--text3)">۳۵/۱۰۰</strong></td>
+        </tr>
+        <tr>
+          <td><strong>مینو</strong></td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar" style="width:20px;background:#aaa"></div>
+              <span class="bar-val">متوسط</span>
+            </div>
+          </td>
+          <td><span class="tag tag-y">متوسط</span></td>
+          <td><span class="tag tag-y">متوسط</span></td>
+          <td><span class="tag tag-y">جزئی</span></td>
+          <td><span class="tag tag-y">گاهی</span></td>
+          <td><span class="tag tag-r">کم</span></td>
+          <td><strong style="color:var(--text3)">42/۱۰۰</strong></td>
+        </tr>
+        <tr>
+          <td><strong>دُرنا</strong></td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar" style="width:4px;background:#c8390a"></div>
+              <span class="bar-val">۵۶۰</span>
+            </div>
+          </td>
+          <td><span class="tag tag-r">صفر</span></td>
+          <td><span class="tag tag-r">صفر</span></td>
+          <td><span class="tag tag-r">خیر</span></td>
+          <td><span class="tag tag-r">نه</span></td>
+          <td><span class="tag tag-r">نه</span></td>
+          <td><strong style="color:var(--accent)">۸/۱۰۰</strong></td>
+        </tr>
+        <tr>
+          <td><strong>نادری</strong></td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar" style="width:3px;background:#c8390a"></div>
+              <span class="bar-val">غایب</span>
+            </div>
+          </td>
+          <td><span class="tag tag-r">غایب</span></td>
+          <td><span class="tag tag-r">غایب</span></td>
+          <td><span class="tag tag-r">خیر</span></td>
+          <td><span class="tag tag-r">نه</span></td>
+          <td><span class="tag tag-r">نه</span></td>
+          <td><strong style="color:var(--accent)">۵/۱۰۰</strong></td>
+        </tr>
+        <tr>
+          <td><strong>مزمز</strong></td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar" style="width:8px;background:#c8390a"></div>
+              <span class="bar-val">پراکنده</span>
+            </div>
+          </td>
+          <td><span class="tag tag-r">ضعیف</span></td>
+          <td><span class="tag tag-r">پایین</span></td>
+          <td><span class="tag tag-r">خیر</span></td>
+          <td><span class="tag tag-r">نه</span></td>
+          <td><span class="tag tag-r">نه</span></td>
+          <td><strong style="color:var(--accent)">۱۲/۱۰۰</strong></td>
+        </tr>
+        <tr style="background:rgba(200,57,10,0.05)">
+          <td><strong style="color:var(--accent)">بنیس (هدف)</strong></td>
+          <td>
+            <div class="bar-wrap">
+              <div class="bar" style="width:100px;background:var(--accent)"></div>
+              <span class="bar-val" style="color:var(--accent)">هدف ۶ماهه</span>
+            </div>
+          </td>
+          <td><span class="tag tag-r" style="background:rgba(200,57,10,0.15)">هدف: عالی</span></td>
+          <td><span class="tag tag-r" style="background:rgba(200,57,10,0.15)">هدف: بالا</span></td>
+          <td><span class="tag tag-r" style="background:rgba(200,57,10,0.15)">بله</span></td>
+          <td><span class="tag tag-r" style="background:rgba(200,57,10,0.15)">micro-network</span></td>
+          <td><span class="tag tag-r" style="background:rgba(200,57,10,0.15)">کمپین محور</span></td>
+          <td><strong style="color:var(--accent)">هدف: ۸۵/۱۰۰</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--text3);margin-top:8px">* UGC معینی‌پور ارگانیک است — مصرف‌کنندگان خودشان محتوا می‌سازند بدون هیچ تشویقی از برند</p>
+  </div>
+</div>
+
+<!-- ======= COMPARE ======= -->
+<div class="section" id="compare">
+  <div class="sec-header">
+    <div>
+      <span class="sec-eyebrow">فاز سوم</span>
+      <h2 class="sec-title">جدول مقایسه<br>جامع رقبا</h2>
+    </div>
+    <span class="sec-num">۰۳</span>
+  </div>
+
+  <div class="comp-wrap">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>برند</th>
+          <th>مزیت رقابتی اصلی</th>
+          <th>ضعف فروش</th>
+          <th>ضعف رسانه</th>
+          <th>مخاطب هدف</th>
+          <th>سبک محتوا</th>
+          <th>توزیع</th>
+          <th>تهدید برای بنیس</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <span class="td-brand">دُرنا</span>
+            <span class="td-sub">بیسکولارج</span>
+          </td>
+          <td>قدیمی‌ترین برند، شبکه توزیع</td>
+          <td>هیچ ابزار دیجیتال ندارد؛ جوانان را از دست داده</td>
+          <td>TV-only، سوشال تقریباً صفر</td>
+          <td>خانواده‌های میانسال</td>
+          <td>—</td>
+          <td><span class="tag tag-g">ملی قوی</span></td>
+          <td><span class="tag tag-y">کم — در دیجیتال</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="td-brand">سیرنگ</span>
+            <span class="td-sub">مشهد</span>
+          </td>
+          <td>۱۵۰+ SKU، تنوع بسیار بالا</td>
+          <td>هویت مبهم؛ هیچ‌کس «طرفدار سیرنگ» نیست</td>
+          <td>محتوای بی‌روح، engagement پایین</td>
+          <td>عمومی — بدون targeting</td>
+          <td>محصول‌محور</td>
+          <td><span class="tag tag-g">ملی</span></td>
+          <td><span class="tag tag-y">متوسط</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="td-brand">شیرین‌عسل</span>
+            <span class="td-sub">تبریز</span>
+          </td>
+          <td>بزرگترین برند، صادرات ۶۵ کشور</td>
+          <td>خیلی بزرگ برای چابک بودن</td>
+          <td>Corporate و سرد؛ Gen Z کانکشن ندارد</td>
+          <td>همه — ولی هیچ‌کس اختصاصی</td>
+          <td>محصول + B2B</td>
+          <td><span class="tag tag-g">بین‌المللی</span></td>
+          <td><span class="tag tag-r">بالا — در توزیع</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="td-brand">مزمز</span>
+          </td>
+          <td>اسم برند به‌یادماندنی</td>
+          <td>هیچ استراتژی مشخص ندارد</td>
+          <td>بدون استراتژی — پراکنده</td>
+          <td>نامشخص</td>
+          <td>بدون سبک</td>
+          <td><span class="tag tag-y">محدود</span></td>
+          <td><span class="tag tag-r">بالقوه خطرناک</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="td-brand">نظری</span>
+            <span class="td-sub">آذرنان</span>
+          </td>
+          <td>قوی‌ترین سوشال در دسته، محتوای احساسی</td>
+          <td>توزیع محدودتر از ملی‌ها</td>
+          <td>خیلی serious، بدون طنز</td>
+          <td>خانواده، زنان</td>
+          <td>احساسی + lifestyle</td>
+          <td><span class="tag tag-y">منطقه‌ای</span></td>
+          <td><span class="tag tag-r">بالا — در سوشال</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="td-brand">معینی‌پور</span>
+          </td>
+          <td>UGC ارگانیک، کیفیت محصول</td>
+          <td>هیچ بهره‌برداری از fan-base خود ندارد</td>
+          <td>سوشال رسمی ضعیف</td>
+          <td>خانواده، کیفیت‌طلب</td>
+          <td>بدون استراتژی</td>
+          <td><span class="tag tag-y">محدود</span></td>
+          <td><span class="tag tag-y">متوسط</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="td-brand">مینو</span>
+          </td>
+          <td>۶۰ سال سابقه، brand equity بالا</td>
+          <td>تصویر قدیمی، جوانان disconnect</td>
+          <td>دیجیتال به اندازه سابقه قوی نیست</td>
+          <td>همه نسل‌ها — ولی Gen X و بالاتر</td>
+          <td>خانوادگی سنتی</td>
+          <td><span class="tag tag-g">ملی قوی</span></td>
+          <td><span class="tag tag-y">متوسط</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="td-brand">نادری</span>
+          </td>
+          <td>نوستالژی و اعتماد سنتی</td>
+          <td>در حال از دست دادن بازار</td>
+          <td>غایب در دیجیتال</td>
+          <td>نسل‌های قدیمی‌تر</td>
+          <td>—</td>
+          <td><span class="tag tag-y">محدود</span></td>
+          <td><span class="tag tag-y">کم</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ======= GAPS ======= -->
+<div class="section" id="gaps">
+  <div class="sec-header">
+    <div>
+      <span class="sec-eyebrow">فاز چهارم</span>
+      <h2 class="sec-title">گپ‌های بازار<br>که رقبا نمی‌بینند</h2>
+    </div>
+    <span class="sec-num">۰۴</span>
+  </div>
+
+  <div class="insights-col">
+    <div class="ins-block">
+      <span class="ins-num">گپ ۰۱</span>
+      <div class="ins-title">هیچ‌کس Gen Z را جدی نمی‌گیرد</div>
+      <div class="ins-body">از ۸ برند بررسی‌شده، هیچ‌کدام محتوایی با زبان، فرمت یا فرهنگ نسل Z تولید نمی‌کنند. ریلز با موزیک ترند، meme، absurdist humor — این‌ها برای هیچ برند کیک صنعتی ایرانی وجود ندارند. بازار ۱۵–۲۸ ساله کاملاً خالی است.</div>
+    </div>
+    <div class="ins-block">
+      <span class="ins-num">گپ ۰۲</span>
+      <div class="ins-title">Late-Night Content — خلأ کامل</div>
+      <div class="ins-body">اینستاگرام ایران ساعت ۱۱ شب تا ۲ بامداد بیشترین ترافیک را دارد. هیچ برند کیک صنعتی ایرانی محتوای «شب» ندارد. این slot کاملاً خالی است — اولین برندی که آنجا باشد، بدون هیچ رقیبی صحبت می‌کند.</div>
+    </div>
+    <div class="ins-block">
+      <span class="ins-num">گپ ۰۳</span>
+      <div class="ins-title">طنز هوشمند — territory دست‌نخورده</div>
+      <div class="ins-body">مزمز گاهی طنز امتحان می‌کند ولی inconsistent است. هیچ برند کیک صنعتی ایرانی هنوز territory «برند با شخصیت طنز» را نگرفته. این نوع برندینگ (Wendy's، Duolingo) در ایران هنوز اتفاق نیفتاده.</div>
+    </div>
+    <div class="ins-block">
+      <span class="ins-num">گپ ۰۴</span>
+      <div class="ins-title">گیمرها — بازار دست‌نخورده</div>
+      <div class="ins-body">جامعه گیمرهای ایرانی بزرگ، جوان و وقت‌گذران با snack هستند. هیچ برند کیک/شیرینی ایرانی حتی یک بار با یک گیمر یا استریمر کار نکرده. این market segment صفر رقیب دارد.</div>
+    </div>
+    <div class="ins-block">
+      <span class="ins-num">گپ ۰۵</span>
+      <div class="ins-title">Packaging به عنوان Content</div>
+      <div class="ins-body">هیچ رقیبی از بسته‌بندی به عنوان ابزار دیجیتال استفاده نمی‌کند. نوشته‌های جذاب روی بسته = محتوایی که مصرف‌کننده خودش share می‌کند. هر فروشگاه = یک billboard دیجیتال رایگان.</div>
+    </div>
+    <div class="ins-block">
+      <span class="ins-num">گپ ۰۶</span>
+      <div class="ins-title">Micro-Influencer Network</div>
+      <div class="ins-body">همه رقبا یا اصلاً influencer ندارند، یا با ۱–۲ بزرگ کار می‌کنند. شبکه ۵۰–۱۰۰ میکرو اینفلوئنسر (۵–۵۰ هزار فالوور) با authenticity بالا و هزینه پایین، گزینه‌ای است که هیچ‌کس استفاده نکرده.</div>
+    </div>
+    <div class="ins-block">
+      <span class="ins-num">گپ ۰۷</span>
+      <div class="ins-title">Ritual Branding</div>
+      <div class="ins-body">«شیر + اوریو» یا «قهوه + شیرینی» — هیچ برند ایرانی یک ritual رسمی با محصول خود تعریف نکرده. «بنیس + چای ایرانی» یک فرهنگ است که فقط باید نام‌گذاری شود.</div>
+    </div>
+    <div class="ins-block">
+      <span class="ins-num">گپ ۰۸</span>
+      <div class="ins-title">Community — نه فقط فالوور</div>
+      <div class="ins-body">هیچ برند کیک صنعتی ایرانی community ساخته. دُرنا، سیرنگ، شیرین‌عسل — فالوور دارند ولی هیچ‌کدام یک جامعه وفادار نساخته‌اند. اولین برندی که این کار را بکند، سخت‌ترین مزیت رقابتی را می‌سازد.</div>
+    </div>
+    <div class="ins-block wide">
+      <span class="ins-num">بزرگترین گپ</span>
+      <div class="ins-title" style="color:var(--paper);font-size:22px">هیچ برند کیک ایرانی «برند اینترنتی» نیست</div>
+      <div class="ins-body">در تمام بررسی ۸ برند، هیچ‌کدام هنوز از TV و توزیع سنتی به دنیای اینترنت migrate نکرده‌اند. اولین برند کیک صنعتی ایرانی که «internet-native» شود — یک سال جلوتر از همه رقبا خواهد بود. این فرصت الان باز است.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= VERDICT ======= -->
+<div class="section" id="verdict">
+  <div class="sec-header">
+    <div>
+      <span class="sec-eyebrow">حکم نهایی</span>
+      <h2 class="sec-title">بنیس چه باید<br>بکند؟</h2>
+    </div>
+    <span class="sec-num">۰۵</span>
+  </div>
+
+  <div class="verdict-wrap">
+    <div style="position:relative;z-index:1">
+      <span style="display:block;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:16px">نقشه اجرایی — ۱۵ اقدام اولویت‌دار</span>
+      <h3 style="font-size:clamp(22px,3.5vw,38px);font-weight:900;line-height:1.15;margin-bottom:40px;max-width:800px">بر اساس تحلیل ۸ رقیب، اینجا دقیقاً چیزی است که بنیس باید انجام دهد تا <span style="color:var(--accent)">پیشتاز</span> شود</h3>
+
+      <ol class="priority-list">
+        <li>
+          <div class="pri-content">
+            <span class="pri-tag">فوری — ۱ ماه</span>
+            <div class="pri-title">هویت دیجیتال بنیس را از صفر تعریف کن</div>
+            <div class="pri-desc">نظری تنها رقیب در سوشال است. بنیس باید با زبانی متفاوت وارد شود: طنز + احساس + internet-native. یک tone of voice مشخص، یک visual identity متمایز، یک voice که مثل «آدم» صحبت کند نه «شرکت».</div>
+          </div>
+        </li>
+        <li>
+          <div class="pri-content">
+            <span class="pri-tag">فوری — ماه اول</span>
+            <div class="pri-title">Late-Night Content را شروع کن — الان</div>
+            <div class="pri-desc">هر شب ۱۱ تا ۲ بامداد استوری بده. این slot صفر رقیب دارد. لحن: صادقانه، آرام، «می‌دونم بیداری». اینجا جایی است که وفادارترین مخاطبان ساخته می‌شوند.</div>
+          </div>
+        </li>
+        <li>
+          <div class="pri-content">
+            <span class="pri-tag">ماه اول–دوم</span>
+            <div class="pri-title">شبکه ۵۰ میکرو-اینفلوئنسر بساز</div>
+            <div class="pri-desc">به جای ۱ مگاینفلوئنسر گران، ۵۰ نفر ۵–۵۰ هزار فالوور. بودجه کمتر، authenticity بیشتر، reach واقعی‌تر. هیچ رقیبی این کار را نکرده.</div>
+          </div>
+        </li>
+        <li>
+          <div class="pri-content">
+            <span class="pri-tag">ماه دوم</span>
+            <div class="pri-title">Meme و Reactive Content را جدی بگیر</div>
+            <div class="pri-desc">هر هفته حداقل ۲ meme با زاویه ایرانی. هر رویداد بزرگ (بازی ملی، ترند اینترنتی) را ظرف ۲ ساعت react کن. این سرعت = relevance = reach ارگانیک.</div>
+          </div>
+        </li>
+        <li>
+          <div class="pri-content">
+            <span class="pri-tag">ماه دوم–سوم</span>
+            <div class="pri-title">بسته‌بندی را تبدیل به Content کن</div>
+            <div class="pri-desc">جملات کوتاه طنز/احساسی روی بسته. QR code به surprise content. طراحی که مردم بخواهند عکسش بگیرند. هر فروشگاه = یک billboard دیجیتال رایگان. هیچ رقیبی این کار را نکرده.</div>
+          </div>
+        </li>
+        <li>
+          <div class="pri-content">
+            <span class="pri-tag">ماه سوم</span>
+            <div class="pri-title">وارد بازار گیمرها شو — اولین برند باش</div>
+            <div class="pri-desc">اسپانسری ۵ استریمر ایرانی متوسط. محتوای «بنیس + گیم». بسته‌بندی Gaming Edition. این بازار صفر رقیب دارد و بودجه کمی نیاز دارد.</div>
+          </div>
+        </li>
+        <li>
+          <div class="pri-content">
+            <span class="pri-tag">ماه سوم–چهارم</span>
+            <div class="pri-title">اولین Viral Campaign را طراحی کن</div>
+            <div class="pri-desc">یک challenge یا quiz که ۱۵ influencer همزمان launch کنند. «کدوم بنیس هستی؟» — «بنیس رو به کی هدیه می‌دی؟» فرمت‌هایی با مکانیک chain tagging که بدون هزینه پخش می‌شوند.</div>
+          </div>
+        </li>
+        <li>
+          <div class="pri-content">
+            <span class="pri-tag">ماه چهارم</span>
+            <div class="pri-title">Mascot طراحی کن — memeable و weird</div>
+            <div class="pri-desc">یک کاراکتر با شخصیت قوی که مردم برایش meme بسازند. مثل Duolingo Owl. باید عجیب، به‌یادماندنی و shareable باشد. این بلند‌مدت‌ترین سرمایه‌گذاری برند است.</div>
+          </div>
+        </li>
+        <li>
+          <div class="pri-content">
+            <span class="pri-tag">ماه چهارم–پنجم</span>
+            <div class="pri-title">«روز بنیس» را اعلام کن</div>
+            <div class="pri-desc">یک تاریخ خاص ایرانی را «روز بنیس» اعلام کن. اول کوچک، هر سال بزرگتر. مثل Pocky Day ژاپن — برندی که holiday می‌سازد، در تاریخ می‌ماند.</div>
+          </div>
+        </li>
+        <li>
+          <div class="pri-content">
+            <span class="pri-tag">ماه پنجم</span>
+            <div class="pri-title">کمپین فصلی بزرگ (نوروز یا یلدا) بساز</div>
+            <div class="pri-desc">یک کمپین احساسی با ریل، UGC challenge و bسته‌بندی محدود. نوروز: «طعم عید» — یلدا: «بنیس سایز شب یلدا». حداقل ۱ ماه قبل از مناسبت آغاز کن.</div>
+          </div>
+        </li>
+        <li>
+          <div class="pri-content">
+            <span class="pri-tag">موازی — از همان ابتدا</span>
+            <div class="pri-title">Reply Strategy — Wendy's ایرانی باش</div>
+            <div class="pri-desc">به کامنت‌های مصرف‌کنندگان با طنز هوشمند پاسخ بده. این کار رایگان است، ویروسی می‌شود، و یک شخصیت ایجاد می‌کند. هیچ برند کیک ایرانی این کار را نمی‌کند.</div>
+          </div>
+        </li>
+        <li>
+          <div class="pri-content">
+            <span class="pri-tag">موازی — مداوم</span>
+            <div class="pri-title">UGC را سازمان بده — از مصرف‌کننده محتوا بساز</div>
+            <div class="pri-desc">Repost بهترین محتوای کاربران. «عکس هفته». هشتگ اختصاصی. این کار هزینه تولید را کم و authenticity را زیاد می‌کند. معینی‌پور این را دارد ولی استفاده نمی‌کند — بنیس باید.</div>
+          </div>
+        </li>
+        <li>
+          <div class="pri-content">
+            <span class="pri-tag">ماه سوم به بعد</span>
+            <div class="pri-title">Product Placement در وب‌سریال‌های ایرانی</div>
+            <div class="pri-desc">هر بار شخصیت بنیس می‌خورد = یک لحظه خوش. این association در ناخودآگاه ثبت می‌شود. بدون تبلیغ مستقیم، بالاترین اثرگذاری.</div>
+          </div>
+        </li>
+        <li>
+          <div class="pri-content">
+            <span class="pri-tag">بلندمدت — سال دوم</span>
+            <div class="pri-title">Limited Edition با هنرمندان دیجیتال ایرانی</div>
+            <div class="pri-desc">همکاری با ۵ طراح/هنرمند دیجیتال برای بسته‌بندی محدود. هنرمندان به مخاطبانشان معرفی می‌کنند. Media coverage رایگان. هیچ رقیبی این کار را نکرده.</div>
+          </div>
+        </li>
+        <li>
+          <div class="pri-content">
+            <span class="pri-tag">بلندمدت — سال دوم</span>
+            <div class="pri-title">کارت‌های کلکسیونی داخل بسته — FOMO mechanism</div>
+            <div class="pri-desc">۵۰ کارت مختلف. مردم برای تکمیل collection بیشتر می‌خرند. Repeat purchase را با یک مکانیک بازی‌وار تبدیل به عادت کن. Kinder این کار را ۵۰ سال است می‌کند.</div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="divider-thick"></div>
+
+  <div class="verdict-grid" style="margin-top:0">
+    <div class="v-block">
+      <div class="v-title">بزرگترین ضعف‌های رقبا که باید exploit کرد</div>
+      <ul class="v-list">
+        <li><span class="num">۱</span><span>دُرنا ۵۶۰ فالوور دارد — <strong>غول خوابیده</strong></span></li>
+        <li><span class="num">۲</span><span>هیچ‌کس late-night content ندارد — <strong>slot خالی</strong></span></li>
+        <li><span class="num">۳</span><span>هیچ‌کس Gen Z را target نمی‌کند — <strong>نسل گم‌شده</strong></span></li>
+        <li><span class="num">۴</span><span>نظری طنز ندارد — <strong>territory باز</strong></span></li>
+        <li><span class="num">۵</span><span>مزمز از اسمش استفاده نمی‌کند — <strong>فرصت زمانی</strong></span></li>
+        <li><span class="num">۶</span><span>هیچ‌کس گیمرها را نمی‌بیند — <strong>بازار صفر رقیب</strong></span></li>
+        <li><span class="num">۷</span><span>هیچ‌کس community نساخته — <strong>وفاداری نیست</strong></span></li>
+        <li><span class="num">۸</span><span>معینی‌پور UGC دارد ولی استفاده نمی‌کند — <strong>الگوی اشتباه</strong></span></li>
+      </ul>
+    </div>
+    <div class="v-block">
+      <div class="v-title">positioning بنیس — دقیقاً چه باشد</div>
+      <ul class="v-list">
+        <li><span class="num">🎯</span><span><strong>اولین برند کیک اینترنتی ایران</strong> — internet-native بودن</span></li>
+        <li><span class="num">😄</span><span><strong>شیطون محترم</strong> — طنز هوشمند، نه بی‌ادبانه</span></li>
+        <li><span class="num">🌙</span><span><strong>برند شب‌ها</strong> — حضور late-night</span></li>
+        <li><span class="num">🎮</span><span><strong>برند گیمرها</strong> — territory بدون رقیب</span></li>
+        <li><span class="num">💬</span><span><strong>مثل آدم صحبت کن</strong> — نه مثل شرکت</span></li>
+        <li><span class="num">📦</span><span><strong>بسته‌بندی = محتوا</strong> — هر بسته یک پست</span></li>
+        <li><span class="num">🤝</span><span><strong>community first</strong> — فالوور = دوست</span></li>
+        <li><span class="num">⚡</span><span><strong>سرعت = ارتباط</strong> — reactive در ۲ ساعت</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:40px;border-right-color:var(--accent3)">
+    <span class="callout-label">حکم نهایی</span>
+    <div class="callout-text">بازار کیک صنعتی ایران از نظر دیجیتال در سال ۱۳۸۰ زندگی می‌کند. همه رقبا یا TV-only هستند، یا حضور سوشال ضعیف دارند، یا محتوای بی‌روح و corporate. <strong>اولین برندی که «internet-native» شود — و این بازی را جدی بگیرد — یک سال جلوتر از همه خواهد بود.</strong> بنیس با اجرای ۵ اقدام اول این لیست در ۶۰ روز، می‌تواند از نظر سوشال به بزرگترین برند کیک صنعتی ایران تبدیل شود — حتی اگر از نظر فروش هنوز در جایگاه پایین‌تری باشد.</div>
+  </div>
+</div>
+
+</main>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: document.querySelector('.nav').offsetTop, behavior: 'smooth' });
+}
+
+function toggleExpand(id) {
+  const el = document.getElementById('exp-' + id);
+  const btn = el.previousElementSibling;
+  if (el.style.display === 'none') {
+    el.style.display = 'block';
+    btn.textContent = 'بستن ▲';
+  } else {
+    el.style.display = 'none';
+    btn.textContent = 'مشاهده تحلیل کامل ▼';
+  }
+}
+</script>
+</body>
+</html>
