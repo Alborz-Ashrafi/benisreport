@@ -1,66 +1,424 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>گزارش‌های راهبردی بنیس</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/pinar-font@v1.0.0-alpha1/dist/font-face.css" rel="stylesheet" type="text/css" />
-    <style>
-        body {
-            font-family: 'Pinar', sans-serif;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>داشبورد استراتژیک | رهنگاشت</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+
+      --accent-competitor: #c8390a;
+      --accent-strategy: #ff6b35;
+      --accent-dashboard: #10b981;
+
+      --text: #f0f0f8;
+      --text-secondary: #a0a0c0;
+
+      --border: rgba(255, 255, 255, 0.07);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Vazirmatn", sans-serif;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow-x: hidden;
+      position: relative;
+
+      padding: 40px 16px;
+    }
+
+    /* Glow Background */
+
+    body::before {
+      content: "";
+      position: absolute;
+
+      width: 320px;
+      height: 320px;
+
+      top: -100px;
+      left: -100px;
+
+      border-radius: 50%;
+
+      background: rgba(255, 107, 53, 0.06);
+
+      filter: blur(90px);
+
+      z-index: 0;
+    }
+
+    body::after {
+      content: "";
+      position: absolute;
+
+      width: 420px;
+      height: 420px;
+
+      bottom: -120px;
+      right: -120px;
+
+      border-radius: 50%;
+
+      background: rgba(200, 57, 10, 0.05);
+
+      filter: blur(100px);
+
+      z-index: 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    header h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 900;
+
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+
+      background: linear-gradient(
+        135deg,
+        #ffffff 10%,
+        #d6d6e6 100%
+      );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header p {
+      max-width: 760px;
+
+      margin: 0 auto;
+
+      color: var(--text-secondary);
+
+      line-height: 2;
+      font-size: 15px;
+      font-weight: 400;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 24px;
+
+      margin-bottom: 56px;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: rgba(19, 19, 26, 0.95);
+
+      border: 1px solid var(--border);
+
+      border-radius: 24px;
+
+      padding: 30px 24px;
+
+      min-height: 290px;
+
+      display: flex;
+      flex-direction: column;
+
+      text-decoration: none;
+
+      position: relative;
+      overflow: hidden;
+
+      transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .card::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.03) 0%,
+        transparent 100%
+      );
+
+      opacity: 0;
+
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .icon {
+      width: 62px;
+      height: 62px;
+
+      border-radius: 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 28px;
+
+      margin-bottom: 22px;
+
+      background: rgba(255,255,255,0.03);
+
+      border: 1px solid rgba(255,255,255,0.06);
+
+      transition: all 0.3s ease;
+    }
+
+    .card h2 {
+      font-size: 22px;
+      font-weight: 800;
+
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--text-secondary);
+
+      font-size: 14px;
+      line-height: 1.9;
+
+      margin-bottom: auto;
+    }
+
+    .arrow {
+      padding-top: 28px;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+
+      transition: transform 0.3s ease;
+    }
+
+    .arrow span {
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .arrow span {
+      transform: translateX(-4px);
+    }
+
+    /* Competitor */
+
+    .card-competitor:hover {
+      border-color: var(--accent-competitor);
+
+      box-shadow:
+        0 12px 40px rgba(200, 57, 10, 0.18);
+    }
+
+    .card-competitor:hover .icon {
+      background: rgba(200, 57, 10, 0.12);
+
+      border-color: rgba(200, 57, 10, 0.3);
+    }
+
+    .card-competitor .arrow {
+      color: var(--accent-competitor);
+    }
+
+    /* Strategy */
+
+    .card-strategy:hover {
+      border-color: var(--accent-strategy);
+
+      box-shadow:
+        0 12px 40px rgba(255, 107, 53, 0.18);
+    }
+
+    .card-strategy:hover .icon {
+      background: rgba(255, 107, 53, 0.12);
+
+      border-color: rgba(255, 107, 53, 0.3);
+    }
+
+    .card-strategy .arrow {
+      color: var(--accent-strategy);
+    }
+
+    /* Dashboard */
+
+    .card-dashboard:hover {
+      border-color: var(--accent-dashboard);
+
+      box-shadow:
+        0 12px 40px rgba(16, 185, 129, 0.18);
+    }
+
+    .card-dashboard:hover .icon {
+      background: rgba(16, 185, 129, 0.12);
+
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .card-dashboard .arrow {
+      color: var(--accent-dashboard);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+
+      padding-top: 26px;
+
+      text-align: center;
+
+      color: #5d5d75;
+
+      font-size: 12px;
+      line-height: 2;
+    }
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
 
-    <div class="max-w-4xl mx-auto w-full p-6 my-auto">
-        <header class="text-center mb-12">
-            <h1 class="text-4xl font-black text-slate-900 tracking-tight">گزارش‌های راهبردی و تحلیلی بنیس</h1>
-            <p class="text-slate-500 mt-3 text-lg">مجموعه مستندات و داشبوردهای برنامه‌ریزی و ارزیابی بازار</p>
-        </header>
+<body>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            <a href="benis strategy.html" class="group bg-white p-6 rounded-2xl border border-slate-100 shadow-xs hover:shadow-md hover:border-slate-200 transition-all duration-200 flex flex-col justify-between min-h-[180px]">
-                <div>
-                    <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center font-bold text-xl mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">🎯</div>
-                    <h2 class="text-xl font-bold text-slate-900 mb-2">برنامه راهبردی</h2>
-                    <p class="text-slate-500 text-sm leading-relaxed">اهداف کلان، استراتژی‌های بازاریابی و چشم‌انداز توسعه برند بنیس.</p>
-                </div>
-                <div class="text-indigo-600 font-bold text-sm mt-4 flex items-center group-hover:translate-x-[-4px] transition-transform">
-                    مشاهده گزارش <span class="mr-1">←</span>
-                </div>
-            </a>
+  <div class="container">
 
-            <a href="competitor analysis.html" class="group bg-white p-6 rounded-2xl border border-slate-100 shadow-xs hover:shadow-md hover:border-slate-200 transition-all duration-200 flex flex-col justify-between min-h-[180px]">
-                <div>
-                    <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center font-bold text-xl mb-4 group-hover:bg-amber-600 group-hover:text-white transition-colors">📊</div>
-                    <h2 class="text-xl font-bold text-slate-900 mb-2">تحلیل رقبا</h2>
-                    <p class="text-slate-500 text-sm leading-relaxed">بررسی سهم بازار، نقاط قوت و ضعف رقبای اصلی در صنعت شیرینی و شکلات.</p>
-                </div>
-                <div class="text-amber-600 font-bold text-sm mt-4 flex items-center group-hover:translate-x-[-4px] transition-transform">
-                    مشاهده گزارش <span class="mr-1">←</span>
-                </div>
-            </a>
+    <header>
+      <h1>مستندات و خروجی‌های راهبردی رهنگاشت</h1>
 
-            <a href="sales-dashboard.html" class="group bg-white p-6 rounded-2xl border border-slate-100 shadow-xs hover:shadow-md hover:border-slate-200 transition-all duration-200 flex flex-col justify-between min-h-[180px]">
-                <div>
-                    <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center font-bold text-xl mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-colors">📈</div>
-                    <h2 class="text-xl font-bold text-slate-900 mb-2">داشبورد فروش</h2>
-                    <p class="text-slate-500 text-sm leading-relaxed">تحلیل پارتو، آمار فروش ماهانه کالاها و سهم کانال‌های توزیع هدف.</p>
-                </div>
-                <div class="text-emerald-600 font-bold text-sm mt-4 flex items-center group-hover:translate-x-[-4px] transition-transform">
-                    مشاهده داشبورد <span class="mr-1">←</span>
-                </div>
-            </a>
+      <p>
+        نتایج ارزیابی بازار، تحلیل رقبا و داشبورد عملکرد فروش صنایع غذایی بنیس
+        — تدوین شده بر اساس جلسات عارضه‌یابی و تحلیل ساختار بازار
+      </p>
+    </header>
 
+    <div class="grid">
+
+      <!-- تحلیل رقبا -->
+      <a
+        href="./competitor analysis.html"
+        class="card card-competitor"
+      >
+        <div class="icon">📊</div>
+
+        <h2>تحلیل رقبا</h2>
+
+        <p>
+          بررسی سهم بازار، استراتژی ارتباطی، مزیت رقابتی
+          و نقاط ضعف برندهای فعال صنعت کیک و شکلات.
+        </p>
+
+        <div class="arrow">
+          مشاهده خروجی
+          <span>←</span>
         </div>
+      </a>
+
+      <!-- استراتژی -->
+      <a
+        href="./benis strategy.html"
+        class="card card-strategy"
+      >
+        <div class="icon">🎯</div>
+
+        <h2>برنامه راهبردی برند</h2>
+
+        <p>
+          طراحی مسیر رشد برند، اهداف توسعه بازار،
+          استراتژی فروش و سناریوهای توسعه برای برند بنیس.
+        </p>
+
+        <div class="arrow">
+          مشاهده خروجی
+          <span>←</span>
+        </div>
+      </a>
+
+      <!-- داشبورد -->
+      <a
+        href="./sales-dashboard.html"
+        class="card card-dashboard"
+      >
+        <div class="icon">📈</div>
+
+        <h2>گزارش جامع فروش</h2>
+
+        <p>
+          پایش و تحلیل داده‌های فروش، دسته‌بندی محصولات،
+          فیلتر هوشمند و تحلیل پارتو بر اساس فایل اکسل فروش.
+        </p>
+
+        <div class="arrow">
+          مشاهده داشبورد
+          <span>←</span>
+        </div>
+      </a>
+
     </div>
 
-    <footer class="text-center py-6 text-xs text-slate-400 font-medium">
-        صنایع غذایی بنیس — بخش برنامه‌ریزی راهبردی و بازاریابی
+    <footer>
+      توسعه یافته توسط تیم مشاورین مارکتینگ رهنگاشت ©
+      <br>
+      خروجی رسمی فاز عارضه‌یابی و تدوین ساختار برنامه‌ریزی
     </footer>
+
+  </div>
 
 </body>
 </html>
