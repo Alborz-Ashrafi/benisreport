@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بنیس —تحلیل جامع برند </title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@200;300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBF7EF; --paper2:#F4ECDC; --ink:#1B2440; --ink2:#454C66; --ink3:#6E7488;
+  --gold:#A9792A; --gold2:#C9A85C; --teal:#1D7A5F; --coral:#BE5329; --blue:#2C5A8C;
+  --line:rgba(27,36,64,.12); --line2:rgba(27,36,64,.06);
+  --hero:#15203F;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:'Vazirmatn',sans-serif;background:var(--paper);color:var(--ink);
+  line-height:1.85;font-weight:300;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(rgba(169,121,42,.04) 1px,transparent 1px);background-size:22px 22px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+a{color:var(--gold);text-decoration:none}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(251,247,239,.92);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:20px;height:60px;overflow-x:auto}
+nav .logo{font-weight:900;font-size:20px;color:var(--ink);letter-spacing:-.5px;white-space:nowrap}
+nav .logo span{color:var(--gold)}
+nav .links{display:flex;gap:6px;flex-wrap:nowrap}
+nav a{font-size:13px;color:var(--ink2);padding:6px 11px;border-radius:8px;white-space:nowrap;font-weight:400;transition:.2s}
+nav a:hover{background:var(--paper2);color:var(--ink)}
+
+/* hero */
+header.hero{background:var(--hero);color:#F3EEE2;padding:84px 0 70px;position:relative;overflow:hidden}
+header.hero::before{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(201,168,92,.10) 1px,transparent 1px);background-size:26px 26px}
+.hero .kicker{color:var(--gold2);font-weight:500;letter-spacing:4px;font-size:13px;margin-bottom:18px}
+.hero h1{font-size:clamp(48px,9vw,96px);font-weight:900;line-height:.95;letter-spacing:-2px;color:#fff}
+.hero .sub{font-size:clamp(17px,2.4vw,22px);color:#C8CDDC;font-weight:300;margin-top:18px;max-width:640px}
+.hero .stats{display:flex;flex-wrap:wrap;gap:30px;margin-top:46px;position:relative}
+.hero .stat .n{font-size:34px;font-weight:900;color:var(--gold2);line-height:1}
+.hero .stat .l{font-size:13px;color:#AEB4C6;margin-top:6px}
+.hero .rule{width:64px;height:3px;background:var(--gold);margin-bottom:26px}
+
+/* caveat */
+.caveat{background:#FBEFE7;border-right:4px solid var(--coral);padding:16px 20px;border-radius:10px;
+  margin:28px 0;font-size:14.5px;color:#7a3a1f}
+.caveat b{font-weight:700}
+
+/* sections */
+section{padding:54px 0;border-top:1px solid var(--line2)}
+.sec-h{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+.sec-h .num{font-size:15px;font-weight:700;color:var(--gold);border:1.5px solid var(--gold);
+  width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none}
+.sec-h h2{font-size:clamp(24px,4vw,34px);font-weight:700;letter-spacing:-.5px;color:var(--ink)}
+.sec-sub{color:var(--ink3);font-size:15px;margin-bottom:24px;padding-right:52px}
+.body p{margin:14px 0;color:var(--ink2);font-size:16px}
+.body strong{font-weight:700;color:var(--ink)}
+.lead{font-size:19px !important;color:var(--ink) !important;font-weight:400}
+
+ul.clean{list-style:none;margin:16px 0;display:grid;gap:10px}
+ul.clean li{padding:13px 16px 13px 16px;background:#fff;border:1px solid var(--line);border-radius:10px;
+  font-size:15px;color:var(--ink2);position:relative;padding-right:34px}
+ul.clean li::before{content:"";position:absolute;right:14px;top:21px;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+ul.clean li b{color:var(--ink);font-weight:700}
+
+/* cards grid */
+.grid{display:grid;gap:16px;margin:20px 0}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:760px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px}
+.card h4{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.card p,.card li{font-size:14.5px;color:var(--ink2)}
+.card ul{list-style:none;display:grid;gap:7px;margin-top:6px}
+.card ul li{padding-right:16px;position:relative}
+.card ul li::before{content:"–";position:absolute;right:0;color:var(--gold)}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px}
+
+/* dashboard */
+.kpi{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center}
+.kpi .n{font-size:40px;font-weight:900;line-height:1}
+.kpi .pct{font-size:14px;color:var(--ink3);margin-top:4px}
+.kpi .l{font-size:14px;font-weight:700;margin-top:10px}
+.kpi.hero-c{border-top:4px solid var(--teal)} .kpi.hero-c .n{color:var(--teal)}
+.kpi.keep-c{border-top:4px solid var(--blue)} .kpi.keep-c .n{color:var(--blue)}
+.kpi.rev-c{border-top:4px solid var(--gold)} .kpi.rev-c .n{color:var(--gold)}
+.kpi.cut-c{border-top:4px solid var(--coral)} .kpi.cut-c .n{color:var(--coral)}
+
+.bars{display:grid;gap:11px;margin-top:6px}
+.bar-row{display:grid;grid-template-columns:130px 1fr 56px;align-items:center;gap:12px;font-size:14px}
+.bar-track{height:14px;background:var(--paper2);border-radius:8px;overflow:hidden}
+.bar-fill{height:100%;border-radius:8px;background:var(--gold)}
+.bar-row .v{color:var(--ink3);font-size:13px;text-align:left;font-variant-numeric:tabular-nums}
+
+/* SWOT */
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:680px){.swot{grid-template-columns:1fr}}
+.swot .q{border-radius:14px;padding:18px}
+.swot .S{background:#EAF3EE;border:1px solid #BFE0CF}.swot .W{background:#FBEFE7;border:1px solid #F0D2BF}
+.swot .O{background:#EAF1F8;border:1px solid #C7DAEE}.swot .T{background:#F6EEDC;border:1px solid #E7D4A8}
+.swot h4{margin-bottom:8px}.swot ul{list-style:none;display:grid;gap:6px;font-size:14px;color:var(--ink2)}
+.swot ul li{padding-right:15px;position:relative}.swot ul li::before{content:"–";position:absolute;right:0}
+
+/* map */
+.mapbox{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}
+.map text{font-family:'Vazirmatn',sans-serif}
+.map .ax{fill:var(--ink3);font-size:13px;font-weight:400}
+.map .lbl{fill:var(--ink2);font-size:13px;font-weight:500}
+.map .big{fill:var(--ink);font-size:14.5px;font-weight:700}
+
+/* table */
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.controls input,.controls select{font-family:inherit;font-size:14px;padding:9px 13px;border:1px solid var(--line);
+  border-radius:10px;background:#fff;color:var(--ink)}
+.controls input{flex:1;min-width:180px}
+.chip{font-size:13px;font-weight:500;padding:8px 14px;border-radius:22px;border:1px solid var(--line);
+  background:#fff;color:var(--ink2);cursor:pointer;transition:.15s}
+.chip:hover{border-color:var(--gold)}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tcount{font-size:13px;color:var(--ink3);margin-right:auto}
+.tbl-wrap{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+.tbl-scroll{max-height:620px;overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+thead th{position:sticky;top:0;background:var(--hero);color:#EDE7D8;font-weight:500;padding:12px 12px;
+  text-align:right;cursor:pointer;white-space:nowrap;font-size:13px}
+thead th:hover{color:#fff}
+tbody td{padding:10px 12px;border-top:1px solid var(--line2);color:var(--ink2);font-variant-numeric:tabular-nums}
+tbody tr:hover{background:var(--paper2)}
+td.name{font-weight:400;color:var(--ink);text-align:right}
+.bk{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.bk-قهرمان{background:#D9EDE3;color:#14563f}
+.bk-نگهدار{background:#DCE8F4;color:#1d4068}
+.bk-بازبینی{background:#F6EACB;color:#7d5c10}
+.bk-حذف{background:#F6D9C9;color:#8a3415}
+
+footer{background:var(--hero);color:#AEB4C6;padding:40px 0;font-size:13px;text-align:center;margin-top:30px}
+footer b{color:var(--gold2)}
+
+.fade{opacity:0;transform:translateY(16px);animation:fu .7s ease forwards}
+@keyframes fu{to{opacity:1;transform:none}}
+@media print{nav{display:none}header.hero{padding:40px 0}.tbl-scroll{max-height:none}body{background:#fff}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <div class="logo">بنیس<span>.</span></div>
+  <div class="links">
+    <a href="#dash">داشبورد</a>
+    <a href="#market">بازار</a>
+    <a href="#comp">رقبا</a>
+    <a href="#swot">SWOT</a>
+    <a href="#brand">برند</a>
+    <a href="#pos">جایگاه‌یابی</a>
+    <a href="#table">جدول سبد</a>
+    <a href="#gtm">رشد</a>
+    <a href="#gaps">حفره‌ها</a>
+  </div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker fade">تحلیل جامع برند توسط تیم رهنگاشت · خرداد ۱۴۰۵</div>
+  <div class="rule fade" style="animation-delay:.05s"></div>
+  <h1 class="fade" style="animation-delay:.1s">بنیس</h1>
+  <p class="sub fade" style="animation-delay:.2s">از تحلیل داده تا تصمیم استراتژیک — یک برند نوستالژیک با ۵۰ سال میراث، در آستانهٔ دیجیتالی‌شدن.</p>
+  <div class="stats fade" style="animation-delay:.3s">
+    <div class="stat"><div class="n">۵۰+</div><div class="l">سال سابقه</div></div>
+    <div class="stat"><div class="n">۱۶۹</div><div class="l">کد کالا</div></div>
+    <div class="stat"><div class="n">۵.۱M</div><div class="l">کارتن فروش سالانه</div></div>
+    <div class="stat"><div class="n">۲×</div><div class="l">هدف رشد حجم</div></div>
+  </div>
+</div></header>
+
+<div class="wrap">
+
+<div class="caveat">
+  <b>دو نکتهٔ صداقت داده‌ای:</b> (۱) آنچه به‌عنوان «نظر مشتری» جمع شده عمدتاً متن تبلیغاتی خودِ برند است، نه صدای واقعی مشتری — پس «صدای مشتری» همچنان بزرگ‌ترین حفرهٔ داده است.
+  (۲) داده‌ها فقط <b>حجم فروش (کارتن)</b> دارند، نه سود؛ هر تصمیم «محصول ستاره» تا افزودن دادهٔ سود، ناتمام است.
+</div>
+
+<section id="exec">
+  <div class="sec-h"><div class="num">۱</div><h2>خلاصهٔ مدیریتی</h2></div>
+  <div class="body">
+    <p class="lead">بنیس یک تناقض استراتژیک تمام‌عیار است: برندی با ۵۰ سال اعتبار، لقب «پدر کیک ایران» و توزیع ملی قدرتمند — اما با حضور دیجیتال نزدیک به صفر. برند آفلاین قوی، آنلاین نامرئی.</p>
+    <p>تحلیل ۵٬۱۰۵٬۵۴۸ کارتن فروش سالانه سه واقعیت را آشکار کرد: سبد به‌شدت <strong>پراکنده</strong> است (هیچ کالایی بیش از ۴.۶٪ سهم ندارد و ۴۴ کالا فروش صفر دارند)؛ تمرکز برند روی <strong>بنیس/ارس‌پر (۷۸٪)</strong> و نیلو (۱۷.۵٪) است؛ و برنامهٔ رشد، حجم را تقریباً <strong>دوبرابر</strong> می‌کند.</p>
+    <p><strong>حکم:</strong> موتور رشدِ لازم برای دوبرابرشدن — به‌ویژه تقاضاسازی دیجیتال و تمرکز سبد — هنوز ساخته نشده. اولویت، «تمرکز + دیجیتالی‌شدنِ یک برند نوستالژیک» است، نه افزودن محصول و کانال.</p>
+  </div>
+</section>
+
+<section id="dash">
+  <div class="sec-h"><div class="num">۲</div><h2>داشبورد سبد محصول</h2></div>
+  <div class="sec-sub">پارتو بر مبنای حجم فروش — ۱۲۲ کالا از ۱۶۹ کالا تنها ۲۰٪ فروش را می‌سازند.</div>
+  <div class="grid g4" id="kpis"></div>
+  <div class="grid g2" style="margin-top:18px">
+    <div class="card"><h4>سهم برندها از حجم</h4><div class="bars" id="brandbars"></div></div>
+    <div class="card"><h4>فصلی‌بودن فروش</h4><div class="bars" id="qbars"></div>
+      <p style="margin-top:12px;font-size:13.5px;color:var(--ink3)">پاییز (بازگشت مدرسه) قوی‌ترین فصل است — لنگرگاه تقویم کمپین.</p></div>
+  </div>
+</section>
+
+<section id="audit">
+  <div class="sec-h"><div class="num">۳</div><h2>ممیزی کسب‌وکار</h2></div>
+  <div class="body"><p>تولیدکنندهٔ FMCG شیرینی بسته‌بندی (کیک، کلوچه، ویفر، بیسکویت، شکلات، کروسان). معماری برند چندلایه و گیج‌کننده است؛ ناربن (برند صادراتی) در بازار داخلی عملاً صفر است.</p></div>
+  <div class="grid g2">
+    <div class="card"><h4>نقاط قوت داخلی</h4><ul>
+      <li>سابقه و اعتبار ۵۰ ساله</li><li>زیرساخت تولید و توزیع ملی</li>
+      <li>توان نوآوری (بارکیک‌های جدید سریع جا باز کردند)</li><li>قیمت‌گذاری رقابتی</li></ul></div>
+    <div class="card"><h4>نقاط ضعف داخلی</h4><ul>
+      <li>پراکندگی شدید SKU (۱۶۹ کالا، ۴۴ مرده)</li><li>حضور دیجیتال بسیار ضعیف</li>
+      <li>معماری برند مبهم (بنیس/ارس‌پر/نیلو/ناربن + درنا)</li><li>نبود دادهٔ سود برای تصمیم سبد</li></ul></div>
+  </div>
+</section>
+
+<section id="market">
+  <div class="sec-h"><div class="num">۴</div><h2>هوش بازار</h2></div>
+  <div class="body">
+    <p>بازار شیرینی بسته‌بندی ایران بالغ، توده‌ای و قیمت‌حساس است. سه نیروی کلان: تورم و افت قدرت خرید (مزیتِ قیمتِ بنیس)، رشد خواربار آنلاین (جایی که بنیس غایب است)، و آگاهی سلامتی (فضای «اسنک کم‌شکر» هنوز قُرق نشده).</p>
+    <p><strong>نقشهٔ تنش بازار:</strong> بین «اعتماد نوستالژیک به برند قدیمی» و «نامرئی‌بودن در جایی که نسل جوان خرید می‌کند». هرکس این شکاف را پر کند، برنده است.</p>
+  </div>
+</section>
+
+<section id="comp">
+  <div class="sec-h"><div class="num">۵</div><h2>هوش رقبا</h2></div>
+  <div class="sec-sub">فضای سفید: تقاطعِ «اصالت نوستالژیک ایرانی» × «حضور دیجیتال».</div>
+  <ul class="clean">
+    <li><b>شیرین‌عسل</b> — تنوع + حضور آنلاین قوی؛ رقیب اصلی و خطر مستقیم در دیجیتال.</li>
+    <li><b>درنا</b> — پیشگام صنعت؛ ارتباط خانوادگی با بنیس از طریق «درنای بنیس». هم فرصت، هم سردرگمی برند.</li>
+    <li><b>مینو</b> — برند ملی، توزیع گسترده؛ رقیب توده‌ای.</li>
+    <li><b>نادری / نظری</b> — نوستالژی و ریشهٔ سنتی؛ رقیب در همان زمین «اصالت».</li>
+    <li><b>اولکر (ترکیه)</b> — برند خارجی؛ تهدید واردات.</li>
+  </ul>
+</section>
+
+<section id="consumer">
+  <div class="sec-h"><div class="num">۶</div><h2>هوش مصرف‌کننده و صدای مشتری</h2></div>
+  <div class="body">
+    <p>پرسوناهای فرضی (نیازمند اعتبارسنجی): <strong>مادر خانواده</strong> (میان‌وعدهٔ مطمئن جعبهٔ مدرسه)، <strong>بزرگسال نوستالژیک</strong> (همان طعم کودکی)، <strong>کانال کافه/گیمر</strong> (بارکیک/ویفر/کروسان). شغلِ محوری: «یک میان‌وعدهٔ آشنا، مطمئن و مقرون‌به‌صرفه بده که با خیال راحت به خانواده‌ام بدهم.»</p>
+  </div>
+  <div class="caveat"><b>حفرهٔ صدای مشتری:</b> در دیجی‌کالا و ترب تعداد نظرات نزدیک صفر است. نبودِ Social Proof خودش یک یافتهٔ استراتژیک است: برند در لحظهٔ تصمیمِ آنلاین «نامرئی و بی‌اعتبار» به نظر می‌رسد.</div>
+</section>
+
+<section id="swot">
+  <div class="sec-h"><div class="num">۷</div><h2>SWOT</h2></div>
+  <div class="swot">
+    <div class="q S"><h4>قوت‌ها</h4><ul><li>سابقهٔ ۵۰ساله و داستان «پدر کیک ایران»</li><li>توزیع ملی و تولید بزرگ</li><li>توان نوآوری محصول</li><li>قیمت رقابتی</li></ul></div>
+    <div class="q W"><h4>ضعف‌ها</h4><ul><li>۱۶۹ SKU پراکنده (۴۴ مرده)</li><li>دیجیتال ضعیف، بدون Social Proof</li><li>معماری برند مبهم</li><li>نبود دادهٔ سود</li></ul></div>
+    <div class="q O"><h4>فرصت‌ها</h4><ul><li>رشد خواربار آنلاین</li><li>فضای نوستالژی + سگمنت سالم خالی</li><li>بسته‌های مناسبتی یلدا/نوروز</li><li>کاپ‌کیک و چیزکیک پررشد</li></ul></div>
+    <div class="q T"><h4>تهدیدها</h4><ul><li>شیرین‌عسلِ دیجیتال</li><li>واردات (اولکر)</li><li>تورم و افت قدرت خرید</li><li>فشار سلامتی بر قند/چربی</li></ul></div>
+  </div>
+</section>
+
+<section id="brand">
+  <div class="sec-h"><div class="num">۸</div><h2>استراتژی و جوهرهٔ برند</h2></div>
+  <div class="grid g2">
+    <div class="card"><h4>جوهره و وعده</h4><p><strong>جوهره:</strong> «اصالتِ آشنا.»</p><p style="margin-top:8px"><strong>وعده:</strong> «همان طعم آشنا و مطمئن، از اولین کارخانهٔ کیک ایران.»</p></div>
+    <div class="card"><h4>کهن‌الگو و شخصیت</h4><p><strong>کهن‌الگو:</strong> بی‌گناه + مردمی، با ریشهٔ نوستالژیک.</p><p style="margin-top:8px"><strong>شخصیت:</strong> گرم، خانوادگی، قابل‌اعتماد، اصیل، بدون فخرفروشی.</p></div>
+  </div>
+  <div class="body"><p><strong>چرا؟</strong> قوت واقعی بنیس در داده، «اعتماد و اصالت» است نه «هیجان و لوکس‌بودن»؛ استراتژی باید روی همان زمینی بازی کند که برند در آن می‌برد.</p></div>
+</section>
+
+<section id="pos">
+  <div class="sec-h"><div class="num">۹</div><h2>نقشهٔ جایگاه‌یابی</h2></div>
+  <div class="sec-sub">محور عمودی = حضور دیجیتال · محور افقی = هویت برند. ربع بالا-راست (اصیل + حاضر در دیجیتال) خالی است.</div>
+  <div class="mapbox">
+  <svg class="map" width="100%" viewBox="0 0 680 590" role="img" aria-label="نقشه جایگاه‌یابی برند بنیس و رقبا">
+    <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#1D7A5F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+    <rect x="360" y="90" width="220" height="207" fill="#1D7A5F" opacity="0.10"/>
+    <rect x="140" y="90" width="440" height="415" rx="10" fill="none" stroke="#1B2440" stroke-width="0.6" opacity="0.18"/>
+    <line x1="140" y1="297" x2="580" y2="297" stroke="#1B2440" stroke-width="0.6" opacity="0.22"/>
+    <line x1="360" y1="90" x2="360" y2="505" stroke="#1B2440" stroke-width="0.6" opacity="0.22"/>
+    <text class="ax" x="360" y="74" text-anchor="middle">حاضر و فعال در دیجیتال</text>
+    <text class="ax" x="360" y="523" text-anchor="middle">نامرئی در دیجیتال</text>
+    <text class="ax" x="250" y="110" text-anchor="middle">مدرن / امروزی</text>
+    <text class="ax" x="472" y="110" text-anchor="middle">اصیل / نوستالژیک</text>
+    <text class="lbl" x="470" y="245" text-anchor="middle" fill="#1D7A5F" font-weight="700">فضای سفید بازار</text>
+    <line x1="462" y1="358" x2="497" y2="180" stroke="#1D7A5F" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ar)"/>
+    <circle cx="455" cy="365" r="9" fill="#BE5329"/>
+    <circle cx="502" cy="168" r="10" fill="#1D7A5F"/>
+    <text class="big" x="455" y="388" text-anchor="middle">بنیس (فعلی)</text>
+    <text class="big" x="502" y="148" text-anchor="middle">بنیس (هدف)</text>
+    <circle cx="235" cy="170" r="6" fill="#6E7488"/><text class="lbl" x="235" y="191" text-anchor="middle">شیرین‌عسل</text>
+    <circle cx="185" cy="255" r="6" fill="#6E7488"/><text class="lbl" x="192" y="276" text-anchor="middle">اولکر (واردات)</text>
+    <circle cx="292" cy="255" r="6" fill="#6E7488"/><text class="lbl" x="292" y="276" text-anchor="middle">مینو</text>
+    <circle cx="527" cy="355" r="6" fill="#6E7488"/><text class="lbl" x="527" y="338" text-anchor="middle">درنا</text>
+    <circle cx="548" cy="445" r="6" fill="#6E7488"/><text class="lbl" x="545" y="466" text-anchor="middle">نادری / نظری</text>
+    <circle cx="160" cy="555" r="6" fill="#1D7A5F"/><text class="lbl" x="172" y="559" text-anchor="start">جایگاه هدف</text>
+    <circle cx="300" cy="555" r="6" fill="#BE5329"/><text class="lbl" x="312" y="559" text-anchor="start">جایگاه فعلی</text>
+    <circle cx="430" cy="555" r="6" fill="#6E7488"/><text class="lbl" x="442" y="559" text-anchor="start">رقبا</text>
+  </svg>
+  </div>
+  <div class="body"><p>حرکت پیشنهادی <strong>عمودی</strong> است نه افقی: بنیس نباید برای رقابت با شیرین‌عسل «بی‌ریشه/مدرن» شود؛ باید اصالت نوستالژیک (دارایی واقعی‌اش) را حفظ کند و فقط در محور دیجیتال بالا برود — همان برند، با حضور و اثبات اجتماعی آنلاین.</p></div>
+</section>
+
+<section id="table">
+  <div class="sec-h"><div class="num">۱۰</div><h2>جدول تعاملی سبد محصول</h2></div>
+  <div class="sec-sub">۱۶۹ کالا، دسته‌بندی‌شده به قهرمان / نگه‌دار / بازبینی / حذف. جستجو، فیلتر و مرتب‌سازی کنید.</div>
+  <div class="controls">
+    <input id="q" placeholder="جستجوی نام کالا…" oninput="render()">
+    <select id="cat" onchange="render()"><option value="">همهٔ دسته‌ها</option></select>
+    <span class="tcount" id="tcount"></span>
+  </div>
+  <div class="controls" id="chips"></div>
+  <div class="tbl-wrap"><div class="tbl-scroll"><table>
+    <thead><tr>
+      <th onclick="sortBy('name')">نام کالا</th>
+      <th onclick="sortBy('cat')">دسته</th>
+      <th onclick="sortBy('brand')">برند</th>
+      <th onclick="sortBy('total')">فروش سالانه</th>
+      <th onclick="sortBy('share')">سهم٪</th>
+      <th onclick="sortBy('bucket')">توصیه</th>
+    </tr></thead>
+    <tbody id="tbody"></tbody>
+  </table></div></div>
+</section>
+
+<section id="gtm">
+  <div class="sec-h"><div class="num">۱۱</div><h2>استراتژی رشد و ورود به بازار</h2></div>
+  <div class="sec-sub">برای پشتیبانی از هدف دوبرابری (۴۰۰→۸۰۰ هزار کارتن/ماه) — به ترتیب اولویت.</div>
+  <ul class="clean">
+    <li><b>۱. پاک‌سازی سبد:</b> حذف/ادغام ۴۴ کالای مرده + بازبینی دُمِ بلند؛ تعریف ۸–۱۰ قهرمان — پس از افزودن دادهٔ سود.</li>
+    <li><b>۲. ساخت موتور دیجیتال (فوری):</b> بازسازی صفحات دیجی‌کالا، راه‌اندازی نظردهی، اینستاگرام رسمی، میکرو‌اینفلوئنسرهای خانه/کودک.</li>
+    <li><b>۳. سوار شدن بر فصل‌ها:</b> کمپین متمرکز پاییز (مدرسه) + بسته‌های مناسبتی یلدا/نوروز/رمضان.</li>
+    <li><b>۴. تثبیت کانال:</b> موجودی پایدار در اسنپ‌مارکت/دیجی‌جت + پورتال B2B برای هورکا/عمده.</li>
+    <li><b>۵. بستن بودجه:</b> فایل بودجه فعلاً خالی است؛ تخصیص واقعی باید سهم معناداری به دیجیتال بدهد.</li>
+  </ul>
+</section>
+
+<section id="gaps">
+  <div class="sec-h"><div class="num">۱۲</div><h2>ریسک‌ها، بازبینی انسانی و حفره‌های داده</h2></div>
+  <div class="grid g2">
+    <div class="card"><h4>ریسک‌ها و فرض‌ها</h4><ul>
+      <li>فرض «حجم بالا = سود بالا» بدون دادهٔ مالی نامطمئن است</li>
+      <li>هدف دوبرابری بدون موتور تقاضا = فشار تخفیف و فرسایش حاشیه</li>
+      <li>شخصیت برند «نوستالژیک» نیازمند تأیید با تحقیق است</li></ul></div>
+    <div class="card"><h4>چک‌لیست اطلاعات گمشده (اولویت‌دار)</h4><ul>
+      <li>سود/حاشیهٔ هر SKU — حیاتی</li>
+      <li>صدای واقعی مشتری (focus group / نظرسنجی)</li>
+      <li>اعداد واقعی بودجهٔ بازاریابی</li>
+      <li>تکلیف معماری برند (بنیس/درنا/ناربن)</li>
+      <li>قیمت و گرماژ رقبا</li></ul></div>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="wrap">
+  گزارش راهبردی برند <b>بنیس</b> — تدوین‌شده توسط تیم رهنگاشت بر پایهٔ دادهٔ فروش، بودجه و تحلیل بازار · سطح اطمینان کلی محدود به دادهٔ موجود · آمادهٔ بازبینی انسانی و تکمیل دادهٔ سود و صدای مشتری.
+</div></footer>
+
+<script>
+const DATA = {"grand": 5105548, "rows": [{"code": 1205, "name": "دو لایه شطرنجی بنیس (45 گ 24 ع )", "cat": "کیک لایه‌ای", "brand": "بنیس", "total": 234231, "share": 4.59, "cum": 4.6, "bucket": "قهرمان"}, {"code": 1308, "name": "کلوچه سنتی گردوئی  بنیس (85 گ 12 ع )", "cat": "کلوچه", "brand": "بنیس", "total": 214575, "share": 4.2, "cum": 8.8, "bucket": "قهرمان"}, {"code": 2116, "name": "کروسان (50گ24ع)", "cat": "کروسان", "brand": "بنیس", "total": 184664, "share": 3.62, "cum": 12.4, "bucket": "قهرمان"}, {"code": 2101, "name": "دو قلو مغزدار نیلو(55 گ 24 ع )", "cat": "دوقلو", "brand": "نیلو", "total": 176794, "share": 3.46, "cum": 15.9, "bucket": "قهرمان"}, {"code": 1401, "name": "ویفر دارک بنیس (80 گ 24 ع )", "cat": "ویفر", "brand": "بنیس", "total": 174621, "share": 3.42, "cum": 19.3, "bucket": "قهرمان"}, {"code": 1402, "name": "ویفر موزی  بنیس   (90 گ 24 ع )", "cat": "ویفر", "brand": "بنیس", "total": 169604, "share": 3.32, "cum": 22.6, "bucket": "قهرمان"}, {"code": 2102, "name": "کاپ دوقلو  بنیس(60 گ 24 ع )", "cat": "کاپ‌کیک", "brand": "بنیس", "total": 168776, "share": 3.31, "cum": 25.9, "bucket": "قهرمان"}, {"code": 1207, "name": "سه لایه سوملی بنیس(65 گ 24 ع )", "cat": "کیک لایه‌ای", "brand": "بنیس", "total": 167491, "share": 3.28, "cum": 29.2, "bucket": "قهرمان"}, {"code": 1106, "name": "BOMBA مغزی کاکائویی بنیس(45 گ 24 ع )", "cat": "کیک", "brand": "بنیس", "total": 138469, "share": 2.71, "cum": 31.9, "bucket": "قهرمان"}, {"code": 1206, "name": "تورتا بنیس(55گ 24 ع )", "cat": "کیک لایه‌ای", "brand": "بنیس", "total": 127724, "share": 2.5, "cum": 34.4, "bucket": "قهرمان"}, {"code": 1115, "name": "دسری کاکائویی بنیس(70 گ 24 ع )", "cat": "کیک", "brand": "بنیس", "total": 125337, "share": 2.45, "cum": 36.9, "bucket": "قهرمان"}, {"code": 1309, "name": "کلوچه سنتی خرمائی  بنیس (85 گ 12 ع )", "cat": "کلوچه", "brand": "بنیس", "total": 94470, "share": 1.85, "cum": 38.7, "bucket": "قهرمان"}, {"code": 1105, "name": "BOMBA با روکش کاکائو بنیس(50 گ 24 ع )", "cat": "کیک", "brand": "بنیس", "total": 89447, "share": 1.75, "cum": 40.5, "bucket": "قهرمان"}, {"code": 1102, "name": "براونی کاکائویی بنیس (80 گ 24 ع )", "cat": "کیک", "brand": "بنیس", "total": 87262, "share": 1.71, "cum": 42.2, "bucket": "قهرمان"}, {"code": 1310, "name": "کلوچه نارگیلی  بنیس(115 گ 12 ع )", "cat": "کلوچه", "brand": "بنیس", "total": 85204, "share": 1.67, "cum": 43.8, "bucket": "قهرمان"}, {"code": 1209, "name": "سوت رول كرم كاكائو بنیس(35 گ 24 ع )", "cat": "رول", "brand": "بنیس", "total": 83908, "share": 1.64, "cum": 45.5, "bucket": "قهرمان"}, {"code": 1119, "name": "کاپ کيک لبخند پرتقالي (65 گ 24 ع )", "cat": "کاپ‌کیک", "brand": "بنیس", "total": 82905, "share": 1.62, "cum": 47.1, "bucket": "قهرمان"}, {"code": 1604, "name": "شوکو پای روکش کاکائو بنیس (22 گ 24 ع )", "cat": "شوکوپای", "brand": "بنیس", "total": 82131, "share": 1.61, "cum": 48.7, "bucket": "قهرمان"}, {"code": 1219, "name": "اسپونج وانیلی با کرم وانیل بنیس(35 گ 36 ع )", "cat": "کیک", "brand": "بنیس", "total": 78360, "share": 1.53, "cum": 50.3, "bucket": "نگه‌دار"}, {"code": 1122, "name": "کاپ کیک وانیلی قلبی با دراژه درسین(65گ 24ع)", "cat": "کاپ‌کیک", "brand": "بنیس", "total": 72318, "share": 1.42, "cum": 51.7, "bucket": "نگه‌دار"}, {"code": 1107, "name": "BOMBA  روکش سفید بنیس(50 گ 24 ع )", "cat": "کیک", "brand": "بنیس", "total": 68672, "share": 1.35, "cum": 53.0, "bucket": "نگه‌دار"}, {"code": 1404, "name": "ویفر پرتقال بنیس  (90 گ 24 ع )", "cat": "ویفر", "brand": "بنیس", "total": 67857, "share": 1.33, "cum": 54.3, "bucket": "نگه‌دار"}, {"code": 1126, "name": "بارکیک سنین کیک بنیس ( 55 گ 24 ع)", "cat": "بارکیک", "brand": "بنیس", "total": 66828, "share": 1.31, "cum": 55.7, "bucket": "نگه‌دار"}, {"code": 2104, "name": "عصرانه شفاف بنیس(90 گ 24 ع )", "cat": "کیک", "brand": "بنیس", "total": 66580, "share": 1.3, "cum": 57.0, "bucket": "نگه‌دار"}, {"code": 1110, "name": "کیک پنیری بنیس(85 گ 24 ع )", "cat": "کیک", "brand": "بنیس", "total": 66207, "share": 1.3, "cum": 58.3, "bucket": "نگه‌دار"}, {"code": 1201, "name": "اوچ  70  بنیس(70 گ 24 ع )", "cat": "کیک", "brand": "بنیس", "total": 63911, "share": 1.25, "cum": 59.5, "bucket": "نگه‌دار"}, {"code": 1125, "name": "بارکیک پونتوس بنیس ( 55 گ 24 ع)", "cat": "بارکیک", "brand": "بنیس", "total": 61890, "share": 1.21, "cum": 60.7, "bucket": "نگه‌دار"}, {"code": 4201, "name": "بيسکو شکلات بنيس (50 گ 12ع )", "cat": "بیسکویت", "brand": "بنیس", "total": 61707, "share": 1.21, "cum": 61.9, "bucket": "نگه‌دار"}, {"code": 1104, "name": "BOMBA با مغزی وانیل بنیس (50 گ 24 ع )", "cat": "کیک", "brand": "بنیس", "total": 60977, "share": 1.19, "cum": 63.1, "bucket": "نگه‌دار"}, {"code": 1127, "name": "بارکیک سوملی  بنیس ( 50 گ 24 ع)", "cat": "بارکیک", "brand": "بنیس", "total": 58524, "share": 1.15, "cum": 64.3, "bucket": "نگه‌دار"}, {"code": 1403, "name": "ویفر توت بنیس (90 گ 24 ع )", "cat": "ویفر", "brand": "بنیس", "total": 56033, "share": 1.1, "cum": 65.4, "bucket": "نگه‌دار"}, {"code": 1208, "name": "مینی رول روکش شکلات بنیس (40 گ 24 ع )", "cat": "رول", "brand": "بنیس", "total": 55998, "share": 1.1, "cum": 66.5, "bucket": "نگه‌دار"}, {"code": 2114, "name": "کيک صبحانه وانيل پرتقال ( 120 گ 20 ع)", "cat": "کیک", "brand": "بنیس", "total": 55518, "share": 1.09, "cum": 67.6, "bucket": "نگه‌دار"}, {"code": 1602, "name": "شوکو  لبخند تکی بنیس(32 گ 24 ع )", "cat": "سایر", "brand": "بنیس", "total": 54984, "share": 1.08, "cum": 68.6, "bucket": "نگه‌دار"}, {"code": 1204, "name": "دولایه ناپولی بنیس (65 گ 24 ع )", "cat": "کیک لایه‌ای", "brand": "بنیس", "total": 53684, "share": 1.05, "cum": 69.7, "bucket": "نگه‌دار"}, {"code": 1227, "name": "رول کیک پنیری با روکش شکلات ( 50گ 24 ع)", "cat": "رول", "brand": "بنیس", "total": 51614, "share": 1.01, "cum": 70.7, "bucket": "نگه‌دار"}, {"code": 1123, "name": "کاپ کیک کاکائویی قلبی باچپیس شکلات درسین(65گ24ع)", "cat": "کاپ‌کیک", "brand": "بنیس", "total": 50493, "share": 0.99, "cum": 71.7, "bucket": "نگه‌دار"}, {"code": 2115, "name": "کيک صبحانه وانيل کاکائو ( 120 گ 20 ع)", "cat": "کیک", "brand": "بنیس", "total": 49276, "share": 0.97, "cum": 72.6, "bucket": "نگه‌دار"}, {"code": 1228, "name": "رول کیک پنیری با روکش سفید ( 50گ 24 ع)", "cat": "رول", "brand": "بنیس", "total": 46033, "share": 0.9, "cum": 73.5, "bucket": "نگه‌دار"}, {"code": 1108, "name": "کیک لبخند پرتقالی بنیس(65 گ 32ع )", "cat": "کیک", "brand": "بنیس", "total": 45540, "share": 0.89, "cum": 74.4, "bucket": "نگه‌دار"}, {"code": 1112, "name": "صبحانه کشمشی شفاف بنیس(110گ 18 ع )", "cat": "کیک", "brand": "بنیس", "total": 44699, "share": 0.88, "cum": 75.3, "bucket": "نگه‌دار"}, {"code": 1223, "name": "سوئیس رول شفاف پرتقال بنیس (90 گ 16 ع )", "cat": "رول", "brand": "بنیس", "total": 44436, "share": 0.87, "cum": 76.2, "bucket": "نگه‌دار"}, {"code": 2103, "name": "صبحانه رویال بنیس(130گ 24 ع )", "cat": "کیک", "brand": "بنیس", "total": 43174, "share": 0.85, "cum": 77.0, "bucket": "نگه‌دار"}, {"code": 2105, "name": "کاپ پرتقال بنیس(65 گ 24 ع )", "cat": "کاپ‌کیک", "brand": "بنیس", "total": 39409, "share": 0.77, "cum": 77.8, "bucket": "نگه‌دار"}, {"code": 1405, "name": "ویفر کرم کاکائو بنیس  (90 گ 24 ع )", "cat": "ویفر", "brand": "بنیس", "total": 37546, "share": 0.74, "cum": 78.5, "bucket": "نگه‌دار"}, {"code": 1226, "name": "دولايه پرتقالي بنيس (50 گ 24 ع)", "cat": "کیک لایه‌ای", "brand": "بنیس", "total": 37194, "share": 0.73, "cum": 79.3, "bucket": "نگه‌دار"}, {"code": 1224, "name": "سوئیس رول شفاف توت فرنگی بنیس (90 گ 16 ع )", "cat": "رول", "brand": "بنیس", "total": 36334, "share": 0.71, "cum": 80.0, "bucket": "نگه‌دار"}, {"code": 1307, "name": "کلوچه معمولی نارگیلی (60 گ 24 ع )", "cat": "کلوچه", "brand": "بنیس", "total": 36213, "share": 0.71, "cum": 80.7, "bucket": "بازبینی"}, {"code": 2106, "name": "کیک کشمشی بنیس (70 گ 24 ع )", "cat": "کیک", "brand": "بنیس", "total": 34676, "share": 0.68, "cum": 81.4, "bucket": "بازبینی"}, {"code": 1225, "name": "دولايه توت فرنگي بنيس (50 گ 24 ع)", "cat": "کیک لایه‌ای", "brand": "بنیس", "total": 34503, "share": 0.68, "cum": 82.0, "bucket": "بازبینی"}, {"code": 2107, "name": "کاپ براونی  بنیس(45 گ 24 ع )", "cat": "کاپ‌کیک", "brand": "بنیس", "total": 34399, "share": 0.67, "cum": 82.7, "bucket": "بازبینی"}, {"code": 1419, "name": "ويفر بالتا کاکائويي با کرم کاکائو ( 50 گ 24 ع)", "cat": "ویفر", "brand": "بنیس", "total": 34227, "share": 0.67, "cum": 83.4, "bucket": "بازبینی"}, {"code": 1306, "name": "کلوچه معمولی موزی (60 گ 24 ع )", "cat": "کلوچه", "brand": "بنیس", "total": 34098, "share": 0.67, "cum": 84.1, "bucket": "بازبینی"}, {"code": 1101, "name": "براونی آلبالویی بنیس (80 گ 24 ع )", "cat": "کیک", "brand": "بنیس", "total": 33430, "share": 0.65, "cum": 84.7, "bucket": "بازبینی"}, {"code": 1218, "name": "اسپونج کاکائو با کرم کاکائو بنیس (35 گ 36 ع )", "cat": "کیک", "brand": "بنیس", "total": 32860, "share": 0.64, "cum": 85.4, "bucket": "بازبینی"}, {"code": 1506, "name": "دایجستیو کرم کاکایو بنیس(85 گ 18 ع )", "cat": "بیسکویت", "brand": "بنیس", "total": 31956, "share": 0.63, "cum": 86.0, "bucket": "بازبینی"}, {"code": 1421, "name": "ويفر دورنگ ماتريکس با شکلات (25 گ 24ع)", "cat": "ویفر", "brand": "بنیس", "total": 31149, "share": 0.61, "cum": 86.6, "bucket": "بازبینی"}, {"code": 1222, "name": "سوئیس رول شفاف کاکائو بنیس (90 گ 16 ع )", "cat": "رول", "brand": "بنیس", "total": 29327, "share": 0.57, "cum": 87.2, "bucket": "بازبینی"}, {"code": 1103, "name": "پوپ کیک بنیس(70 گ 24 ع )", "cat": "کیک", "brand": "بنیس", "total": 27440, "share": 0.54, "cum": 87.7, "bucket": "بازبینی"}, {"code": 1513, "name": "بیسکوئیت دایجستیو 3 عددی (35گ 48ع)", "cat": "بیسکویت", "brand": "بنیس", "total": 25613, "share": 0.5, "cum": 88.2, "bucket": "بازبینی"}, {"code": 1217, "name": "کیک دولایه شفاف بنیس(70 گ 24 ع )", "cat": "کیک لایه‌ای", "brand": "بنیس", "total": 23802, "share": 0.47, "cum": 88.7, "bucket": "بازبینی"}, {"code": 3101, "name": "شوکو رول كاكائویی بنیس (24 گ 24 ع )", "cat": "رول", "brand": "بنیس", "total": 23509, "share": 0.46, "cum": 89.1, "bucket": "بازبینی"}, {"code": 1409, "name": "ویفر فندق  بنیس (30 گ 40 ع )", "cat": "ویفر", "brand": "بنیس", "total": 23192, "share": 0.45, "cum": 89.6, "bucket": "بازبینی"}, {"code": 1118, "name": "کاپ کیک کاکائویی بنیس(70 گ 24 ع )", "cat": "کاپ‌کیک", "brand": "بنیس", "total": 21939, "share": 0.43, "cum": 90.0, "bucket": "بازبینی"}, {"code": 1113, "name": "دسری  شاه توت بنیس(70 گ 24 ع )", "cat": "کیک", "brand": "بنیس", "total": 21830, "share": 0.43, "cum": 90.4, "bucket": "بازبینی"}, {"code": 1410, "name": "ویفرموز بنیس (30 گ 40 ع )", "cat": "ویفر", "brand": "بنیس", "total": 21331, "share": 0.42, "cum": 90.9, "bucket": "بازبینی"}, {"code": 1114, "name": "دسری کارامل بنیس(70 گ 24 ع )", "cat": "کیک", "brand": "بنیس", "total": 21216, "share": 0.42, "cum": 91.3, "bucket": "بازبینی"}, {"code": 1420, "name": "ويفر بالتا کاکائويي با کرم کاکائو و روکش دارک ( 50 گ 24 ع)", "cat": "ویفر", "brand": "بنیس", "total": 20094, "share": 0.39, "cum": 91.7, "bucket": "بازبینی"}, {"code": 3102, "name": "شوکو رول فندقی بنیس (24 گ 24 ع )", "cat": "رول", "brand": "بنیس", "total": 19843, "share": 0.39, "cum": 92.1, "bucket": "بازبینی"}, {"code": 1511, "name": "بيسکو کاکائو با کرم وانيل (110 گ 24 ع)", "cat": "بیسکویت", "brand": "بنیس", "total": 18918, "share": 0.37, "cum": 92.4, "bucket": "بازبینی"}, {"code": 2113, "name": "کروسان (50گ20ع)", "cat": "کروسان", "brand": "بنیس", "total": 18781, "share": 0.37, "cum": 92.8, "bucket": "بازبینی"}, {"code": 2111, "name": "کیک اسپیرال مغزدار نیلو(100گ 24 ع )", "cat": "کیک", "brand": "نیلو", "total": 17990, "share": 0.35, "cum": 93.1, "bucket": "بازبینی"}, {"code": 1510, "name": "بيسکو کاکائو با کرم کاکائو (110 گ 24 ع)", "cat": "بیسکویت", "brand": "بنیس", "total": 16889, "share": 0.33, "cum": 93.5, "bucket": "بازبینی"}, {"code": 3105, "name": "شوکو رول توت فرنگی بنیس (24 گ 24 ع )", "cat": "رول", "brand": "بنیس", "total": 16453, "share": 0.32, "cum": 93.8, "bucket": "بازبینی"}, {"code": 3103, "name": "شوکو رول قهوه بنیس (24 گ 24 ع )", "cat": "رول", "brand": "بنیس", "total": 16393, "share": 0.32, "cum": 94.1, "bucket": "بازبینی"}, {"code": 1412, "name": "ویفر شکلاتی درکیت (30 گ 24 ع )", "cat": "ویفر", "brand": "بنیس", "total": 16388, "share": 0.32, "cum": 94.4, "bucket": "بازبینی"}, {"code": 1202, "name": "اوچ عسلی بنیس (75 گ 24 ع )", "cat": "کیک", "brand": "بنیس", "total": 15445, "share": 0.3, "cum": 94.7, "bucket": "بازبینی"}, {"code": 1203, "name": "اوچ کاکائو بنیس (75 گ 24 ع )", "cat": "کیک", "brand": "بنیس", "total": 15389, "share": 0.3, "cum": 95.0, "bucket": "بازبینی"}, {"code": 3104, "name": "شوکو رول پرتقالی بنیس (24 گ 24 ع )", "cat": "رول", "brand": "بنیس", "total": 15383, "share": 0.3, "cum": 95.3, "bucket": "بازبینی"}, {"code": 1407, "name": "ویفر فندق بنیس (70 گ 24 ع )", "cat": "ویفر", "brand": "بنیس", "total": 14634, "share": 0.29, "cum": 95.6, "bucket": "بازبینی"}, {"code": 1605, "name": "شوکو پای روکش کاکائو  بنیس(35 گ 60 ع )", "cat": "شوکوپای", "brand": "بنیس", "total": 13461, "share": 0.26, "cum": 95.9, "bucket": "بازبینی"}, {"code": 1504, "name": "بیسکوییت فله پرتقالی بنیس", "cat": "بیسکویت", "brand": "بنیس", "total": 12796, "share": 0.25, "cum": 96.1, "bucket": "بازبینی"}, {"code": 1505, "name": "بیسکوییت فله نارگیلی بنیس", "cat": "بیسکویت", "brand": "بنیس", "total": 12451, "share": 0.24, "cum": 96.4, "bucket": "بازبینی"}, {"code": 1311, "name": "کلوچه معمولی گردویی بنیس (70 گ 24 ع )", "cat": "کلوچه", "brand": "بنیس", "total": 12255, "share": 0.24, "cum": 96.6, "bucket": "بازبینی"}, {"code": 1408, "name": "ویفر موز  بنیس  (70گ 24 ع )", "cat": "ویفر", "brand": "بنیس", "total": 11228, "share": 0.22, "cum": 96.9, "bucket": "بازبینی"}, {"code": 4107, "name": "دراژه پاکتي بنيس ( 40 گ 24 ع)", "cat": "شکلات", "brand": "بنیس", "total": 10777, "share": 0.21, "cum": 97.1, "bucket": "بازبینی"}, {"code": 1503, "name": "بیسکوئیت پذیرایی کنجد ی بنیس(750 گ 6 ع )", "cat": "بیسکویت", "brand": "بنیس", "total": 10553, "share": 0.21, "cum": 97.3, "bucket": "بازبینی"}, {"code": 4113, "name": "شکوبار نوقا و کارامل بنیس (20 گ    ع)", "cat": "شکلات", "brand": "بنیس", "total": 9709, "share": 0.19, "cum": 97.5, "bucket": "بازبینی"}, {"code": 1607, "name": "شوکو پاي روکش سفيد بنيس(35 گ 36 ع)", "cat": "شوکوپای", "brand": "بنیس", "total": 9635, "share": 0.19, "cum": 97.7, "bucket": "بازبینی"}, {"code": 1606, "name": "شوکو پای روکش سفید بنیس(35 گ 60 ع )", "cat": "شوکوپای", "brand": "بنیس", "total": 9515, "share": 0.19, "cum": 97.8, "bucket": "بازبینی"}, {"code": 1603, "name": "شکلات تک انگشتی بنیس(25 گ 24 ع )", "cat": "شکلات", "brand": "بنیس", "total": 9358, "share": 0.18, "cum": 98.0, "bucket": "بازبینی"}, {"code": 1501, "name": "بیسکوئیت پذیرایی شکری بنیس (750 گ 6 ع )", "cat": "بیسکویت", "brand": "بنیس", "total": 8569, "share": 0.17, "cum": 98.2, "bucket": "بازبینی"}, {"code": 1502, "name": "بیسکوئیت پذیرایی شهد انگور بنیس(750 گ 6 ع )", "cat": "بیسکویت", "brand": "بنیس", "total": 8490, "share": 0.17, "cum": 98.4, "bucket": "بازبینی"}, {"code": 1512, "name": "بيسکو وانيلي با کرم کاکائو (110 گ 24 ع)", "cat": "بیسکویت", "brand": "بنیس", "total": 8050, "share": 0.16, "cum": 98.5, "bucket": "بازبینی"}, {"code": 4106, "name": "تري چاکلت بنيس (45 گ 24 ع)", "cat": "شکلات", "brand": "بنیس", "total": 6333, "share": 0.12, "cum": 98.6, "bucket": "بازبینی"}, {"code": 4105, "name": "شکلات نيم سرنگي بنيس (20 گ 25 ع)", "cat": "شکلات", "brand": "بنیس", "total": 6023, "share": 0.12, "cum": 98.8, "bucket": "بازبینی"}, {"code": 4111, "name": "شکوبار نارگیل بنیس 20 گ    ع)", "cat": "شکلات", "brand": "بنیس", "total": 5730, "share": 0.11, "cum": 98.9, "bucket": "بازبینی"}, {"code": 4104, "name": "شکلات سرنگي بنيس (35 گ 25 ع)", "cat": "شکلات", "brand": "بنیس", "total": 5706, "share": 0.11, "cum": 99.0, "bucket": "بازبینی"}, {"code": 1406, "name": "ویفر دارک بنیس  (70 گ 24 ع )", "cat": "ویفر", "brand": "بنیس", "total": 5290, "share": 0.1, "cum": 99.1, "bucket": "بازبینی"}, {"code": 4102, "name": "شکلات صبحانه  تک رنگ بنيس(100 گ 6 ع )", "cat": "شکلات", "brand": "بنیس", "total": 4912, "share": 0.1, "cum": 99.2, "bucket": "بازبینی"}, {"code": 4112, "name": "شکوبار نوقا و کارامل بنیس (40 گ    ع)", "cat": "شکلات", "brand": "بنیس", "total": 4909, "share": 0.1, "cum": 99.3, "bucket": "بازبینی"}, {"code": 4103, "name": "شکلات صبحانه دورنگ بنيس (100 گ 6 ع )", "cat": "شکلات", "brand": "بنیس", "total": 4542, "share": 0.09, "cum": 99.4, "bucket": "بازبینی"}, {"code": 1608, "name": "شوکو پاي روکش شکلات بنيس(35 گ 36 ع)", "cat": "شوکوپای", "brand": "بنیس", "total": 4370, "share": 0.09, "cum": 99.4, "bucket": "بازبینی"}, {"code": 4110, "name": "شکوبار نارگیل بنیس (40 گ    ع)", "cat": "شکلات", "brand": "بنیس", "total": 4049, "share": 0.08, "cum": 99.5, "bucket": "بازبینی"}, {"code": 4202, "name": "بيسکو شاه توت بنيس ( 50 گ 12 ع)", "cat": "بیسکویت", "brand": "بنیس", "total": 3672, "share": 0.07, "cum": 99.6, "bucket": "بازبینی"}, {"code": 1411, "name": "ویفر دارک بنیس (30 گ 40 ع )", "cat": "ویفر", "brand": "بنیس", "total": 3506, "share": 0.07, "cum": 99.7, "bucket": "بازبینی"}, {"code": 4203, "name": "بيسکو پرتقالي بنيس ( 50 گ 12 ع )", "cat": "بیسکویت", "brand": "بنیس", "total": 2985, "share": 0.06, "cum": 99.7, "bucket": "بازبینی"}, {"code": 1416, "name": "مینی ویفر وانیل خامه  ماتریکس بنیس", "cat": "ویفر", "brand": "بنیس", "total": 2696, "share": 0.05, "cum": 99.8, "bucket": "بازبینی"}, {"code": 1415, "name": "مینی ویفر کرم شیری با طعم کارامل ماتریکس بنیس", "cat": "ویفر", "brand": "بنیس", "total": 2670, "share": 0.05, "cum": 99.8, "bucket": "بازبینی"}, {"code": 1507, "name": "دایجستیو کرم قهوه بنیس(85 گ 18 ع )", "cat": "بیسکویت", "brand": "بنیس", "total": 2133, "share": 0.04, "cum": 99.9, "bucket": "بازبینی"}, {"code": 2202, "name": "کروسان (50 گ 30 عددي )", "cat": "کروسان", "brand": "بنیس", "total": 1908, "share": 0.04, "cum": 99.9, "bucket": "بازبینی"}, {"code": 2117, "name": "شیرینی نارگیلی گل محمدی (70 گ24ع)", "cat": "کیک", "brand": "بنیس", "total": 1672, "share": 0.03, "cum": 99.9, "bucket": "بازبینی"}, {"code": 1124, "name": "صبحانه کشمشي شفاف بنيس(110گ 24ع )", "cat": "کیک", "brand": "بنیس", "total": 862, "share": 0.02, "cum": 100.0, "bucket": "بازبینی"}, {"code": 1414, "name": "مینی ویفر کاکائویی با کرم وانیل ماتریکس بنیس", "cat": "ویفر", "brand": "بنیس", "total": 660, "share": 0.01, "cum": 100.0, "bucket": "بازبینی"}, {"code": 1417, "name": "مینی ویفر فندوقی ماتریکس بنیس", "cat": "ویفر", "brand": "بنیس", "total": 601, "share": 0.01, "cum": 100.0, "bucket": "بازبینی"}, {"code": 2112, "name": "کیک کاکائویی( 120 گ24ع)", "cat": "کیک", "brand": "بنیس", "total": 273, "share": 0.01, "cum": 100.0, "bucket": "بازبینی"}, {"code": 1418, "name": "مینی ویفر بادام زمینی ماتریکس بنیس", "cat": "ویفر", "brand": "بنیس", "total": 238, "share": 0.0, "cum": 100.0, "bucket": "بازبینی"}, {"code": 5301, "name": "کلوچه سنتي نارگيلي ناربن", "cat": "کلوچه", "brand": "ناربن (صادراتی)", "total": 101, "share": 0.0, "cum": 100.0, "bucket": "بازبینی"}, {"code": 1302, "name": "کلوچه معمولی گردویی بنیس (70 گ 16 ع )", "cat": "کلوچه", "brand": "بنیس", "total": 72, "share": 0.0, "cum": 100.0, "bucket": "بازبینی"}, {"code": 1509, "name": "بیسکوییت ماتریکس کرم وانیل بنیس(90 گ 24 ع )", "cat": "بیسکویت", "brand": "بنیس", "total": 23, "share": 0.0, "cum": 100.0, "bucket": "بازبینی"}, {"code": 5205, "name": "سوئيس رول شفاف پرتقالي ناربن", "cat": "رول", "brand": "ناربن (صادراتی)", "total": 19, "share": 0.0, "cum": 100.0, "bucket": "بازبینی"}, {"code": 5402, "name": "ويفر پرتقالي ال بيز ناربن", "cat": "ویفر", "brand": "ناربن (صادراتی)", "total": 18, "share": 0.0, "cum": 100.0, "bucket": "بازبینی"}, {"code": 1601, "name": "ماتریکس 35 بنیس(35گ 24 ع )", "cat": "کیک", "brand": "بنیس", "total": 5, "share": 0.0, "cum": 100.0, "bucket": "بازبینی"}, {"code": 1508, "name": "بیسکوییت ماتریکس کرم کاکایویی بنیس(90 گ 24 ع )", "cat": "بیسکویت", "brand": "بنیس", "total": 3, "share": 0.0, "cum": 100.0, "bucket": "بازبینی"}, {"code": 1111, "name": "کیک پونتوس  بنیس(170 گ 12 ع )", "cat": "کیک", "brand": "بنیس", "total": 1, "share": 0.0, "cum": 100.0, "bucket": "بازبینی"}, {"code": 1216, "name": "سوئیس رول کاکائو با کرم وانیلی نیلو (60 گ 24 ع )", "cat": "رول", "brand": "نیلو", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1215, "name": "سوئیس رول کرم کاکائو نیلو (60 گ 24 ع )", "cat": "رول", "brand": "نیلو", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1210, "name": "سوئیس رول شفاف کاکائو بنیس(90 گ 24 ع )", "cat": "رول", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1116, "name": "کاپ کیک توتارلی پرتقالی بنیس (45 گ 24 ع )", "cat": "کاپ‌کیک", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1117, "name": "کاپ کیک توتارلی انگور بنیس (45 گ 24 ع )", "cat": "کاپ‌کیک", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1109, "name": "کاپ کیک پرتقالی  بنیس(35گ 24 ع )", "cat": "کاپ‌کیک", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1214, "name": "سوئیس رول پرتقالی نیلو (60 گ 24 ع )", "cat": "رول", "brand": "نیلو", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1213, "name": "سوئیس رول توت فرنگی نیلو(60گ 24 ع )", "cat": "رول", "brand": "نیلو", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1212, "name": "سوئیس رول شفاف توت فرنگی بنیس(90 گ 24 ع )", "cat": "رول", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1211, "name": "سوئیس رول شفاف پرتقال بنیس(90 گ 24 ع )", "cat": "رول", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1301, "name": "کلوچه 6 عددی گردوئی بنیس (120 گ 12 ع )", "cat": "کلوچه", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1305, "name": "کلوچه نارگیلی   بنیس (115 گ 24 ع )", "cat": "کلوچه", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1413, "name": "مینی ویفر شکلاتی فله 3 کیلو بنیس", "cat": "ویفر", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1303, "name": "کلوچه سنتی گردوئی  بنیس (85 گ 24 ع )", "cat": "کلوچه", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1304, "name": "کلوچه سنتی خرمائی بنیس   (85 گ 24 ع )", "cat": "کلوچه", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1221, "name": "دولایه پرتقالی بنیس (50 گ 22 ع )", "cat": "کیک لایه‌ای", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1220, "name": "دولایه توت فرنگی  بنیس (50گ 22 ع )", "cat": "کیک لایه‌ای", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 3110, "name": "شوکو رول توت فرنگی 100 گرم", "cat": "رول", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1014042, "name": "شوکو رول کاکائو 100 گرم", "cat": "رول", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1014043, "name": "شوکو رول فندقی 100 گرم", "cat": "رول", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1012040, "name": "شکو بیسکوئیت لبخند دو تائی (68گ 12ع)", "cat": "بیسکویت", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 2108, "name": "کیک کشمشی نیلو (70 گ 24 ع )", "cat": "کیک", "brand": "نیلو", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1014037, "name": "مینی ویفر شکلاتی پاکتی بنیس (245گ12ع)", "cat": "ویفر", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1110009, "name": "رول کاکائویی", "cat": "رول", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 1110008, "name": "رول پرتقالی", "cat": "رول", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 2207, "name": "کاپ براوني نيلو ( 45 گ 24 ع )", "cat": "کاپ‌کیک", "brand": "نیلو", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 2109, "name": "کیک  حلقه ای دونات پرتقالی نیلو(80 گ 24 ع )", "cat": "کیک", "brand": "نیلو", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 2110, "name": "کیک حلقه ای  دونات وانیلی نیلو(80 گ 24 ع )", "cat": "کیک", "brand": "نیلو", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 4109, "name": "کرم کاکائو تیوپی جرقه ای ( 30 گ 24ع)", "cat": "شکلات", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 4108, "name": "دراژه لیوانی (120گ6ع)", "cat": "شکلات", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 4101, "name": "بيسکو شکلات بنيس (50 گ 24 ع )", "cat": "بیسکویت", "brand": "بنیس", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 5101, "name": "کاپ کیک نارگیلی ناربن( ٦٥ گرم ٣٦ عددی )", "cat": "کاپ‌کیک", "brand": "ناربن (صادراتی)", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 5201, "name": "دولايه شطرنجي کنجدي ناربن", "cat": "کیک لایه‌ای", "brand": "ناربن (صادراتی)", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 5202, "name": "دولايه توت فرنگي موتلو ناربن", "cat": "کیک لایه‌ای", "brand": "ناربن (صادراتی)", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 5103, "name": "کيک دوقلو بوتا مغزدار کاکائويي ناربن", "cat": "دوقلو", "brand": "ناربن (صادراتی)", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 5102, "name": "کاپ کیک کلدن کشمشی ناربن (70 گرم 24عددی )", "cat": "کاپ‌کیک", "brand": "ناربن (صادراتی)", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 5206, "name": "سوئيس رول شفاف کاکائويي ناربن", "cat": "رول", "brand": "ناربن (صادراتی)", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 5204, "name": "سوئيس رول شفاف توت فرنگي ناربن", "cat": "رول", "brand": "ناربن (صادراتی)", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 5302, "name": "کلوچه سنتي گردويي ناربن", "cat": "کلوچه", "brand": "ناربن (صادراتی)", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 5401, "name": "ويفر موزي ال بيز ناربن", "cat": "ویفر", "brand": "ناربن (صادراتی)", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 5403, "name": "ويفر فندقي ال بيز ناربن", "cat": "ویفر", "brand": "ناربن (صادراتی)", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 5404, "name": "ويفر کاکائويي ال بيز ناربن", "cat": "ویفر", "brand": "ناربن (صادراتی)", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 5501, "name": "بيسکوييت خانواده آلارام پرتقالي ناربن", "cat": "بیسکویت", "brand": "ناربن (صادراتی)", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}, {"code": 5601, "name": "والس با روکش کاکائو ناربن", "cat": "کیک لایه‌ای", "brand": "ناربن (صادراتی)", "total": 0, "share": 0.0, "cum": 100.0, "bucket": "حذف"}], "summary": {"قهرمان": {"count": 18, "vol": 2487613, "pct": 48.7}, "نگه‌دار": {"count": 29, "vol": 1595796, "pct": 31.3}, "بازبینی": {"count": 78, "vol": 1022139, "pct": 20.0}, "حذف": {"count": 44, "vol": 0, "pct": 0.0}}, "cats": {"بارکیک": {"count": 3, "vol": 187242, "pct": 3.7}, "بیسکویت": {"count": 19, "vol": 224808, "pct": 4.4}, "دوقلو": {"count": 2, "vol": 176794, "pct": 3.5}, "رول": {"count": 27, "vol": 439250, "pct": 8.6}, "سایر": {"count": 1, "vol": 54984, "pct": 1.1}, "شوکوپای": {"count": 5, "vol": 119112, "pct": 2.3}, "شکلات": {"count": 13, "vol": 72048, "pct": 1.4}, "ویفر": {"count": 26, "vol": 693583, "pct": 13.6}, "کاپ‌کیک": {"count": 13, "vol": 470239, "pct": 9.2}, "کروسان": {"count": 3, "vol": 205353, "pct": 4.0}, "کلوچه": {"count": 13, "vol": 476988, "pct": 9.3}, "کیک": {"count": 32, "vol": 1306518, "pct": 25.6}, "کیک لایه‌ای": {"count": 12, "vol": 678629, "pct": 13.3}}, "quarters": {"بهار": 1200894, "تابستان": 1120346, "پاییز": 1600064, "زمستان": 1184244}, "brands": {"بنیس / ارس‌پر": 78.1, "نیلو": 17.5, "سیاسر": 2.6, "تهبازی": 1.8, "ناربن (صادراتی)": 0.0}};
+const fa = n => Number(n).toLocaleString('fa-IR');
+const order = {'قهرمان':0,'نگه‌دار':1,'بازبینی':2,'حذف':3};
+
+// KPIs
+const kc={'قهرمان':['hero-c','قهرمان – تقویت'],'نگه‌دار':['keep-c','نگه‌دار'],'بازبینی':['rev-c','بازبینی / ادغام'],'حذف':['cut-c','حذف (فروش صفر)']};
+document.getElementById('kpis').innerHTML = Object.keys(kc).map(k=>{
+  const s=DATA.summary[k];
+  return `<div class="kpi ${kc[k][0]}"><div class="n">${fa(s.count)}</div><div class="pct">${fa(s.pct)}٪ از حجم</div><div class="l">${kc[k][1]}</div></div>`;
+}).join('');
+
+// brand bars
+const bmax=Math.max(...Object.values(DATA.brands));
+document.getElementById('brandbars').innerHTML=Object.entries(DATA.brands).map(([k,v])=>
+  `<div class="bar-row"><span>${k}</span><div class="bar-track"><div class="bar-fill" style="width:${v/bmax*100}%"></div></div><span class="v">${fa(v)}٪</span></div>`).join('');
+
+// quarter bars
+const qmax=Math.max(...Object.values(DATA.quarters));
+document.getElementById('qbars').innerHTML=Object.entries(DATA.quarters).map(([k,v])=>
+  `<div class="bar-row"><span>${k}</span><div class="bar-track"><div class="bar-fill" style="width:${v/qmax*100}%;background:${k==='پاییز'?'var(--teal)':'var(--gold)'}"></div></div><span class="v">${fa(Math.round(v/1000))}k</span></div>`).join('');
+
+// category select
+const cats=Object.keys(DATA.cats).sort((a,b)=>DATA.cats[b].vol-DATA.cats[a].vol);
+document.getElementById('cat').innerHTML='<option value="">همهٔ دسته‌ها</option>'+cats.map(c=>`<option value="${c}">${c} (${fa(DATA.cats[c].count)})</option>`).join('');
+
+// chips
+let activeBucket='';
+const buckets=['قهرمان','نگه‌دار','بازبینی','حذف'];
+function buildChips(){
+  document.getElementById('chips').innerHTML =
+    `<div class="chip ${activeBucket===''?'on':''}" onclick="setBucket('')">همه (${fa(DATA.rows.length)})</div>`+
+    buckets.map(b=>`<div class="chip ${activeBucket===b?'on':''}" onclick="setBucket('${b}')">${b} (${fa(DATA.summary[b].count)})</div>`).join('');
+}
+function setBucket(b){activeBucket=b;buildChips();render();}
+
+let sortKey='total',sortDir=-1;
+function sortBy(k){ if(sortKey===k){sortDir*=-1}else{sortKey=k;sortDir=(k==='name'||k==='cat'||k==='brand'||k==='bucket')?1:-1} render(); }
+
+function render(){
+  const q=document.getElementById('q').value.trim();
+  const cat=document.getElementById('cat').value;
+  let rows=DATA.rows.filter(r=>
+    (!q||r.name.includes(q)) && (!cat||r.cat===cat) && (!activeBucket||r.bucket===activeBucket));
+  rows.sort((a,b)=>{
+    let x=a[sortKey],y=b[sortKey];
+    if(sortKey==='bucket'){x=order[a.bucket];y=order[b.bucket];}
+    if(typeof x==='string') return x.localeCompare(y,'fa')*sortDir;
+    return (x-y)*sortDir;
+  });
+  document.getElementById('tcount').textContent=`${fa(rows.length)} کالا · حجم ${fa(rows.reduce((s,r)=>s+r.total,0))}`;
+  document.getElementById('tbody').innerHTML=rows.map(r=>{
+    const cls='bk-'+r.bucket.replace('‌','');
+    return `<tr><td class="name">${r.name}</td><td>${r.cat}</td><td>${r.brand}</td>
+      <td>${fa(r.total)}</td><td>${fa(r.share)}</td>
+      <td><span class="bk ${cls}">${r.bucket}</span></td></tr>`;
+  }).join('');
+}
+buildChips();render();
+</script>
+</body>
+</html>
