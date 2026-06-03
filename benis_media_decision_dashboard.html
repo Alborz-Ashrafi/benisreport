@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>بنیس · داشبورد تصمیم رسانه‌ای</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--paper:#FBF7EF;--paper2:#F2EAD8;--ink:#1B2440;--ink2:#474E66;--ink3:#787E94;
+--gold:#A9792A;--gold2:#C9A85C;--teal:#1D7A5F;--coral:#BE5329;--blue:#2C5A8C;--hero:#15203F;
+--line:rgba(27,36,64,.12);--ok:#1D7A5F;--mid:#C9A85C;--no:#BE5329}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{font-family:Vazirmatn,sans-serif;background:var(--paper);color:var(--ink);font-weight:300;line-height:1.8}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+a{color:var(--gold);text-decoration:none}
+nav{position:sticky;top:0;z-index:60;background:rgba(251,247,239,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:16px;height:60px;overflow-x:auto}
+nav .lg{font-weight:900;font-size:19px;white-space:nowrap}.lg span{color:var(--gold)}
+nav a{font-size:13px;color:var(--ink2);padding:6px 10px;border-radius:8px;white-space:nowrap;font-weight:400}
+nav a:hover{background:var(--paper2);color:var(--ink)}
+header.hero{background:var(--hero);color:#F1ECDF;padding:70px 0 60px;position:relative;overflow:hidden}
+header.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(201,168,92,.09) 1px,transparent 1px);background-size:24px 24px}
+.hero .k{color:var(--gold2);letter-spacing:3px;font-size:12px;font-weight:500;position:relative}
+.hero h1{font-size:clamp(34px,6vw,60px);font-weight:900;line-height:1.05;margin-top:12px;color:#fff;position:relative}
+.hero p{color:#C4CADB;margin-top:16px;max-width:680px;position:relative;font-size:17px}
+.hero .rule{width:60px;height:3px;background:var(--gold);margin:18px 0;position:relative}
+.verdict{position:relative;margin-top:30px;background:rgba(29,122,95,.16);border:1px solid rgba(201,168,92,.3);border-radius:14px;padding:20px 22px}
+.verdict b{color:var(--gold2)}
+section{padding:50px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(22px,4vw,30px);font-weight:700;display:flex;align-items:center;gap:12px}
+h2::before{content:"";width:8px;height:26px;background:var(--gold);border-radius:3px;display:inline-block}
+.sub{color:var(--ink3);font-size:14px;margin:8px 0 22px}
+.lead{font-size:18px;color:var(--ink2)}
+p{margin:12px 0;color:var(--ink2)}
+.grid{display:grid;gap:16px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:820px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}
+.card h4{font-weight:700;margin-bottom:8px;font-size:16px}
+.kpi{text-align:center}.kpi .n{font-size:34px;font-weight:900;line-height:1}.kpi .l{font-size:13px;color:var(--ink3);margin-top:8px}
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;border-radius:12px;overflow:hidden}
+.tbl th{background:var(--hero);color:#ECE6D7;font-weight:500;padding:12px 10px;text-align:right;font-size:12.5px;position:sticky;top:60px}
+.tbl td{padding:10px;border-top:1px solid var(--line);color:var(--ink2);vertical-align:top}
+.tbl tr:hover td{background:var(--paper2)}
+.tbl-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}
+.pill{font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px}
+.p-ok{background:#D9EDE3;color:#14563f}.p-mid{background:#F6EACB;color:#7d5c10}.p-no{background:#F6D9C9;color:#8a3415}
+.win{font-weight:700}.win-micro{color:var(--teal)}.win-tv{color:var(--coral)}
+.chartbox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+.chartbox h4{font-weight:700;margin-bottom:10px;font-size:15px}
+.calc label{display:block;font-size:13px;color:var(--ink2);margin:14px 0 6px;font-weight:500}
+.calc input[type=range]{width:100%;accent-color:var(--gold)}
+.calc .out{font-size:30px;font-weight:900;color:var(--gold)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.chip{font-size:12px;padding:6px 12px;border:1px solid var(--line);border-radius:20px;background:#fff;cursor:pointer;font-weight:500}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+ul.cl{list-style:none;display:grid;gap:8px;margin:10px 0}
+ul.cl li{padding:11px 14px;background:#fff;border:1px solid var(--line);border-radius:10px;font-size:14px;color:var(--ink2);position:relative;padding-right:30px}
+ul.cl li::before{content:"";position:absolute;right:13px;top:18px;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.caveat{background:#FBEFE7;border-right:4px solid var(--coral);padding:14px 18px;border-radius:10px;margin:18px 0;font-size:14px;color:#7a3a1f}
+.conf{font-size:11px}.src{font-size:12px;color:var(--ink3)}
+footer{background:var(--hero);color:#AEB4C6;padding:34px 0;font-size:13px;text-align:center}
+footer b{color:var(--gold2)}
+.badge{display:inline-block;font-size:10.5px;padding:2px 8px;border-radius:6px;background:var(--paper2);color:var(--ink2);margin-inline-start:6px}
+.recbox{background:linear-gradient(135deg,#15203F,#243358);color:#EEE9DC;border-radius:16px;padding:26px}
+.recbox h3{color:var(--gold2);font-size:20px;margin-bottom:12px}
+.recbox .row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:14px}
+.recbox .row b{color:#fff}
+</style></head><body>
+
+<nav><div class="wrap">
+<div class="lg">بنیس<span>·</span></div>
+<a href="#summary">خلاصه</a><a href="#audience">مخاطب پرشیانا</a><a href="#segments">سگمنت‌ها</a>
+<a href="#compare">مقایسهٔ کانال‌ها</a><a href="#micro">میکرو در برابر TV</a><a href="#budget">سناریوی بودجه</a>
+<a href="#calc">ماشین‌حساب</a><a href="#rec">توصیهٔ نهایی</a><a href="#method">روش‌شناسی</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+<div class="k">داشبورد تصمیم‌یار سرمایه‌گذاری رسانه‌ای</div>
+<div class="rule"></div>
+<h1>کجا تبلیغ کنیم؟<br>تلویزیون پرشیانا یا جای دیگر؟</h1>
+<p>این داشبورد، تبلیغ تلویزیونی روی پرشیانا را در برابر ۹ کانال جایگزین، بر پایهٔ شواهد می‌سنجد — تا مدیر بازاریابی بتواند بهترین تصمیم تخصیص بودجه را بگیرد. هدف، توجیه تلویزیون نیست؛ کشف بهترین استراتژی است.</p>
+<div class="verdict" id="verdictTop">در حال محاسبه…</div>
+</div></header>
+
+<div class="wrap">
+
+<section id="summary"><h2>خلاصهٔ مدیریتی</h2>
+<div class="sub">جداسازی صریح «واقعیت» از «تفسیر» — همراه با سطح اطمینان هر یافته.</div>
+<div class="grid g4">
+<div class="card kpi"><div class="n" style="color:var(--teal)">میکرو</div><div class="l">بالاترین هزینه‌اثربخشی و تناسب نسل Z</div></div>
+<div class="card kpi"><div class="n" style="color:var(--coral)">۹۲٪</div><div class="l">ایرانی‌ها از سوشال استفاده می‌کنند (در برابر ۴۱٪ ماهواره)</div></div>
+<div class="card kpi"><div class="n" style="color:var(--gold)">۵–۶.۵×</div><div class="l">بازگشت هر دلار در کمپین میکرو (بنچمارک جهانی)</div></div>
+<div class="card kpi"><div class="n" style="color:var(--blue)">جام جهانی</div><div class="l">تنها پنجره‌ای که TV واقعاً ارزش دارد</div></div>
+</div>
+<p class="lead" style="margin-top:20px">جمع‌بندی: برای بنیس با هدف نسل Z/آلفا، <b style="color:var(--ink)">دیجیتال و میکرو‌اینفلوئنسر</b> از نظر هزینه‌اثربخشی، قابلیت سنجش و تناسب مخاطب بر تلویزیون پرشیانا پیشی می‌گیرند. تلویزیون فقط در یک نقش خاص توجیه دارد: <b style="color:var(--ink)">ضربهٔ آگاهی انبوه در پنجرهٔ جام جهانی</b>، آن هم به‌شرط جفت‌شدن با بازوی دیجیتال.</p>
+<div class="caveat"><b>هشدار داده‌ای:</b> تعرفهٔ دقیق پرشیانا و CPM بازار ایران عمومی منتشر نمی‌شود و تحریم، دادهٔ پلتفرم را محدود می‌کند. اعداد این داشبورد «تخمینِ مبتنی بر بنچمارک» است، نه عدد قطعی — هر بخش سطح اطمینان دارد.</div>
+</section>
+
+<section id="audience"><h2>تحلیل مخاطب پرشیانا</h2>
+<div class="sub">هر ردیف: یافته، منبع، و سطح اطمینان.</div>
+<div class="tbl-wrap"><table class="tbl">
+<thead><tr><th>موضوع</th><th>یافته</th><th>منبع</th><th>اطمینان</th></tr></thead>
+<tbody>
+<tr><td>ماهیت شبکه</td><td>گروه سرگرمی خانوادگی (One, Family, Cinema, Music, Korea, Comedy)، پخش ماهواره‌ای</td><td>Persiana / irandanestani</td><td><span class="pill p-ok">بالا</span></td></tr>
+<tr><td>اندازهٔ مخاطب پرشیانا</td><td>عدد دقیق عمومی نیست؛ در سطح گروه‌های فارسی میلیونی</td><td>—</td><td><span class="pill p-no">پایین</span></td></tr>
+<tr><td>تماشای ماهواره در ایران</td><td>~۳۵–۴۱٪ جمعیت بیننده/منبع خبرند؛ نصب دیش غیرقانونی اما رایج</td><td>GAMAAN ۱۴۰۲/۱۴۰۰</td><td><span class="pill p-ok">بالا</span></td></tr>
+<tr><td>ژانرهای محبوب</td><td>فیلم/سریال، ورزش، کمدی؛ درام خانوادگی در پرایم‌تایم</td><td>GAMAAN</td><td><span class="pill p-mid">متوسط</span></td></tr>
+<tr><td>گروه سنی</td><td>گرایش به میان‌سال/خانواده؛ نسل Z کمتر (سراغ سوشال)</td><td>GAMAAN (تفسیر)</td><td><span class="pill p-mid">متوسط</span></td></tr>
+<tr><td>اوج تماشا</td><td>پرایم‌تایم شب، آخر هفته، رویدادهای بزرگ</td><td>جدول پخش پرشیانا</td><td><span class="pill p-mid">متوسط</span></td></tr>
+<tr><td>اثر جام جهانی</td><td>افزایش شدید تماشای هم‌زمان خانوادگی (۱۱ ژوئن–۱۹ ژوئیه)</td><td>FIFA</td><td><span class="pill p-ok">بالا</span></td></tr>
+<tr><td>رابطه با سوشال</td><td>۹۲٪ از سوشال استفاده می‌کنند؛ تلگرام/اینستاگرام نفوذ بالا</td><td>GAMAAN ۱۴۰۰</td><td><span class="pill p-ok">بالا</span></td></tr>
+</tbody></table></div>
+</section>
+
+<section id="segments"><h2>سگمنت‌های مخاطب و ربط به بنیس</h2>
+<div class="grid g3" id="segs"></div>
+</section>
+
+<section id="compare"><h2>مقایسهٔ ۱۰ کانال تبلیغاتی</h2>
+<div class="sub">روی چیپ‌ها بزنید تا ستون‌ها فیلتر شود. اعداد تخمینی‌اند.</div>
+<div class="chartbox" style="margin-bottom:18px"><h4>نمودار امتیاز کانال‌ها (۱ تا ۵)</h4><canvas id="barChart" height="150"></canvas></div>
+<div class="tbl-wrap"><table class="tbl" id="chanTbl"></table></div>
+<div class="grid g2" style="margin-top:18px">
+<div class="chartbox"><h4>رادار: پرشیانا در برابر میکرو در برابر ترکیبی</h4><canvas id="radar" height="220"></canvas></div>
+<div class="chartbox"><h4>نقشهٔ هزینه‌اثربخشی در برابر دسترسی</h4><canvas id="scatter" height="220"></canvas></div>
+</div>
+</section>
+
+<section id="micro"><h2>تحلیل عمیق: میکرو‌اینفلوئنسر در برابر پرشیانا</h2>
+<div class="sub">آیا میکرو می‌تواند از تلویزیون بهتر عمل کند؟ شواهد می‌گوید در بیشتر معیارها بله.</div>
+<div class="tbl-wrap"><table class="tbl" id="mvtTbl"></table></div>
+<div class="caveat" style="background:#EAF3EE;border-right-color:var(--teal);color:#14563f"><b>جمع‌بندی:</b> میکرو در ۸ معیار از ۱۰ معیار برنده است؛ پرشیانا فقط در «دسترسی خام» و «آگاهی انبوه سریع» برتری دارد. یعنی نقش‌ها مکمل‌اند، نه جایگزین: میکرو موتور تبدیل و اعتماد، تلویزیون ضربهٔ آگاهی.</div>
+</section>
+
+<section id="budget"><h2>سناریوهای بودجه</h2>
+<div class="sub">تخمین‌های گویا با فرض صریح: CPM ترکیبی دیجیتال ~۶۰٬۰۰۰ تومان.</div>
+<div class="tbl-wrap"><table class="tbl" id="budgetTbl"></table></div>
+<div class="chartbox" style="margin-top:18px"><h4>رشد دسترسی تخمینی با افزایش بودجه</h4><canvas id="budgetChart" height="130"></canvas></div>
+</section>
+
+<section id="calc"><h2>ماشین‌حساب تخصیص بودجه</h2>
+<div class="sub">بودجه را تنظیم کنید تا تخصیص پیشنهادی و خروجی تخمینی را ببینید.</div>
+<div class="grid g2">
+<div class="card calc">
+<label>بودجهٔ کل (میلیون تومان): <b id="bval">500</b></label>
+<input type="range" id="bslider" min="100" max="3000" step="50" value="500">
+<label>هدف اصلی کمپین</label>
+<div class="chips" id="goalChips">
+<div class="chip on" data-g="conv">فروش/تبدیل</div><div class="chip" data-g="aware">آگاهی برند</div><div class="chip" data-g="genz">جذب نسل Z</div></div>
+<div style="margin-top:14px"><div class="l" style="color:var(--ink3);font-size:13px">دسترسی تخمینی</div><div class="out" id="reachOut">—</div></div>
+</div>
+<div class="card"><h4>تخصیص پیشنهادی</h4><canvas id="allocChart" height="200"></canvas></div>
+</div>
+</section>
+
+<section id="rec"><h2>توصیهٔ نهایی (نقش CMO)</h2>
+<div class="grid g2">
+<div class="recbox">
+<h3>حکم سرمایه‌گذاری</h3>
+<div class="row"><span>آیا پرشیانا استفاده شود؟</span><b>فقط مشروط</b></div>
+<div class="row"><span>چه زمانی بله</span><b>پنجرهٔ جام جهانی + کمپین برند</b></div>
+<div class="row"><span>چه زمانی نه</span><b>هدف فروش/نسل Z/بودجهٔ کم</b></div>
+<div class="row"><span>ستون فقرات بهینه</span><b>میکرو + دیجیتال</b></div>
+<div class="row" style="border:none"><span>ترکیب پیشنهادی پایه</span><b>۶۰٪ دیجیتال · ۲۵٪ TV · ۱۵٪ خرده</b></div>
+</div>
+<div>
+<ul class="cl">
+<li><b>استفاده از پرشیانا فقط وقتی:</b> بودجه بالای ~۱ میلیارد است و هدف، آگاهی انبوه در جام جهانی — آن هم با بازوی دیجیتال هم‌زمان.</li>
+<li><b>اجتناب از پرشیانا وقتی:</b> هدف فروش مستقیم، مخاطب نسل Z، یا بودجهٔ زیر ~۵۰۰ میلیون است.</li>
+<li><b>ستون فقرات:</b> میکرو‌اینفلوئنسر برای اعتماد و تبدیل + دیجیتال برای سنجش و بهینه‌سازی.</li>
+<li><b>خرده‌فعال‌سازی:</b> برای FMCG، نمونه‌دهی سر قفسه بالاترین تبدیل را دارد.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="method"><h2>روش‌شناسی و منابع</h2>
+<p class="src">داده‌ها از: نظرسنجی رسانه‌ای GAMAAN (۱۴۰۰/۱۴۰۲)، بنچمارک‌های اینفلوئنسر مارکتینگ ۲۰۲۵–۲۰۲۶ (Influencer Marketing Hub، Statusphere، Sociallyin)، تعرفه‌های تبلیغاتی بازار ایران (آژانس‌های داخلی)، و تقویم رسمی FIFA. اعداد مالی تخمینی و مبتنی بر بنچمارک‌اند، نه قطعی.</p>
+<div class="caveat"><b>محدودیت‌ها:</b> تعرفهٔ واقعی پرشیانا باید مستقیم از شبکه گرفته شود؛ رفتار تماشای ماهواره توسط مشتری واقعی بنیس نامشخص است؛ نرخ تبدیل به فروش FMCG وابسته به توزیع و قفسه است. این داشبورد ابزار تصمیم است، نه تضمین نتیجه.</div>
+</section>
+</div>
+
+<footer><div class="wrap">داشبورد تصمیم رسانه‌ای <b>بنیس</b> · جداسازی واقعیت از تفسیر · آمادهٔ تکمیل با دادهٔ تعرفهٔ واقعی و تست مخاطب</div></footer>
+
+<script>
+const D = {"channels": [{"key": "persiana", "name": "تلویزیون پرشیانا (ماهواره)", "reach": "بسیار بالا (میلیونی، نامشخص دقیق)", "cpm": "نامشخص (تعرفه عمومی نیست)", "cost": "بالا — بستهٔ پخش (ده‌ها تا صدها میلیون)", "engage": "پایین (یک‌طرفه)", "conv": "غیرمستقیم / بلندمدت", "roi": "سخت‌اندازه‌گیری", "conf": "پایین", "strength": "آگاهی انبوه، اعتبار، تماشای خانوادگی، اوج در جام جهانی", "weak": "غیرقابل‌اندازه‌گیری، تحریم/قانونی، مخاطب جوان کمتر", "risk": "ریسک شهرت برند ملی + بازگشت نامعلوم"}, {"key": "instagram", "name": "تبلیغات اینستاگرام (اینفلوئنسر)", "reach": "بالا و هدفمند", "cpm": "متوسط", "cost": "استوری ۵۵۰هزار تا ۱.۵م/پست ۲-۳ برابر", "engage": "بالا", "conv": "متوسط تا بالا", "roi": "قابل‌اندازه‌گیری", "conf": "متوسط", "strength": "هدف‌گیری دقیق، تعامل، قابل‌سنجش، نسل جوان", "weak": "پروموت رسمی به‌خاطر تحریم ممکن نیست؛ اتکا به پیج‌ها", "risk": "فیلترینگ، نوسان دسترسی"}, {"key": "telegram", "name": "تبلیغات تلگرام (کانال‌ها)", "reach": "بالا", "cpm": "پایین تا متوسط", "cost": "متغیر بر اساس کانال", "engage": "متوسط", "conv": "متوسط", "roi": "قابل‌اندازه‌گیری", "conf": "پایین", "strength": "نفوذ بالا در ایران، هزینهٔ نسبتاً پایین", "weak": "تعامل بصری کمتر، محیط شلوغ", "risk": "فیلترینگ، کیفیت مخاطب نامطمئن"}, {"key": "micro", "name": "کمپین میکرو‌اینفلوئنسر", "reach": "متوسط (انباشتی بالا)", "cpm": "پایین (CPE پایین)", "cost": "پایین به‌ازای هر نفر؛ مقیاس‌پذیر", "engage": "بسیار بالا (۳-۸٪+)", "conv": "بالا", "roi": "بالا (۵-۶.۵ دلار/دلار)", "conf": "متوسط", "strength": "اعتماد، اصالت، هزینه‌اثربخش، مناسب نسل Z", "weak": "مدیریت چند نفر، پراکندگی پیام", "risk": "کیفیت متغیر اینفلوئنسرها"}, {"key": "macro", "name": "کمپین مکرو‌اینفلوئنسر", "reach": "بالا", "cpm": "بالا", "cost": "بالا (میلیونی به‌ازای هر پست)", "engage": "متوسط (۱-۳٪)", "conv": "متوسط", "roi": "متوسط", "conf": "متوسط", "strength": "دسترسی انبوه سریع، اعتبار", "weak": "تعامل درصدی پایین، گران", "risk": "اشباع تبلیغاتی اینفلوئنسر"}, {"key": "perf", "name": "بازاریابی عملکردی دیجیتال", "reach": "هدفمند", "cpm": "متوسط", "cost": "انعطاف‌پذیر", "engage": "متوسط", "conv": "بالا (مستقیم)", "roi": "بالا و دقیق", "conf": "متوسط", "strength": "قابل‌سنجش، بهینه‌سازی لحظه‌ای", "weak": "FMCG فروش آنلاین مستقیم محدود دارد", "risk": "وابسته به زیرساخت فروش آنلاین"}, {"key": "youtube", "name": "تبلیغات یوتیوب / آپارات", "reach": "متوسط", "cpm": "متوسط", "cost": "متوسط", "engage": "متوسط", "conv": "متوسط", "roi": "متوسط", "conf": "پایین", "strength": "ویدیویی، روایت‌محور", "weak": "یوتیوب فیلتر؛ آپارات مخاطب محدودتر", "risk": "دسترسی/فیلترینگ"}, {"key": "retail", "name": "فعال‌سازی در فروشگاه (Retail)", "reach": "نقطهٔ خرید", "cpm": "—", "cost": "متوسط تا بالا", "engage": "بالا (لمسی)", "conv": "بسیار بالا (لحظهٔ خرید)", "roi": "بالا برای FMCG", "conf": "متوسط", "strength": "تبدیل مستقیم، نمونه‌دهی، نزدیک به قفسه", "weak": "دامنهٔ جغرافیایی محدود", "risk": "هزینهٔ اجرا و هماهنگی"}, {"key": "ooh", "name": "بیلبورد و محیطی (OOH)", "reach": "بالا (جغرافیایی)", "cpm": "متوسط", "cost": "بالا", "engage": "پایین", "conv": "غیرمستقیم", "roi": "سخت‌اندازه‌گیری", "conf": "پایین", "strength": "آگاهی انبوه شهری، اعتبار برند", "weak": "غیرقابل‌سنجش، غیرهدفمند", "risk": "هزینهٔ ثابت بالا"}, {"key": "mixed", "name": "استراتژی ترکیبی (Mixed)", "reach": "بالا و چندلایه", "cpm": "بهینه", "cost": "بسته به ترکیب", "engage": "بالا", "conv": "بالا", "roi": "بهینه", "conf": "متوسط", "strength": "پوشش قیف کامل، هم آگاهی هم تبدیل", "weak": "نیازمند هماهنگی و مدیریت", "risk": "پیچیدگی اجرا"}], "scores": {"persiana": [5, 2, 1, 2, 2, 2], "instagram": [4, 5, 4, 4, 5, 4], "telegram": [4, 3, 3, 4, 3, 3], "micro": [3, 5, 4, 5, 5, 4], "macro": [4, 3, 3, 2, 4, 3], "perf": [3, 3, 5, 4, 4, 5], "youtube": [3, 3, 3, 3, 3, 3], "retail": [3, 5, 3, 3, 3, 5], "ooh": [4, 1, 1, 2, 2, 2], "mixed": [5, 4, 4, 4, 4, 4]}, "score_labels": ["دسترسی", "تعامل", "قابلیت‌سنجش", "هزینه‌اثربخشی", "تناسب نسل Z", "تبدیل"], "budgets": [{"t": "۱۰۰ میلیون", "v": 100, "mix": "۱۰۰٪ دیجیتال/میکرو", "imp": "~۲ تا ۴ میلیون", "reach": "محدود-متمرکز", "aware": "محلی", "sales": "آزمایشی", "roi": "بالا (متمرکز)"}, {"t": "۳۰۰ میلیون", "v": 300, "mix": "میکرو + تلگرام + خرده‌فعال‌سازی", "imp": "~۶ تا ۱۲ میلیون", "reach": "منطقه‌ای", "aware": "متوسط", "sales": "رشد قابل‌مشاهده", "roi": "بالا"}, {"t": "۵۰۰ میلیون", "v": 500, "mix": "دیجیتال غالب + تست محدود TV/OOH", "imp": "~۱۰ تا ۲۰ میلیون", "reach": "ملی-منتخب", "aware": "خوب", "sales": "رشد پایدار", "roi": "بالا-متوسط"}, {"t": "۱ میلیارد", "v": 1000, "mix": "ترکیبی: ۶۰٪ دیجیتال / ۲۵٪ TV / ۱۵٪ خرده", "imp": "~۲۰ تا ۴۰ میلیون", "reach": "ملی", "aware": "بالا", "sales": "جهش", "roi": "متوسط-بالا"}, {"t": "۳ میلیارد", "v": 3000, "mix": "۳۶۰ درجه: TV(جام جهانی)+دیجیتال انبوه+خرده+OOH", "imp": "~۶۰ تا ۱۲۰ میلیون", "reach": "ملی فراگیر", "aware": "بسیار بالا", "sales": "حداکثری", "roi": "متوسط (سرمایه‌گذاری برند)"}], "micro_vs_tv": [["معیار", "میکرو‌اینفلوئنسر", "تلویزیون پرشیانا", "برنده"], ["نرخ تعامل", "۳ تا ۸٪+ (بالا)", "عملاً صفر (یک‌طرفه)", "میکرو"], ["اعتماد/اصالت", "بالا (توصیهٔ شخصی)", "متوسط (تبلیغ سنتی)", "میکرو"], ["کیفیت مخاطب", "هدفمند و نیچ", "انبوه و عام", "میکرو"], ["دسترسی خام", "متوسط", "بسیار بالا", "پرشیانا"], ["قابلیت سنجش", "بالا و دقیق", "بسیار پایین", "میکرو"], ["هزینه‌اثربخشی", "بالا (۵-۶.۵$/$)", "نامشخص/پایین", "میکرو"], ["تناسب نسل Z/آلفا", "بسیار بالا", "پایین", "میکرو"], ["آگاهی انبوه سریع", "کند (انباشتی)", "سریع و وسیع", "پرشیانا"], ["مقیاس‌پذیری", "بالا (تعداد زیاد)", "محدود به بودجه", "میکرو"]]};
+const fa = n => Number(n).toLocaleString('fa-IR');
+const confClass=c=>c=='بالا'?'p-ok':(c=='متوسط'?'p-mid':'p-no');
+
+// segments
+const segs=[
+ {n:"خانوادهٔ سنتی",age:"۳۵–۵۵",int:"سریال، خانواده، تماشای جمعی",pow:"متوسط",media:"ماهواره + تلگرام",rel:"بالا — خریدار اصلی کیک خانوار"},
+ {n:"والدین جوان",age:"۲۸–۴۰",int:"کودک، خانه، اینستاگرام",pow:"متوسط-بالا",media:"اینستاگرام + ماهواره",rel:"بالا — جعبهٔ مدرسه و میان‌وعده"},
+ {n:"نسل Z و آلفا",age:"۱۳–۲۷",int:"ترند، موبایل، ریلز",pow:"پایین-متوسط (اثرگذار بر خرید خانوار)",media:"اینستاگرام/تلگرام، نه ماهواره",rel:"بالا — هدف اصلی بارکیک/ویفر"}
+];
+document.getElementById('segs').innerHTML=segs.map(s=>`<div class="card"><h4>${s.n} <span class="badge">${s.age} سال</span></h4>
+<p style="font-size:13.5px"><b>علایق:</b> ${s.int}<br><b>قدرت خرید:</b> ${s.pow}<br><b>رسانه:</b> ${s.media}<br><b>ربط به بنیس:</b> ${s.rel}</p></div>`).join('');
+
+// channel table
+const ct=document.getElementById('chanTbl');
+ct.innerHTML=`<thead><tr><th>کانال</th><th>دسترسی</th><th>هزینه</th><th>تعامل</th><th>تبدیل</th><th>ROI</th><th>قوت</th><th>ضعف/ریسک</th><th>اطمینان</th></tr></thead><tbody>`+
+D.channels.map(c=>`<tr><td style="font-weight:600;color:var(--ink)">${c.name}</td><td>${c.reach}</td><td>${c.cost}</td><td>${c.engage}</td><td>${c.conv}</td><td>${c.roi}</td><td style="font-size:12.5px">${c.strength}</td><td style="font-size:12.5px">${c.weak}؛ ${c.risk}</td><td><span class="pill ${confClass(c.conf)}">${c.conf}</span></td></tr>`).join('')+`</tbody>`;
+
+// micro vs tv
+const mt=document.getElementById('mvtTbl');
+mt.innerHTML='<thead><tr>'+D.micro_vs_tv[0].map(h=>`<th>${h}</th>`).join('')+'</tr></thead><tbody>'+
+D.micro_vs_tv.slice(1).map(r=>`<tr><td style="font-weight:600">${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td class="win ${r[3]=='میکرو'?'win-micro':'win-tv'}">${r[3]}</td></tr>`).join('')+'</tbody>';
+
+// budget table
+const bt=document.getElementById('budgetTbl');
+bt.innerHTML='<thead><tr><th>بودجه</th><th>ترکیب پیشنهادی</th><th>ایمپرشن تخمینی</th><th>دسترسی</th><th>آگاهی</th><th>اثر فروش</th><th>پتانسیل ROI</th></tr></thead><tbody>'+
+D.budgets.map(b=>`<tr><td style="font-weight:700;color:var(--gold)">${b.t}</td><td style="font-size:13px">${b.mix}</td><td>${b.imp}</td><td>${b.reach}</td><td>${b.aware}</td><td>${b.sales}</td><td>${b.roi}</td></tr>`).join('')+'</tbody>';
+
+// CHARTS
+Chart.defaults.font.family='Vazirmatn'; Chart.defaults.color='#474E66';
+const C={gold:'#A9792A',gold2:'#C9A85C',teal:'#1D7A5F',coral:'#BE5329',blue:'#2C5A8C',navy:'#15203F'};
+const keys=Object.keys(D.scores);
+const names={persiana:'پرشیانا',instagram:'اینستاگرام',telegram:'تلگرام',micro:'میکرو',macro:'مکرو',perf:'عملکردی',youtube:'یوتیوب',retail:'خرده',ooh:'بیلبورد',mixed:'ترکیبی'};
+// overall score = avg
+const overall=keys.map(k=>({k,v:(D.scores[k].reduce((a,b)=>a+b,0)/6)}));
+new Chart(document.getElementById('barChart'),{type:'bar',data:{labels:overall.map(o=>names[o.k]),
+datasets:[{label:'امتیاز کل',data:overall.map(o=>o.v.toFixed(2)),backgroundColor:overall.map(o=>o.k=='persiana'?C.coral:(o.k=='micro'||o.k=='mixed'?C.teal:C.gold2)),borderRadius:6}]},
+options:{plugins:{legend:{display:false}},scales:{y:{max:5,ticks:{stepSize:1}}}}});
+
+new Chart(document.getElementById('radar'),{type:'radar',data:{labels:D.score_labels,
+datasets:[
+{label:'پرشیانا',data:D.scores.persiana,borderColor:C.coral,backgroundColor:'rgba(190,83,41,.15)'},
+{label:'میکرو',data:D.scores.micro,borderColor:C.teal,backgroundColor:'rgba(29,122,95,.15)'},
+{label:'ترکیبی',data:D.scores.mixed,borderColor:C.gold,backgroundColor:'rgba(169,121,42,.12)'}]},
+options:{scales:{r:{min:0,max:5,ticks:{stepSize:1,backdropColor:'transparent'}}}}});
+
+// scatter: cost-efficiency (x) vs reach (y)
+new Chart(document.getElementById('scatter'),{type:'scatter',data:{datasets:keys.map(k=>({
+label:names[k],data:[{x:D.scores[k][3],y:D.scores[k][0]}],
+backgroundColor:k=='persiana'?C.coral:(k=='micro'||k=='mixed'?C.teal:C.gold2),pointRadius:8,pointHoverRadius:10}))},
+options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label}}},
+scales:{x:{title:{display:true,text:'هزینه‌اثربخشی →'},min:0,max:6},y:{title:{display:true,text:'دسترسی →'},min:0,max:6}}}});
+
+// budget growth chart
+new Chart(document.getElementById('budgetChart'),{type:'line',data:{labels:D.budgets.map(b=>b.t),
+datasets:[{label:'دسترسی نسبی تخمینی',data:[15,35,55,78,100],borderColor:C.gold,backgroundColor:'rgba(169,121,42,.12)',fill:true,tension:.35,pointBackgroundColor:C.navy}]},
+options:{plugins:{legend:{display:false}},scales:{y:{title:{display:true,text:'شاخص دسترسی'},max:110}}}});
+
+// calculator
+let goal='conv';
+const allocs={
+ conv:{'میکرو':40,'دیجیتال عملکردی':25,'تلگرام':15,'خرده‌فعال‌سازی':20},
+ aware:{'تلویزیون (جام جهانی)':35,'میکرو':25,'بیلبورد':20,'دیجیتال':20},
+ genz:{'میکرو':45,'اینستاگرام/ریلز':35,'چالش ویدیویی':20}
+};
+let allocChart;
+function drawAlloc(){
+ const a=allocs[goal];const lbls=Object.keys(a);const vals=Object.values(a);
+ const cols=[C.teal,C.gold,C.blue,C.coral,C.gold2];
+ if(allocChart)allocChart.destroy();
+ allocChart=new Chart(document.getElementById('allocChart'),{type:'doughnut',
+ data:{labels:lbls,datasets:[{data:vals,backgroundColor:cols,borderColor:'#fff',borderWidth:2}]},
+ options:{plugins:{legend:{position:'bottom',labels:{font:{size:11},padding:8}}}}});
+}
+function calc(){
+ const b=+document.getElementById('bslider').value;
+ document.getElementById('bval').textContent=fa(b);
+ // illustrative: digital blended CPM 60k Toman -> impressions = b(M)*1e6/60000*1000
+ const factor=goal=='aware'?0.7:(goal=='genz'?1.15:1.0);
+ const imp=Math.round(b*1e6/60000*factor);
+ document.getElementById('reachOut').textContent='~'+fa(imp)+' ایمپرشن';
+}
+document.querySelectorAll('#goalChips .chip').forEach(c=>c.onclick=()=>{
+ document.querySelectorAll('#goalChips .chip').forEach(x=>x.classList.remove('on'));
+ c.classList.add('on');goal=c.dataset.g;drawAlloc();calc();
+});
+document.getElementById('bslider').oninput=calc;
+drawAlloc();calc();
+
+// top verdict
+document.getElementById('verdictTop').innerHTML='<b>حکم کوتاه:</b> برای هدف نسل Z و فروش، ستون فقرات باید «میکرو + دیجیتال» باشد. تلویزیون پرشیانا فقط به‌عنوان ضربهٔ آگاهیِ پنجرهٔ جام جهانی (با بودجهٔ بالا و بازوی دیجیتال) توجیه دارد — نه به‌تنهایی.';
+</script>
+</body></html>
