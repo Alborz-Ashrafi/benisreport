@@ -390,17 +390,49 @@
   position: relative;
 }
 
-.card-media::after {
-  content: "NEW";
+    /* Instagram Audit */
+
+.card-instagram:hover {
+  border-color: #e1306c;
+
+  box-shadow:
+    0 12px 40px rgba(225, 48, 108, 0.18);
+}
+
+.card-instagram:hover .icon {
+  background: rgba(225, 48, 108, 0.12);
+
+  border-color: rgba(225, 48, 108, 0.3);
+}
+
+.card-instagram .arrow {
+  color: #e1306c;
+}
+    .card-instagram {
+  position: relative;
+}
+
+.card-instagram::after {
+  content: "جدید";
+
   position: absolute;
   top: 16px;
   left: 16px;
-  font-size: 10px;
+
   padding: 4px 8px;
+
   border-radius: 999px;
-  background: rgba(6, 182, 212, 0.15);
-  color: #06b6d4;
-  border: 1px solid rgba(6, 182, 212, 0.3);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  background: rgba(225, 48, 108, 0.15);
+
+  color: #e1306c;
+
+  border: 1px solid rgba(225, 48, 108, 0.3);
+
+  letter-spacing: 0.5px;
 }
   </style>
 </head>
@@ -490,6 +522,25 @@
   <p>
     مقایسه تبلیغات تلویزیونی پرشیانا با ۹ کانال جایگزین
     برای یافتن بهینه‌ترین استراتژی تخصیص بودجه تبلیغات.
+  </p>
+
+  <div class="arrow">
+    مشاهده خروجی
+    <span>←</span>
+  </div>
+</a>
+   <!-- ممیزی اینستاگرام بنیس -->
+<a
+  href="./benis-instagram-audit.html"
+  class="card card-instagram"
+>
+  <div class="icon">📱</div>
+
+  <h2>ممیزی اینستاگرام بنیس</h2>
+
+  <p>
+    ارزیابی عملکرد محتوایی و تعاملات صفحه اینستاگرام بنیس
+    تا پایان خرداد ۱۴۰۵ همراه با شناسایی فرصت‌های رشد.
   </p>
 
   <div class="arrow">
