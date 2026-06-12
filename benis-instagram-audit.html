@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ادیت اینستاگرام بنیس — @beniscompany</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-900:#0c1726;
+    --navy-800:#101f33;
+    --navy-700:#15273f;
+    --navy-600:#1d3450;
+    --gold:#c9a45c;
+    --gold-bright:#e6c879;
+    --gold-soft:#a98a4a;
+    --cream:#f3ecdc;
+    --cream-dim:#cabfa6;
+    --cream-faint:#8d836d;
+    --line:rgba(201,164,92,.22);
+    --line-soft:rgba(201,164,92,.12);
+    --red:#d96b5a;
+    --green:#7fae6e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Vazirmatn',sans-serif;
+    background:var(--navy-900);
+    color:var(--cream);
+    line-height:1.85;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.04;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .num{font-family:'Playfair Display',serif;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 26px;position:relative;z-index:2}
+
+  /* ---------- COVER ---------- */
+  .cover{
+    min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    position:relative;padding:80px 0;
+    background:radial-gradient(ellipse at 75% 15%,rgba(201,164,92,.10),transparent 55%),
+               radial-gradient(ellipse at 10% 90%,rgba(29,52,80,.6),transparent 50%);
+  }
+  .frame{position:absolute;inset:22px;border:1px solid var(--line);pointer-events:none}
+  .frame::before,.frame::after{content:"";position:absolute;width:14px;height:14px;border:2px solid var(--gold)}
+  .frame::before{top:-2px;right:-2px;border-bottom:none;border-left:none}
+  .frame::after{bottom:-2px;left:-2px;border-top:none;border-right:none}
+  .kicker{
+    font-size:.74rem;letter-spacing:.42em;color:var(--gold);font-weight:600;
+    text-transform:uppercase;margin-bottom:34px;padding-right:4px;
+  }
+  .cover h1{
+    font-weight:800;font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.15;letter-spacing:-.01em;
+    background:linear-gradient(180deg,#fff,var(--cream) 40%,var(--gold) 130%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .cover .lede{font-size:1.18rem;color:var(--cream-dim);max-width:560px;margin-top:26px;font-weight:300}
+  .cover .handle{
+    display:inline-flex;align-items:center;gap:10px;margin-top:38px;
+    font-family:'Playfair Display',serif;font-style:italic;font-size:1.35rem;color:var(--gold-bright);
+  }
+  .cover .handle::before{content:"";width:42px;height:1px;background:var(--gold)}
+  .meta-row{display:flex;flex-wrap:wrap;gap:30px;margin-top:54px;padding-top:26px;border-top:1px solid var(--line-soft)}
+  .meta-row div{font-size:.82rem;color:var(--cream-dim)}
+  .meta-row b{display:block;color:var(--cream);font-weight:500;font-size:.95rem;margin-top:3px}
+  .scroll-hint{position:absolute;bottom:42px;right:48px;font-size:.7rem;letter-spacing:.3em;color:var(--gold-soft);writing-mode:vertical-rl;animation:bob 2.4s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(10px);opacity:1}}
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{padding:78px 0;border-top:1px solid var(--line-soft)}
+  .sec-tag{font-size:.72rem;letter-spacing:.34em;color:var(--gold);font-weight:600;text-transform:uppercase;margin-bottom:14px}
+  .sec-title{font-weight:700;font-size:clamp(1.7rem,3.6vw,2.4rem);line-height:1.3;margin-bottom:8px}
+  .sec-sub{color:var(--cream-dim);font-size:1rem;margin-bottom:42px;max-width:620px}
+
+  /* badges */
+  .conf{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.06em;padding:3px 11px;border-radius:30px;margin-inline-start:8px;vertical-align:middle;font-family:'Vazirmatn'}
+  .c-high{background:rgba(127,174,110,.16);color:#a6d094;border:1px solid rgba(127,174,110,.35)}
+  .c-mid{background:rgba(201,164,92,.14);color:var(--gold-bright);border:1px solid var(--line)}
+  .tag-data{background:rgba(120,160,210,.14);color:#9cc0ee;border:1px solid rgba(120,160,210,.3)}
+  .tag-interp{background:rgba(217,107,90,.13);color:#eaa091;border:1px solid rgba(217,107,90,.3)}
+
+  /* ---------- METRIC CARDS ---------- */
+  .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+  .metric{
+    background:linear-gradient(160deg,var(--navy-700),var(--navy-800));
+    border:1px solid var(--line-soft);border-radius:14px;padding:26px 22px;position:relative;overflow:hidden;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s;
+  }
+  .metric:hover{transform:translateY(-5px);border-color:var(--line)}
+  .metric::after{content:"";position:absolute;top:0;right:0;width:60px;height:60px;background:radial-gradient(circle at top right,rgba(201,164,92,.18),transparent 70%)}
+  .metric .v{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--gold-bright);line-height:1}
+  .metric .l{font-size:.82rem;color:var(--cream-dim);margin-top:10px}
+  .metric .x{font-size:.72rem;color:var(--gold-soft);margin-top:4px}
+
+  /* ---------- TABLE ---------- */
+  .tbl-shell{border:1px solid var(--line-soft);border-radius:14px;overflow:hidden;margin-top:8px}
+  table{width:100%;border-collapse:collapse;font-size:.92rem}
+  thead th{background:var(--navy-700);color:var(--gold);font-weight:600;font-size:.8rem;letter-spacing:.04em;padding:15px 18px;text-align:right}
+  tbody td{padding:14px 18px;border-top:1px solid var(--line-soft);color:var(--cream-dim)}
+  tbody tr{transition:background .25s}
+  tbody tr:hover{background:rgba(201,164,92,.04)}
+  tbody td:first-child{color:var(--cream);font-weight:500}
+  .hero-row{background:rgba(201,164,92,.07)}
+  .hero-row td:first-child::after{content:"قهرمان";font-size:.62rem;background:var(--gold);color:var(--navy-900);font-weight:700;padding:2px 8px;border-radius:20px;margin-inline-start:8px;font-family:'Vazirmatn'}
+  .pill{font-size:.74rem;padding:2px 10px;border-radius:20px;background:var(--navy-600);color:var(--cream-dim);border:1px solid var(--line-soft)}
+
+  /* ---------- BAR CHART ---------- */
+  .chart{margin-top:10px}
+  .bar-row{display:grid;grid-template-columns:130px 1fr auto;align-items:center;gap:14px;margin-bottom:14px}
+  .bar-row .lab{font-size:.84rem;color:var(--cream-dim);text-align:left}
+  .bar-track{height:13px;background:var(--navy-700);border-radius:20px;overflow:hidden;position:relative}
+  .bar-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--gold-soft),var(--gold-bright));width:0;transition:width 1.3s cubic-bezier(.2,.8,.2,1)}
+  .bar-fill.peak{background:linear-gradient(90deg,#b06a3f,#e6c879)}
+  .bar-row .val{font-family:'Playfair Display',serif;font-size:1rem;color:var(--cream);min-width:48px;text-align:left}
+
+  /* ---------- FINDINGS ---------- */
+  .find{
+    border:1px solid var(--line-soft);border-radius:16px;padding:30px 30px 26px;margin-bottom:20px;position:relative;
+    background:linear-gradient(155deg,rgba(29,52,80,.35),rgba(16,31,51,.2));
+    transition:border-color .35s,transform .35s;
+  }
+  .find:hover{border-color:var(--line);transform:translateX(-4px)}
+  .find .idx{font-family:'Playfair Display',serif;font-size:2.6rem;color:var(--line);position:absolute;left:26px;top:18px;font-weight:700}
+  .find h3{font-size:1.18rem;font-weight:700;margin-bottom:12px;padding-left:60px}
+  .find p{color:var(--cream-dim);font-size:.97rem}
+  .find p b{color:var(--cream);font-weight:600}
+
+  /* ---------- SWOT ---------- */
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .panel{border-radius:16px;padding:28px;border:1px solid var(--line-soft)}
+  .panel.str{background:linear-gradient(155deg,rgba(127,174,110,.10),transparent)}
+  .panel.leak{background:linear-gradient(155deg,rgba(217,107,90,.10),transparent)}
+  .panel h4{font-size:1.05rem;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .panel.str h4{color:#a6d094}.panel.leak h4{color:#eaa091}
+  .panel ul{list-style:none}
+  .panel li{padding:9px 0 9px 0;padding-inline-start:26px;position:relative;font-size:.94rem;color:var(--cream-dim);border-bottom:1px solid var(--line-soft)}
+  .panel li:last-child{border:none}
+  .panel.str li::before{content:"▲";position:absolute;right:0;color:var(--green);font-size:.7rem;top:13px}
+  .panel.leak li::before{content:"▼";position:absolute;right:0;color:var(--red);font-size:.7rem;top:13px}
+
+  /* ---------- ACTIONS ---------- */
+  .act-group{margin-bottom:36px}
+  .act-head{font-size:.78rem;letter-spacing:.2em;color:var(--gold);font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:14px}
+  .act-head::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+  .act{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid var(--line-soft);align-items:flex-start}
+  .act:last-child{border:none}
+  .act .n{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);min-width:30px}
+  .act .body{flex:1}
+  .act .body b{display:block;color:var(--cream);font-weight:600;font-size:1rem;margin-bottom:3px}
+  .act .body span{color:var(--cream-dim);font-size:.9rem}
+
+  /* highlight strip */
+  .hl-strip{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .hl{font-size:.78rem;padding:6px 14px;border-radius:30px;border:1px solid var(--line-soft);color:var(--cream-dim)}
+  .hl.corp{border-color:rgba(217,107,90,.3);color:#eaa091}
+  .hl.cons{border-color:rgba(127,174,110,.3);color:#a6d094}
+
+  /* footer */
+  footer{padding:60px 0 80px;border-top:1px solid var(--line);color:var(--cream-faint);font-size:.82rem}
+  footer .meth{background:var(--navy-800);border:1px solid var(--line-soft);border-radius:14px;padding:26px;margin-bottom:30px}
+  footer .meth b{color:var(--gold);font-weight:600}
+  .legend{display:flex;flex-wrap:wrap;gap:16px;margin:14px 0}
+  .legend span{font-size:.78rem;color:var(--cream-dim)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:640px){
+    .duo{grid-template-columns:1fr}
+    .bar-row{grid-template-columns:88px 1fr auto;gap:9px}
+    .bar-row .lab{font-size:.74rem}
+    .find .idx{font-size:1.8rem;left:18px}
+    .find h3{padding-left:34px}
+    .scroll-hint{display:none}
+    section{padding:60px 0}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== COVER ===== -->
+<header class="cover">
+  <div class="frame"></div>
+  <div class="wrap">
+    <div class="kicker reveal in">سند کاری · محرمانه · تحلیل کانال</div>
+    <h1 class="reveal in">ادیت اینستاگرام<br>برند بنیس</h1>
+    <p class="lede reveal in">ارزیابی عملکرد صفحه‌ی رسمی، خوانش الگوهای محتوایی و تعامل، و نقشه‌ی اقدام اولویت‌دار — بر پایه‌ی داده‌ی زنده‌ی مشاهده‌شده از پروفایل.</p>
+    <div class="handle reveal in">instagram.com/beniscompany</div>
+    <div class="meta-row reveal in">
+      <div>تاریخ تحلیل<b>۱۷ خرداد ۱۴۰۵ · ۷ ژوئن ۲۰۲۶</b></div>
+      <div>دامنه<b>پروفایل · گرید · ریلز</b></div>
+      <div>منبع داده<b>مشاهده‌ی مستقیم (بدون Insights)</b></div>
+      <div>وضعیت<b>نسخه‌ی تصمیم‌محور</b></div>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</header>
+
+<!-- ===== 1. SNAPSHOT ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-tag reveal">۰۱ — نمای کلی</div>
+    <h2 class="sec-title reveal">وضعیت در یک نگاه <span class="conf tag-data">داده</span></h2>
+    <p class="sec-sub reveal">اعداد پایه، همگی مستقیماً از پروفایل خوانده شده‌اند.</p>
+    <div class="metrics">
+      <div class="metric reveal"><div class="v">۱۷٫۱<span style="font-size:1.1rem">k</span></div><div class="l">فالوور</div><div class="x">رشد: نامشخص (بدون Insights)</div></div>
+      <div class="metric reveal"><div class="v">۴۰۱</div><div class="l">تعداد پست</div><div class="x">آرشیو پُربار</div></div>
+      <div class="metric reveal"><div class="v">۳</div><div class="l">فالوینگ</div><div class="x">صفحه‌ی کاملاً برندی</div></div>
+      <div class="metric reveal"><div class="v">~۱۹۷</div><div class="l">میانگین لایک پست</div><div class="x">نمونه‌ی ۷ پست</div></div>
+      <div class="metric reveal"><div class="v">~۱٫۱٪</div><div class="l">نرخ تعامل تخمینی</div><div class="x">باند سالم اما متوسط</div></div>
+      <div class="metric reveal"><div class="v">~۱</div><div class="l">پست در روز</div><div class="x">کادنس منظم</div></div>
+    </div>
+    <div class="hl-strip reveal">
+      <span style="color:var(--gold);font-size:.78rem;width:100%;margin-bottom:2px">۱۱ هایلایت فعال — ترکیب مصرفی و شرکتی:</span>
+      <span class="hl cons">محصولات</span><span class="hl cons">قهرمان</span><span class="hl cons">قاب بنیس</span>
+      <span class="hl cons">خانواده بنیس</span><span class="hl cons">بومبا تراک</span><span class="hl cons">جالبه بدونی</span>
+      <span class="hl corp">نمایشگاه ۱۴۰۴</span><span class="hl corp">نمایشگاه ۱۴۰۴-۲</span><span class="hl corp">کارآفرین برتر</span>
+      <span class="hl corp">شعب</span><span class="hl corp">ارتباط با بنیس</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2. POSTS DATA ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-tag reveal">۰۲ — عملکرد محتوا</div>
+    <h2 class="sec-title reveal">۷ پست اخیر فید <span class="conf tag-data">داده</span></h2>
+    <p class="sec-sub reveal">ویفر (ماتریکس) و بار کیک (سنین‌کک) صدرنشین‌اند — دقیقاً همان قهرمان‌هایی که در استراتژی تعریف شد.</p>
+    <div class="tbl-shell reveal">
+      <table>
+        <thead><tr><th>پست</th><th>دسته</th><th>لایک</th><th>تاریخ</th></tr></thead>
+        <tbody>
+          <tr class="hero-row"><td>ماتریکس فندقی</td><td><span class="pill">ویفر</span></td><td class="num">۳۵۰</td><td>۲۹ دسامبر</td></tr>
+          <tr class="hero-row"><td>سنین‌کک زمستانی</td><td><span class="pill">بار کیک</span></td><td class="num">۲۳۶</td><td>۲۶ دسامبر</td></tr>
+          <tr><td>نظرسنجی طعم</td><td><span class="pill">تعاملی</span></td><td class="num">۱۹۸</td><td>۳ ژانویه</td></tr>
+          <tr><td>بیسکو کرمی</td><td><span class="pill">بیسکویت</span></td><td class="num">۱۹۳</td><td>۳۱ دسامبر</td></tr>
+          <tr class="hero-row"><td>رول کیک پنیری</td><td><span class="pill">بار کیک</span></td><td class="num">۱۶۷</td><td>۵ ژانویه</td></tr>
+          <tr class="hero-row"><td>سنین‌کک شهری</td><td><span class="pill">بار کیک</span></td><td class="num">۱۳۷</td><td>۲۷ دسامبر</td></tr>
+          <tr><td>یلدا (ویدئو مناسبتی)</td><td><span class="pill">مناسبتی</span></td><td class="num">۹۹</td><td>۲۱ دسامبر</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. REELS CHART ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-tag reveal">۰۳ — ریچ ریلز</div>
+    <h2 class="sec-title reveal">بازدید ریلز <span class="conf tag-data">داده</span></h2>
+    <p class="sec-sub reveal">یک برکاوت آشکار: کاراکتر Gen Z شهریِ سنین‌کک با ۱۹هزار بازدید، چند برابر بقیه. مابقی عمدتاً زیر تعداد فالوور می‌مانند — یعنی محتوا کم از حباب فالوور بیرون می‌زند.</p>
+    <div class="chart reveal" id="reelChart">
+      <div class="bar-row"><span class="lab">سنین‌کک شهری</span><div class="bar-track"><div class="bar-fill peak" data-w="100"></div></div><span class="val num">۱۹٬۰۰۰</span></div>
+      <div class="bar-row"><span class="lab">سیمالی</span><div class="bar-track"><div class="bar-fill" data-w="34.6"></div></div><span class="val num">۶٬۵۶۷</span></div>
+      <div class="bar-row"><span class="lab">جعبه‌جایزه</span><div class="bar-track"><div class="bar-fill" data-w="31.7"></div></div><span class="val num">۶٬۰۲۳</span></div>
+      <div class="bar-row"><span class="lab">سنین‌کک آتش‌نشان</span><div class="bar-track"><div class="bar-fill" data-w="23.6"></div></div><span class="val num">۴٬۴۹۰</span></div>
+      <div class="bar-row"><span class="lab">کوکی موز</span><div class="bar-track"><div class="bar-fill" data-w="22.5"></div></div><span class="val num">۴٬۲۷۴</span></div>
+      <div class="bar-row"><span class="lab">مسابقه سلفی</span><div class="bar-track"><div class="bar-fill" data-w="21.7"></div></div><span class="val num">۴٬۱۳۱</span></div>
+      <div class="bar-row"><span class="lab">بیسکویت رقصان</span><div class="bar-track"><div class="bar-fill" data-w="20.2"></div></div><span class="val num">۳٬۸۴۳</span></div>
+      <div class="bar-row"><span class="lab">شعبده‌باز</span><div class="bar-track"><div class="bar-fill" data-w="18.8"></div></div><span class="val num">۳٬۵۷۳</span></div>
+      <div class="bar-row"><span class="lab">یلدا مبارک</span><div class="bar-track"><div class="bar-fill" data-w="9.7"></div></div><span class="val num">۱٬۸۴۲</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. FINDINGS ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-tag reveal">۰۴ — خوانش استراتژیک</div>
+    <h2 class="sec-title reveal">یافته‌های کلیدی <span class="conf tag-interp">تفسیر</span></h2>
+    <p class="sec-sub reveal">تفسیرها از داده‌ی بالا نتیجه شده‌اند؛ سطح اطمینان هر کدام مشخص است.</p>
+
+    <div class="find reveal"><span class="idx num">۰۱</span>
+      <h3>تنش هویتی: مصرفی در برابر شرکتی <span class="conf c-high">اطمینان بالا</span></h3>
+      <p>صفحه هم‌زمان دو روایت می‌زند: <b>برند مصرفی Gen Z</b> (اسنک، کاراکتر، رنگ شاد) و <b>محتوای صنعتی/B2B</b> (نمایشگاه، مدیران، گروه رسولوی). حتی نام صفحه «گروه صنعتی» است نه لحن یک برند مصرفی. این، پوزیشنینگ را رقیق می‌کند و مخاطب هدف (Gen Z / Alpha) را گیج.</p>
+    </div>
+
+    <div class="find reveal"><span class="idx num">۰۲</span>
+      <h3>فرضیه‌ی قهرمان تأیید شد <span class="conf c-high">اطمینان بالا</span></h3>
+      <p>دقیقاً مطابق استراتژی: <b>ویفر و بار کیک قهرمان واقعی‌اند</b>. ماتریکس (ویفر) بیشترین لایک فید و سنین‌کک (بار کیک) تنها برکاوت ریلز را ساختند. اما حجم محتوا بین انبوه SKU (دورکیت، بیسکو، سیمالی، کوکی) پخش شده و تمرکز روی قهرمان‌ها کم است.</p>
+    </div>
+
+    <div class="find reveal"><span class="idx num">۰۳</span>
+      <h3>موتور رشد = کاراکتر Gen Z <span class="conf c-high">اطمینان بالا</span></h3>
+      <p>هر دو محتوای پرفورمنس‌بالا کاراکتر‌محور و رترو-مدرن‌اند (اسنوبردسوارِ رول‌کیک، شخصیت شهریِ سنین‌کک ۱۹k). این مستقیماً جهت‌گیری‌ای را که ساختیم اعتبار می‌بخشد. باید به‌صورت یک «جهان کاراکتری» مستمر توسعه یابد، نه تک‌پست پراکنده.</p>
+    </div>
+
+    <div class="find reveal"><span class="idx num">۰۴</span>
+      <h3>نشت تبدیل (Conversion Leak) <span class="conf c-mid">اطمینان متوسط</span></h3>
+      <p>زیر پست‌ها سؤال خرید دیده می‌شود («محصولاتو تو تهران چطور تهیه کنم؟»). هایلایت «شعب» هست، ولی <b>مسیر خرید یک‌کلیکی در بایو شفاف نیست</b>. نیت خرید موجود است اما هدایت‌نشده می‌ماند.</p>
+    </div>
+
+    <div class="find reveal"><span class="idx num">۰۵</span>
+      <h3>کپشن و هشتگِ هدررفته <span class="conf c-high">اطمینان بالا</span></h3>
+      <p>الگوی تکراری «۳ بار تگ <b>@beniscompany</b>» فضای طلایی کپشن را بدون CTA پر می‌کند؛ هشتگ‌ها هم عمومی و تکراری‌اند (#بنیس #benis #خوشمزه) و عملاً کشف‌پذیری اضافه نمی‌کنند.</p>
+    </div>
+
+    <div class="find reveal"><span class="idx num">۰۶</span>
+      <h3>شکاف جام جهانی ۲۰۲۶ <span class="conf c-high">اطمینان بالا</span></h3>
+      <p>پنجره‌ی جام‌جهانی از ۱۱ ژوئن باز می‌شود، اما <b>هیچ محتوای آماده‌سازی</b> برای همان موجی که در استراتژی پرشیانا چیدیم در صفحه دیده نمی‌شود. فرصتی بزرگ و فوری که فقط چند روز تا آغازش مانده.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. SWOT ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-tag reveal">۰۵ — ترازنامه</div>
+    <h2 class="sec-title reveal">قوت‌ها و نشتی‌ها</h2>
+    <p class="sec-sub reveal">سه نقطه‌ی اتکا، سه نقطه‌ی نشت ارزش.</p>
+    <div class="duo">
+      <div class="panel str reveal">
+        <h4>▲ نقاط قوت</h4>
+        <ul>
+          <li>تولید بصری قوی، یکدست و باکیفیت (رندرهای ۳بعدی، برندینگ زرد ثابت)</li>
+          <li>انتشار منظم و تقریباً روزانه — انضباط محتوایی خوب</li>
+          <li>جهت‌گیری کاراکتر Gen Z که عملاً جواب داده (برکاوت ۱۹k)</li>
+          <li>بهره‌گیری از لحظه‌های فرهنگی (یلدا) و فرمت‌های تعاملی</li>
+        </ul>
+      </div>
+      <div class="panel leak reveal">
+        <h4>▼ نشتی‌های اصلی</h4>
+        <ul>
+          <li>اختلاط روایت مصرفی و صنعتی در یک فید</li>
+          <li>پخش‌شدن تمرکز روی محصولات غیرقهرمان</li>
+          <li>ریچ ضعیف فراتر از فالوور (اغلب ریلز زیر تعداد فالوور)</li>
+          <li>مسیر خرید مبهم + کپشن و هشتگ بدون بازده</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6. ACTIONS ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-tag reveal">۰۶ — نقشه‌ی اقدام</div>
+    <h2 class="sec-title reveal">۵ اقدام اولویت‌دار</h2>
+    <p class="sec-sub reveal">جداسازی بُردهای سریع از حرکت‌های ساختاری.</p>
+
+    <div class="act-group reveal">
+      <div class="act-head">بُرد سریع · این هفته</div>
+      <div class="act"><span class="n num">۱</span><div class="body"><b>مسیر خرید را یک‌کلیکی کن</b><span>لینک‌این‌بایو را به «از کجا بخریم» شفاف هدایت کن و کپشن‌ها را پاکسازی کن: حذف تگ تزئینی، افزودن CTA و دعوت به «ذخیره / فرست برای دوستت».</span></div></div>
+      <div class="act"><span class="n num">۲</span><div class="body"><b>سه پست برتر کاراکتر را پین کن</b><span>بهترین محتواهای قهرمانِ Gen Z را به بالای گرید ببر تا اولین برداشت بازدیدکننده، همان روایت برنده باشد.</span></div></div>
+      <div class="act"><span class="n num">۳</span><div class="body"><b>ست هشتگ را بازطراحی کن</b><span>ترکیب هدفمند: برندی + دسته‌ای + ترند روز، به‌جای تکرار سه هشتگ عمومی.</span></div></div>
+    </div>
+
+    <div class="act-group reveal">
+      <div class="act-head">حرکت ساختاری</div>
+      <div class="act"><span class="n num">۴</span><div class="body"><b>روایت را تفکیک کن</b><span>فید فقط مصرفی؛ محتوای نمایشگاه/B2B به هایلایت یا اکانت جدا منتقل شود. تمرکز ۶۰٪+ گرید روی ویفر و بار کیک (قهرمان‌ها).</span></div></div>
+      <div class="act"><span class="n num">۵</span><div class="body"><b>اسپرینت محتوای جام جهانی را همین حالا بساز</b><span>بر پایه‌ی همان جهان کاراکتری Gen Z و هم‌راستا با استراتژی پرشیانا — چون پنجره فقط چند روز دیگر باز می‌شود.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="meth reveal">
+      <b>روش‌شناسی و محدودیت داده</b><br>
+      شاخص‌های کمی (میانگین لایک، نرخ تعامل) بر پایه‌ی نمونه‌ی ۷ پست اخیر فید و ۹ ریل قابل‌مشاهده محاسبه شده‌اند و سطح اطمینان «متوسط» دارند. اعداد دقیق ریچ، رشد فالوور و دموگرافیک مخاطب نیاز به دسترسی Insights (اکانت ادمین) دارد که در این تحلیل در دسترس نبود. هیچ عدد ساختگی‌ای درج نشده؛ موارد تخمینی با علامت «~» مشخص‌اند.
+      <div class="legend">
+        <span style="color:#9cc0ee">■ داده — مشاهده‌ی مستقیم</span>
+        <span style="color:#eaa091">■ تفسیر — استنتاج استراتژیک</span>
+        <span style="color:#a6d094">■ اطمینان بالا</span>
+        <span style="color:var(--gold-bright)">■ اطمینان متوسط</span>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center">
+      <span>ادیت اینستاگرام بنیس · سند کاری داخلی</span>
+      <span class="num" style="color:var(--gold)">@beniscompany · 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal:not(.in)').forEach((el,i)=>{
+    el.style.transitionDelay=(i%6*60)+'ms';
+    io.observe(el);
+  });
+  const chart=document.getElementById('reelChart');
+  const cio=new IntersectionObserver((es)=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.bar-fill').forEach((b,i)=>{
+          setTimeout(()=>{b.style.width=b.dataset.w+'%';}, i*90);
+        });
+        cio.unobserve(e.target);
+      }
+    });
+  },{threshold:.3});
+  if(chart)cio.observe(chart);
+</script>
+</body>
+</html>
