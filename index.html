@@ -412,7 +412,25 @@
   position: relative;
 }
 
-.card-instagram::after {
+    /* Gamification Demo */
+
+.card-game:hover {
+  border-color: #f59e0b;
+
+  box-shadow:
+    0 12px 40px rgba(245, 158, 11, 0.18);
+}
+
+.card-game:hover .icon {
+  background: rgba(245, 158, 11, 0.12);
+
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.card-game .arrow {
+  color: #f59e0b;
+}
+    .card.new::after {
   content: "جدید";
 
   position: absolute;
@@ -426,13 +444,10 @@
   font-size: 10px;
   font-weight: 700;
 
-  background: rgba(225, 48, 108, 0.15);
+  background: rgba(255,255,255,0.08);
+  color: white;
 
-  color: #e1306c;
-
-  border: 1px solid rgba(225, 48, 108, 0.3);
-
-  letter-spacing: 0.5px;
+  border: 1px solid rgba(255,255,255,0.15);
 }
   </style>
 </head>
@@ -541,6 +556,30 @@
     ارزیابی عملکرد محتوایی و تعاملات صفحه اینستاگرام بنیس
     تا پایان خرداد ۱۴۰۵ همراه با شناسایی فرصت‌های رشد.
   </p>
+  <!-- نمونه گیمیفیکیشن برند بنیس -->
+<a
+  href="./game-benis.html"
+  class="card card-game new"
+>
+  <div class="icon">🎮</div>
+
+  <h2>نمونه گیمیفیکیشن برند بنیس</h2>
+
+  <p>
+    نمونه اولیه یک بازی تعاملی مبتنی بر HTML برای ارزیابی ظرفیت‌های
+    گیمیفیکیشن، کمپین‌های امتیازی، کدهای تخفیف و لیدربورد کاربران.
+  </p>
+
+  <div class="arrow">
+    اجرای نمونه
+    <span>←</span>
+  </div>
+</a>
+  <div class="arrow">
+    اجرای نمونه
+    <span>←</span>
+  </div>
+</a>
 
   <div class="arrow">
     مشاهده خروجی
