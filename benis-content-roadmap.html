@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نقشه راه بازاریابی محتوا ۶۰ روزه | بنیس</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f1a1e;--panel:#16252b;--panel2:#1d3038;--line:#2c4651;
+  --ink:#eaf2f4;--muted:#9fb6bd;--soft:#c5d6db;
+  --gold:#f4c441;--teal:#3fb9c9;--teal-d:#1f6b78;
+  --green:#5fcf8e;--amber:#f0a44b;--red:#ef6b6b;--purple:#b69cf0;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Vazirmatn',Tahoma,sans-serif;background:linear-gradient(180deg,#0c1518,#0f1a1e 28%);color:var(--ink);line-height:1.85;font-size:15.5px}
+.wrap{max-width:1140px;margin:0 auto;padding:26px 18px 80px}
+header.hero{background:radial-gradient(120% 140% at 92% 0%,#1d3038,#13212733 60%),var(--panel);border:1px solid var(--line);border-radius:20px;padding:32px 28px;margin-bottom:24px}
+.hero .tag{display:inline-block;font-size:13px;color:#0f1a1e;background:var(--gold);padding:4px 12px;border-radius:999px;font-weight:700;margin-bottom:12px}
+.hero h1{font-size:28px;margin:0 0 8px;font-weight:800;line-height:1.4}
+.hero h1 b{color:var(--gold)}
+.hero p.sub{color:var(--soft);margin:0;font-size:15.5px}
+.hero .meta{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.hero .meta span{font-size:12.5px;color:var(--muted);background:#0f1a1e80;border:1px solid var(--line);padding:5px 11px;border-radius:999px}
+.note{background:#2a1f0e;border:1px solid #5e4a1e;color:#f0d79a;border-radius:12px;padding:12px 16px;font-size:13px;margin-bottom:24px}
+h2.sec{font-size:20px;margin:40px 0 14px;font-weight:800;display:flex;align-items:center;gap:10px}
+h2.sec::before{content:"";width:6px;height:23px;background:var(--gold);border-radius:3px;display:inline-block}
+h3{font-size:16px;margin:0 0 8px;font-weight:700}
+.lead{color:var(--soft)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px}
+.grid{display:grid;gap:14px}
+.cols2{grid-template-columns:1fr 1fr}.cols3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}.cols4{grid-template-columns:repeat(auto-fit,minmax(165px,1fr))}
+@media(max-width:780px){.cols2{grid-template-columns:1fr}}
+ul.clean{margin:6px 0 0;padding:0 18px 0 0}
+ul.clean li{margin-bottom:6px;color:var(--soft);font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:12.8px;border-radius:12px;overflow:hidden}
+th,td{padding:9px 10px;text-align:right;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{background:var(--teal-d);color:#eaf6f8;font-weight:700;font-size:12.5px}
+tbody tr:nth-child(even){background:#15242a}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+.pill{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;font-weight:700;white-space:nowrap}
+.g-aware{background:#13303a;color:#7fd4e2}
+.g-eng{background:#13241a;color:#86e0aa}
+.g-trust{background:#2a230f;color:#f4d479}
+.g-lead{background:#251a30;color:#cdb4f5}
+.g-conv{background:#2a1414;color:#f5a0a0}
+.ch{font-weight:700;color:var(--gold);white-space:nowrap}
+.kpi{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:15px 13px;text-align:center}
+.kpi .num{font-size:23px;font-weight:800;color:var(--gold)}
+.kpi .lbl{font-size:12.5px;color:var(--muted);margin-top:3px}
+.kpi .hint{font-size:11px;color:#7d949b;margin-top:2px}
+.weekcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px}
+.weekcard .whd{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:10px}
+.weekcard .wn{background:var(--gold);color:#0f1a1e;font-weight:800;border-radius:8px;padding:3px 10px;font-size:13px}
+.weekcard .wt{font-weight:700;font-size:15.5px}
+.weekcard .wdays{font-size:12px;color:var(--muted)}
+.phase{font-size:13px;color:var(--gold);font-weight:700;margin:22px 0 8px;border-bottom:1px dashed var(--line);padding-bottom:6px}
+.barrow{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:13.5px}
+.barrow .lbl2{min-width:160px;color:var(--soft)}
+.barrow .track{flex:1;background:#0f1a1e;border:1px solid var(--line);border-radius:8px;height:20px;overflow:hidden}
+.barrow .fill{height:100%;border-radius:7px;display:flex;align-items:center;justify-content:flex-start;padding:0 8px;font-size:11.5px;font-weight:700;color:#0f1a1e}
+.dash .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;border-bottom:1px solid var(--line);padding:11px 0;font-size:13.5px}
+.dash .row:last-child{border-bottom:none}
+.dot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
+.dot.g{background:var(--green)}.dot.a{background:var(--amber)}.dot.r{background:var(--red)}
+.dash .metric{flex:1;min-width:180px;color:var(--soft)}
+.dash .target{font-weight:700;color:var(--ink);min-width:90px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:10px}
+.legend span{display:flex;align-items:center;gap:6px}
+.verdict{background:linear-gradient(120deg,#1d3038,#13212722);border:1px solid var(--gold);border-radius:16px;padding:22px;margin-top:18px}
+.verdict h3{color:var(--gold);font-size:17px}
+.callout{background:#0f2630;border:1px solid var(--teal-d);border-radius:12px;padding:14px 16px;font-size:13.5px;color:var(--soft)}
+footer{margin-top:44px;text-align:center;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:20px}
+.src{font-size:12px;color:#7d949b}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <span class="tag">نقشه راه عملیاتی · ۶۰ روز</span>
+  <h1>نقشه راه بازاریابی محتوا — <b>بنیس</b></h1>
+  <p class="sub">استراتژی محتوا، تقویم ۶۰ روزه چندکاناله، KPI هر فعالیت و کانال، و داشبورد مدیریتی تصمیم‌گیری</p>
+  <div class="meta">
+    <span>کانال‌ها: اینستاگرام · لینکدین · وب‌سایت/بلاگ · اینفلوئنسر</span>
+    <span>دوره: ۲ ماه (۸ هفته)</span>
+    <span>منابع: ادمین داخلی · ۱۰ ریلز/ماه · ۴ انیمیشن/ماه · بودجه اینفلوئنسر</span>
+    <span>مبنا: داشبوردهای رهنگاشت</span>
+  </div>
+</header>
+
+<div class="note">
+  این نقشه بر پایه یافته‌های داشبوردهای بنیس بنا شده: نقطه شروع = ۱۷٫۱k فالوور، ~۱٫۱٪ تعامل، قهرمان‌های اثبات‌شده (ویفر ماتریکس و بار کیک سنین‌کک)، شکاف‌های باز بازار (Gen Z، شب، طنز، گیمر) و تنش هویتی «مصرفی در برابر صنعتی». استراتژی این تنش را با تفکیک کانال حل می‌کند: اینستاگرام = مصرفی/Gen Z، لینکدین = روایت صنعتی/B2B.
+</div>
+
+<!-- STRATEGY -->
+<h2 class="sec">۱. استراتژی محتوایی کلی برند</h2>
+<div class="panel">
+  <h3 style="color:var(--gold)">ایده مرکزی: «اولین برند کیک اینترنت‌نیتیو ایران»</h3>
+  <p class="lead" style="margin-top:4px">کل دسته دیجیتالی خواب است (مجموع فالوور ۸ رقیب زیر ۵۰۰k). بنیس به‌جای رقابت قیمتی با غول‌ها، فضای خالی «برند با شخصیت، گرم و انسانی» را تصاحب می‌کند. سه ستون پیام:</p>
+  <div class="grid cols3" style="margin-top:12px">
+    <div class="callout"><h3>۱) شخصیت و طنز هوشمند</h3>«مثل آدم صحبت کن، نه مثل شرکت». لحن شوخ اما محترم، واکنش سریع به ترندها (مدل وندیز).</div>
+    <div class="callout"><h3>۲) نوستالژی پریمیوم</h3>روایت «پدر کیک ایران» + کیفیت ISO/HACCP؛ اعتماد نسلی را به افتخار امروزی تبدیل می‌کند.</div>
+    <div class="callout"><h3>۳) جهان کاراکتری Gen Z</h3>توسعه کاراکترهای قهرمان (سنین‌کک شهری، ماتریکس) به یک «جهان» مستمر، نه پست پراکنده.</div>
+  </div>
+  <p class="lead" style="margin-top:14px"><b style="color:var(--gold)">تفکیک کانال (حل تنش هویتی):</b> اینستاگرام برای مصرف‌کننده و نسل Z (سرگرمی، قهرمان، شب، طنز، UGC) · لینکدین برای روایت صنعتی، کیفیت، B2B و برند کارفرمایی · وب‌سایت/بلاگ برای سئو، آیین مصرف و مسیر خرید · اینفلوئنسر برای گسترش معتبر و ارزان دامنه.</p>
+  <p class="lead"><b style="color:var(--gold)">تمرکز محصول:</b> ۶۰٪+ محتوای مصرفی روی قهرمان‌ها (ویفر و بار کیک) متمرکز شود تا از پخش‌شدن میان ۷۴ SKU جلوگیری شود.</p>
+</div>
+
+<!-- AUDIENCE & PRIORITIZATION -->
+<h2 class="sec">۲. مخاطب و اولویت‌بندی بر اساس منابع فعلی</h2>
+<div class="grid cols2">
+  <div class="panel"><h3>مخاطب هدف</h3>
+    <ul class="clean">
+      <li><b>اصلی:</b> نسل Z و آلفا (۱۵–۲۸ سال) — مصرف‌کننده اسنک، فعال شبانه در اینستاگرام، گیمر.</li>
+      <li><b>ثانویه:</b> والدین جوان (جعبه مدرسه، میان‌وعده خانواده) و مخاطب نوستالژیک.</li>
+      <li><b>لینکدین:</b> توزیع‌کنندگان، خرده‌فروشی زنجیره‌ای، شرکای B2B و کارجویان.</li>
+    </ul>
+  </div>
+  <div class="panel"><h3>اصل اولویت‌بندی (با توجه به محدودیت تیم)</h3>
+    <ul class="clean">
+      <li><b>اولویت ۱ (موتور اصلی):</b> اینستاگرام + ۱۰ ریلز/ماه + اینفلوئنسر — بیشترین بازده با منابع موجود.</li>
+      <li><b>اولویت ۲ (پشتیبان):</b> انیمیشن (۴/ماه) برای برندینگ و آموزش، قابل استفاده مشترک در IG و لینکدین.</li>
+      <li><b>اولویت ۳ (کم‌هزینه، بازتولید):</b> لینکدین و بلاگ با <b>بازتولید</b> همان ریلز/انیمیشن‌ها — بدون نیاز به تیم تولید جدید.</li>
+    </ul>
+    <p class="src" style="margin-top:6px">⚠ شکاف منابع: برای لینکدین/بلاگ مالک تولید مشخص نشده؛ پیشنهاد: کادنس پایین (۲–۳ پست لینکدین/هفته، ۱ بلاگ/هفته) با بازتولید دارایی‌های موجود و کپشن‌نویسی توسط ادمین یا سرپرست محتوا.</p>
+  </div>
+</div>
+
+<!-- RESOURCE ALLOCATION -->
+<h2 class="sec">۳. تخصیص منابع تولید (ماهانه)</h2>
+<div class="grid cols2">
+  <div class="panel"><h3>۱۰ ریلز حرفه‌ای / ماه</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>نوع ریل</th><th>تعداد</th><th>هدف</th></tr></thead>
+      <tbody>
+        <tr><td>قهرمان + جهان کاراکتری (ماتریکس/سنین‌کک)</td><td>۵</td><td><span class="pill g-eng">Engagement</span></td></tr>
+        <tr><td>واکنشی/ترند (جام جهانی، میم روز)</td><td>۲</td><td><span class="pill g-aware">Awareness</span></td></tr>
+        <tr><td>آیین مصرف / دستور (بنیس + چای)</td><td>۲</td><td><span class="pill g-trust">Trust</span></td></tr>
+        <tr><td>همکاری اینفلوئنسر / UGC بازتولیدی</td><td>۱</td><td><span class="pill g-conv">Conversion</span></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="panel"><h3>۴ انیمیشن / ماه</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>نوع انیمیشن</th><th>تعداد</th><th>هدف / کانال</th></tr></thead>
+      <tbody>
+        <tr><td>برند و میراث «پدر کیک ایران»</td><td>۱</td><td><span class="pill g-trust">Trust</span> IG+لینکدین</td></tr>
+        <tr><td>مزیت رقابتی/کیفیت (ISO، تازگی)</td><td>۱</td><td><span class="pill g-trust">Trust</span> لینکدین</td></tr>
+        <tr><td>معرفی/آموزش محصول قهرمان</td><td>۱</td><td><span class="pill g-aware">Awareness</span> IG</td></tr>
+        <tr><td>کمپین/مناسبتی (جام جهانی، چالش)</td><td>۱</td><td><span class="pill g-eng">Engagement</span> IG</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+
+<!-- CALENDAR -->
+<h2 class="sec">۴. تقویم محتوایی ۶۰ روزه</h2>
+<p class="lead">کادنس پایه روزانه: ۱ پست/ریل + ۳–۵ استوری (شامل بلوک شبانه ۱۱ تا ۲). جدول‌های زیر محتوای محوری هر هفته را به تفکیک کانال، هدف، مسئول و KPI نشان می‌دهند.</p>
+
+<div class="phase">ماه اول (روز ۱–۳۰) — فاز «بیداری دیجیتال»: اصلاح پایه، راه‌اندازی جهان کاراکتری و سوارشدن بر موج جام جهانی</div>
+
+<div class="weekcard">
+  <div class="whd"><span class="wn">هفته ۱</span><span class="wt">پاکسازی پایه + کیک‌آف جام جهانی</span><span class="wdays">روز ۱–۷</span></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>کانال</th><th>محتوا</th><th>هدف</th><th>مسئول</th><th>KPI</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">اینستاگرام</td><td>اصلاح بایو + لینک «از کجا بخریم» یک‌کلیکی؛ پین ۳ پست قهرمان</td><td><span class="pill g-conv">Conversion</span></td><td>ادمین</td><td>نرخ کلیک بایو، ثبت پایه</td></tr>
+      <tr><td class="ch">ریلز</td><td>۲ ریل جام جهانی (کاراکتر سنین‌کک هوادار)</td><td><span class="pill g-aware">Awareness</span></td><td>تیم ریلز</td><td>بازدید ۱۵k+ هر ریل</td></tr>
+      <tr><td class="ch">استوری</td><td>راه‌اندازی بلوک شبانه + نظرسنجی پیش‌بینی بازی</td><td><span class="pill g-eng">Engagement</span></td><td>ادمین</td><td>نرخ پاسخ نظرسنجی ۸٪+</td></tr>
+      <tr><td class="ch">لینکدین</td><td>پست معرفی: «۵۰ سال، پدر کیک ایران» + کیفیت</td><td><span class="pill g-trust">Trust</span></td><td>سرپرست محتوا</td><td>۵۰۰ ایمپرشن، ۲٪ تعامل</td></tr>
+      <tr><td class="ch">بلاگ</td><td>بازنویسی صفحه «درباره ما» + ۱ مقاله سئو «تاریخچه کیک صنعتی ایران»</td><td><span class="pill g-trust">Trust</span></td><td>سرپرست محتوا</td><td>ایندکس شدن، ۳ کیورد هدف</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="weekcard">
+  <div class="whd"><span class="wn">هفته ۲</span><span class="wt">جهان کاراکتری قهرمان</span><span class="wdays">روز ۸–۱۴</span></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>کانال</th><th>محتوا</th><th>هدف</th><th>مسئول</th><th>KPI</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">ریلز</td><td>۲ ریل توسعه کاراکتر ماتریکس (ویفر) و سنین‌کک شهری</td><td><span class="pill g-eng">Engagement</span></td><td>تیم ریلز</td><td>بازدید ۱۲k+، سیو ۲۰۰+</td></tr>
+      <tr><td class="ch">انیمیشن</td><td>انیمیشن معرفی محصول قهرمان (ویفر دارک ۷۰٪)</td><td><span class="pill g-aware">Awareness</span></td><td>تیم انیمیشن</td><td>بازدید ۸k+، اشتراک‌گذاری</td></tr>
+      <tr><td class="ch">پست</td><td>کاروسل «کدوم بنیس هستی؟» (شخصیت‌سازی)</td><td><span class="pill g-eng">Engagement</span></td><td>ادمین</td><td>سیو + اشتراک ۳۰۰+</td></tr>
+      <tr><td class="ch">استوری</td><td>پشت‌صحنه ساخت کاراکتر + کوییز</td><td><span class="pill g-eng">Engagement</span></td><td>ادمین</td><td>نرخ تکمیل استوری ۶۵٪+</td></tr>
+      <tr><td class="ch">لینکدین</td><td>انیمیشن کیفیت/ISO (بازتولید برای B2B)</td><td><span class="pill g-trust">Trust</span></td><td>سرپرست محتوا</td><td>تعامل ۲٪+، ۵ لید B2B</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="weekcard">
+  <div class="whd"><span class="wn">هفته ۳</span><span class="wt">محتوای شب + طنز واکنشی</span><span class="wdays">روز ۱۵–۲۱</span></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>کانال</th><th>محتوا</th><th>هدف</th><th>مسئول</th><th>KPI</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">استوری</td><td>سری شبانه «می‌دونم بیداری» (هر شب ۱۱–۲)</td><td><span class="pill g-eng">Engagement</span></td><td>ادمین</td><td>بازدید شبانه، ریپلای DM</td></tr>
+      <tr><td class="ch">ریلز</td><td>۱ ریل واکنشی به ترند روز + ۱ ریل میم</td><td><span class="pill g-aware">Awareness</span></td><td>تیم ریلز</td><td>۱ ریل ۵۰k+ بازدید</td></tr>
+      <tr><td class="ch">پست</td><td>استراتژی پاسخ «وندیز ایرانی»: طنز در کامنت‌ها</td><td><span class="pill g-eng">Engagement</span></td><td>ادمین</td><td>رشد تعامل، اسکرین‌شات وایرال</td></tr>
+      <tr><td class="ch">بلاگ</td><td>مقاله سئو «بهترین میان‌وعده شب» (لینک محصول)</td><td><span class="pill g-conv">Conversion</span></td><td>سرپرست محتوا</td><td>ترافیک ارگانیک، CTA کلیک</td></tr>
+      <tr><td class="ch">لینکدین</td><td>پست شبکه توزیع ملی و ظرفیت تولید</td><td><span class="pill g-trust">Trust</span></td><td>سرپرست محتوا</td><td>ایمپرشن ۸۰۰+</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="weekcard">
+  <div class="whd"><span class="wn">هفته ۴</span><span class="wt">نوستالژی «پدر کیک ایران» + کیک‌آف UGC</span><span class="wdays">روز ۲۲–۳۰</span></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>کانال</th><th>محتوا</th><th>هدف</th><th>مسئول</th><th>KPI</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">انیمیشن</td><td>انیمیشن میراث «پدر کیک ایران» (داستان برند)</td><td><span class="pill g-trust">Trust</span></td><td>تیم انیمیشن</td><td>بازدید ۱۰k+، نظرات مثبت</td></tr>
+      <tr><td class="ch">ریلز</td><td>۲ ریل قهرمان + ۱ ریل آیین «بنیس + چای ایرانی»</td><td><span class="pill g-eng">Engagement</span></td><td>تیم ریلز</td><td>سیو ۲۵۰+ هر ریل</td></tr>
+      <tr><td class="ch">پست</td><td>اعلام چالش UGC «صبحانه بنیسی» + هشتگ اختصاصی</td><td><span class="pill g-eng">Engagement</span></td><td>ادمین</td><td>۳۰+ شرکت‌کننده اولیه</td></tr>
+      <tr><td class="ch">اینفلوئنسر</td><td>نمونه‌پاشی برای ۱۰ میکرو-اینفلوئنسر اول</td><td><span class="pill g-aware">Awareness</span></td><td>تیم اینفلوئنسر</td><td>۱۰ قرارداد، ۸ پست منتشر</td></tr>
+      <tr><td class="ch">هایلایت</td><td>ساخت هایلایت «قهرمان‌ها»، «شب بنیس»، «از کجا بخریم»</td><td><span class="pill g-conv">Conversion</span></td><td>ادمین</td><td>ساختار کامل پروفایل</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="phase">ماه دوم (روز ۳۱–۶۰) — فاز «تثبیت و جامعه‌سازی»: فعال‌سازی شبکه اینفلوئنسر، کمپین UGC و رشد دامنه</div>
+
+<div class="weekcard">
+  <div class="whd"><span class="wn">هفته ۵</span><span class="wt">فعال‌سازی شبکه میکرو-اینفلوئنسر</span><span class="wdays">روز ۳۱–۳۷</span></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>کانال</th><th>محتوا</th><th>هدف</th><th>مسئول</th><th>KPI</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">اینفلوئنسر</td><td>نمونه‌پاشی موج دوم (۲۰ میکرو دیگر) + بریف هماهنگ</td><td><span class="pill g-aware">Awareness</span></td><td>تیم اینفلوئنسر</td><td>۳۰ فعال تجمعی، ریچ ۳۰۰k</td></tr>
+      <tr><td class="ch">ریلز</td><td>۱ ریل همکاری اینفلوئنسر + ۲ ریل قهرمان</td><td><span class="pill g-conv">Conversion</span></td><td>تیم ریلز</td><td>کلیک پروفایل، فالوور جدید</td></tr>
+      <tr><td class="ch">استوری</td><td>ری‌پست محتوای اینفلوئنسرها + شب بنیس</td><td><span class="pill g-eng">Engagement</span></td><td>ادمین</td><td>منشن، ریچ ری‌پست</td></tr>
+      <tr><td class="ch">انیمیشن</td><td>انیمیشن مزیت رقابتی (تنوع + تازگی)</td><td><span class="pill g-trust">Trust</span></td><td>تیم انیمیشن</td><td>بازدید ۸k+</td></tr>
+      <tr><td class="ch">لینکدین</td><td>کیس‌استادی «همکاری برند با خرده‌فروشی»</td><td><span class="pill g-lead">Lead Gen</span></td><td>سرپرست محتوا</td><td>۸ لید B2B</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="weekcard">
+  <div class="whd"><span class="wn">هفته ۶</span><span class="wt">کمپین UGC «چالش بنیسی» + آیین مصرف</span><span class="wdays">روز ۳۸–۴۴</span></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>کانال</th><th>محتوا</th><th>هدف</th><th>مسئول</th><th>KPI</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">پست/ریلز</td><td>اوج کمپین چالش UGC + قرعه‌کشی جایزه</td><td><span class="pill g-eng">Engagement</span></td><td>ادمین + تیم ریلز</td><td>۱۵۰+ محتوای کاربر</td></tr>
+      <tr><td class="ch">اینفلوئنسر</td><td>اینفلوئنسرها لانچ هم‌زمان چالش (chain tagging)</td><td><span class="pill g-aware">Awareness</span></td><td>تیم اینفلوئنسر</td><td>ریچ تجمعی ۵۰۰k+</td></tr>
+      <tr><td class="ch">ریلز</td><td>۲ ریل آیین «بنیس + چای» (تثبیت ritual)</td><td><span class="pill g-trust">Trust</span></td><td>تیم ریلز</td><td>سیو ۳۰۰+</td></tr>
+      <tr><td class="ch">بلاگ</td><td>صفحه فرود کمپین + قوانین چالش (سئو + جمع‌آوری ایمیل)</td><td><span class="pill g-lead">Lead Gen</span></td><td>سرپرست محتوا</td><td>۲۰۰ ثبت‌نام</td></tr>
+      <tr><td class="ch">استوری</td><td>شمارش معکوس + معرفی بهترین محتوای کاربران</td><td><span class="pill g-eng">Engagement</span></td><td>ادمین</td><td>نرخ تکمیل ۷۰٪+</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="weekcard">
+  <div class="whd"><span class="wn">هفته ۷</span><span class="wt">ورود به بازار گیمرها + توسعه جهان شبانه</span><span class="wdays">روز ۴۵–۵۱</span></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>کانال</th><th>محتوا</th><th>هدف</th><th>مسئول</th><th>KPI</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">اینفلوئنسر</td><td>اسپانسری ۳–۵ استریمر/گیمر متوسط ایرانی</td><td><span class="pill g-aware">Awareness</span></td><td>تیم اینفلوئنسر</td><td>ریچ گیمینگ، کد تخفیف فعال</td></tr>
+      <tr><td class="ch">ریلز</td><td>۱ ریل «بنیس + گیم» + ۲ ریل قهرمان</td><td><span class="pill g-eng">Engagement</span></td><td>تیم ریلز</td><td>بازدید ۱۵k+، مخاطب جدید</td></tr>
+      <tr><td class="ch">انیمیشن</td><td>انیمیشن آموزشی/سرگرمی نسخه گیمینگ</td><td><span class="pill g-aware">Awareness</span></td><td>تیم انیمیشن</td><td>بازدید ۸k+</td></tr>
+      <tr><td class="ch">استوری</td><td>ادامه شب بنیس + AMA شبانه با مخاطب</td><td><span class="pill g-eng">Engagement</span></td><td>ادمین</td><td>تعداد سوال/ریپلای</td></tr>
+      <tr><td class="ch">لینکدین</td><td>پست برند کارفرمایی (تیم و فرهنگ)</td><td><span class="pill g-trust">Trust</span></td><td>سرپرست محتوا</td><td>ایمپرشن، درخواست شغلی</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="weekcard">
+  <div class="whd"><span class="wn">هفته ۸</span><span class="wt">کمپین بزرگ پایانی + جمع‌بندی و سنجش</span><span class="wdays">روز ۵۲–۶۰</span></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>کانال</th><th>محتوا</th><th>هدف</th><th>مسئول</th><th>KPI</th></tr></thead>
+    <tbody>
+      <tr><td class="ch">همه کانال‌ها</td><td>کمپین یکپارچه «روز بنیس» (اعلام مناسبت برند)</td><td><span class="pill g-aware">Awareness</span></td><td>کل تیم</td><td>پوشش، منشن، اوج تعامل</td></tr>
+      <tr><td class="ch">ریلز/انیمیشن</td><td>ریل + انیمیشن کمپین «روز بنیس» (نسخه مشترک)</td><td><span class="pill g-eng">Engagement</span></td><td>تیم ریلز+انیمیشن</td><td>۱ دارایی ۱۰۰k+ بازدید</td></tr>
+      <tr><td class="ch">اینفلوئنسر</td><td>فعال‌سازی کل شبکه برای «روز بنیس» + کد تخفیف</td><td><span class="pill g-conv">Conversion</span></td><td>تیم اینفلوئنسر</td><td>استفاده از کد، فروش ارجاعی</td></tr>
+      <tr><td class="ch">بلاگ</td><td>صفحه کمپین + جمع‌آوری نظر مصرف‌کننده</td><td><span class="pill g-conv">Conversion</span></td><td>سرپرست محتوا</td><td>نظرات ثبت‌شده، ترافیک</td></tr>
+      <tr><td class="ch">گزارش</td><td>تحلیل ۶۰ روز و تصمیم ادامه/اصلاح (داشبورد پایین)</td><td><span class="pill g-trust">Trust</span></td><td>سرپرست محتوا</td><td>تکمیل داشبورد سنجش</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<!-- CAMPAIGNS -->
+<h2 class="sec">۵. کمپین‌های محوری پیشنهادی</h2>
+<div class="grid cols2">
+  <div class="callout"><h3>🏆 موج جام جهانی ۲۰۲۶ (هفته ۱–۳)</h3>پنجره از ۱۱ ژوئن باز است؛ کاراکتر سنین‌کک هوادار، پیش‌بینی بازی در استوری، ریل واکنشی پس از هر بازی ملی. هدف: Awareness سریع و ریچ ارگانیک.</div>
+  <div class="callout"><h3>📸 چالش UGC «صبحانه بنیسی» (هفته ۴–۶)</h3>هشتگ اختصاصی + قرعه‌کشی + لانچ هم‌زمان اینفلوئنسرها با chain tagging. هدف: Engagement و social proof ارزان.</div>
+  <div class="callout"><h3>🎮 «بنیس + گیم» (هفته ۷)</h3>اولین برند کیک در فضای گیمرها؛ اسپانسری استریمر + بسته Gaming Edition + کد تخفیف. هدف: مالکیت سگمنت صفر-رقیب.</div>
+  <div class="callout"><h3>🎉 «روز بنیس» (هفته ۸)</h3>مناسبت اختصاصی برند (مدل Pocky Day)؛ کمپین یکپارچه همه کانال‌ها + کد تخفیف. هدف: تثبیت جایگاه و Conversion.</div>
+</div>
+
+<!-- BUDGET -->
+<h2 class="sec">۶. توزیع پیشنهادی بودجه و انرژی تیم</h2>
+<div class="panel">
+  <div class="barrow"><span class="lbl2">اینفلوئنسر مارکتینگ</span><div class="track"><div class="fill" style="width:35%;background:var(--gold)">۳۵٪</div></div></div>
+  <div class="barrow"><span class="lbl2">تولید ریلز (برون‌سپاری)</span><div class="track"><div class="fill" style="width:22%;background:var(--teal)">۲۲٪</div></div></div>
+  <div class="barrow"><span class="lbl2">انیمیشن</span><div class="track"><div class="fill" style="width:13%;background:var(--purple)">۱۳٪</div></div></div>
+  <div class="barrow"><span class="lbl2">تقویت پولی (بوست ریل‌های برتر)</span><div class="track"><div class="fill" style="width:15%;background:var(--green)">۱۵٪</div></div></div>
+  <div class="barrow"><span class="lbl2">لینکدین + بلاگ/سئو</span><div class="track"><div class="fill" style="width:8%;background:var(--amber)">۸٪</div></div></div>
+  <div class="barrow"><span class="lbl2">ذخیره احتیاطی (فرصت/واکنشی)</span><div class="track"><div class="fill" style="width:7%;background:#7d949b">۷٪</div></div></div>
+  <p class="src" style="margin-top:10px">انرژی ادمین داخلی: ~۵۰٪ انتشار و زمان‌بندی، ۳۰٪ پاسخگویی و تعامل/شب بنیس، ۲۰٪ استوری تعاملی و ری‌پست UGC. اصل بهینه‌سازی: ماهانه بودجه را بر اساس داده جابه‌جا کنید؛ ریل‌های با بهترین بازده ارگانیک را بوست کنید، نه پخش یکنواخت.</p>
+</div>
+
+<!-- INFLUENCER -->
+<h2 class="sec">۷. مدل استفاده از اینفلوئنسرها</h2>
+<div class="grid cols3">
+  <div class="callout"><h3>ساختار شبکه</h3>به‌جای ۱ مگااینفلوئنسر، شبکه ۵۰ میکرو (۵–۵۰k فالوور) در حوزه خانه، کودک، صبحانه، گیمینگ. authenticity بالا، هزینه پایین، ریچ واقعی‌تر.</div>
+  <div class="callout"><h3>فازبندی</h3>هفته ۴: ۱۰ نفر نمونه‌پاشی · هفته ۵: ۲۰ نفر · هفته ۶: لانچ هم‌زمان چالش · هفته ۷: ۳–۵ گیمر · هفته ۸: فعال‌سازی کل شبکه برای «روز بنیس».</div>
+  <div class="callout"><h3>KPI اینفلوئنسر</h3>ریچ تجمعی، کلیک پروفایل و فالوور جذب‌شده، نرخ استفاده از کد تخفیف اختصاصی هر اینفلوئنسر (سنجش فروش ارجاعی)، هزینه به‌ازای هزار بازدید (CPM).</div>
+</div>
+
+<!-- KPIs per channel -->
+<h2 class="sec">۸. KPI هر کانال</h2>
+<div class="tablewrap"><table>
+  <thead><tr><th>کانال</th><th>هدف اصلی</th><th>KPIهای کلیدی</th><th>کادنس سنجش</th></tr></thead>
+  <tbody>
+    <tr><td class="ch">اینستاگرام</td><td>تعامل و رشد جامعه</td><td>نرخ تعامل، رشد فالوور، بازدید ریل، سیو/اشتراک، نرخ تکمیل استوری</td><td>هفتگی</td></tr>
+    <tr><td class="ch">لینکدین</td><td>اعتماد و B2B</td><td>ایمپرشن، نرخ تعامل، لید B2B، درخواست همکاری/شغلی</td><td>دوهفته‌ای</td></tr>
+    <tr><td class="ch">وب‌سایت/بلاگ</td><td>سئو و تبدیل</td><td>ترافیک ارگانیک، رتبه کیورد، نرخ کلیک CTA، ثبت‌نام/نظر</td><td>ماهانه</td></tr>
+    <tr><td class="ch">اینفلوئنسر</td><td>گسترش دامنه</td><td>ریچ، فالوور جذب‌شده، استفاده از کد، CPM، فروش ارجاعی</td><td>per-campaign</td></tr>
+  </tbody>
+</table></div>
+
+<!-- monthly KPIs -->
+<h2 class="sec">۹. KPIهای ماهانه برند</h2>
+<p class="lead">مبنای شروع: ۱۷٫۱k فالوور، ~۱٫۱٪ تعامل، میانگین بازدید ریل ~۵k.</p>
+<div class="grid cols4">
+  <div class="kpi"><div class="num">۲۲k</div><div class="lbl">فالوور — پایان ماه ۱</div><div class="hint">از ۱۷٫۱k (+~۲۸٪)</div></div>
+  <div class="kpi"><div class="num">۳۰k+</div><div class="lbl">فالوور — پایان ماه ۲</div><div class="hint">هدف رشد تجمعی</div></div>
+  <div class="kpi"><div class="num">۲٪ ← ۲٫۵٪</div><div class="lbl">نرخ تعامل</div><div class="hint">ماه ۱ ← ماه ۲</div></div>
+  <div class="kpi"><div class="num">~۱۲k</div><div class="lbl">میانگین بازدید ریل</div><div class="hint">از ~۵k</div></div>
+  <div class="kpi"><div class="num">۱ / ۲</div><div class="lbl">ریل وایرال (۱۰۰k+)</div><div class="hint">ماه ۱: ۱ × ۵۰k+ / ماه ۲: ۱ × ۱۰۰k+</div></div>
+  <div class="kpi"><div class="num">۵۰</div><div class="lbl">میکرو-اینفلوئنسر فعال</div><div class="hint">پایان ماه ۲</div></div>
+  <div class="kpi"><div class="num">۱۵۰+</div><div class="lbl">محتوای کاربر (UGC)</div><div class="hint">از چالش</div></div>
+  <div class="kpi"><div class="num">۸</div><div class="lbl">مقاله بلاگ منتشرشده</div><div class="hint">پایه سئو</div></div>
+</div>
+
+<!-- DASHBOARD -->
+<h2 class="sec">۱۰. داشبورد مدیریتی — سنجش موفقیت در روز ۳۰ و ۶۰</h2>
+<p class="lead">قاعده تصمیم: اگر اکثر شاخص‌ها سبز بودند، مسیر را ادامه و بودجه را به برنده‌ها منتقل کنید؛ کهربایی = اصلاح تاکتیکی؛ قرمز = بازنگری استراتژی همان محور.</p>
+<div class="panel dash">
+  <div style="font-weight:700;color:var(--gold);margin-bottom:6px">▮ نقطه بازبینی روز ۳۰</div>
+  <div class="row"><span class="dot g"></span><span class="metric">رشد فالوور به ۲۲k+ </span><span class="target">سبز ≥ ۲۲k</span></div>
+  <div class="row"><span class="dot g"></span><span class="metric">نرخ تعامل ≥ ۲٪</span><span class="target">کهربایی ۱٫۵–۲٪</span></div>
+  <div class="row"><span class="dot a"></span><span class="metric">حداقل ۱ ریل ۵۰k+ بازدید</span><span class="target">قرمز اگر هیچ</span></div>
+  <div class="row"><span class="dot g"></span><span class="metric">۱۰+ میکرو-اینفلوئنسر فعال</span><span class="target">سبز ≥ ۱۰</span></div>
+  <div class="row"><span class="dot a"></span><span class="metric">بلوک شبانه: روند صعودی بازدید استوری</span><span class="target">کیفی</span></div>
+  <div style="font-weight:700;color:var(--gold);margin:14px 0 6px">▮ نقطه تصمیم روز ۶۰</div>
+  <div class="row"><span class="dot g"></span><span class="metric">رشد فالوور به ۳۰k+</span><span class="target">سبز ≥ ۳۰k</span></div>
+  <div class="row"><span class="dot g"></span><span class="metric">نرخ تعامل ≥ ۲٫۵٪</span><span class="target">سبز ≥ ۲٫۵٪</span></div>
+  <div class="row"><span class="dot g"></span><span class="metric">۱ ریل ۱۰۰k+ بازدید (شکست حباب فالوور)</span><span class="target">سبز = بله</span></div>
+  <div class="row"><span class="dot g"></span><span class="metric">۱۵۰+ محتوای UGC + ۵۰ اینفلوئنسر فعال</span><span class="target">سبز</span></div>
+  <div class="row"><span class="dot a"></span><span class="metric">نرخ استفاده از کد تخفیف اینفلوئنسر (سیگنال فروش)</span><span class="target">معیار ROI</span></div>
+  <div class="row"><span class="dot a"></span><span class="metric">ترافیک ارگانیک بلاگ + شروع رتبه‌گیری کیوردها</span><span class="target">روند صعودی</span></div>
+  <div class="legend">
+    <span><span class="dot g"></span> سبز = در مسیر، ادامه و تقویت</span>
+    <span><span class="dot a"></span> کهربایی = اصلاح تاکتیکی</span>
+    <span><span class="dot r"></span> قرمز = بازنگری استراتژی محور</span>
+  </div>
+</div>
+
+<div class="verdict">
+  <h3>معیار نهایی موفقیت</h3>
+  <p>استراتژی موفق است اگر در پایان ۶۰ روز: (۱) رشد فالوور و تعامل از روند پایه فراتر رفته باشد، (۲) حداقل یک ریل از حباب فالوور بیرون زده باشد (۱۰۰k+)، (۳) شبکه اینفلوئنسر و جریان UGC راه افتاده باشد، و (۴) سیگنال فروش (کد تخفیف) قابل ردیابی شده باشد. اگر ۳ مورد از ۴ محقق شد، بنیس در مسیر تبدیل‌شدن به پیشتاز سوشال دسته است و باید با همین ساختار به فاز ۶ ماهه (هدف امتیاز دیجیتال ۸۵) وارد شود.</p>
+</div>
+
+<footer>
+  نقشه راه بازاریابی محتوا ۶۰ روزه بنیس · بر پایه داشبوردهای رهنگاشت · خرداد ۱۴۰۵ (ژوئن ۲۰۲۶)<br>
+  <span class="src">اهداف عددی بلندپروازانه اما قابل‌تنظیم‌اند؛ پس از داده واقعی هفته اول، تارگت‌ها را کالیبره کنید.</span>
+</footer>
+
+</div>
+</body>
+</html>
