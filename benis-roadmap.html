@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رودمپ پروژه بِنیس × رهنگاشت</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<style>
+  :root{
+    --yellow:#FFD400;--ink:#111111;--teal:#29A7B3;--gray:#AEB9BD;
+    --muted:#8A8F98;--line:#ECECEC;--bg:#FBFBF9;--card:#FFFFFF;
+    --soft:#FFF6C9;--tealsoft:#E4F5F6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Vazirmatn',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.85;font-size:15px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  section{padding:54px 0}
+
+  /* section headings */
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;color:var(--ink);background:var(--yellow);padding:6px 15px;border-radius:100px;margin-bottom:14px}
+  h2.sec{font-size:25px;font-weight:900;letter-spacing:-.4px;line-height:1.4}
+  .sec-sub{color:var(--muted);font-size:14.5px;margin:6px 0 28px}
+
+  /* TOPBAR */
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:26px 0 22px;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand .nm b{display:block;font-size:15px;font-weight:800;line-height:1.3}
+  .brand .nm span{font-size:11.5px;color:var(--muted)}
+  .brand.rg .nm b{color:var(--teal)}
+  .xsep{color:var(--gray);font-weight:800;font-size:18px}
+
+  /* HERO */
+  .hero{padding:50px 0 8px;text-align:center}
+  .hero .tag{display:inline-block;font-size:12px;font-weight:800;color:var(--ink);background:var(--yellow);padding:6px 16px;border-radius:100px;margin-bottom:20px}
+  .hero h1{font-size:34px;font-weight:900;letter-spacing:-.5px;line-height:1.4}
+  .hero p{color:var(--muted);font-size:15px;margin-top:14px}
+  .hero .range{display:inline-flex;align-items:center;gap:10px;margin-top:20px;font-weight:800;font-size:14px;border:1.5px solid var(--ink);padding:9px 18px;border-radius:12px}
+  .hero .range i{width:8px;height:8px;border-radius:50%;background:var(--yellow);font-style:normal}
+
+  /* quick nav */
+  .qnav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:26px}
+  .qnav a{font-size:12.5px;font-weight:700;color:var(--ink);text-decoration:none;border:1px solid var(--line);background:#fff;padding:7px 14px;border-radius:100px;transition:.2s}
+  .qnav a:hover{border-color:var(--yellow);background:var(--soft)}
+
+  /* SUMMARY */
+  .summary-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px 30px;box-shadow:0 10px 34px rgba(17,17,17,.05);position:relative;overflow:hidden}
+  .summary-card:before{content:"";position:absolute;top:0;right:0;width:6px;height:100%;background:var(--yellow)}
+  .summary-card p{font-size:15.5px;color:#333}
+  .summary-card p+p{margin-top:13px}
+  .summary-card strong{color:var(--ink)}
+  .verdict{margin-top:16px;background:var(--ink);color:#fff;border-radius:13px;padding:16px 20px;font-size:15px}
+  .verdict b{color:var(--yellow)}
+
+  /* ROADMAP */
+  .track-scroll{overflow-x:auto;padding:34px 4px 10px;scrollbar-width:thin}
+  .track{position:relative;display:flex;min-width:940px;gap:0}
+  .track:before{content:"";position:absolute;right:0;left:0;top:15px;height:3px;background:var(--line);border-radius:3px}
+  .track .fill{position:absolute;right:0;top:15px;height:3px;background:var(--yellow);border-radius:3px;transition:width .4s ease}
+  .node{position:relative;flex:1;display:flex;flex-direction:column;align-items:center;gap:9px;cursor:pointer;background:none;border:none;font-family:inherit;padding:0 4px}
+  .node .dot{width:32px;height:32px;border-radius:50%;background:#fff;border:3px solid var(--line);display:grid;place-items:center;font-weight:800;font-size:13px;color:var(--muted);transition:.25s;z-index:2}
+  .node .dt{font-size:10.5px;color:var(--muted);font-weight:700;text-align:center;transition:.2s}
+  .node .lb{font-size:10.5px;color:var(--muted);text-align:center;max-width:78px;line-height:1.45;transition:.2s}
+  .node:hover .dot{border-color:var(--yellow);transform:translateY(-2px)}
+  .node.active .dot{background:var(--yellow);border-color:var(--ink);color:var(--ink);box-shadow:0 6px 16px rgba(255,212,0,.5)}
+  .node.active .dt{color:var(--ink)}
+  .node.active .lb{color:var(--ink);font-weight:700}
+  .node.done .dot{border-color:var(--yellow);color:var(--ink)}
+  .node .star{position:absolute;top:-11px;font-size:12px}
+
+  .detail{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:32px 34px;margin-top:26px;box-shadow:0 12px 40px rgba(17,17,17,.06);position:relative;overflow:hidden}
+  .detail:before{content:"";position:absolute;top:0;right:0;width:6px;height:100%;background:var(--yellow)}
+  .detail .head{display:flex;align-items:center;gap:16px;margin-bottom:14px;flex-wrap:wrap}
+  .detail .ic{width:54px;height:54px;border-radius:15px;background:var(--ink);color:var(--yellow);display:grid;place-items:center;font-size:24px;flex-shrink:0}
+  .detail .date{font-size:12.5px;font-weight:800;color:var(--ink);background:var(--soft);padding:4px 14px;border-radius:9px}
+  .detail h3{font-size:22px;font-weight:900;letter-spacing:-.3px;line-height:1.4;margin-top:4px}
+  .detail .desc{font-size:15.5px;color:#333;margin-top:6px;max-width:820px}
+  .detail .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;align-items:center}
+  .chip{font-size:11.5px;font-weight:700;padding:4px 12px;border-radius:8px}
+  .chip.done{color:var(--teal);background:var(--tealsoft)}
+  .chip.new{color:#9A6B00;background:#FFF3CC}
+  .btn-link{display:inline-flex;align-items:center;gap:7px;text-decoration:none;background:var(--ink);color:#fff;font-weight:800;font-size:13px;padding:9px 18px;border-radius:11px;transition:.2s}
+  .btn-link:hover{background:var(--teal)}
+  .nav{display:flex;justify-content:space-between;margin-top:20px;gap:10px}
+  .nav button{font-family:inherit;font-size:13px;font-weight:700;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:11px;padding:8px 16px;cursor:pointer;transition:.2s}
+  .nav button:hover:not(:disabled){border-color:var(--yellow)}
+  .nav button:disabled{opacity:.35;cursor:default}
+  .counter{font-size:12.5px;color:var(--muted);align-self:center;font-weight:700}
+
+  /* WORKSTREAMS */
+  .ws-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .ws{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;transition:.22s}
+  .ws:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(17,17,17,.07);border-color:var(--yellow)}
+  .ws-head{display:flex;align-items:center;gap:12px;margin-bottom:13px}
+  .ws-ic{width:44px;height:44px;border-radius:12px;background:var(--ink);color:var(--yellow);display:grid;place-items:center;font-size:20px;flex-shrink:0}
+  .ws-head h4{font-size:16.5px;font-weight:800}
+  .ws-head .prog{font-size:11px;color:var(--teal);font-weight:700}
+  .ws ul{list-style:none}
+  .ws li{position:relative;padding:5px 20px 5px 0;font-size:13.8px;color:#3A4059}
+  .ws li:before{content:"✓";position:absolute;right:0;top:5px;color:var(--teal);font-weight:900;font-size:13px}
+
+  /* DATA FINDINGS */
+  .data-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .dcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;position:relative;overflow:hidden}
+  .dcard:before{content:"";position:absolute;top:0;right:0;width:100%;height:4px;background:var(--yellow)}
+  .dcard .dn{font-size:25px;font-weight:900;color:var(--ink);letter-spacing:-.4px}
+  .dcard .dl{font-size:12.8px;color:var(--muted);margin-top:6px;line-height:1.6}
+
+  /* DELIVERABLES */
+  .grp-title{font-size:15px;font-weight:800;margin:8px 0 14px;display:flex;align-items:center;gap:10px}
+  .grp-title:before{content:"";width:18px;height:3px;background:var(--yellow);border-radius:3px}
+  .dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .doc{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px 18px}
+  .doc .t{font-weight:800;font-size:14px;display:flex;gap:8px;align-items:flex-start}
+  .doc .d{font-size:12.3px;color:var(--muted);margin-top:6px}
+  .doc .m{font-size:11px;color:var(--ink);font-weight:700;margin-top:10px;background:var(--bg);display:inline-block;padding:2px 9px;border-radius:6px}
+  a.live{background:linear-gradient(150deg,#fff,#FCFBF4);border:1px solid var(--line);border-radius:13px;padding:16px 18px;text-decoration:none;color:inherit;display:block;transition:.2s;position:relative}
+  a.live:hover{border-color:var(--yellow);transform:translateY(-2px);box-shadow:0 12px 30px rgba(17,17,17,.07)}
+  a.live .t{font-weight:800;font-size:14px}
+  a.live .d{font-size:12.3px;color:var(--muted);margin-top:6px}
+  a.live .go{font-size:11.5px;font-weight:800;color:var(--teal);margin-top:10px;display:inline-flex;gap:5px;align-items:center}
+  .live-badge{position:absolute;top:14px;left:14px;font-size:10px;font-weight:800;color:var(--teal);background:var(--tealsoft);padding:2px 8px;border-radius:20px;display:flex;align-items:center;gap:4px}
+  .live-badge b{width:6px;height:6px;border-radius:50%;background:var(--teal);display:inline-block;animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+  footer{text-align:center;padding:44px 20px 40px;margin-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+  footer a{color:var(--teal);font-weight:700;text-decoration:none}
+  footer b{color:var(--ink)}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:720px){
+    .hero h1{font-size:25px}
+    .detail{padding:24px}.detail h3{font-size:19px}
+    .ws-grid,.dgrid{grid-template-columns:1fr}
+    .data-grid{grid-template-columns:1fr 1fr}
+    .brand .nm span{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="brand">
+      <svg width="52" height="52" viewBox="0 0 120 120" aria-label="Benis">
+        <rect width="120" height="120" rx="16" fill="#FFD400"/>
+        <path d="M22 46 C40 34 62 34 80 40 C90 43 96 40 99 33 C100 30 104 30 104 34 C103 44 93 51 80 49 C64 47 44 45 30 53 C25 56 20 52 22 46 Z" fill="#111"/>
+        <text x="60" y="92" text-anchor="middle" font-family="Vazirmatn,Arial Black,sans-serif" font-weight="900" font-size="34" letter-spacing="1" fill="#111">BENIS</text>
+      </svg>
+      <div class="nm"><b>پخش اطلس بِنیس</b><span>پدر کیک ایران · تأسیس ۱۳۴۸</span></div>
+    </div>
+    <span class="xsep">×</span>
+    <div class="brand rg">
+      <div class="nm" style="text-align:left"><b>RAHNEGASHT</b><span>Future is Now · مشاورین مارکتینگ</span></div>
+      <svg width="50" height="50" viewBox="0 0 100 100" aria-label="Rahnegasht">
+        <polygon points="50,8 92,82 8,82" fill="none" stroke="#29A7B3" stroke-width="6" stroke-linejoin="round"/>
+        <polygon points="50,28 78,76 22,76" fill="none" stroke="#AEB9BD" stroke-width="6" stroke-linejoin="round"/>
+        <polygon points="50,48 64,72 36,72" fill="none" stroke="#29A7B3" stroke-width="5" stroke-linejoin="round"/>
+        <polygon points="50,58 58,70 42,70" fill="#29A7B3"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <span class="tag">📍 رودمپ اجرایی پروژه — ویژه مدیرعامل</span>
+    <h1>مسیر پروژهٔ برند بِنیس</h1>
+    <p>روی هر نقطهٔ مسیر بزنید تا جزئیات کامل آن مرحله را ببینید.</p>
+    <div class="range"><i></i> ۱۰ اردیبهشت ۱۴۰۵ &nbsp;←&nbsp; ۱۰ تیر ۱۴۰۵ &nbsp;·&nbsp; حدود ۶۰ روز</div>
+    <div class="qnav">
+      <a href="#summary">خلاصهٔ مدیریتی</a>
+      <a href="#timeline">تایم‌لاین ۶۰ روزه</a>
+      <a href="#workstreams">۶ کارگاه کاری</a>
+      <a href="#findings">یافته‌های داده‌ای</a>
+      <a href="#deliverables">آنچه تحویل داده شد</a>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <section id="summary">
+    <div class="reveal">
+      <span class="kicker">🧭 در یک نگاه</span>
+      <h2 class="sec">خلاصهٔ مدیریتی</h2>
+      <p class="sec-sub">جمع‌بندی آنچه در دو ماه گذشته به دست آمد و در چه نقطه‌ای ایستاده‌ایم.</p>
+    </div>
+    <div class="summary-card reveal">
+      <p>بِنیس یک <strong>تناقض استراتژیک</strong> است: برندی با ۵۰ سال اعتبار، لقب «پدر کیک ایران» و توزیع ملی قدرتمند — اما با حضور دیجیتال نزدیک به صفر. برند در دنیای آفلاین قوی و در دنیای آنلاین نامرئی است.</p>
+      <p>در این دو ماه، تیم رهنگاشت روی <strong>«عارضه‌یابی و ساختِ زیرساخت تصمیم»</strong> تمرکز کرد: تحلیل کامل دادهٔ فروش، شناسایی محصولات قهرمان، ترسیم استراتژی برند و محتوا، ممیزی رسانه‌ها، معرفی تیم اینفلوئنسر مارکتینگ، راه‌اندازی فاز ۰ وب‌سایت و طراحی موتور رشد دیجیتال. همهٔ خروجی‌ها به‌صورت اسناد مکتوب و داشبوردهای زندهٔ تحت‌وب تحویل شده‌اند.</p>
+      <div class="verdict">🎯 <b>حکم پروژه:</b> اولویت شرکت، «تمرکز سبد محصول + دیجیتالی‌شدنِ یک برند نوستالژیک» است — نه افزودن محصول و کانال جدید. زیرساخت تصمیم ساخته شده؛ اکنون زمان اجراست.</div>
+    </div>
+  </section>
+
+  <!-- TIMELINE / ROADMAP -->
+  <section id="timeline">
+    <div class="reveal">
+      <span class="kicker">🗓 خط زمانی تعاملی</span>
+      <h2 class="sec">تایم‌لاین ۶۰ روزه پروژه</h2>
+      <p class="sec-sub">۱۲ نقطهٔ کلیدی از ۱۰ اردیبهشت تا ۱۰ تیر ۱۴۰۵ — روی هر نقطه بزنید. (تاریخ‌ها حدودی است)</p>
+    </div>
+    <div class="track-scroll">
+      <div class="track" id="track"><div class="fill" id="fill"></div></div>
+    </div>
+    <div class="detail" id="detail">
+      <div class="head">
+        <div class="ic" id="d-ic">📍</div>
+        <div><span class="date" id="d-date"></span><h3 id="d-title"></h3></div>
+      </div>
+      <p class="desc" id="d-desc"></p>
+      <div class="meta" id="d-meta"></div>
+      <div class="nav">
+        <button id="prev">◄ مرحلهٔ قبل</button>
+        <span class="counter" id="counter"></span>
+        <button id="next">مرحلهٔ بعد ►</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKSTREAMS -->
+  <section id="workstreams">
+    <div class="reveal">
+      <span class="kicker">🧩 جریان‌های کاری</span>
+      <h2 class="sec">۶ کارگاهِ کاری که پیش رفت</h2>
+      <p class="sec-sub">کل کار پروژه در شش جریان موازی سازمان‌دهی و اجرا شد.</p>
+    </div>
+    <div class="ws-grid reveal">
+
+      <div class="ws"><div class="ws-head"><div class="ws-ic">📊</div><div><h4>۱. تحقیق و عارضه‌یابی</h4><span class="prog">✓ تکمیل‌شده</span></div></div>
+        <ul>
+          <li>تحلیل کامل دادهٔ فروش سالانه (۵٫۱M کارتن)</li>
+          <li>تحلیل پارتو ۸۰/۲۰ و شناسایی محصولات قهرمان</li>
+          <li>تحلیل عملکرد ۵ دستهٔ محصولی با ماتریس BCG</li>
+          <li>تحلیل رقبا، سلامت برند و SWOT کامل</li>
+        </ul></div>
+
+      <div class="ws"><div class="ws-head"><div class="ws-ic">🎯</div><div><h4>۲. استراتژی برند و محتوا</h4><span class="prog">✓ تکمیل‌شده</span></div></div>
+        <ul>
+          <li>تعریف جوهرهٔ برند: «اصالتِ آشنا»</li>
+          <li>استراتژی محتوا در ۴ فاز + ۶ ستون محتوایی</li>
+          <li>تقویم محتوایی ۱۲ماهه + ۲۰ کمپین برتر</li>
+          <li>نقشهٔ جایگاه‌یابی و مسیر رشد برند</li>
+        </ul></div>
+
+      <div class="ws"><div class="ws-head"><div class="ws-ic">📱</div><div><h4>۳. دیجیتال و رسانه</h4><span class="prog">✓ تکمیل‌شده</span></div></div>
+        <ul>
+          <li>طرح‌ریزی بازوی دیجیتال یکپارچه (۴ فاز)</li>
+          <li>ممیزی کامل اینستاگرام ‎@beniscompany‎</li>
+          <li>داشبورد تصمیم رسانه‌ای: پرشیانا vs ۹ کانال</li>
+          <li>نمونهٔ اولیهٔ گیمیفیکیشن دو و سه‌بعدی برند</li>
+        </ul></div>
+
+      <div class="ws"><div class="ws-head"><div class="ws-ic">💡</div><div><h4>۴. خلاقیت و کمپین</h4><span class="prog">✓ تکمیل‌شده</span></div></div>
+        <ul>
+          <li>بریف تیزر موزیکال با شعار «هر کیکی بِنیس نیس»</li>
+          <li>کانسپت کمپین بیوگرافی/زندگی مدیرعامل</li>
+          <li>کانسپت تیزر «کیک بِنیس» + پرسوناسازی</li>
+          <li>آماده‌سازی محتوای موج جام جهانی ۲۰۲۶</li>
+        </ul></div>
+
+      <div class="ws"><div class="ws-head"><div class="ws-ic">🧠</div><div><h4>۵. زیرساخت و سیستم دانش</h4><span class="prog">✓ تکمیل‌شده</span></div></div>
+        <ul>
+          <li>معماری Knowledge Base → SOP → Skill → Agent</li>
+          <li>ساخت «منبع حقیقت واحد» مستقل از ابزارها</li>
+          <li>راه‌اندازی مرکز داشبوردهای مدیریتی تحت‌وب</li>
+          <li>طراحی سیستم استراتژی ایجنتیک برای رهنگاشت</li>
+        </ul></div>
+
+      <div class="ws"><div class="ws-head"><div class="ws-ic">🤝</div><div><h4>۶. جلسات و هماهنگی</h4><span class="prog">✓ جاری</span></div></div>
+        <ul>
+          <li>۷ جلسهٔ راهبردی در هفتهٔ دوم خرداد</li>
+          <li>۱۴ جلسهٔ اجرایی در هفتهٔ دوم تیر</li>
+          <li>مصاحبه‌های عمیق پرسونا + پایش میدانی کافه‌ها</li>
+          <li>هماهنگی با شبکهٔ فروش، اینفلوئنسرها و پیمانکاران</li>
+        </ul></div>
+
+    </div>
+  </section>
+
+  <!-- DATA FINDINGS -->
+  <section id="findings">
+    <div class="reveal">
+      <span class="kicker">📈 عددهای کلیدی</span>
+      <h2 class="sec">یافته‌های داده‌ای که پروژه را جهت داد</h2>
+      <p class="sec-sub">مهم‌ترین سیگنال‌های دیجیتال و رسانه‌ای — پایهٔ استراتژی رشد.</p>
+    </div>
+    <div class="data-grid reveal">
+      <div class="dcard"><div class="dn">۹۲٪</div><div class="dl">ایرانی‌ها از سوشال استفاده می‌کنند (در برابر ۴۱٪ ماهواره)</div></div>
+      <div class="dcard"><div class="dn">۵–۶.۵×</div><div class="dl">بازگشت هر دلار در کمپین میکرو-اینفلوئنسر</div></div>
+      <div class="dcard"><div class="dn">۱۷٫۱k</div><div class="dl">فالوور اینستاگرام؛ نرخ تعامل ~۱٫۱٪ (پایهٔ رشد)</div></div>
+      <div class="dcard"><div class="dn">۱۹k</div><div class="dl">بازدید برکاوت کاراکتر Gen Z — موتور رشد اثبات‌شده</div></div>
+    </div>
+  </section>
+
+  <!-- DELIVERABLES -->
+  <section id="deliverables">
+    <div class="reveal">
+      <span class="kicker">📦 خروجی‌ها</span>
+      <h2 class="sec">آنچه تحویل داده شد</h2>
+      <p class="sec-sub">۸ سند راهبردی + ۱۰ داشبورد و ابزار زندهٔ تحت‌وب + وب‌سایت فاز ۰. روی کارت‌های زنده بزنید تا باز شوند.</p>
+    </div>
+
+    <div class="grp-title reveal">اسناد و تحلیل‌های راهبردی</div>
+    <div class="dgrid reveal">
+      <div class="doc"><div class="t">📄 سند دامنهٔ پروژه (MOM ۱)</div><div class="d">چارچوب کل پروژه، جریان‌های کاری و مسئولیت‌ها.</div><div class="m">۲۳ اردیبهشت</div></div>
+      <div class="doc"><div class="t">📈 طرح رشد فروش و سرمایه‌گذاری</div><div class="d">برنامهٔ رشد با هدف ۲× رشد حجم فروش و تخصیص بودجه.</div><div class="m">داده‌محور</div></div>
+      <div class="doc"><div class="t">🔎 تحلیل پارتو ۸۰/۲۰</div><div class="d">شناسایی محصولات قهرمان و هرم محصول.</div><div class="m">اوایل خرداد</div></div>
+      <div class="doc"><div class="t">🗂 پرتفوی محصولات و برندها</div><div class="d">معماری ۵ لاین محصولی و ساختار برندها.</div><div class="m">اوایل خرداد</div></div>
+      <div class="doc"><div class="t">📊 تحلیل عملکرد دسته‌های محصولی</div><div class="d">ماتریس BCG و اهداف سهم ۱۲ ماه آینده.</div><div class="m">اوایل خرداد</div></div>
+      <div class="doc"><div class="t">🎵 بریف تیزر موزیکال</div><div class="d">هویت، مخاطب، شعار و موسیقی مرجع کمپین کیک.</div><div class="m">۲۲ خرداد</div></div>
+      <div class="doc"><div class="t">🧠 چارچوب سیستم دانش و AI سازمانی</div><div class="d">معماری Knowledge→SOP→Skill→Agent برای رهنگاشت.</div><div class="m">۴–۵ تیر</div></div>
+      <div class="doc"><div class="t">📡 طرح‌ریزی بازوی دیجیتال</div><div class="d">مسیر ۴ فازی ساخت اکوسیستم رسانه‌ای برند.</div><div class="m">۲۱ اردیبهشت</div></div>
+    </div>
+
+    <div class="grp-title reveal" style="margin-top:26px">داشبوردها و ابزارهای زندهٔ تحت‌وب</div>
+    <div class="dgrid reveal">
+      <a class="live" href="https://alborz-ashrafi.github.io/benisreport/" target="_blank" rel="noopener"><span class="live-badge"><b></b>زنده</span><div class="t">🏠 مرکز گزارش‌ها و داشبوردها</div><div class="d">صفحهٔ اصلی دسترسی به تمام خروجی‌های رهنگاشت.</div><div class="go">مشاهده ←</div></a>
+      <a class="live" href="https://alborz-ashrafi.github.io/benisreport/benis_plan.html" target="_blank" rel="noopener"><span class="live-badge"><b></b>زنده</span><div class="t">📋 تحلیل جامع برند بِنیس</div><div class="d">تحلیل یکپارچهٔ برند، فروش و بازار + SWOT و جایگاه‌یابی.</div><div class="go">مشاهده ←</div></a>
+      <a class="live" href="https://alborz-ashrafi.github.io/benisreport/benis%20strategy.html" target="_blank" rel="noopener"><span class="live-badge"><b></b>زنده</span><div class="t">🎯 استراتژی برند و محتوا</div><div class="d">۴ فاز، تقویم ۱۲ماهه، ۲۰ کمپین و ۱۰ مکانیک ویروسی.</div><div class="go">مشاهده ←</div></a>
+      <a class="live" href="https://alborz-ashrafi.github.io/benisreport/benis-content-roadmap.html" target="_blank" rel="noopener"><span class="live-badge"><b></b>زنده</span><div class="t">🗺️ نقشهٔ راه محتوا ۶۰ روزه</div><div class="d">تقویم چندکاناله، KPI هر فعالیت و داشبورد سنجش.</div><div class="go">مشاهده ←</div></a>
+      <a class="live" href="https://alborz-ashrafi.github.io/benisreport/sales-dashboard.html" target="_blank" rel="noopener"><span class="live-badge"><b></b>زنده</span><div class="t">📈 گزارش جامع فروش</div><div class="d">پایش فروش، دسته‌بندی، فیلتر هوشمند و تحلیل پارتو.</div><div class="go">مشاهده ←</div></a>
+      <a class="live" href="https://alborz-ashrafi.github.io/benisreport/competitor%20analysis.html" target="_blank" rel="noopener"><span class="live-badge"><b></b>زنده</span><div class="t">📊 تحلیل رقبا</div><div class="d">سهم بازار، استراتژی ارتباطی و نقاط ضعف رقبا.</div><div class="go">مشاهده ←</div></a>
+      <a class="live" href="https://alborz-ashrafi.github.io/benisreport/benis_brand_report.html" target="_blank" rel="noopener"><span class="live-badge"><b></b>زنده</span><div class="t">🧠 تحلیل سلامت برند</div><div class="d">جایگاه مصرف‌کننده و وضعیت برند در بازار.</div><div class="go">مشاهده ←</div></a>
+      <a class="live" href="https://alborz-ashrafi.github.io/benisreport/benis_media_decision_dashboard.html" target="_blank" rel="noopener"><span class="live-badge"><b></b>زنده</span><div class="t">📺 داشبورد تصمیم رسانه‌ای</div><div class="d">مقایسهٔ تلویزیون پرشیانا با ۹ کانال جایگزین.</div><div class="go">مشاهده ←</div></a>
+      <a class="live" href="https://alborz-ashrafi.github.io/benisreport/benis-instagram-audit.html" target="_blank" rel="noopener"><span class="live-badge"><b></b>زنده</span><div class="t">📱 ممیزی اینستاگرام</div><div class="d">ارزیابی عملکرد و نقشهٔ ۵ اقدام اولویت‌دار.</div><div class="go">مشاهده ←</div></a>
+      <a class="live" href="https://alborz-ashrafi.github.io/benisreport/game-benis.html" target="_blank" rel="noopener"><span class="live-badge"><b></b>زنده</span><div class="t">🎮 گیمیفیکیشن دو‌بعدی برند</div><div class="d">نمونهٔ بازی تعاملی برای کمپین امتیازی و لیدربورد.</div><div class="go">اجرای نمونه ←</div></a>
+      <a class="live" href="https://alborz-ashrafi.github.io/benisreport/benis-torta-game.html" target="_blank" rel="noopener"><span class="live-badge"><b></b>زنده</span><div class="t">🚀 گیمیفیکیشن سه‌بعدی تورتا</div><div class="d">تجربهٔ سه‌بعدی برای کمپین‌های نمایشگاهی.</div><div class="go">اجرای نمونه ←</div></a>
+      <a class="live" href="https://pro-studio.ir/benis/home-v3/" target="_blank" rel="noopener"><span class="live-badge"><b></b>زنده</span><div class="t">🌐 وب‌سایت بِنیس — فاز ۰</div><div class="d">نخستین دارایی دیجیتال Owned برند (پیمانکار: پرو استودیو).</div><div class="go">مشاهدهٔ وب‌سایت ←</div></a>
+    </div>
+  </section>
+
+  <footer>
+    رودمپ پروژهٔ برند <b>بِنیس</b> · بازهٔ ۱۰ اردیبهشت تا ۱۰ تیر ۱۴۰۵ · تدوین <b>تیم مشاورین مارکتینگ رهنگاشت</b><br>
+    <a href="https://alborz-ashrafi.github.io/benisreport/" target="_blank" rel="noopener">مشاهدهٔ مرکز داشبوردها و گزارش‌ها ←</a>
+  </footer>
+
+</div>
+
+<script>
+  const steps = [
+    { n:1, date:"~۱۰ اردیبهشت", short:"آغاز پروژه", ic:"🚀",
+      title:"آغاز پروژه و عارضه‌یابی",
+      desc:"شروع رسمی همکاری رهنگاشت و بِنیس. تعریف مسئلهٔ اصلی («برند آفلاین قوی، آنلاین نامرئی»)، جمع‌آوری داده‌های اولیهٔ فروش و بازار، و آغاز فاز عارضه‌یابی برای شناخت دقیق وضعیت فعلی برند پیش از هر تصمیم استراتژیک.",
+      tags:[["done","انجام شد"]] },
+
+    { n:2, date:"~۲۱ اردیبهشت", short:"طرح بازوی دیجیتال", ic:"📡",
+      title:"طرح‌ریزی بازوی دیجیتال و رسانه‌ای",
+      desc:"بررسی وضعیت فعلی دیجیتال برند و شناسایی چالش‌های کلیدی: هویت برند نامشخص، حضور دیجیتال محدود، نبود استراتژی محتوایی و وابستگی زیاد به شبکهٔ فروش. ترسیم مسیر ساخت «اکوسیستم رسانه‌ای یکپارچه» در ۴ فاز — شناخت، زیرساخت، رسانه و توسعه — با هدف تبدیل بِنیس از یک تولیدکنندهٔ موفق به یک برند رسانه‌دار و قابل‌توسعه.",
+      tags:[["done","سند راهبردی"]] },
+
+    { n:3, date:"~۲۳ اردیبهشت", short:"سند دامنه (MOM۱)", ic:"📄",
+      title:"سند دامنهٔ پروژه — MOM ۱",
+      desc:"تثبیت چارچوب رسمی کل پروژه. تعریف تمام جریان‌های کاری: سهم بازار هدف، ظرفیت اسمی تولید و برنامهٔ S&OP، هدف رشد سال ۱۴۰۵، استانداردسازی سه‌بخشی بودجه، نیازسنجی و ساختار دپارتمان مارکتینگ، توسعهٔ پرتفوی محصول، معماری برند و طرح بازوی دیجیتال. این سند مبنای همهٔ کارهای بعدی شد.",
+      tags:[["done","چارچوب پروژه"]] },
+
+    { n:4, date:"~اوایل خرداد", short:"تحلیل داده", ic:"📊",
+      title:"بستهٔ تحلیل‌های داده‌محور",
+      desc:"تحلیل کامل دادهٔ فروش سالانه (۵٫۱M کارتن) در چهار خروجی مکمل: تحلیل پارتو ۸۰/۲۰ برای شناسایی محصولات قهرمان، ترسیم پرتفوی محصولات و برندها، تحلیل عملکرد دسته‌های محصولی با ماتریس BCG، و طرح رشد فروش و سرمایه‌گذاری با هدف ۲× رشد حجم. این تحلیل‌ها جهت استراتژیک پروژه را مشخص کردند: تمرکز سبد به‌جای پراکندگی.",
+      tags:[["done","۴ داشبورد تحلیلی"]] },
+
+    { n:5, date:"~هفتهٔ دوم خرداد", short:"جلسات راهبردی", ic:"🤝",
+      title:"جلسات راهبردی و مصاحبه‌های پرسونا",
+      desc:"۷ جلسهٔ راهبردی در یک هفته: ارائهٔ بودجه، بهینه‌سازی توزیع تیزر، کانسپت تیزر «کیک بِنیس»، مصاحبه‌های عمیق پرسونا برای شناخت ناخودآگاه مصرف‌کننده، کشف تارگت مدیران فروش، هماهنگی ضبط کمپین بیوگرافی مدیرعامل، و پایش میدانی کافه‌های منتخب برای اعتبارسنجی فرضیه‌های بازار.",
+      tags:[["done","برگزار شد"]] },
+
+    { n:6, date:"~اواسط خرداد", short:"تیم اینفلوئنسر", ic:"⭐",
+      title:"معرفی تیم اینفلوئنسر مارکتینگ",
+      desc:"معرفی و راه‌اندازی تیم اینفلوئنسر مارکتینگ برند. طراحی مدل «شبکهٔ میکرو-اینفلوئنسر» (تا ۵۰ میکرو با ۵ تا ۵۰ هزار فالوور در حوزه‌های خانه، کودک، صبحانه و گیمینگ) به‌جای اتکا به یک مگا-اینفلوئنسر — برای authenticity بالاتر، هزینهٔ کمتر، ریچ واقعی‌تر و امکان سنجش فروش با کد تخفیف اختصاصی هر اینفلوئنسر.",
+      tags:[["new","مورد جدید"]] },
+
+    { n:7, date:"~۱۷ خرداد", short:"بررسی سوشال + ممیزی", ic:"📱",
+      title:"جلسات بررسی بازوی دیجیتال و سوشال مدیا (اینستاگرام)",
+      desc:"جلسات تخصصی بررسی سوشال مدیا و ممیزی کامل صفحهٔ اینستاگرام ‎@beniscompany‎ (۱۷٫۱k فالوور، ۴۰۱ پست، نرخ تعامل ~۱٫۱٪). یافته‌ها: تأیید محصولات قهرمان (ویفر و بار کیک)، شناسایی موتور رشد (کاراکتر Gen Z با ۱۹k بازدید)، تنش هویتی «مصرفی در برابر صنعتی»، نشت مسیر خرید، و نقشهٔ ۵ اقدام اولویت‌دار برای اصلاح.",
+      tags:[["new","مورد جدید"],["done","سند تحویل شد"]] },
+
+    { n:8, date:"~۲۲ خرداد", short:"بریف تیزر موزیکال", ic:"🎵",
+      title:"بریف تیزر موزیکال — کمپین جام جهانی",
+      desc:"تدوین بریف کامل تیزر موزیکال برای دستهٔ محصولات کیک (کیک دوقلو، لایه‌ای، بارکیک، چیزکیک، موتلو بومبا). تعریف هویت برند («اصالت، اعتماد، صمیمیت»)، مخاطب نسل Z/Y (۱۵–۴۵ سال)، لحن پرانرژی و صمیمی، شعار «هر کیکی بِنیس نیس» و موسیقی مرجع — آماده برای بهره‌برداری از موج جام جهانی ۲۰۲۶.",
+      tags:[["done","بریف خلاق"]] },
+
+    { n:9, date:"~اواخر خرداد", short:"وب‌سایت (فاز ۰)", ic:"🌐",
+      title:"معرفی پیمانکار وب‌سایت و راه‌اندازی فاز ۰",
+      desc:"معرفی و انتخاب پیمانکار وب‌سایت (پرو استودیو) و راه‌اندازی نسخهٔ فاز ۰ وب‌سایت رسمی برند بِنیس. این نخستین دارایی دیجیتال Owned برند است — پایه‌ای برای سئو، مسیر خرید، روایت «پدر کیک ایران» و اتصال مستقیم با مخاطب، مستقل از پلتفرم‌های ثالث.",
+      tags:[["new","مورد جدید"]],
+      link:{url:"https://pro-studio.ir/benis/home-v3/", label:"مشاهدهٔ فاز ۰ وب‌سایت"} },
+
+    { n:10, date:"~۴–۵ تیر", short:"سیستم دانش و AI", ic:"🧠",
+      title:"چارچوب سیستم دانش و هوش مصنوعی سازمانی",
+      desc:"طراحی معماری کامل سیستم دانش و هوش مصنوعی سازمانی برای رهنگاشت: زنجیرهٔ Data → Knowledge → SOP → Skill → Agent. ساخت «منبع حقیقت واحد» مستقل از چت‌ها و ابزارها، تعریف Decision Log و Ontology سازمان، و طراحی سیستم استراتژی ایجنتیک (Human-in-the-Loop) — زیرساختی برای تصمیم‌یار پایدار و مقیاس‌پذیر.",
+      tags:[["done","گزارش پژوهشی"]] },
+
+    { n:11, date:"~۶–۱۲ تیر", short:"جلسات اجرایی", ic:"🗂",
+      title:"جلسات اجرایی هفتهٔ دوم تیر",
+      desc:"۱۴ جلسهٔ اجرایی در یک هفته: بازبینی اینستاگرام، برنامه‌ریزی بودجهٔ مناطق، کمپین زندگی مدیرعامل، اینفلوئنسر مارکتینگ، پیگیری پروژهٔ وب‌سایت، میکرو-اینفلوئنسرها، بودجهٔ فروشگاه‌های زنجیره‌ای، جلسهٔ دوم مدرسهٔ فروش بِنیس و مصاحبه‌های عمیق پرسونا.",
+      tags:[["done","اکثراً برگزار شد"]] },
+
+    { n:12, date:"~۱۰ تیر — امروز", short:"پایان فاز عارضه‌یابی", ic:"🏁",
+      title:"پایان فاز عارضه‌یابی و یکپارچه‌سازی داشبورد",
+      desc:"گردآمدن تمام تحلیل‌ها، استراتژی‌ها و نقشه‌های راه در «مرکز گزارش‌ها و داشبوردهای رهنگاشت». پایان رسمی فاز عارضه‌یابی و تدوین ساختار برنامه‌ریزی؛ زیرساخت تصمیم آماده است و پروژه آمادهٔ ورود به فاز اجراست.",
+      tags:[["done","تکمیل شد"]] },
+  ];
+
+  const track=document.getElementById('track');
+  const fill=document.getElementById('fill');
+  let active=0;
+
+  steps.forEach((s,i)=>{
+    const b=document.createElement('button');
+    b.className='node';
+    b.innerHTML = (s.tags.some(t=>t[0]==='new')?'<span class="star">⭐</span>':'')
+      + `<span class="dot">${toFa(s.n)}</span>`
+      + `<span class="dt">${s.date}</span>`
+      + `<span class="lb">${s.short}</span>`;
+    b.addEventListener('click',()=>select(i));
+    track.appendChild(b);
+  });
+  const nodes=[...track.querySelectorAll('.node')];
+
+  function toFa(x){return String(x).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);}
+
+  function select(i){
+    active=i;
+    const s=steps[i];
+    nodes.forEach((n,j)=>{n.classList.toggle('active',j===i);n.classList.toggle('done',j<i);});
+    fill.style.width = (steps.length>1 ? (i/(steps.length-1))*100 : 0)+'%';
+    document.getElementById('d-ic').textContent=s.ic;
+    document.getElementById('d-date').textContent=s.date.replace('~','حدود ');
+    document.getElementById('d-title').textContent=s.title;
+    document.getElementById('d-desc').textContent=s.desc;
+    const meta=document.getElementById('d-meta');meta.innerHTML='';
+    s.tags.forEach(t=>{const c=document.createElement('span');c.className='chip '+t[0];c.textContent=(t[0]==='new'?'⭐ ':'✓ ')+t[1];meta.appendChild(c);});
+    if(s.link){const a=document.createElement('a');a.className='btn-link';a.href=s.link.url;a.target='_blank';a.rel='noopener';a.innerHTML='🌐 '+s.link.label+' ↗';meta.appendChild(a);}
+    document.getElementById('counter').textContent=`مرحلهٔ ${toFa(i+1)} از ${toFa(steps.length)}`;
+    document.getElementById('prev').disabled=(i===0);
+    document.getElementById('next').disabled=(i===steps.length-1);
+    nodes[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+  }
+  document.getElementById('prev').addEventListener('click',()=>{if(active>0)select(active-1)});
+  document.getElementById('next').addEventListener('click',()=>{if(active<steps.length-1)select(active+1)});
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowLeft'&&active<steps.length-1)select(active+1);
+    if(e.key==='ArrowRight'&&active>0)select(active-1);
+  });
+  select(0);
+
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
