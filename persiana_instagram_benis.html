@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بنیس — اثربخشی کمپین و نوسازی تیزر</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  /* ---- IRANSans: از فونت نصب‌شده سیستم یا فایل کنار HTML استفاده می‌کند؛ در نبودش Vazirmatn وب و بعد Tahoma ---- */
+  @font-face { font-family:'IRANSansX'; src: local('IRANSansX'), local('IRANSansX-Regular'), local('IRANSans'), local('IRANSans(FaNum)'), local('IRANSansWeb'), url('IRANSansX-Regular.woff2') format('woff2'), url('IRANSans.woff2') format('woff2'); font-weight:400; font-display:swap; }
+  @font-face { font-family:'IRANSansX'; src: local('IRANSansX Bold'), local('IRANSansX-Bold'), local('IRANSans Bold'), local('IRANSansWeb Bold'), url('IRANSansX-Bold.woff2') format('woff2'), url('IRANSans-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+  @font-face { font-family:'VazirmatnWeb'; src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Regular.woff2') format('woff2'); font-weight:400; font-display:swap; }
+  @font-face { font-family:'VazirmatnWeb'; src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --navy:#123a56; --blue:#1f5f8b; --lightblue:#2e75b6; --orange:#e07b39;
+    --green:#4a9d6e; --red:#c0504d; --cream:#faf6ef; --ink:#22303a;
+    --font: 'IRANSansX','VazirmatnWeb',Tahoma,'Segoe UI',sans-serif;
+    --ease-out: cubic-bezier(.22,1,.36,1);
+  }
+  html,body { height:100%; background:#0d2233; font-family:var(--font); color:var(--ink); overflow:hidden; }
+  .deck { position:relative; width:100vw; height:100vh; }
+  .slide {
+    position:absolute; inset:0; display:none; padding:4.5vh 5vw 8vh;
+    background:linear-gradient(160deg,#fdfbf7 0%,#f4eee2 100%);
+    flex-direction:column; overflow:hidden;
+  }
+  .slide.active { display:flex; animation:slideIn .5s var(--ease-out); }
+  @keyframes slideIn { from{opacity:0; transform:translateX(-24px);} to{opacity:1; transform:none;} }
+  @keyframes rise { from{opacity:0; transform:translateY(18px);} to{opacity:1; transform:none;} }
+  .slide.active .card, .slide.active .chartbox, .slide.active table, .slide.active .verdict {
+    animation:rise .55s var(--ease-out) both;
+  }
+  .slide.active .card:nth-of-type(2), .slide.active .col:nth-child(2) .card:first-of-type { animation-delay:.1s; }
+  .slide.active .card:nth-of-type(3), .slide.active .col:nth-child(3) .card:first-of-type { animation-delay:.2s; }
+  .slide.active .card:nth-of-type(4) { animation-delay:.3s; }
+  .kicker { color:var(--orange); font-weight:700; font-size:1.7vh; letter-spacing:.5px; margin-bottom:1vh; }
+  h1 { font-size:5vh; color:var(--navy); line-height:1.4; font-weight:700; }
+  h2 { font-size:3.4vh; color:var(--navy); margin-bottom:2vh; line-height:1.45; font-weight:700; }
+  h2 .em { color:var(--orange); }
+  p, li { font-size:2vh; line-height:1.9; }
+  .sub { color:#5a6a75; }
+  .cols { display:flex; gap:2.2vw; flex:1; min-height:0; }
+  .col { flex:1; min-width:0; display:flex; flex-direction:column; }
+  .card { background:#fff; border-radius:14px; padding:2vh 1.5vw; box-shadow:0 4px 18px rgba(18,58,86,.08); margin-bottom:1.4vh; }
+  .card h3 { font-size:2.15vh; color:var(--blue); margin-bottom:.7vh; font-weight:700; }
+  .accent-r { border-right:5px solid var(--orange); }
+  .accent-g { border-right:5px solid var(--green); }
+  .accent-b { border-right:5px solid var(--blue); }
+  .accent-red { border-right:5px solid var(--red); }
+  ul.tick { list-style:none; }
+  ul.tick li { padding-right:1.6vw; position:relative; margin-bottom:1.1vh; }
+  ul.tick li::before { content:""; width:.9vh; height:.9vh; border-radius:3px; background:var(--orange); position:absolute; right:0; top:1.05vh; }
+  ul.tick li b { color:var(--navy); }
+  .chartbox { flex:1; min-height:0; position:relative; background:#fff; border-radius:14px; padding:2vh 1.2vw; box-shadow:0 4px 18px rgba(18,58,86,.08); }
+  table { width:100%; border-collapse:collapse; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 18px rgba(18,58,86,.08); }
+  th { background:var(--blue); color:#fff; font-size:1.85vh; padding:1.2vh 1vw; text-align:right; font-weight:700; }
+  td { font-size:1.75vh; padding:1vh 1vw; border-bottom:1px solid #eee; text-align:right; line-height:1.7; }
+  tr:nth-child(even) td { background:#f8f9fa; }
+  .good { background:#e8f4ea !important; } .warn { background:#fdf3e2 !important; } .bad { background:#fdeaea !important; }
+  .footer-note { font-size:1.55vh; color:#8a95a0; margin-top:auto; padding-top:1.2vh; }
+  .nav { position:fixed; bottom:2.2vh; left:2.5vw; display:flex; gap:.6vw; z-index:30; }
+  .nav button, .notesbtn {
+    background:var(--navy); color:#fff; border:none; border-radius:10px; padding:1.2vh 1.5vw;
+    font-size:1.9vh; cursor:pointer; font-family:var(--font);
+    transition:background .2s var(--ease-out), transform .15s var(--ease-out);
+  }
+  .nav button:hover, .notesbtn:hover { background:var(--orange); transform:translateY(-2px); }
+  .nav button:focus-visible, .notesbtn:focus-visible { outline:3px solid var(--orange); outline-offset:2px; }
+  .nav button:active { transform:scale(.96); }
+  .notesbtn { position:fixed; bottom:2.2vh; left:50%; transform:translateX(-50%); z-index:30; background:var(--orange); }
+  .notesbtn:hover { background:var(--navy); transform:translateX(-50%) translateY(-2px); }
+  .counter { position:fixed; bottom:2.6vh; right:3vw; color:#8a95a0; font-size:1.8vh; z-index:30; font-variant-numeric:tabular-nums; }
+  .progress { position:fixed; top:0; right:0; height:5px; background:var(--orange); z-index:40; transition:width .45s var(--ease-out); border-radius:0 0 0 4px; }
+  .titleslide { justify-content:center; align-items:center; text-align:center; background:linear-gradient(150deg,var(--navy) 0%,#1c5075 60%,#2e75b6 100%); }
+  .titleslide h1,.titleslide p { color:#fff; }
+  .titleslide .kicker { color:#f4b57f; }
+  .pill { display:inline-block; background:rgba(255,255,255,.14); color:#fff; border-radius:30px; padding:1vh 1.8vw; margin:.6vh .3vw; font-size:2vh; }
+  .verdict { background:var(--navy); color:#fff; border-radius:14px; padding:2.3vh 2vw; font-size:2.25vh; line-height:1.95; }
+  .verdict b { color:#f4b57f; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:1.4vh 1.4vw; flex:1; min-height:0; align-content:start; }
+  .num { font-size:3.8vh; font-weight:700; color:var(--orange); }
+  .quote { background:var(--cream); border-radius:10px; padding:1.2vh 1.2vw; font-size:1.8vh; margin-bottom:1vh; border-right:4px solid var(--green); }
+  .quote.neg { border-right-color:var(--red); }
+
+  /* ---- Presenter notes drawer ---- */
+  .notes {
+    position:fixed; left:0; right:0; bottom:0; z-index:50;
+    background:rgba(13,34,51,.97); color:#e8eef3; backdrop-filter:blur(6px);
+    max-height:42vh; overflow:auto; padding:2.5vh 6vw 3vh;
+    transform:translateY(105%); transition:transform .35s var(--ease-out);
+    border-top:3px solid var(--orange); box-shadow:0 -10px 40px rgba(0,0,0,.35);
+  }
+  .notes.open { transform:none; }
+  .notes h4 { color:#f4b57f; font-size:1.9vh; margin-bottom:1vh; font-weight:700; }
+  .notes p { font-size:2vh; line-height:2; color:#dbe5ec; }
+  .notes .close { position:absolute; top:1.5vh; left:2vw; background:none; border:none; color:#f4b57f; font-size:2.5vh; cursor:pointer; font-family:var(--font); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide.active, .slide.active * { animation:none !important; }
+    .progress, .nav button, .notes { transition:none; }
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<div class="deck" id="deck">
+
+<!-- 1 · Title -->
+<section class="slide titleslide active" data-notes="سلام و خوش‌آمد. من امروز می‌خوام سه تصمیم مشخص از این جلسه بگیرم، نه فقط گزارش بدم. قبل از ورود بگم که این ارائه جمع‌بندی سه خط تحقیق مستقله: مرور ادبیات علمی اثربخشی تبلیغات، داده‌های بازار رسانه ماهواره‌ای، و گزارش شنود اجتماعی برند بنیس. یعنی هرچی می‌گم پشتش عدد و منبع داره. حدود ۱۵ دقیقه وقت می‌گیرم و آخرش سه مصوبه مشخص روی میزه.">
+  <div class="kicker">گزارش مشاوره راهبردی — محرمانه · تیر ۱۴۰۵</div>
+  <h1>اثربخشی کمپین بنیس و ضرورت نوسازی تیزر</h1>
+  <p style="font-size:2.6vh; margin-top:2vh;">از تیزر پرشیانا تا کمپین اینفلوئنسر اینستاگرام — یک نقشه راه یکپارچه</p>
+  <div style="margin-top:4vh;">
+    <span class="pill">جمع‌بندی ۳ تحقیق مستقل</span>
+    <span class="pill">داده‌های عددی و نموداری</span>
+    <span class="pill">پیشنهاد اجرایی ۶ ماهه</span>
+  </div>
+  <p style="margin-top:5vh; font-size:1.9vh; opacity:.75;">ارائه به مدیرعامل محترم شرکت ارس‌پر بنیس</p>
+</section>
+
+<!-- 2 · Three messages -->
+<section class="slide" data-notes="این اسلاید نقشه کل ارائه‌ست، روش مکث می‌کنم. پیام اول: من نمی‌گم تیزر بده — می‌گم بازدهی‌ش روی این رسانه خاص داره ته می‌کشه و دلیلش رو با عدد نشون می‌دم. پیام دوم: راه‌حل من ارزون‌تر از چیزیه که فکر می‌کنید؛ تعویض کامل نمی‌خوایم. پیام سوم رو با انرژی بگم: بودجه اینفلوئنسری که کنار گذاشتیم، اتفاقاً دقیقاً همون چیزیه که تحلیل‌ها می‌گن کمه — ریچ جدید. یعنی این دو تا پروژه به هم وصلن، نه دو تا خرج جدا.">
+  <div class="kicker">دستور جلسه</div>
+  <h2>سه پیام این ارائه</h2>
+  <div class="cols">
+    <div class="col"><div class="card accent-b" style="flex:1;">
+      <div class="num">۱</div>
+      <h3>تیزر فعلی هنوز کار می‌کند، اما بازدهی‌اش در حال نزول است</h3>
+      <p class="sub">مخاطب محدود و تکرارشونده پرشیانا یعنی فرکانس بالا و اشباع زودتر از میانگین جهانی.</p>
+    </div></div>
+    <div class="col"><div class="card accent-r" style="flex:1;">
+      <div class="num">۲</div>
+      <h3>راه‌حل، تعویض پرهزینه نیست؛ «نوسازی چرخشی» است</h3>
+      <p class="sub">۲-۳ نسخه مشتق از همان تیزر با حفظ کدهای برند + داشبورد KPI با آستانه هشدار.</p>
+    </div></div>
+    <div class="col"><div class="card accent-g" style="flex:1;">
+      <div class="num">۳</div>
+      <h3>کمپین اینفلوئنسر اینستاگرام دقیقاً پازلِ گم‌شده است</h3>
+      <p class="sub">شنود اجتماعی می‌گوید مشکل اصلی بنیس «آگاهی ملی پایین» است — اینستاگرام ریچ جدید و ارزان می‌خرد، تیزرِ نوشده به آن سوخت می‌دهد.</p>
+    </div></div>
+  </div>
+  <p class="footer-note">مبتنی بر: تحقیق ادبیات علمی (Kantar، System1، Analytic Partners، Ehrenberg-Bass) + گزارش شنود اجتماعی + داده‌های بازار رسانه ماهواره‌ای</p>
+</section>
+
+<!-- 3 · Persiana status -->
+<section class="slide" data-notes="اینجا می‌خوام یه تصویر واقع‌بینانه از رسانه‌مون بدم. دو تا نکته رو پررنگ می‌گم: اول، عدد ۵۵ میلیون که پرشیانا اعلام می‌کنه خوداظهاریه و هیچ پیپل‌متری پشتش نیست — پس برنامه‌ریزی‌مون رو نباید روی این عدد بذاریم. دوم، جمله آخر اسلاید مهم‌ترین جمله‌ست: مخاطب ماهواره داره کوچیک‌تر و ثابت‌تر می‌شه، یعنی ما داریم مدام به همون آدم‌های قبلی پول می‌دیم. اگه مدیرعامل درباره تعرفه پرسید: رده دوم ۸ تا ۱۰ هزار دلار در ماهه، اسفند تا ۶۰ درصد گرون‌تر می‌شه.">
+  <div class="kicker">وضعیت فعلی</div>
+  <h2>بستر رسانه: شبکه پرشیانا در یک نگاه</h2>
+  <div class="cols">
+    <div class="col" style="flex:1.2;">
+      <table>
+        <tr><th>شاخص</th><th>داده</th></tr>
+        <tr><td><b>گروه رسانه‌ای</b></td><td>پرشیانا — ۲۲ تا ۳۱ کانال (سینما، کمدی، جونیور، اسپرت 4K)</td></tr>
+        <tr><td><b>پوشش</b></td><td>Yahsat / Eutelsat / Turksat — ایران، خاورمیانه، اروپا</td></tr>
+        <tr><td><b>ادعای مخاطب</b></td><td>۵۵ میلیون فارسی‌زبان (خوداظهاری، بدون اندازه‌گیری مستقل)</td></tr>
+        <tr><td><b>تعرفه رده دوم</b></td><td>۸ تا ۱۰ هزار دلار/ماه — تیزر ۲۵-۳۰ ثانیه، ~۳ نوبت/روز</td></tr>
+        <tr><td><b>روند مخاطب ماهواره</b></td><td class="warn">نزولی — با رشد VOD (فیلیمو و...) استخر بیننده کوچک‌تر و ثابت‌تر شده</td></tr>
+      </table>
+      <div class="card accent-red" style="margin-top:1.4vh;">
+        <h3>معنای راهبردی برای بنیس</h3>
+        <p>هر نوبت پخش عمدتاً به <b>همان بینندگان قبلی</b> می‌رسد ← فرکانس تجمعی به‌سرعت بالا می‌رود ← ریسک اشباع و دل‌زدگی جدی است.</p>
+      </div>
+    </div>
+    <div class="col"><div class="chartbox"><canvas id="chCost"></canvas></div>
+      <p class="footer-note">تعرفه‌های اعلامی بازار (اقتصاد۲۴/فرادید) — اسفند تا ۶۰٪ گران‌تر</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · Science -->
+<section class="slide" data-notes="این اسلاید عمداً علیه حرف خودمه و همین اعتبارمون رو می‌سازه. صادقانه به مدیرعامل می‌گم: علم می‌گه آگهی خوب کهنه نمی‌شه. نمودار چپ: امتیاز اثربخشی ماه اول و بعد از دو سال پخش، هر دو ۲/۲ ستاره‌ست — از دیتابیس ۵۰ هزار آگهی. نمودار راست تکون‌دهنده‌ست: از ۵۰ هزار آگهی فقط ۱۴ تا واقعاً فرسوده شده بودن، ولی ۵۱ هزار تا رو بی‌دلیل عوض کرده بودن. پس من نیومدم بگم «تیزر کهنه شده، عوضش کنیم» — اون استدلال غلطه. استدلال درست تو اسلاید بعده. این چرخش، جلسه رو از بحث سلیقه‌ای نجات می‌ده.">
+  <div class="kicker">علم بازاریابی — صادقانه</div>
+  <h2>اول، حرف علم را کامل بشنویم: <span class="em">«فرسایش خلاقیت نادرتر از تصور ماست»</span></h2>
+  <div class="cols">
+    <div class="col"><div class="chartbox"><canvas id="chWear"></canvas></div></div>
+    <div class="col"><div class="chartbox"><canvas id="chAnalytic"></canvas></div></div>
+  </div>
+  <div class="card accent-b" style="margin-top:1.4vh;">
+    <p>«مصرف‌کننده‌ها از آگهی‌ها خسته نمی‌شوند؛ فقط بازاریاب‌ها خسته می‌شوند.» — <b>مارک ریتسون</b> · کانتار نیز در سنجه‌های لذت، درگیری، برندسازی و متقاعدسازی شواهدی از فرسایش نیافت. <b>پس چرا اصلاً بحث تغییر؟ ← اسلاید بعد</b></p>
+  </div>
+</section>
+
+<!-- 5 · Why Benis differs -->
+<section class="slide" data-notes="اینجا قلب استدلال منه، آروم و شمرده می‌گم. ادبیات علمی سه تا شرط برای فرسایش واقعی می‌شماره و بنیس هر سه رو داره: یک، مخاطب پرشیانا کوچیک و ثابته و با روزی سه نوبت پخش، بیننده وفادار ماهی ده‌ها بار همین یه تیزر رو می‌بینه — محدوده بهینه ۳ تا ۹ باره. دو، کیک محصول کم‌درگیریه و سریع‌ترین نرخ فرسایش رو داره. سه، ما فقط یک نسخه داریم؛ P&G برای همین مشکل ۵ نسخه می‌چرخونه. جمله طلایی این اسلاید: مشکل ما کهنه شدن ایده نیست، اقتصادِ فرکانس روی رسانه نیچه. پس راه‌حل هم نسخه بیشتر و ریچ جدیده، نه لزوماً ایده جدید.">
+  <div class="kicker">استثنای مهم</div>
+  <h2>چرا مورد بنیس <span class="em">استثناست</span>: سه شرطِ فرسایش، هر سه برقرارند</h2>
+  <div class="cols">
+    <div class="col">
+      <ul class="tick">
+        <li><b>فرکانس سنگین روی مخاطب محدود:</b> استخر بیننده پرشیانا کوچک و ثابت است؛ با ~۳ نوبت پخش روزانه، بیننده وفادار ماهانه ده‌ها بار همان تیزر را می‌بیند — بسیار فراتر از محدوده بهینه ۳ تا ۹ مواجهه.</li>
+        <li><b>طبقه کم‌درگیری:</b> کیک و ویفر جزو محصولات کم‌درگیری FMCG‌اند که طبق ادبیات، سریع‌ترین نرخ فرسایش را دارند.</li>
+        <li><b>تک‌نسخه بودن:</b> کل بار کمپین روی یک نسخه واحد است؛ چرخش ۳-۴ نسخه، آستانه اشباع را تا ۳ برابر بالا می‌برد (رویه P&G با +۵ نسخه در کمپین‌های Tide و Pampers).</li>
+      </ul>
+      <div class="card accent-r">
+        <h3>نتیجه</h3>
+        <p>مشکل، «کهنه شدن ایده» نیست؛ <b>اقتصادِ فرکانس روی رسانه نیچ</b> است. پاسخ درست هم از همین‌جا می‌آید: نسخه‌های بیشتر + ریچ جدید، نه لزوماً ایده جدید.</p>
+      </div>
+    </div>
+    <div class="col"><div class="chartbox"><canvas id="chFreq"></canvas></div>
+      <p class="footer-note">منحنی شماتیک بر پایه نظریه ۳ مواجهه کروگمن و ادبیات برنامه‌ریزی رسانه</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · Social listening -->
+<section class="slide" data-notes="حالا از رسانه می‌رم سراغ خود برند. این داده‌ها از شنود اجتماعی واقعیه: X، دیجی‌کالا، اینستاگرام. خبر خوب: احساسات مثبته، مردم طعم و قیمت رو دوست دارن — ویفر موزی و کیک لوتوس ستاره‌هان. خبر بد: حجم گفتگو خیلی پایینه و شیرین عسل از ما خیلی جلوتره. نکته اتصال به بحث تیزر رو حتماً بگم: تیزر فعلی آگاهی ملی نساخته، نه چون پیامش بده — چون ریچ رسانه‌ش محدوده. این یعنی مشکل ما ترکیبیه و راه‌حلش هم ترکیبیه: خلاقیت نوشده به‌علاوه ریچ جدید اینستاگرام. اگه درباره شکایت چیزکیک پرسیدن، بگم تو اسلاید ریسک‌ها براش برنامه دارم.">
+  <div class="kicker">شنود اجتماعی — داده‌های واقعی X، دیجی‌کالا، اینستاگرام</div>
+  <h2>برند بنیس امروز کجا ایستاده؟</h2>
+  <div class="cols">
+    <div class="col" style="flex:1.3;">
+      <div class="grid2">
+        <div class="card accent-b"><h3>حجم گفتگو: پایین</h3><p class="sub">بحث ملی درباره بنیس اندک است — سیگنال آگاهی محدود و در عین حال فرصت رشد visibility.</p></div>
+        <div class="card accent-g"><h3>احساسات: مثبتِ غالب</h3><p class="sub">«طعم خوب، قیمت مناسب» — به‌ویژه ویفر موزی/کاکائویی و کیک لوتوس.</p></div>
+        <div class="card accent-red"><h3>شکاف رقابتی</h3><p class="sub">شیرین عسل با visibility و engagement بسیار بالاتر غالب است؛ بنیس منطقه‌ای قوی، ملی ضعیف.</p></div>
+        <div class="card accent-r"><h3>ریسک کیفیت</h3><p class="sub">شکایت‌های پراکنده (تازگی، چیزکیک) — پیش از کمپین بزرگ باید مدیریت شود.</p></div>
+      </div>
+      <div class="card" style="background:var(--cream);">
+        <p><b>پیوند با بحث تیزر:</b> تیزر فعلی روی پرشیانا نتوانسته آگاهی ملی بسازد — چون ریچ رسانه محدود است، نه چون پیام بد است. یعنی مشکل «رسانه‌ای» است و راه‌حل، ترکیب <b>نوسازی خلاقیت + ریچ جدید (اینستاگرام)</b> است.</p>
+      </div>
+    </div>
+    <div class="col"><div class="chartbox"><canvas id="chSent"></canvas></div>
+      <p class="footer-note">برآورد گزارش شنود اجتماعی؛ به دلیل حجم کم داده، بازه‌ای گزارش شده است</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · Brand tone misalignment (NEW) -->
+<section class="slide" data-notes="این اسلاید جواب سوال «چرا اصلاً به خلاقیت جدید نیاز داریم» رو کامل می‌کنه. شنود اجتماعی به ما گفت مصرف‌کننده بنیس رو با چه زبانی توصیف می‌کنه: شادی‌های کوچک خانوادگی، نوستالژی آذربایجان، صمیمیت، ارزش خرید. این یعنی «لحن برند» رو خود بازار تعریف کرده. حالا سوال: تیزر فعلی چقدر با این لحن هم‌خوانه؟ ارزیابی کیفی اولیه ما می‌گه شکاف داریم — مخصوصاً تو صمیمیت خانوادگی و نوستالژی. صادق باشم: نمودار رادار ارزیابی کارشناسیه و پیشنهادم اینه که با یه تست مخاطب کوچیک ولیدیتش کنیم. ولی نکته کلیدی: طبق چارچوب علمی، «ناهماهنگی لحن با هویت برند» جزو ناکارایی خلاقیته — یعنی همون یک شرطی که تعویض یا نوسازی جدی تیزر رو علمی توجیه می‌کنه، مستقل از بحث فرسایش. اینجا استدلال تغییر تیزر کامل می‌شه: هم اقتصاد فرکانس، هم ناهماهنگی لحن.">
+  <div class="kicker">استدلال تکمیلی — ناکارایی خلاقیت</div>
+  <h2>تیزر فعلی با <span class="em">لحن برند</span> هم‌خوان نیست — و این دلیل علمیِ نوسازی است</h2>
+  <div class="cols">
+    <div class="col">
+      <div class="card accent-g"><h3>لحن برند را بازار تعریف کرده است (شنود اجتماعی)</h3>
+        <div class="quote">«این کیک بنیس مزه جون میده، حتماً امتحانش کنید» — صمیمی، خودمانی، طعم‌محور</div>
+        <div class="quote">تم‌های غالب: لحظات شادی کوچک خانوادگی · نوستالژی آذربایجان · ارزش خرید («طعم شادی با قیمت مناسب»)</div>
+      </div>
+      <div class="card accent-red"><h3>شکاف لحن = ناکارایی خلاقیت</h3>
+        <ul class="tick">
+          <li>وقتی اجرا با هویت ادراک‌شده برند نمی‌خواند، مواجهه بیشتر <b>حافظه برند نمی‌سازد</b> — حتی بدون فرسایش.</li>
+          <li>طبق چارچوب تشخیصی (اسلاید ۹)، این دقیقاً همان حالتی است که <b>نوسازی خلاقیت را مستقل از فرسایش توجیه می‌کند</b>.</li>
+          <li>نسخه‌های جدید باید حول لحنِ تأییدشده بازار ساخته شوند: صمیمیت خانوادگی + نوستالژی + طعم.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col"><div class="chartbox"><canvas id="chTone"></canvas></div>
+      <p class="footer-note">ارزیابی کیفی کارشناسی (۰ تا ۱۰) — پیشنهاد: اعتبارسنجی با تست مخاطب پیش از تولید نسخه‌های جدید</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · Synthesis -->
+<section class="slide" data-notes="این اسلاید جمع‌بندی وسط راهه — سه خط تحقیق رو کنار هم می‌ذارم تا نشون بدم نتیجه‌ها هم‌گران، نه سلیقه من. سطر اول: علم می‌گه تعویض کامل ممنوع، چرخش واجب. سطر دوم: اقتصاد رسانه می‌گه بودجه بعدی باید ریچ جدید بخره. سطر سوم: شنود اجتماعی می‌گه اینستاگرام درست‌ترین حرکته و لحن نسخه‌ها رو هم تعیین کرده. بعدش جمله بزرگ پایین رو با تأکید می‌خونم: تیزر را نو کن، نه از نو. این جمله رو می‌خوام تو ذهن مدیرعامل بمونه.">
+  <div class="kicker">جمع‌بندی تحقیقات</div>
+  <h2>سه خط تحقیق، یک نتیجه</h2>
+  <table>
+    <tr><th style="width:22%;">محور</th><th>یافته کلیدی</th><th style="width:30%;">دلالت برای بنیس</th></tr>
+    <tr><td><b>علم اثربخشی تبلیغات</b><br><span class="sub" style="font-size:1.5vh;">Kantar · System1 · Analytic Partners · Ehrenberg-Bass</span></td>
+        <td>خلاقیت خوب فرسوده نمی‌شود (۲/۲ = ۲/۲ بعد از ۲ سال)؛ اما فرکانس سنگین روی مخاطب محدود + طبقه کم‌درگیری + ناهماهنگی لحن، نوسازی را توجیه می‌کند</td>
+        <td class="warn">تعویض کامل ممنوع؛ چرخش نسخه‌ها با لحن اصلاح‌شده واجب</td></tr>
+    <tr><td><b>اقتصاد رسانه ماهواره</b><br><span class="sub" style="font-size:1.5vh;">داده‌های بازار</span></td>
+        <td>ریچ پرشیانا محدود و روبه‌نزول؛ خرید فرکانس بیشتر روی همان مخاطب = هزینه هر ریچ افزایشی صعودی</td>
+        <td class="warn">بودجه بعدی باید «ریچ جدید» بخرد، نه تکرار</td></tr>
+    <tr><td><b>شنود اجتماعی برند</b><br><span class="sub" style="font-size:1.5vh;">X · دیجی‌کالا · اینستاگرام</span></td>
+        <td>احساس مثبت اما حجم گفتگوی ملی پایین؛ شکاف بزرگ با شیرین عسل؛ لحن برند: صمیمیت خانوادگی + نوستالژی + ارزش</td>
+        <td class="good">اینفلوئنسر اینستاگرام = درست‌ترین حرکت بعدی</td></tr>
+  </table>
+  <div class="verdict" style="margin-top:1.8vh;">
+    نتیجه هم‌گرا: <b>تیزر را نو کن، نه از نو.</b> پلتفرم خلاق و کدهای برند ثابت بماند؛ اجراها با لحنِ تأییدشده بازار بچرخد؛ و بودجه اینفلوئنسر، ریچ ملی گم‌شده را بخرد.
+  </div>
+</section>
+
+<!-- 9 · KPI -->
+<section class="slide" data-notes="این اسلاید برای اطمینان دادن به مدیرعامله: هیچ تصمیمی قرار نیست سلیقه‌ای باشه. پنج تا آستانه هشدار تعریف کردیم — مثلاً افت ۱۵ درصدی یادآوری تبلیغ یا رشد ۳۰ درصدی هزینه هر ریچ افزایشی. قاعده دو موج رو توضیح بدم: هیچ تصمیمی با یه نقطه داده گرفته نمی‌شه، افت باید تو دو موج متوالی با فاصله ۴ تا ۶ هفته تأیید بشه. و سه تا تشخیص متفاوت داریم که درمان‌های متفاوتی دارن: مشکل رسانه، مشکل خلاقیت، اشباع. پیشنهاد عملی: این آستانه‌ها همین جلسه مصوب بشن که بعداً بحث سلیقه پیش نیاد.">
+  <div class="kicker">حاکمیت داده‌ای تصمیم</div>
+  <h2>چه زمانی تیزر جدید می‌سازیم؟ فقط با فعال شدن این آستانه‌ها</h2>
+  <div class="cols">
+    <div class="col"><div class="chartbox"><canvas id="chKPI"></canvas></div></div>
+    <div class="col" style="flex:.8;">
+      <div class="card accent-b"><h3>قاعده دو موج</h3><p class="sub">هیچ تصمیمی با یک نقطه داده گرفته نمی‌شود؛ افت باید در دو موج متوالی (فاصله ۴-۶ هفته) تأیید شود.</p></div>
+      <div class="card accent-g"><h3>تفکیک تشخیص</h3><p class="sub">ریچ راکد + یادآوری خوب = مشکل رسانه · یادآوری/هم‌خوانی لحن از ابتدا پایین = مشکل خلاقیت · افت تدریجی پس از اوج = اشباع.</p></div>
+      <div class="card accent-r"><h3>مالکیت</h3><p class="sub">داشبورد ماهانه به مدیریت گزارش می‌شود؛ تریگرها از قبل مصوب می‌شوند تا تصمیم، سلیقه‌ای نباشد.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · Decision matrix -->
+<section class="slide" data-notes="این جدول، کل منطق تصمیم رو یک‌جا نشون می‌ده. من فقط دو سطر رو برجسته می‌کنم و بقیه رو رد می‌شم: سطر ناهماهنگی لحن با هویت برند — که اسلاید ۷ نشون دادیم برقراره — و سطر پیام جدید، چون کمپین اینفلوئنسر داره شروع می‌شه. هر دوش می‌افته تو ستون «ساخت/نوسازی تیزر». پس موقعیت فعلی ما مشخصه: نسخه‌های چرخشی با لحن اصلاح‌شده، هماهنگ با کمپین اینستاگرام. اگه سوال شد چرا تعویض کامل نه: سطر یک و دو جدول — تیزری که KPIش سالمه رو دور نمی‌ندازیم.">
+  <div class="kicker">ماتریس تصمیم</div>
+  <h2>ادامه تیزر فعلی یا ساخت تیزر جدید؟</h2>
+  <table>
+    <tr><th>وضعیت</th><th>ادامه تیزر فعلی</th><th>ساخت / نوسازی تیزر</th></tr>
+    <tr><td>تیزر کمتر از ۱۲ هفته روی آنتن (دوره جاافتادن)</td><td class="good">✓ قطعاً ادامه</td><td>✗ دور ریختن سرمایه Wear-in</td></tr>
+    <tr><td>KPIها پایدار یا صعودی</td><td class="good">✓ ادامه + برش‌های کوتاه</td><td>✗ فاقد توجیه</td></tr>
+    <tr><td>فرکانس +۱۰ در ماه و ریچ شبکه اشباع</td><td class="warn">~ کاهش نوبت پخش</td><td class="warn">~ نسخه‌های چرخشی از همان پلتفرم</td></tr>
+    <tr><td>افت یادآوری ≥۱۵٪ در دو موج متوالی</td><td>✗ سرمایه‌سوزی</td><td class="good">✓ نوسازی اجرا با حفظ کدهای برند</td></tr>
+    <tr><td><b>ناهماهنگی لحن تیزر با هویت برند (اسلاید ۷)</b></td><td>✗ تکرار، حافظه برند نمی‌سازد</td><td class="good">✓ نوسازی حول لحن تأییدشده بازار</td></tr>
+    <tr><td>پیام جدید (محصول/مناسبت/کمپین اینفلوئنسر)</td><td>✗ پیام کهنه پاسخگو نیست</td><td class="good">✓ اجرای جدید حول همان کدها</td></tr>
+    <tr><td>تیزر از ابتدا در تست خلاقیت ضعیف</td><td>✗ تکرار پیام ضعیف</td><td class="good">✓ تیزر کاملاً جدید + پیش‌تست</td></tr>
+  </table>
+  <p class="footer-note">موقعیت فعلی برآوردی بنیس: ردیف‌های ۳، ۵ و ۶ — یعنی «نسخه‌های چرخشی با لحن اصلاح‌شده + هماهنگ با کمپین اینستاگرام»</p>
+</section>
+
+<!-- 11 · Influencer -->
+<section class="slide" data-notes="حالا وصل می‌کنم به تصمیمی که خود شرکت گرفته — کمپین اینفلوئنسر. لحنم اینجا کاملاً حمایتیه: این تصمیم درسته و داده پشتشه؛ فعال‌ترین کانال بنیس همین الان اینستاگرامه و مشکل اصلی ریچ ملیه. ولی دو تا شرط داره. شرط اول: قاعده ۶۰-۴۰ — تیزر تلویزیونی ستون برندسازی بلندمدته و اینفلوئنسر فعال‌ساز کوتاه‌مدت؛ این‌ها باید یه زبان بصری واحد داشته باشن وگرنه دو تا کمپین جزیره‌ای می‌شن. برش‌های تیزرِ نوشده می‌شه مواد خام ریلز — یعنی یک روز فیلمبرداری، چند ده خروجی. شرط دوم: قبل از موج اول، شکایت‌های کیفیت باید مدیریت شده باشه، چون اینفلوئنسر ذره‌بینه؛ هم خوبی رو بزرگ می‌کنه هم ضعف رو.">
+  <div class="kicker">حرکت جدید</div>
+  <h2>کمپین اینفلوئنسر اینستاگرام: چرا الان، و چرا با تیزرِ نوشده هم‌افزاست</h2>
+  <div class="cols">
+    <div class="col">
+      <div class="card accent-g"><h3>چرا درست است</h3>
+        <ul class="tick">
+          <li>شنود اجتماعی: فعال‌ترین کانال بنیس همین حالا اینستاگرام است و مشکل اصلی، ریچ ملی است — اینفلوئنسر همان ریچ را می‌خرد.</li>
+          <li>مخاطب اینستاگرام «جدید» است؛ برخلاف پرشیانا، بودجه صرف تکرار روی بیننده قبلی نمی‌شود.</li>
+          <li>محتوای پیشنهادی آماده است: داستان کارآفرینی روستای بنیس، UGC آشپزی، «لحظات شادی کوچک».</li>
+        </ul>
+      </div>
+      <div class="card accent-red"><h3>شرط موفقیت</h3>
+        <p class="sub">شکایت‌های کیفیت (تازگی/چیزکیک) قبل از افزایش دیده شدن مدیریت شود — اینفلوئنسر ذره‌بین است؛ هم خوبی را بزرگ می‌کند هم ضعف را.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card accent-b"><h3>هم‌افزایی تیزر × اینفلوئنسر (قاعده ۶۰/۴۰ Binet & Field)</h3>
+        <ul class="tick">
+          <li><b>تیزر تلویزیونی (برندساز بلندمدت):</b> نسخه‌های نوشده با همان موسیقی، شعار و کدهای بصری — ستون ۶۰٪.</li>
+          <li><b>اینفلوئنسر (فعال‌ساز کوتاه‌مدت):</b> برش‌های ۱۵-۳۰ ثانیه‌ای از همان تیزرها به‌عنوان مواد خام Reels و همکاری‌ها — بخش ۴۰٪.</li>
+          <li><b>یک زبان بصری در همه‌جا:</b> بیننده پرشیانا در اینستاگرام همان برند را می‌بیند ← اثر تقویتی متقابل، نه دو کمپین جزیره‌ای.</li>
+        </ul>
+      </div>
+      <div class="card" style="background:var(--cream);"><p><b>نکته بودجه‌ای:</b> تولید نسخه‌های چرخشی تیزر و محتوای اینفلوئنسر می‌تواند در یک پکیج تولید مشترک انجام شود — یک روز فیلمبرداری، چند ده خروجی.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 · Roadmap -->
+<section class="slide" data-notes="نقشه راه رو سریع و با اعتماد به نفس رد می‌کنم، جزئیات تو سند مکتوبه. فاز یک فقط چهار هفته‌ست و ارزون‌ترین فازه: اندازه‌گیری پایه و راستی‌آزمایی اینفلوئنسرها — قبل از خرج اصلی. فاز دو، ماه دو و سه: تولید نسخه‌های چرخشی با لحن اصلاح‌شده و شروع موج اول اینفلوئنسر با کد تخفیف اختصاصی برای اینکه فروش قابل‌انتساب داشته باشیم. فاز سه: تصمیم‌های بزرگ — تیزر کاملاً جدید فقط اگه تریگرها فعال شد، و بازتخصیص بودجه بین پرشیانا و اینستاگرام بر اساس هزینه هر ریچ. تأکید کنم: هر فاز خروجی قابل سنجش داره و قابل توقفه — ریسک مالی پلکانیه.">
+  <div class="kicker">نقشه راه ۶ ماهه</div>
+  <h2>سه فاز اجرایی</h2>
+  <div class="cols">
+    <div class="col"><div class="card accent-b" style="flex:1;">
+      <h3>فاز ۱ · اندازه‌گیری (هفته ۱-۴)</h3>
+      <ul class="tick">
+        <li>راه‌اندازی داشبورد KPI و نظرسنجی پایه یادآوری برند + سنجش هم‌خوانی لحن تیزر</li>
+        <li>برآورد فرکانس تجمعی از برنامه پخش پرشیانا</li>
+        <li>انتخاب و راستی‌آزمایی اینفلوئنسرها (نرخ تعامل واقعی، مخاطب ایرانی)</li>
+      </ul>
+    </div></div>
+    <div class="col"><div class="card accent-r" style="flex:1;">
+      <h3>فاز ۲ · چرخش و شروع کمپین (ماه ۲-۳)</h3>
+      <ul class="tick">
+        <li>تولید ۲-۳ نسخه مشتق تیزر با لحن اصلاح‌شده (صمیمیت + نوستالژی + طعم) و حفظ کدهای برند</li>
+        <li>توزیع نوبت‌های پرشیانا بین نسخه‌ها (فرکانس هر نسخه زیر آستانه)</li>
+        <li>آغاز موج اول اینفلوئنسر با کد تخفیف/لینک اختصاصی برای سنجش فروش</li>
+      </ul>
+    </div></div>
+    <div class="col"><div class="card accent-g" style="flex:1;">
+      <h3>فاز ۳ · تصمیم داده‌محور (ماه ۴-۶)</h3>
+      <ul class="tick">
+        <li>اگر تریگرها فعال شد ← تولید تیزر جدید (با پیش‌تست)</li>
+        <li>بازتخصیص بودجه بین پرشیانا و اینستاگرام بر اساس هزینه هر ریچ افزایشی</li>
+        <li>موج دوم اینفلوئنسر با برندگان موج اول (data-driven)</li>
+      </ul>
+    </div></div>
+  </div>
+</section>
+
+<!-- 13 · Influencer KPIs -->
+<section class="slide" data-notes="این اسلاید نشون می‌ده همون سختگیری که برای تیزر داریم، برای اینفلوئنسر هم هست — یه چارچوب سنجش واحد. مهم‌ترین سطرها: اسکرین‌شات اینسایت تو قرارداد الزامی بشه چون عددهای اعلامی اینفلوئنسرها قابل اتکا نیست، و هر اینفلوئنسر کد تخفیف اختصاصی بگیره که فروش قابل‌انتساب داشته باشیم. خروجی برای مدیرعامل: یه گزارش ماهانه یک‌صفحه‌ای که هزینه هر ریچ افزایشی پرشیانا رو با اینستاگرام مقایسه می‌کنه — همین گزارش تصمیم‌های بودجه‌ای بعدی رو می‌سازه.">
+  <div class="kicker">سنجش کمپین اینفلوئنسر</div>
+  <h2>از روز اول، این‌ها را اندازه می‌گیریم</h2>
+  <div class="cols">
+    <div class="col" style="flex:1.2;">
+      <table>
+        <tr><th>سنجه</th><th>ابزار</th><th>هدف‌گذاری پیشنهادی</th></tr>
+        <tr><td>ریچ و ایمپرشن واقعی</td><td>اینسایت اینستاگرام (اسکرین‌شات الزامی در قرارداد)</td><td>ریچ جدید خارج از فالوورهای فعلی برند</td></tr>
+        <tr><td>نرخ تعامل (ER)</td><td>لایک+کامنت+سیو ÷ ریچ</td><td>بالاتر از میانگین طبقه (~۲-۴٪)</td></tr>
+        <tr><td>فروش قابل‌انتساب</td><td>کد تخفیف / لینک اختصاصی هر اینفلوئنسر</td><td>پوشش حداقل بخشی از هزینه در موج اول</td></tr>
+        <tr><td>رشد جست‌وجو و فالوور</td><td>گوگل‌ترندز + رشد پیج برند</td><td>جهش هم‌زمان با موج‌ها</td></tr>
+        <tr><td>Brand Lift</td><td>نظرسنجی قبل/بعد (همان نظرسنجی فاز ۱)</td><td>رشد آگاهی ملی — شاخص شکاف با شیرین عسل</td></tr>
+      </table>
+    </div>
+    <div class="col" style="flex:.8;">
+      <div class="card accent-b"><h3>چرا این سختگیری؟</h3><p class="sub">همان منطق تیزر: تصمیم ادامه/توقف/تغییر هر دو کمپین باید با داده گرفته شود، نه حس. یک چارچوب سنجش واحد، هر دو کانال را با هم مقایسه‌پذیر می‌کند.</p></div>
+      <div class="card accent-r"><h3>خروجی برای مدیرعامل</h3><p class="sub">گزارش ماهانه یک‌صفحه‌ای: هزینه هر ریچ افزایشی پرشیانا در برابر اینستاگرام + وضعیت تریگرهای تیزر.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 · Risks -->
+<section class="slide" data-notes="ریسک‌ها رو خودم می‌گم قبل از اینکه ازم بپرسن — این اعتماد می‌سازه. مهم‌ترین‌هاش: یک، تعویض زودهنگام و از دست دادن حافظه برند — پاسخ ما قاعده دو موج و حفظ کدهای برنده. دو، فالوور فیک تو بازار اینفلوئنسر ایران خیلی رایجه — پاسخ: راستی‌آزمایی قبل قرارداد و پرداخت مرحله‌ای. سه، بزرگ شدن شکایت‌های کیفیت با دیده شدن بیشتر — پاسخ: پروتکل پایش و پاسخ سریع قبل از موج اول. و چهار، دو کمپین جزیره‌ای — پاسخ: یک پلتفرم خلاق واحد. هر ریسکی پاسخ مشخص داره؛ چیزی بی‌جواب نمونده.">
+  <div class="kicker">مدیریت ریسک</div>
+  <h2>ریسک‌ها و پاسخ ما</h2>
+  <table>
+    <tr><th>ریسک</th><th>احتمال/اثر</th><th>پاسخ</th></tr>
+    <tr><td>تعویض زودهنگام تیزر و از دست دادن حافظه برند (۵۱٬۲۳۲ آگهی سالم که بی‌دلیل کنار گذاشته شدند)</td><td class="bad">اثر بالا</td><td>قاعده دو موج + حفظ کدهای برند در هر نسخه</td></tr>
+    <tr><td>دل‌زدگی مخاطب نیچ پرشیانا از تکرار</td><td class="warn">احتمال بالا</td><td>چرخش نسخه‌ها + سقف فرکانس هر نسخه</td></tr>
+    <tr><td>اینفلوئنسر با فالوور غیرواقعی / مخاطب غیرمرتبط</td><td class="warn">رایج در بازار ایران</td><td>راستی‌آزمایی ER و دموگرافی پیش از قرارداد؛ پرداخت مرحله‌ای</td></tr>
+    <tr><td>بزرگ‌نمایی شکایت‌های کیفیت با افزایش دیده شدن</td><td class="warn">اثر متوسط تا بالا</td><td>پایش دیجی‌کالا/کامنت‌ها و پروتکل پاسخ سریع، قبل از موج اول</td></tr>
+    <tr><td>دو کمپین جزیره‌ای با دو زبان بصری</td><td class="bad">اثر بالا</td><td>یک پلتفرم خلاق واحد؛ برش‌های تیزر = مواد خام اینستاگرام</td></tr>
+  </table>
+</section>
+
+<!-- 15 · Final -->
+<section class="slide" data-notes="جمع‌بندی نهایی — اینجا دیگه ارائه نمی‌کنم، درخواست تصمیم می‌کنم. جمله کلیدی رو یه بار دیگه می‌گم: پرسش درست این نیست که تیزر کهنه شده یا نه؛ اینه که آیا هنوز با این تیزر حافظه و فروش جدید می‌خریم؟ و بعد سه مصوبه رو شفاف می‌خونم: یک، تأیید تولید ۲-۳ نسخه چرخشی با لحن اصلاح‌شده به‌جای تیزر کاملاً جدید. دو، تأیید چارچوب سنجش واحد و آستانه‌های هشدار. سه، آغاز کمپین اینفلوئنسر با دو شرطی که گفتم. اگه فقط یکی از این سه تا هم امروز مصوب بشه، جلسه موفق بوده. سکوت می‌کنم و منتظر نظرشون می‌مونم.">
+  <div class="kicker">جمع‌بندی برای تصمیم</div>
+  <h2>آنچه از این جلسه می‌خواهیم</h2>
+  <div class="verdict" style="margin-bottom:1.8vh;">
+    پرسش درست این نیست که «تیزر کهنه شده یا نه»؛ این است که <b>«آیا هنوز با این تیزر، حافظه و فروش جدید می‌خریم؟»</b> داده می‌گوید: روی پرشیانا داریم به سقف می‌خوریم و لحن اجرا با هویت برند نمی‌خواند — راه رشد، <b>نسخه‌های چرخشی با لحن اصلاح‌شده + ریچ جدید اینستاگرام</b> است.
+  </div>
+  <div class="cols">
+    <div class="col"><div class="card accent-b" style="flex:1;"><h3>مصوبه ۱</h3><p>تأیید تولید ۲-۳ نسخه چرخشی تیزر با لحن اصلاح‌شده (با حفظ کدهای برند) — تصمیم تیزر کاملاً جدید به تریگرهای KPI واگذار شود.</p></div></div>
+    <div class="col"><div class="card accent-r" style="flex:1;"><h3>مصوبه ۲</h3><p>تأیید چارچوب سنجش واحد (داشبورد ماهانه) برای پرشیانا و کمپین اینفلوئنسر، با آستانه‌های ازپیش‌مصوب.</p></div></div>
+    <div class="col"><div class="card accent-g" style="flex:1;"><h3>مصوبه ۳</h3><p>آغاز کمپین اینفلوئنسر با بودجه مصوب، مشروط به راستی‌آزمایی اینفلوئنسرها و پروتکل پاسخ به کیفیت.</p></div></div>
+  </div>
+  <p class="footer-note">منابع: Kantar · System1 (+۵۰هزار آگهی) · Analytic Partners (۲۰۲۰) · Ehrenberg-Bass · Binet & Field (IPA) · اقتصاد۲۴ · گزارش شنود اجتماعی · persianagroup.tv · benis.ir</p>
+</section>
+
+</div>
+
+<div class="nav">
+  <button onclick="go(1)" aria-label="اسلاید بعدی">→ بعدی</button>
+  <button onclick="go(-1)" aria-label="اسلاید قبلی">قبلی ←</button>
+</div>
+<button class="notesbtn" onclick="toggleNotes()" aria-label="یادداشت ارائه‌دهنده">🗒 یادداشت من (N)</button>
+<div class="counter" id="counter"></div>
+
+<aside class="notes" id="notes" aria-live="polite">
+  <button class="close" onclick="toggleNotes()" aria-label="بستن">✕</button>
+  <h4>یادداشت ارائه — فقط برای من</h4>
+  <p id="notesText"></p>
+</aside>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];let cur=0;
+const notesEl=document.getElementById('notes'),notesText=document.getElementById('notesText');
+const REDUCED=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function toggleNotes(){notesEl.classList.toggle('open');}
+function show(i){
+  cur=Math.max(0,Math.min(slides.length-1,i));
+  slides.forEach((s,j)=>s.classList.toggle('active',j===cur));
+  document.getElementById('counter').textContent=(cur+1)+' / '+slides.length;
+  document.getElementById('prog').style.width=((cur+1)/slides.length*100)+'%';
+  notesText.textContent=slides[cur].dataset.notes||'';
+  animateCharts(slides[cur]);
+}
+function go(d){show(cur+d);}
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowLeft'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(1);}
+  if(e.key==='ArrowRight'||e.key==='PageUp'){e.preventDefault();go(-1);}
+  if(e.key==='Home')show(0); if(e.key==='End')show(slides.length-1);
+  if(e.key==='n'||e.key==='N')toggleNotes();
+  if(e.key==='Escape')notesEl.classList.remove('open');
+});
+
+// ---- Charts: lazy build + re-animate on every slide entry ----
+Chart.defaults.font.family=getComputedStyle(document.documentElement).getPropertyValue('--font');
+Chart.defaults.font.size=13;Chart.defaults.color='#44525d';
+const NAVY='#1f5f8b',OR='#e07b39',GR='#4a9d6e',RD='#c0504d';
+const DUR=REDUCED?0:1600;
+const easedelay=(ctx)=>REDUCED?0:(ctx.type==='data'?ctx.dataIndex*220:0);
+const baseAnim={duration:DUR,easing:'easeOutQuart',delay:easedelay};
+
+const chartDefs={
+  chCost:()=>({type:'bar',data:{labels:['رده دوم (هم‌رده پرشیانا)','رده اول (جم، من‌وتو، PMC)'],
+    datasets:[{data:[9000,14000],backgroundColor:[OR,NAVY],borderRadius:10,maxBarThickness:110}]},
+    options:{animation:baseAnim,plugins:{legend:{display:false},
+    title:{display:true,text:'تعرفه ماهانه تیزر ماهواره‌ای (دلار)',font:{size:15,weight:'bold'}},
+    tooltip:{callbacks:{label:c=>c.parsed.y.toLocaleString('fa-IR')+' دلار'}}},
+    scales:{y:{beginAtZero:true,ticks:{callback:v=>v.toLocaleString('fa-IR')},grid:{color:'#eef1f4'}},x:{grid:{display:false}}},maintainAspectRatio:false}}),
+
+  chWear:()=>({type:'bar',data:{labels:['ماه اول پخش','پس از ۲+ سال پخش مداوم'],
+    datasets:[{data:[2.2,2.2],backgroundColor:[NAVY,OR],borderRadius:10,maxBarThickness:110}]},
+    options:{animation:baseAnim,plugins:{legend:{display:false},
+    title:{display:true,text:'امتیاز اثربخشی آگهی (System1، +۵۰٬۰۰۰ آگهی)',font:{size:15,weight:'bold'}}},
+    scales:{y:{min:0,max:5,title:{display:true,text:'ستاره از ۵'},grid:{color:'#eef1f4'}},x:{grid:{display:false}}},maintainAspectRatio:false}}),
+
+  chAnalytic:()=>({type:'bar',data:{labels:['فرسایش واقعی','کنارگذاشته بدون نشانه فرسایش'],
+    datasets:[{data:[14,51232],backgroundColor:[RD,NAVY],borderRadius:10}]},
+    options:{indexAxis:'y',animation:baseAnim,plugins:{legend:{display:false},
+    title:{display:true,text:'Analytic Partners ۲۰۲۰ — مقیاس لگاریتمی',font:{size:15,weight:'bold'}}},
+    scales:{x:{type:'logarithmic',min:1,max:100000,grid:{color:'#eef1f4'}},y:{grid:{display:false}}},maintainAspectRatio:false}}),
+
+  chFreq:()=>{const fx=[...Array(33)].map((_,i)=>i*0.5);
+    const fy=fx.map(x=>{let y=100*(1-Math.exp(-0.45*x));return x>9?y-(x-9)**2*1.1:y;});
+    return {type:'line',data:{labels:fx,datasets:[{data:fy,borderColor:NAVY,borderWidth:3.5,pointRadius:0,fill:true,
+    backgroundColor:'rgba(31,95,139,.08)',tension:.35}]},
+    options:{animation:REDUCED?{duration:0}:{duration:2200,easing:'easeInOutQuart'},
+    plugins:{legend:{display:false},title:{display:true,text:'منحنی پاسخ فرکانس (شماتیک): بهینه ۳-۹ مواجهه، افت پس از ~۱۰',font:{size:14,weight:'bold'}}},
+    scales:{x:{title:{display:true,text:'دفعات دیدن تیزر توسط هر بیننده در ماه'},ticks:{maxTicksLimit:9},grid:{display:false}},
+    y:{title:{display:true,text:'اثر نسبی (٪)'},min:0,max:110,grid:{color:'#eef1f4'}}},maintainAspectRatio:false}};},
+
+  chSent:()=>({type:'doughnut',data:{labels:['مثبت (۶۰-۷۰٪)','خنثی (۲۰-۳۰٪)','منفی (۱۰-۲۰٪)'],
+    datasets:[{data:[65,25,15],backgroundColor:[GR,'#b8c4cc',RD],borderWidth:4,borderColor:'#fff',hoverOffset:14}]},
+    options:{animation:REDUCED?{duration:0}:{animateRotate:true,animateScale:true,duration:1800,easing:'easeOutQuart'},
+    plugins:{legend:{position:'bottom'},title:{display:true,text:'احساسات نسبت به بنیس (شنود اجتماعی)',font:{size:15,weight:'bold'}}},
+    cutout:'55%',maintainAspectRatio:false}}),
+
+  chTone:()=>({type:'radar',data:{
+    labels:['صمیمیت خانوادگی','شادی و انرژی','نوستالژی / اصالت محلی','پیوند با طعم و اشتها','وضوح پیام ارزش-قیمت','تمایز از رقبا'],
+    datasets:[
+      {label:'لحن هدف برند (از شنود اجتماعی)',data:[9,9,8,9,8,7],borderColor:GR,backgroundColor:'rgba(74,157,110,.18)',borderWidth:2.5,pointBackgroundColor:GR,pointRadius:4},
+      {label:'تیزر فعلی (ارزیابی کیفی اولیه)',data:[5,6,3,7,4,4],borderColor:RD,backgroundColor:'rgba(192,80,77,.14)',borderWidth:2.5,pointBackgroundColor:RD,pointRadius:4}
+    ]},
+    options:{animation:REDUCED?{duration:0}:{duration:2000,easing:'easeOutQuart'},
+    plugins:{legend:{position:'bottom'},title:{display:true,text:'شکاف لحن: برند در ذهن بازار در برابر تیزر فعلی',font:{size:15,weight:'bold'}}},
+    scales:{r:{min:0,max:10,ticks:{stepSize:2,backdropColor:'transparent'},grid:{color:'#e5e9ee'},angleLines:{color:'#e5e9ee'},
+    pointLabels:{font:{size:12}}}},maintainAspectRatio:false}}),
+
+  chKPI:()=>({type:'bar',data:{labels:['افت یادآوری تبلیغ (٪)','افت توجه در ردیابی برند (٪)','رشد هزینه هر ریچ افزایشی (٪)','افت اثر فروش (٪)','فرکانس ماهانه هر بیننده (دفعه)'],
+    datasets:[{data:[15,15,30,20,10],backgroundColor:NAVY,borderRadius:10}]},
+    options:{indexAxis:'y',animation:baseAnim,plugins:{legend:{display:false},
+    title:{display:true,text:'آستانه‌های هشدار مصوب برای بازنگری تیزر',font:{size:15,weight:'bold'}}},
+    scales:{x:{min:0,max:40,grid:{color:'#eef1f4'}},y:{grid:{display:false}}},maintainAspectRatio:false}})
+};
+const built={};
+function animateCharts(slide){
+  slide.querySelectorAll('canvas').forEach(cv=>{
+    const id=cv.id; if(!chartDefs[id])return;
+    if(!built[id]){ built[id]=new Chart(cv,chartDefs[id]()); }
+    else { built[id].reset(); built[id].update(); }
+  });
+}
+show(0);
+</script>
+</body>
+</html>
