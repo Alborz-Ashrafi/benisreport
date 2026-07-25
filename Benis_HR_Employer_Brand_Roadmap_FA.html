@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نقشه راه جذب، آنبوردینگ و نگهداشت منابع انسانی بنیس</title>
+<style>
+:root{
+  --ink:#1d1d1b;
+  --muted:#6f6a62;
+  --paper:#f6f1e7;
+  --card:#fffdf8;
+  --gold:#b58a43;
+  --gold2:#d9bd84;
+  --red:#8f2f2a;
+  --green:#2f6656;
+  --line:#ded4c2;
+  --shadow:0 18px 45px rgba(44,35,23,.09);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Tahoma, Arial, sans-serif;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(181,138,67,.13), transparent 28%),
+    linear-gradient(180deg,#f9f6ef 0%,#f1eadf 100%);
+  color:var(--ink);
+  line-height:1.9;
+}
+a{color:inherit}
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(29,29,27,.94);
+  backdrop-filter:blur(10px);
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.topbar-inner{
+  max-width:1280px;margin:auto;padding:10px 22px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.brandmark{display:flex;align-items:center;gap:12px}
+.logo{
+  width:46px;height:46px;border:1px solid var(--gold2);
+  display:grid;place-items:center;font-weight:900;letter-spacing:1px;
+  color:var(--gold2);border-radius:10px;background:#252522;
+}
+.brandmark small{display:block;color:#d7d0c5}
+.nav{display:flex;gap:7px;flex-wrap:wrap}
+.nav a{
+  text-decoration:none;padding:7px 10px;border-radius:8px;
+  color:#eee;font-size:12px;
+}
+.nav a:hover{background:rgba(255,255,255,.09)}
+.hero{
+  max-width:1280px;margin:32px auto 0;padding:0 22px;
+}
+.hero-panel{
+  min-height:520px;border-radius:28px;overflow:hidden;position:relative;
+  background:
+    linear-gradient(90deg,rgba(19,19,17,.97) 0%,rgba(30,28,23,.93) 48%,rgba(30,28,23,.55) 100%),
+    linear-gradient(135deg,#28251f,#6b5130);
+  color:#fff;box-shadow:var(--shadow);padding:58px;
+}
+.hero-panel:before{
+  content:"";position:absolute;inset:-15% -10% auto auto;width:510px;height:510px;
+  border:1px solid rgba(217,189,132,.25);border-radius:50%;
+  box-shadow:0 0 0 70px rgba(217,189,132,.04),0 0 0 140px rgba(217,189,132,.025);
+}
+.hero-panel:after{
+  content:"BENIS";position:absolute;left:36px;bottom:-32px;
+  font-size:132px;font-weight:900;letter-spacing:8px;color:rgba(255,255,255,.035);
+}
+.eyebrow{color:var(--gold2);font-weight:700;letter-spacing:.4px}
+h1{font-size:46px;line-height:1.35;margin:16px 0 18px;max-width:820px}
+.hero p{max-width:820px;color:#e7e0d4;font-size:17px}
+.quote{
+  margin-top:30px;display:inline-block;padding:16px 20px;
+  border-right:4px solid var(--gold);background:rgba(255,255,255,.06);
+  border-radius:12px;color:#fff;
+}
+.hero-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.pill{padding:8px 13px;border:1px solid rgba(255,255,255,.16);border-radius:999px;font-size:12px}
+main{max-width:1280px;margin:26px auto;padding:0 22px 80px}
+section{scroll-margin-top:90px;margin-top:28px}
+.section-head{
+  display:flex;align-items:end;justify-content:space-between;gap:20px;margin:45px 0 16px;
+}
+.kicker{color:var(--red);font-weight:800;font-size:13px}
+h2{font-size:28px;margin:4px 0}
+.section-head p{max-width:690px;margin:0;color:var(--muted)}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{
+  background:rgba(255,253,248,.94);border:1px solid var(--line);border-radius:18px;
+  padding:22px;box-shadow:0 8px 28px rgba(57,43,25,.05);
+}
+.card h3{margin:0 0 8px;font-size:18px}
+.card p{margin:0;color:var(--muted)}
+.metric{border-top:4px solid var(--gold)}
+.metric strong{display:block;font-size:31px;line-height:1.2;margin:5px 0}
+.status-bad{color:#8f2f2a}.status-good{color:var(--green)}
+.callout{
+  padding:24px;border-radius:18px;background:#26241f;color:#fff;border-right:6px solid var(--gold);
+}
+.callout h3{margin-top:0;color:var(--gold2)}
+.problem-list{display:grid;gap:10px;margin-top:14px}
+.problem{
+  display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:start;
+  background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;
+}
+.problem .n{
+  width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+  background:#f0e2c9;color:#6f4e1f;font-weight:800
+}
+.problem b{display:block;margin-bottom:3px}
+.problem span{color:var(--muted);font-size:14px}
+.tone-table,.std-table,.kpi-table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:#fff}
+.tone-table th,.tone-table td,.std-table th,.std-table td,.kpi-table th,.kpi-table td{padding:14px;border-bottom:1px solid #ece4d6;text-align:right;vertical-align:top}
+.tone-table th,.std-table th,.kpi-table th{background:#292722;color:#fff}
+tr:last-child td{border-bottom:0}
+.good{color:var(--green);font-weight:700}
+.bad{color:var(--red);font-weight:700}
+.timeline{position:relative;padding-right:32px}
+.timeline:before{content:"";position:absolute;right:9px;top:0;bottom:0;width:2px;background:var(--gold2)}
+.step{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin:0 0 15px}
+.step:before{content:"";position:absolute;right:-31px;top:22px;width:16px;height:16px;border-radius:50%;background:var(--gold);border:4px solid var(--paper)}
+.step .tag{display:inline-block;background:#efe3cf;color:#644821;padding:3px 9px;border-radius:999px;font-size:12px;margin-bottom:7px}
+.step h3{margin:0 0 7px}
+.step ul{margin:7px 0 0;padding-right:20px;color:var(--muted)}
+.tabs{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.tab-buttons{display:flex;gap:0;overflow:auto;background:#292722}
+.tab-buttons button{
+  border:0;background:transparent;color:#ddd;padding:14px 18px;cursor:pointer;white-space:nowrap;font-family:inherit
+}
+.tab-buttons button.active{background:var(--gold);color:#1c1812;font-weight:800}
+.tab-panel{display:none;padding:24px}.tab-panel.active{display:block}
+.checklist{display:grid;gap:9px}
+.check{
+  display:flex;align-items:flex-start;gap:10px;padding:12px;border:1px solid #e9dfcf;border-radius:12px;background:#fffdf9
+}
+.check input{margin-top:7px;accent-color:var(--green)}
+.codebox{
+  direction:rtl;white-space:pre-wrap;background:#25231f;color:#eee;padding:20px;border-radius:16px;border:1px solid #3a362f;
+  font-family:Tahoma,Arial,sans-serif;font-size:14px
+}
+.accordion{display:grid;gap:10px}
+details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:0 17px}
+summary{cursor:pointer;font-weight:800;padding:15px 0}
+details p,details ul{color:var(--muted)}
+.owner{display:inline-block;background:#e5efe9;color:#285646;border-radius:999px;padding:3px 9px;font-size:12px}
+.phase{
+  background:#fff;border:1px solid var(--line);border-radius:17px;padding:20px;position:relative;overflow:hidden
+}
+.phase:after{content:attr(data-phase);position:absolute;left:12px;bottom:-18px;font-size:70px;font-weight:900;color:#f3eee4}
+.phase h3,.phase p,.phase ul{position:relative;z-index:1}
+.phase ul{padding-right:20px;color:var(--muted)}
+.source-list a{color:#694c20;text-decoration:none}
+.source-list a:hover{text-decoration:underline}
+.footer{background:#1d1d1b;color:#d7d0c5;padding:28px;margin-top:40px;text-align:center}
+.print-btn{
+  border:1px solid var(--gold2);background:transparent;color:var(--gold2);
+  border-radius:9px;padding:8px 12px;cursor:pointer;font-family:inherit
+}
+@media(max-width:900px){
+ .g4,.g3,.g2{grid-template-columns:1fr}
+ .hero-panel{padding:34px 25px;min-height:auto}
+ h1{font-size:34px}
+ .nav{display:none}
+ .section-head{display:block}
+ .topbar-inner{padding:9px 14px}
+}
+@media print{
+ .topbar,.print-btn{display:none!important}
+ body{background:#fff}
+ .hero{margin-top:0}
+ .hero-panel{box-shadow:none;border-radius:0}
+ .card,.phase,.step{box-shadow:none;break-inside:avoid}
+ section{break-inside:auto}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brandmark">
+      <div class="logo">B</div>
+      <div><b>رهنگاشت × بنیس</b><small>نقشه راه منابع انسانی و برند کارفرمایی</small></div>
+    </div>
+    <nav class="nav">
+      <a href="#diagnosis">آسیب‌شناسی</a>
+      <a href="#tone">لحن</a>
+      <a href="#standard">استاندارد آگهی</a>
+      <a href="#onboarding">آنبوردینگ</a>
+      <a href="#retention">نگهداشت</a>
+      <a href="#roadmap">نقشه اجرا</a>
+      <a href="#kpi">شاخص‌ها</a>
+    </nav>
+    <button class="print-btn" onclick="window.print()">چاپ / PDF</button>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-panel">
+    <div class="eyebrow">پیشنهاد اجرایی برای ارائه به آقای محرمی، سرپرست منابع انسانی</div>
+    <h1>از «انتشار آگهی» تا ساخت تجربه‌ای اصیل، شفاف و ماندگار برای نیروی انسانی بنیس</h1>
+    <p>
+      این سند، آگهی استخدام را یک متن مستقل نمی‌بیند؛ بلکه آن را نخستین نقطه تماس در چرخه برند کارفرمایی می‌داند.
+      هدف، هم‌راستا کردن جذب، انتخاب، ورود به سازمان، عملکرد و نگهداشت کارکنان با پلتفرم برند
+      <b>«بنیس؛ اصالتی که ادامه دارد»</b> است.
+    </p>
+    <div class="quote">بنیس نباید فقط نیروی فروش جذب کند؛ باید افرادی را وارد سازمان کند که بتوانند ادامه‌دهنده یک نام ریشه‌دار و سازنده آینده آن باشند.</div>
+    <div class="hero-meta">
+      <span class="pill">مخاطب: منابع انسانی و مدیریت فروش</span>
+      <span class="pill">دامنه: جذب، آنبوردینگ، عملکرد و نگهداشت</span>
+      <span class="pill">رویکرد: مهارت‌محور، شفاف، قابل‌اندازه‌گیری</span>
+    </div>
+  </div>
+</div>
+
+<main>
+<section id="summary">
+  <div class="section-head"><div><div class="kicker">خلاصه مدیریتی</div><h2>مسئله اصلی چیست؟</h2></div>
+  <p>آگهی فعلی بر حقوق و مزایا تأکید دارد، اما تصویر روشنی از شغل، معیار موفقیت، فرهنگ کاری و مسیر رشد ارائه نمی‌کند. این مدل ممکن است رزومه زیاد تولید کند، ولی الزاماً نیروی مناسب و ماندگار جذب نمی‌کند.</p></div>
+  <div class="grid g4">
+    <div class="card metric"><span>وضعیت فعلی</span><strong class="status-bad">جذب‌محور</strong><p>تمرکز بر پرکردن سریع جای خالی</p></div>
+    <div class="card metric"><span>وضعیت مطلوب</span><strong class="status-good">تناسب‌محور</strong><p>انتخاب فرد مناسب برای نقش، مسیر و فرهنگ</p></div>
+    <div class="card metric"><span>نقطه شروع</span><strong>آگهی شفاف</strong><p>وعده واقع‌بینانه و شرح شغل قابل سنجش</p></div>
+    <div class="card metric"><span>نقطه پایان</span><strong>ماندگاری</strong><p>کارمند توانمند، متعهد و دارای مسیر رشد</p></div>
+  </div>
+</section>
+
+<section id="diagnosis">
+  <div class="section-head"><div><div class="kicker">بخش اول</div><h2>آسیب‌شناسی آگهی موجود</h2></div>
+  <p>اشکالات زیر فقط ایراد نگارشی نیستند؛ هرکدام می‌توانند کیفیت رزومه‌ها، اعتماد متقاضی، نرخ پذیرش پیشنهاد و ماندگاری ماه‌های نخست را کاهش دهند.</p></div>
+  <div class="problem-list">
+    <div class="problem"><div class="n">۱</div><div><b>عنوان شغلی عمومی و چندمعنا</b><span>«ویزیتور و بازاریاب» دقیقاً مشخص نمی‌کند نقش، فروش مویرگی است، توسعه بازار است یا بازاریابی. عنوان پیشنهادی: «کارشناس فروش مویرگی محصولات FMCG – شرق تهران».</span></div></div>
+    <div class="problem"><div class="n">۲</div><div><b>تناقض در دریافتی</b><span>در بالای آگهی ۴۰ تا ۸۰ میلیون و در متن ۷۰ تا ۱۰۰ میلیون ذکر شده است. ثابت، متغیر، ناخالص و شرایط تحقق باید از هم جدا شوند.</span></div></div>
+    <div class="problem"><div class="n">۳</div><div><b>شرح وظایف ناکافی</b><span>تعداد ویزیت، نوع مشتری، مسیر، گزارش‌دهی، سفارش‌گیری، وصول، چیدمان، توسعه مشتری و KPIهای نقش مشخص نیست.</span></div></div>
+    <div class="problem"><div class="n">۴</div><div><b>وعده کارفرمایی بدون شاهد</b><span>مزایا فهرست شده‌اند، اما زمان فعال‌شدن، شرایط استفاده و تمایز واقعی بنیس با سایر کارفرماها بیان نشده است.</span></div></div>
+    <div class="problem"><div class="n">۵</div><div><b>لحن چالشی و مبهم</b><span>عبارت‌هایی مثل «اگر به کار خود اطمینان دارید» یا «حرفه‌ای‌ها» معیار عینی ندارند و ممکن است فضای فشار و اغراق ایجاد کنند.</span></div></div>
+    <div class="problem"><div class="n">۶</div><div><b>شرایط غیرضروری</b><span>سن و برخی محدودیت‌های عمومی بهتر است فقط در صورت ضرورت واقعی ذکر شوند. معیار اصلی باید توان انجام کار و مهارت باشد.</span></div></div>
+    <div class="problem"><div class="n">۷</div><div><b>نامشخص بودن تجربه نامزد</b><span>فرآیند مصاحبه، زمان پاسخ، آزمون، آموزش، دوره آزمایشی و تاریخ شروع همکاری توضیح داده نشده است.</span></div></div>
+    <div class="problem"><div class="n">۸</div><div><b>عدم پیوند با اصالت برند</b><span>آگهی می‌تواند متعلق به هر شرکت پخش دیگری باشد. هیچ نشانه‌ای از میراث، اعتبار، تجربه تولید و هدف بازگشت بنیس به رهبری بازار ندارد.</span></div></div>
+  </div>
+</section>
+
+<section id="tone">
+  <div class="section-head"><div><div class="kicker">بخش دوم</div><h2>لحن برند کارفرمایی بنیس</h2></div>
+  <p>لحن استخدام باید از همان هسته برند مصرف‌کننده تغذیه کند، اما به زبان تجربه کاری ترجمه شود. هدف، نوستالژی‌فروشی نیست؛ هدف، نمایش یک سازمان باتجربه، منظم، انسانی و رو‌به‌جلو است.</p></div>
+  <table class="tone-table">
+    <thead><tr><th>ویژگی</th><th>در آگهی و ارتباطات استخدامی</th><th>نمونه مناسب</th><th>پرهیز شود</th></tr></thead>
+    <tbody>
+      <tr><td><b>اصیل</b></td><td>روایت واقعی سابقه و نقش بنیس، بدون ادعاهای اثبات‌نشده</td><td class="good">«به تیم یکی از نام‌های ریشه‌دار صنعت کیک ایران بپیوندید.»</td><td class="bad">«اولین و بی‌رقیب‌ترین برند ایران»</td></tr>
+      <tr><td><b>باتجربه</b></td><td>نشان‌دادن نظم، آموزش، استاندارد و دانش بازار</td><td class="good">«مسیر فروش، آموزش محصول و معیارهای موفقیت از ابتدا روشن است.»</td><td class="bad">«فقط حرفه‌ای‌ها می‌توانند دوام بیاورند.»</td></tr>
+      <tr><td><b>گرم و مردمی</b></td><td>زبان ساده، محترمانه و بدون ادبیات اداری سنگین</td><td class="good">«در روزهای اول، یک همراه آموزشی کنار شماست.»</td><td class="bad">«نامبرده موظف است کلیه امور محوله را...»</td></tr>
+      <tr><td><b>باوقار</b></td><td>اعتمادبه‌نفس آرام و شفافیت در وعده‌ها</td><td class="good">«حقوق ثابت و پورسانت، با فرمول مشخص و قابل پیگیری پرداخت می‌شود.»</td><td class="bad">«درآمدهای نجومی در انتظار شماست.»</td></tr>
+      <tr><td><b>امروزی</b></td><td>ساختار خوانا، درخواست آنلاین، داده و بازخورد سریع</td><td class="good">«فرآیند استخدام در سه مرحله و طی حداکثر ۱۰ روز انجام می‌شود.»</td><td class="bad">اطلاعات پراکنده و تماس‌های بی‌برنامه</td></tr>
+    </tbody>
+  </table>
+  <div class="callout" style="margin-top:16px">
+    <h3>فرمول لحن پیشنهادی</h3>
+    <p><b>ریشه‌دار اما نه قدیمی + حرفه‌ای اما نه سرد + صمیمی اما نه کودکانه + امیدوارکننده اما نه اغراق‌آمیز + دقیق اما نه پیچیده</b></p>
+  </div>
+</section>
+
+<section id="standard">
+  <div class="section-head"><div><div class="kicker">بخش سوم</div><h2>استاندارد آگهی استخدام بنیس</h2></div>
+  <p>هر آگهی باید قبل از انتشار از یک قالب ثابت عبور کند تا هم کیفیت تجربه متقاضی بالا برود و هم مقایسه عملکرد کانال‌ها امکان‌پذیر شود.</p></div>
+  <table class="std-table">
+    <thead><tr><th>بخش الزامی</th><th>پرسش پاسخ‌داده‌شده</th><th>استاندارد اجرایی بنیس</th></tr></thead>
+    <tbody>
+      <tr><td>عنوان نقش</td><td>دقیقاً چه شغلی است؟</td><td>عنوان رایج بازار + حوزه + منطقه؛ بدون عناوین مبهم یا جذاب‌سازی تصنعی</td></tr>
+      <tr><td>ماموریت نقش</td><td>چرا این موقعیت وجود دارد؟</td><td>یک پاراگراف ۲ تا ۳ خطی درباره نتیجه‌ای که نقش باید ایجاد کند</td></tr>
+      <tr><td>درباره بنیس</td><td>چرا این شرکت؟</td><td>حداکثر ۴ خط: میراث، مقیاس، مسیر نوسازی و ارزش همکاری</td></tr>
+      <tr><td>مسئولیت‌ها</td><td>هر روز چه کار می‌کنم؟</td><td>۵ تا ۸ مورد عملی، با فعل روشن و قابل مشاهده</td></tr>
+      <tr><td>شاخص‌های موفقیت</td><td>عملکرد من چگونه سنجیده می‌شود؟</td><td>۳ تا ۵ KPI: پوشش مسیر، فروش، وصول، مشتری جدید، کیفیت گزارش</td></tr>
+      <tr><td>شرایط ضروری</td><td>حداقل لازم چیست؟</td><td>فقط Must-haveها؛ تفکیک روشن از «مزیت محسوب می‌شود»</td></tr>
+      <tr><td>حقوق و مزایا</td><td>دریافتی و شرایط چیست؟</td><td>ثابت، متغیر، بازه کل، دوره آزمایشی، بیمه و زمان فعال‌شدن مزایا</td></tr>
+      <tr><td>شرایط کار</td><td>کجا، چه زمانی و با چه ابزاری؟</td><td>ساعت، مسیر، محل شروع، نوع وسیله، کمک‌هزینه و گزارش‌دهی</td></tr>
+      <tr><td>مسیر رشد</td><td>بعد از موفقیت چه می‌شود؟</td><td>مسیر واقعی مانند کارشناس ارشد، سرپرست منطقه یا مسئول مشتریان کلیدی</td></tr>
+      <tr><td>فرآیند جذب</td><td>بعد از ارسال رزومه چه اتفاقی می‌افتد؟</td><td>تعداد مراحل، آزمون، زمان پاسخ و فرد تماس</td></tr>
+      <tr><td>دعوت به اقدام</td><td>چطور درخواست بدهم؟</td><td>کانال واحد، مدارک لازم، عنوان ایمیل/فرم و مهلت ارسال</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-head"><div><div class="kicker">نمونه کاربردی</div><h2>ساختار بازنویسی‌شده آگهی فروش</h2></div></div>
+  <div class="codebox">کارشناس فروش مویرگی محصولات FMCG – شرق تهران
+
+درباره این نقش
+ما در بنیس به دنبال فردی هستیم که با شناخت مسیر فروش و ارتباط حرفه‌ای با خرده‌فروشان، پوشش و فروش محصولات بنیس را در شرق تهران توسعه دهد. این نقش برای کسی مناسب است که از کار میدانی، مذاکره، ساخت رابطه پایدار با مشتری و رسیدن به هدف‌های روشن لذت می‌برد.
+
+درباره بنیس
+بنیس یکی از نام‌های ریشه‌دار صنعت کیک ایران است و امروز با تکیه بر تجربه چند دهه‌ای، در مسیر نوسازی و بازگشت به جایگاه پیشرو بازار حرکت می‌کند. ما به دنبال همکارانی هستیم که گذشته معتبر این نام را به عملکرد بهتر امروز و آینده‌ای قوی‌تر متصل کنند.
+
+مسئولیت‌های اصلی
+• اجرای برنامه ویزیت روزانه در مسیر تعیین‌شده
+• معرفی محصولات، سفارش‌گیری و توسعه سبد خرید مشتری
+• جذب فروشگاه‌های جدید و فعال‌سازی مشتریان کم‌خرید
+• پیگیری وصول مطالبات طبق سیاست شرکت
+• کنترل موجودی، چیدمان و وضعیت محصولات در نقطه فروش
+• ثبت منظم اطلاعات و ارائه گزارش روزانه به سرپرست فروش
+
+معیارهای موفقیت
+• تحقق هدف فروش و پوشش مسیر
+• افزایش تعداد مشتری فعال و میانگین سبد سفارش
+• وصول به‌موقع و کاهش مطالبات معوق
+• کیفیت ثبت اطلاعات و پایبندی به برنامه ویزیت
+
+شرایط ضروری
+• سابقه مرتبط در فروش مویرگی مواد غذایی یا FMCG
+• مهارت مذاکره و ارتباط حرفه‌ای با خرده‌فروشان
+• نظم، مسئولیت‌پذیری و توان کار میدانی
+• آشنایی با مناطق شرق تهران
+داشتن وسیله نقلیه مناسب، مزیت محسوب می‌شود.
+
+جبران خدمات
+• حقوق ثابت ماهانه: ۴۰ میلیون تومان
+• پورسانت پلکانی بر اساس تحقق شاخص‌های فروش
+• بازه درآمد کل مورد انتظار پس از تثبیت در مسیر: [بازه تأییدشده منابع انسانی]
+• بیمه تأمین اجتماعی از [زمان دقیق]
+• بیمه تکمیلی و سایر مزایا از [شرایط و زمان دقیق]
+• کمک‌هزینه رفت‌وآمد/استهلاک: [مبلغ یا سیاست شرکت]
+
+فرآیند انتخاب
+۱. بررسی رزومه
+۲. گفت‌وگوی تلفنی کوتاه
+۳. مصاحبه ساختاریافته با منابع انسانی و فروش
+۴. ارزیابی میدانی یا سناریوی فروش
+نتیجه هر مرحله حداکثر طی [تعداد] روز اعلام می‌شود.
+
+بنیس؛ اصالتی که ادامه دارد.</div>
+</section>
+
+<section id="candidate">
+  <div class="section-head"><div><div class="kicker">بخش چهارم</div><h2>تجربه متقاضی؛ پیش از استخدام</h2></div>
+  <p>برند کارفرمایی در متن آگهی تمام نمی‌شود. نحوه تماس، زمان‌بندی، مصاحبه و حتی رد محترمانه نامزدها بخشی از اعتبار بنیس است.</p></div>
+  <div class="timeline">
+    <div class="step"><span class="tag">مرحله ۱</span><h3>تعریف نیاز واقعی</h3><ul><li>تأیید بودجه، مسیر، مدیر مستقیم و تاریخ شروع</li><li>تعریف ۵ خروجی اصلی نقش و ۴ KPI</li><li>تفکیک شروط ضروری از ترجیحی</li></ul></div>
+    <div class="step"><span class="tag">مرحله ۲</span><h3>انتشار هدفمند</h3><ul><li>انتخاب کانال متناسب با نقش</li><li>نسخه واحد و بدون تناقض در همه پلتفرم‌ها</li><li>ثبت کد آگهی برای سنجش منبع رزومه</li></ul></div>
+    <div class="step"><span class="tag">مرحله ۳</span><h3>غربالگری مهارت‌محور</h3><ul><li>فرم امتیازدهی ثابت برای همه نامزدها</li><li>تمرکز بر تجربه واقعی، مسیرسازی، مذاکره و نظم</li><li>حذف قضاوت‌های سلیقه‌ای و «حس خوب/بد» بدون شاهد</li></ul></div>
+    <div class="step"><span class="tag">مرحله ۴</span><h3>مصاحبه ساختاریافته</h3><ul><li>سؤال‌های یکسان و امتیازدهی ۱ تا ۵</li><li>نمونه سؤال: «یک مشتری غیرفعال را چگونه برگرداندید؟»</li><li>ثبت شواهد رفتاری، نه فقط ادعا</li></ul></div>
+    <div class="step"><span class="tag">مرحله ۵</span><h3>ارزیابی شغلی کوتاه</h3><ul><li>سناریوی معرفی محصول یا برنامه مسیر</li><li>حداکثر ۳۰ تا ۴۵ دقیقه و مرتبط با کار واقعی</li><li>عدم استفاده از کار رایگان گسترده</li></ul></div>
+    <div class="step"><span class="tag">مرحله ۶</span><h3>پیشنهاد شغلی شفاف</h3><ul><li>عنوان، مدیر، محل، ساعات، حقوق ثابت و متغیر</li><li>شرایط دوره آزمایشی و مزایا</li><li>تاریخ شروع و برنامه روز اول</li></ul></div>
+  </div>
+</section>
+
+<section id="onboarding">
+  <div class="section-head"><div><div class="kicker">بخش پنجم</div><h2>سیستم آنبوردینگ ۳۰–۶۰–۹۰ روزه</h2></div>
+  <p>آنبوردینگ نباید به تحویل کارت، فرم و معرفی همکاران محدود شود. هدف این است که فرد بداند کجاست، چه کاری باید انجام دهد، چگونه موفق می‌شود و از چه کسی کمک می‌گیرد.</p></div>
+  <div class="tabs">
+    <div class="tab-buttons">
+      <button class="active" onclick="showTab(event,'pre')">پیش از ورود</button>
+      <button onclick="showTab(event,'d1')">روز اول</button>
+      <button onclick="showTab(event,'d30')">روز ۲ تا ۳۰</button>
+      <button onclick="showTab(event,'d60')">روز ۳۱ تا ۶۰</button>
+      <button onclick="showTab(event,'d90')">روز ۶۱ تا ۹۰</button>
+    </div>
+    <div id="pre" class="tab-panel active">
+      <h3>Preboarding | کاهش ابهام و اضطراب</h3>
+      <div class="checklist">
+        <label class="check"><input type="checkbox">ارسال نامه خوشامد، زمان و مکان حضور، نام فرد همراه و مدارک موردنیاز</label>
+        <label class="check"><input type="checkbox">آماده‌سازی قرارداد، حساب کاربری، ابزار، لباس یا تجهیزات لازم</label>
+        <label class="check"><input type="checkbox">ارسال معرفی کوتاه بنیس، محصولات، تاریخچه و «اصالتی که ادامه دارد»</label>
+        <label class="check"><input type="checkbox">اعلام برنامه هفته نخست و معیار پایان دوره آزمایشی</label>
+      </div>
+    </div>
+    <div id="d1" class="tab-panel">
+      <h3>روز اول | تعلق، وضوح و احترام</h3>
+      <div class="checklist">
+        <label class="check"><input type="checkbox">استقبال توسط مدیر یا Buddy، نه رهاشدن در واحد اداری</label>
+        <label class="check"><input type="checkbox">روایت ۲۰ دقیقه‌ای تاریخ بنیس و مسیر آینده؛ بدون سخنرانی طولانی</label>
+        <label class="check"><input type="checkbox">مرور شرح نقش، KPIها، حقوق و پورسانت با مثال عددی</label>
+        <label class="check"><input type="checkbox">معرفی تیم، مسیر گزارش‌دهی، قوانین ایمنی و ابزارها</label>
+        <label class="check"><input type="checkbox">جلسه پایانی ۱۵ دقیقه‌ای برای پاسخ به ابهام‌ها</label>
+      </div>
+    </div>
+    <div id="d30" class="tab-panel">
+      <h3>ماه اول | یادگیری و مشاهده هدایت‌شده</h3>
+      <div class="checklist">
+        <label class="check"><input type="checkbox">آموزش سبد محصول، مزیت رقابتی، قیمت و اعتراض‌های رایج</label>
+        <label class="check"><input type="checkbox">همراهی میدانی با فروشنده باتجربه و مشاهده مسیر واقعی</label>
+        <label class="check"><input type="checkbox">هدف‌های پلکانی و واقع‌بینانه، نه تارگت کامل از روز اول</label>
+        <label class="check"><input type="checkbox">جلسات هفتگی ۲۰ دقیقه‌ای با مدیر مستقیم</label>
+        <label class="check"><input type="checkbox">ارزیابی روز ۳۰: دانش محصول، نظم، رفتار مشتری و پیشرفت</label>
+      </div>
+    </div>
+    <div id="d60" class="tab-panel">
+      <h3>ماه دوم | استقلال کنترل‌شده</h3>
+      <div class="checklist">
+        <label class="check"><input type="checkbox">تحویل مسیر مستقل با هدف مشخص</label>
+        <label class="check"><input type="checkbox">کوچینگ روی مذاکره، فعال‌سازی مشتری و وصول</label>
+        <label class="check"><input type="checkbox">تحلیل داده‌های فردی و مقایسه با هدف، نه مقایسه تحقیرآمیز با دیگران</label>
+        <label class="check"><input type="checkbox">گفت‌وگوی ماندگاری: چه چیزی کار را سخت یا جذاب کرده است؟</label>
+      </div>
+    </div>
+    <div id="d90" class="tab-panel">
+      <h3>ماه سوم | تثبیت و تصمیم</h3>
+      <div class="checklist">
+        <label class="check"><input type="checkbox">ارزیابی نهایی بر اساس KPI، رفتار حرفه‌ای و ظرفیت رشد</label>
+        <label class="check"><input type="checkbox">گفت‌وگوی دوطرفه درباره ادامه همکاری</label>
+        <label class="check"><input type="checkbox">تدوین برنامه توسعه شش‌ماهه</label>
+        <label class="check"><input type="checkbox">ثبت تجربه فرد از جذب و آنبوردینگ برای اصلاح سیستم</label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="retention">
+  <div class="section-head"><div><div class="kicker">بخش ششم</div><h2>مدل نگهداشت منابع انسانی بنیس</h2></div>
+  <p>نگهداشت با هدیه مناسبتی یا وام سازمانی به‌تنهایی ساخته نمی‌شود. افراد زمانی می‌مانند که رابطه میان تلاش، نتیجه، جبران خدمات، احترام و رشد را منصفانه و قابل پیش‌بینی ببینند.</p></div>
+  <div class="grid g3">
+    <div class="card"><h3>۱. وضوح نقش</h3><p>شرح شغل به‌روز، KPI محدود، اولویت‌های روشن و حذف دستورهای متناقض.</p></div>
+    <div class="card"><h3>۲. مدیر مستقیم توانمند</h3><p>جلسه یک‌به‌یک، بازخورد رفتاری، کوچینگ و عدم مدیریت صرفاً با فشار تارگت.</p></div>
+    <div class="card"><h3>۳. عدالت در درآمد</h3><p>فرمول پورسانت شفاف، دسترسی به گزارش، پرداخت به‌موقع و امکان اعتراض مستند.</p></div>
+    <div class="card"><h3>۴. مسیر رشد</h3><p>تعریف سطوح شغلی و معیار ارتقا؛ نه ارتقا بر اساس رابطه یا صرفاً سابقه.</p></div>
+    <div class="card"><h3>۵. صدای کارکنان</h3><p>Stay Interview در ماه ۲، ۶ و ۱۲ و اقدام واقعی روی مسائل پرتکرار.</p></div>
+    <div class="card"><h3>۶. هویت و تعلق</h3><p>پیوند کارکنان با داستان واقعی بنیس و نشان‌دادن نقش هر واحد در ادامه این میراث.</p></div>
+  </div>
+  <div class="accordion" style="margin-top:16px">
+    <details open><summary>گفت‌وگوی ماندگاری (Stay Interview) چه سؤالاتی داشته باشد؟</summary>
+      <ul><li>چه چیزی باعث می‌شود هنوز در بنیس بمانید؟</li><li>کدام بخش کار بیشترین اصطکاک را ایجاد می‌کند؟</li><li>آیا معیار موفقیت و پورسانت برای شما روشن است؟</li><li>مدیرتان برای بهترشدن عملکرد شما چه کاری می‌تواند انجام دهد؟</li><li>چه چیزی ممکن است شما را در شش ماه آینده به ترک سازمان نزدیک کند؟</li></ul>
+    </details>
+    <details><summary>مدیر فروش چگونه بازخورد بدهد؟</summary>
+      <p>مدل پیشنهادی: «مشاهده مشخص → اثر → انتظار آینده → حمایت». مثال: «در سه گزارش اخیر، اطلاعات وصول ناقص بوده؛ این موضوع برنامه پیگیری را مختل کرده است. از فردا گزارش تا ساعت ۵ کامل شود. برای دو روز اول نمونه فرم را با هم مرور می‌کنیم.»</p>
+    </details>
+    <details><summary>برنامه قدردانی چه شکلی باشد؟</summary>
+      <p>قدردانی باید بر رفتار و نتیجه مشخص متکی باشد: فعال‌سازی مشتری قدیمی، وصول سالم، کیفیت داده، همکاری تیمی یا آموزش همکار جدید. فقط رتبه فروش، همه رفتارهای مطلوب را پوشش نمی‌دهد.</p>
+    </details>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="section-head"><div><div class="kicker">بخش هفتم</div><h2>نقشه راه اجرایی ۱۲۰ روزه</h2></div>
+  <p>پیشنهاد می‌شود پروژه با یک پایلوت در واحد فروش آغاز شود و پس از اصلاح، به سایر نقش‌ها گسترش یابد.</p></div>
+  <div class="grid g4">
+    <div class="phase" data-phase="01"><span class="owner">هفته ۱–۲</span><h3>ممیزی و طراحی</h3><ul><li>مصاحبه با HR، فروش و ۵ نیروی فعلی</li><li>تحلیل ترک خدمت و دوره آزمایشی</li><li>تعریف EVP اولیه بنیس</li><li>استاندارد قالب شرح شغل</li></ul></div>
+    <div class="phase" data-phase="02"><span class="owner">هفته ۳–۵</span><h3>بازطراحی جذب</h3><ul><li>بازنویسی ۳ آگهی اولویت‌دار</li><li>فرم غربالگری و مصاحبه</li><li>قالب پیشنهاد شغلی</li><li>SLA پاسخ به متقاضی</li></ul></div>
+    <div class="phase" data-phase="03"><span class="owner">هفته ۶–۹</span><h3>ساخت آنبوردینگ</h3><ul><li>برنامه ۳۰–۶۰–۹۰ روزه</li><li>کتابچه روز اول</li><li>آموزش Buddy و مدیران</li><li>فرم بازخورد روز ۷ و ۳۰</li></ul></div>
+    <div class="phase" data-phase="04"><span class="owner">هفته ۱۰–۱۷</span><h3>پایلوت و تثبیت</h3><ul><li>اجرای پایلوت فروش</li><li>اندازه‌گیری زمان جذب و ماندگاری</li><li>اصلاح فرآیند</li><li>گسترش به تولید و ستاد</li></ul></div>
+  </div>
+  <div class="callout" style="margin-top:16px">
+    <h3>تقسیم مسئولیت پیشنهادی</h3>
+    <p><b>منابع انسانی:</b> مالک فرآیند و داده‌ها | <b>مدیریت فروش:</b> مالک معیارهای نقش و آموزش میدانی | <b>رهنگاشت:</b> طراحی سیستم، لحن، ابزارها و پایش پایلوت | <b>مدیریت ارشد:</b> تأیید EVP، منابع و پاسخ‌گویی مدیران</p>
+  </div>
+</section>
+
+<section id="kpi">
+  <div class="section-head"><div><div class="kicker">بخش هشتم</div><h2>داشبورد شاخص‌های جذب و نگهداشت</h2></div>
+  <p>بدون داده، منابع انسانی به انتشار آگهی و پیگیری روزمره محدود می‌شود. شاخص‌ها باید ماهانه بررسی و روند آن‌ها تحلیل شود.</p></div>
+  <table class="kpi-table">
+    <thead><tr><th>حوزه</th><th>شاخص</th><th>تعریف</th><th>دوره پایش</th><th>هدف اولیه پیشنهادی</th></tr></thead>
+    <tbody>
+      <tr><td>جذب</td><td>Time to Fill</td><td>روزهای بین تأیید نیاز تا پذیرش پیشنهاد</td><td>ماهانه</td><td>کاهش تدریجی بدون افت کیفیت</td></tr>
+      <tr><td>کیفیت</td><td>Qualified Applicant Rate</td><td>درصد رزومه‌هایی که حداقل معیارها را دارند</td><td>هر آگهی</td><td>رشد پس از بازنویسی آگهی</td></tr>
+      <tr><td>تجربه نامزد</td><td>Offer Acceptance Rate</td><td>درصد پیشنهادهای پذیرفته‌شده</td><td>ماهانه</td><td>بیش از ۷۵٪ پس از کالیبراسیون</td></tr>
+      <tr><td>آنبوردینگ</td><td>Day-30 Readiness</td><td>درصد افراد دارای حداقل آمادگی نقش در روز ۳۰</td><td>هر ورودی</td><td>حداقل ۸۰٪</td></tr>
+      <tr><td>ماندگاری</td><td>90-Day Retention</td><td>درصد افراد باقی‌مانده پس از ۹۰ روز</td><td>فصلی</td><td>رشد مستمر و تحلیل علت خروج</td></tr>
+      <tr><td>عملکرد</td><td>Time to Productivity</td><td>زمان رسیدن به سطح توافق‌شده عملکرد</td><td>هر ورودی</td><td>کاهش با آموزش بهتر</td></tr>
+      <tr><td>مدیریت</td><td>1:1 Completion</td><td>درصد جلسات یک‌به‌یک انجام‌شده</td><td>ماهانه</td><td>بیش از ۹۰٪</td></tr>
+      <tr><td>نگهداشت</td><td>Regrettable Turnover</td><td>خروج افراد مطلوب و سخت‌جایگزین</td><td>فصلی</td><td>کاهش سالانه</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="governance">
+  <div class="section-head"><div><div class="kicker">بخش نهم</div><h2>استاندارد کنترل کیفیت قبل از انتشار</h2></div></div>
+  <div class="grid g2">
+    <div class="card">
+      <h3>چک‌لیست آگهی</h3>
+      <div class="checklist">
+        <label class="check"><input type="checkbox">عنوان دقیق و قابل جست‌وجو است.</label>
+        <label class="check"><input type="checkbox">ماموریت نقش در ۳ خط قابل فهم است.</label>
+        <label class="check"><input type="checkbox">وظایف و KPIها به هم مرتبط‌اند.</label>
+        <label class="check"><input type="checkbox">حقوق ثابت و متغیر تناقض ندارند.</label>
+        <label class="check"><input type="checkbox">مزایا و زمان فعال‌شدن آن‌ها روشن است.</label>
+        <label class="check"><input type="checkbox">شرط غیرضروری سنی، جنسیتی یا تحصیلی حذف شده است.</label>
+        <label class="check"><input type="checkbox">فرآیند جذب و زمان پاسخ نوشته شده است.</label>
+        <label class="check"><input type="checkbox">لحن با «اصالتی که ادامه دارد» هم‌راستاست.</label>
+      </div>
+    </div>
+    <div class="card">
+      <h3>حاکمیت محتوا</h3>
+      <p><b>تدوین:</b> کارشناس منابع انسانی</p>
+      <p><b>اعتبارسنجی شغل:</b> مدیر واحد</p>
+      <p><b>اعتبارسنجی مالی:</b> منابع انسانی و مالی</p>
+      <p><b>کنترل لحن و برند:</b> تیم برند/رهنگاشت</p>
+      <p><b>تأیید نهایی:</b> سرپرست منابع انسانی</p>
+      <p style="margin-top:12px"><b>قاعده:</b> هیچ آگهی بدون کد نسخه، تاریخ تأیید و مسئول پاسخ‌گویی منتشر نشود.</p>
+    </div>
+  </div>
+</section>
+
+<section id="sources">
+  <div class="section-head"><div><div class="kicker">منابع و مبانی</div><h2>استانداردهای مورد استفاده</h2></div>
+  <p>این نقشه راه با تطبیق راهبرد برند بنیس و منابع معتبر بین‌المللی در حوزه جذب، آنبوردینگ و نگهداشت تدوین شده است.</p></div>
+  <div class="card source-list">
+    <p>• SHRM، راهنمای جامع آنبوردینگ و یکپارچه‌سازی نیروی جدید: <a href="https://www.shrm.org/topics-tools/topics/onboarding" target="_blank">Complete Employee Onboarding Guide</a></p>
+    <p>• SHRM، مدل «وضوح نقش، خودکارآمدی، پذیرش اجتماعی و شناخت فرهنگ»: <a href="https://www.shrm.org/content/dam/en/shrm/executive-network/insights/Onboarding-New-Employees.pdf" target="_blank">Onboarding New Employees: Maximizing Success</a></p>
+    <p>• CIPD، راهنمای ورود و آشنایی کارکنان: <a href="https://www.cipd.org/uk/knowledge/guides/employee-induction/" target="_blank">Employee Induction</a></p>
+    <p>• CIPD، راهنمای نگهداشت و تحلیل ترک خدمت: <a href="https://www.cipd.org/uk/knowledge/guides/employee-retention/" target="_blank">Employee Retention</a></p>
+    <p>• LinkedIn Talent Solutions، اصول شرح شغل فراگیر و مهارت‌محور: <a href="https://www.linkedin.com/business/talent/blog/talent-acquisition/must-dos-for-writing-inclusive-job-descriptions" target="_blank">Inclusive Job Descriptions</a></p>
+    <p>• EEOC، نمونه استاندارد جهانی در پرهیز از تبعیض در آگهی و استخدام: <a href="https://www.eeoc.gov/prohibited-employment-policiespractices" target="_blank">Prohibited Employment Practices</a></p>
+    <p>• راهبرد برند ارائه‌شده توسط تیم رهنگاشت: «بنیس؛ اصالتی که ادامه دارد» و گزارش جامع بنیس.</p>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  تهیه‌شده برای ارائه تیم مشاوره مارکتینگ رهنگاشت به سرپرست منابع انسانی بنیس<br>
+  نسخه پیشنهادی برای بررسی، تکمیل داده‌های داخلی و اجرای پایلوت
+</footer>
+
+<script>
+function showTab(e,id){
+ document.querySelectorAll('.tab-panel').forEach(x=>x.classList.remove('active'));
+ document.querySelectorAll('.tab-buttons button').forEach(x=>x.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ e.currentTarget.classList.add('active');
+}
+</script>
+</body>
+</html>
