@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بنیس × پرشیانا — گزارش بهینه‌سازی رسانه</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --navy:#0f2740; --navy2:#173a5e; --teal:#0e9aa7; --teal-d:#0b7d88;
+  --gold:#c9a227; --red:#c0392b; --amber:#e08a1e; --green:#1e8a5a;
+  --ink:#12222f; --muted:#5b6b78; --line:#e2e8ee; --bg:#f4f6f9; --card:#ffffff;
+  --soft:#eef4f6; --shadow:0 6px 22px rgba(15,39,64,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Vazirmatn',Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:1.85;font-size:15px}
+a{color:var(--teal-d);text-decoration:none}
+h1,h2,h3,h4{line-height:1.5;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.section{padding:52px 0;border-bottom:1px solid var(--line)}
+.eyebrow{color:var(--teal-d);font-weight:700;font-size:13px;letter-spacing:.5px;margin-bottom:8px}
+.h2{font-size:27px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.lead{color:var(--muted);font-size:16px;max-width:800px;margin-bottom:26px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.brand{font-weight:800;color:var(--navy);margin-left:auto;font-size:15px}
+.brand span{color:var(--teal)}
+.nav a{font-size:12.5px;color:var(--muted);padding:6px 10px;border-radius:8px;white-space:nowrap}
+.nav a:hover{background:var(--soft);color:var(--navy)}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 55%,var(--teal-d) 130%);color:#fff;padding:66px 0 58px}
+.hero .tag{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:5px 14px;border-radius:30px;font-size:12.5px;margin-bottom:20px}
+.hero h1{font-size:40px;font-weight:800;margin-bottom:14px;line-height:1.4}
+.hero p{font-size:18px;color:#cfe0ec;max-width:760px;margin-bottom:26px}
+.hero .meta{display:flex;gap:26px;flex-wrap:wrap;font-size:13.5px;color:#a9c3d6}
+.hero .meta b{color:#fff;font-weight:700}
+
+/* KPI */
+.kpigrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.kpi::before{content:"";position:absolute;top:0;right:0;width:5px;height:100%;background:var(--teal)}
+.kpi.red::before{background:var(--red)} .kpi.amber::before{background:var(--amber)} .kpi.green::before{background:var(--green)} .kpi.gold::before{background:var(--gold)}
+.kpi .num{font-size:34px;font-weight:800;color:var(--navy);letter-spacing:-.5px}
+.kpi .lbl{font-size:13.5px;color:var(--muted);margin-top:2px}
+.kpi .sub{font-size:12px;color:var(--muted);margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
+
+/* cards */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
+.card h3{font-size:17px;color:var(--navy);margin-bottom:10px;font-weight:800}
+.card p{color:#33475a;font-size:14.5px;margin:0 0 8px}
+.chartbox{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;box-shadow:var(--shadow)}
+.chartbox h3{font-size:16px;color:var(--navy);margin-bottom:4px}
+.chartbox .cap{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+.canvas-h{position:relative;height:300px}
+
+/* badges */
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;margin-inline-start:6px;vertical-align:middle}
+.b-fact{background:#e6f4ea;color:#1e8a5a} .b-est{background:#e7f1fb;color:#2b6cb0}
+.b-assume{background:#fdf0e0;color:#b9720f} .b-rec{background:#f3e9fb;color:#7a3fb0}
+.legend-badges{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px;font-size:12px}
+
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--card);border-radius:12px;overflow:hidden}
+th,td{padding:11px 12px;text-align:right;border-bottom:1px solid var(--line)}
+th{background:var(--navy);color:#fff;font-weight:700;font-size:13px}
+tr:nth-child(even) td{background:#fafcfd}
+td .pill{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:700}
+.pill.hi{background:#e6f4ea;color:#1e8a5a}.pill.mid{background:#fdf0e0;color:#b9720f}.pill.lo{background:#fdeaea;color:#c0392b}
+
+/* heat */
+.heat{display:grid;grid-template-columns:repeat(24,1fr);gap:3px;margin-top:6px}
+.heat .cell{aspect-ratio:1;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700}
+.heatlbl{display:grid;grid-template-columns:repeat(24,1fr);gap:3px;margin-top:4px;font-size:9px;color:var(--muted);text-align:center}
+
+/* callout */
+.callout{border-radius:14px;padding:18px 20px;margin:18px 0;font-size:14.5px}
+.callout.insight{background:#eef7f8;border:1px solid #bfe3e6;border-right:5px solid var(--teal)}
+.callout.warn{background:#fdf2ec;border:1px solid #f4d3bf;border-right:5px solid var(--amber)}
+.callout.crit{background:#fdecec;border:1px solid #f4c4c0;border-right:5px solid var(--red)}
+.callout b{color:var(--navy)}
+
+/* matrix */
+.matrix{overflow-x:auto}
+.dot{width:15px;height:15px;border-radius:50%;display:inline-block}
+.msg{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.msg .no{flex:0 0 40px;height:40px;border-radius:11px;background:var(--navy);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:18px}
+.msg h4{color:var(--navy);font-size:15.5px;margin-bottom:5px}
+.msg p{font-size:13.5px;color:#40515f;margin:0}
+
+/* glossary */
+.gloss{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0;overflow:hidden;box-shadow:var(--shadow)}
+.gitem{border-bottom:1px solid var(--line)}
+.gitem summary{cursor:pointer;padding:15px 18px;font-weight:700;color:var(--navy);font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.gitem summary::-webkit-details-marker{display:none}
+.gitem summary::after{content:"+";color:var(--teal);font-size:20px;font-weight:800}
+.gitem[open] summary::after{content:"–"}
+.gitem .body{padding:0 18px 16px;font-size:14px;color:#40515f}
+.gitem .body .row{margin:8px 0}
+.gitem .body .k{font-weight:700;color:var(--teal-d)}
+.gitem .body .ex{background:var(--soft);border-radius:8px;padding:8px 12px;font-size:13px;margin-top:6px}
+
+.footer{background:var(--navy);color:#b7cbdb;padding:34px 0;font-size:13px}
+.footer b{color:#fff}
+.na{color:var(--red);font-weight:700}
+.small{font-size:12.5px;color:var(--muted)}
+ul.clean{margin:8px 0;padding-inline-start:20px} ul.clean li{margin:6px 0;font-size:14px;color:#3a4b58}
+
+@media(max-width:900px){.kpigrid{grid-template-columns:repeat(2,1fr)}.grid2,.grid3{grid-template-columns:1fr}.hero h1{font-size:29px}.h2{font-size:22px}.heat .cell{font-size:0}}
+@media print{
+  .nav{display:none}.section{padding:22px 0;page-break-inside:avoid}.hero{padding:34px 0}
+  body{background:#fff;font-size:12px}.kpi,.card,.chartbox,.msg,.gloss{box-shadow:none}
+  .gitem .body{display:block!important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav"><div class="wrap">
+  <span class="brand">بنیس <span>×</span> پرشیانا</span>
+  <a href="#summary">خلاصه</a>
+  <a href="#data">داده‌ها</a>
+  <a href="#timing">زمان‌بندی پخش</a>
+  <a href="#channels">توزیع کانالی</a>
+  <a href="#quality">کیفیت داده</a>
+  <a href="#audience">ماتریس مخاطب</a>
+  <a href="#value">ارزش جایگاه</a>
+  <a href="#glossary">واژه‌نامه</a>
+  <a href="#need">داده موردنیاز</a>
+  <a href="#decision">تصمیم و توصیه</a>
+</div></div>
+
+<!-- HERO -->
+<header class="hero"><div class="wrap">
+  <span class="tag">گزارش مشاوره رسانه‌ای · محرمانه · مرداد ۱۴۰۵</span>
+  <h1>از «تعداد پخش» به «مخاطب درست»<br>بهینه‌سازی تبلیغات تلویزیونی بنیس در شبکه پرشیانا</h1>
+  <p>این گزارش نشان می‌دهد برای افزایش اثربخشی تبلیغ بنیس، چه اطلاعاتی لازم است و چرا برنامه‌ریزی مبتنی بر مخاطب، مؤثرتر از صرفاً افزایش تعداد پخش است. هدف، نقد پرشیانا نیست؛ ترسیم مسیر مشترکِ ارتقای بازدهی است.</p>
+  <div class="meta">
+    <div><b>۱٬۹۳۳</b> رکورد پخش تحلیل‌شده</div>
+    <div><b>۱۰</b> روز · ۱۱ گزارش روزانه</div>
+    <div><b>۱۱</b> کانال پرشیانا</div>
+    <div>ارائه به: مدیریت محترم شبکه پرشیانا</div>
+  </div>
+</div></header>
+
+<!-- EXEC SUMMARY -->
+<section class="section" id="summary"><div class="wrap">
+  <div class="eyebrow">خلاصهٔ مدیریتی</div>
+  <div class="h2">آنچه داده‌های پخش به ما می‌گویند</div>
+  <p class="lead">بر پایهٔ گزارش‌های پخش دقیق (As-Run) از ۳۰ تیر تا ۱۰ مرداد ۱۴۰۵، چهار یافتهٔ کلیدی به‌دست آمد. همهٔ اعداد این کارت‌ها مستقیماً از فایل‌های شماست.</p>
+
+  <div class="kpigrid">
+    <div class="kpi red">
+      <div class="num">۷.۷٪</div>
+      <div class="lbl">سهم پخش در بازهٔ عصر و پرایم‌تایم (۱۷–۲۴)</div>
+      <div class="sub">تنها ۱۴۸ پخش از ۱٬۹۳۳ در ساعات پربیننده</div>
+    </div>
+    <div class="kpi amber">
+      <div class="num">۷۷٪</div>
+      <div class="lbl">سهم پخش در بامداد و صبح (۰۰–۱۲)</div>
+      <div class="sub">۱٬۴۹۱ پخش در ساعات کم‌بیننده</div>
+    </div>
+    <div class="kpi gold">
+      <div class="num">۱</div>
+      <div class="lbl">تعداد نسخهٔ تیزر برای ۳ مخاطب هدف</div>
+      <div class="sub">فقط Benis-Ad08 برای کودک، خانواده و جوان</div>
+    </div>
+    <div class="kpi">
+      <div class="num">۰</div>
+      <div class="lbl">شاخص مخاطب/ریتینگ در داده‌ها</div>
+      <div class="sub">هیچ ستون بیننده، ریچ یا فرکانس موجود نیست</div>
+    </div>
+  </div>
+
+  <div class="legend-badges" style="margin-top:26px">
+    <span><span class="badge b-fact">واقعیتِ تأییدشده</span> از داده استخراج شده</span>
+    <span><span class="badge b-est">برآورد</span> محاسبهٔ مبتنی بر بنچمارک</span>
+    <span><span class="badge b-assume">فرض</span> تفسیر کارشناسی</span>
+    <span><span class="badge b-rec">توصیه</span> پیشنهاد اجرایی</span>
+  </div>
+
+  <div class="grid3" style="margin-top:14px">
+    <div class="msg"><div class="no">۱</div><div>
+      <h4>مکانِ پخش مهم‌تر از تعدادِ پخش است</h4>
+      <p>افزایش تعداد پخش بدون اصلاح ساعت و برنامه، عمدتاً ریچ جدید نمی‌سازد؛ فقط فرکانس روی همان بینندهٔ محدود را بالا می‌برد.</p>
+    </div></div>
+    <div class="msg"><div class="no">۲</div><div>
+      <h4>بدون دادهٔ مخاطب، بهینه‌سازی حدس است</h4>
+      <p>ریچ و فرکانس دو ستون اثربخشی‌اند و هر دو به دادهٔ بیننده نیاز دارند. این داده امروز در دسترس نیست.</p>
+    </div></div>
+    <div class="msg"><div class="no">۳</div><div>
+      <h4>پرشیانا کلید این قفل را دارد</h4>
+      <p>با ارائهٔ چند شاخص کلیدی مخاطب، می‌توان همین بودجه را بازچینش کرد و بازدهی را بدون هزینهٔ اضافه بالا برد.</p>
+    </div></div>
+  </div>
+</div></section>
+
+<!-- DATA AT A GLANCE -->
+<section class="section" id="data"><div class="wrap">
+  <div class="eyebrow">داده در یک نگاه</div>
+  <div class="h2">آنچه در گزارش‌های پخش دیدیم <span class="badge b-fact">واقعیت</span></div>
+  <p class="lead">جمع‌بندی کمی از ۱۱ فایل گزارش پخش دقیق بنیس روی شبکهٔ پرشیانا.</p>
+  <div class="kpigrid">
+    <div class="kpi"><div class="num">۱٬۹۳۳</div><div class="lbl">کل رکوردهای پخش</div><div class="sub">در ۱۰ روز تقویمی</div></div>
+    <div class="kpi green"><div class="num">۱٬۴۲۳</div><div class="lbl">پخش‌شدهٔ تأییدشده (۷۳.۶٪)</div><div class="sub">۵۱۰ رکورد «در صف»</div></div>
+    <div class="kpi"><div class="num">~۹۳۷ دق</div><div class="lbl">مجموع زمان آنتن (≈۱۵.۶ ساعت)</div><div class="sub">میانگین طول تیزر ۳۴ ثانیه</div></div>
+    <div class="kpi amber"><div class="num">۱۷</div><div class="lbl">عنوان فید کانال</div><div class="sub">معادل ۱۱ کانال منطقی</div></div>
+  </div>
+  <div class="callout insight" style="margin-top:22px">
+    <b>نکته:</b> گزارش‌ها «لاگ پخش» (As-Run) هستند — یعنی می‌گویند تیزر <b>کجا و کِی</b> پخش شد، اما نمی‌گویند <b>چند نفر و چه کسانی</b> آن را دیدند. این دقیقاً مرزی است که این گزارش می‌خواهد روشن کند.
+  </div>
+</div></section>
+
+<!-- TIMING -->
+<section class="section" id="timing"><div class="wrap">
+  <div class="eyebrow">تحلیل زمان‌بندی پخش · مهم‌ترین یافته</div>
+  <div class="h2">تیزر بنیس بیشتر در ساعاتی پخش می‌شود که کمترین بیننده را دارد</div>
+  <p class="lead">تقسیم ۱٬۹۳۳ پخش بر اساس بازهٔ زمانی (Daypart). این نمودار، قلب استدلال گزارش است.</p>
+
+  <div class="grid2">
+    <div class="chartbox">
+      <h3>توزیع پخش بر اساس بازهٔ روز</h3>
+      <div class="cap">Daypart Distribution — سهم هر بازه از کل پخش‌ها <span class="badge b-fact">واقعیت</span></div>
+      <div class="canvas-h"><canvas id="daypartChart"></canvas></div>
+    </div>
+    <div class="chartbox">
+      <h3>نقشهٔ حرارتی پخش در ۲۴ ساعت</h3>
+      <div class="cap">Heatmap — پررنگ‌تر = پخش بیشتر. اوج پخش بین ۰۰ تا ۰۹ صبح است.</div>
+      <div id="heat" class="heat"></div>
+      <div id="heatlbl" class="heatlbl"></div>
+      <p class="small" style="margin-top:12px">پرایم‌تایم تلویزیون خانوادگی معمولاً ۱۹ تا ۲۳ است؛ در این بازه کمترین تراکم پخش بنیس دیده می‌شود.</p>
+    </div>
+  </div>
+
+  <div class="callout crit">
+    <b>یافتهٔ اصلی <span class="badge b-fact">واقعیت</span>:</b> ۷۷٪ پخش‌ها در بازهٔ ۰۰ تا ۱۲ (بامداد و صبح) و تنها <b>۷.۷٪</b> در بازهٔ عصر و شب (۱۷ تا ۲۴) رخ داده است. برای برندی مثل بنیس با مخاطب کودک، خانواده و جوان، بیشترین بیننده در بازهٔ عصر و شب حضور دارد — یعنی بخش بزرگی از پخش‌ها احتمالاً به مخاطب هدف نمی‌رسد.
+  </div>
+  <div class="callout warn">
+    <b>چرا این اتفاق می‌افتد؟ <span class="badge b-assume">فرض</span></b> در نبود دادهٔ مخاطب، پخش‌ها طبیعتاً در جایگاه‌های <b>موجود/کم‌تقاضا</b> پر می‌شوند، نه در جایگاه‌های <b>پرمخاطب</b>. این «اتلاف رسانه» (Media Waste) نیست چون بدرفتاری‌ای رخ نداده؛ صرفاً نتیجهٔ نبودِ نقشهٔ مخاطب است.
+  </div>
+
+  <div class="chartbox" style="margin-top:22px">
+    <h3>ساعت‌به‌ساعت: تعداد پخش در هر ساعت شبانه‌روز</h3>
+    <div class="cap">توزیع کامل ۲۴ ساعته — بیشترین تراکم در ۰۲، ۰۳، ۰۵، ۰۷ و ۰۸ صبح</div>
+    <div class="canvas-h" style="height:280px"><canvas id="hourlyChart"></canvas></div>
+  </div>
+</div></section>
+
+<!-- CHANNELS -->
+<section class="section" id="channels"><div class="wrap">
+  <div class="eyebrow">توزیع کانالی</div>
+  <div class="h2">پخش روی کدام کانال‌ها متمرکز است؟</div>
+  <p class="lead">تعداد پخش به تفکیک کانال منطقی (فیدهای هم‌زمان SD/HD/چند ماهواره‌ای ادغام شده‌اند).</p>
+  <div class="grid2">
+    <div class="chartbox">
+      <h3>پخش به تفکیک کانال</h3>
+      <div class="cap">تعداد رکورد پخش در هر کانال منطقی <span class="badge b-fact">واقعیت</span></div>
+      <div class="canvas-h" style="height:360px"><canvas id="channelChart"></canvas></div>
+    </div>
+    <div class="chartbox">
+      <h3>سهم پرایم‌تایم هر کانال</h3>
+      <div class="cap">درصد پخش‌های هر کانال که در بازهٔ ۱۷–۲۴ رخ داده <span class="badge b-fact">واقعیت</span></div>
+      <div class="canvas-h" style="height:360px"><canvas id="ptChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="callout insight" style="margin-top:22px">
+    <b>هشدار «تکرارِ فید» (Feed Duplication) <span class="badge b-fact">واقعیت</span>:</b> کانال «پرشیانا اسپورت ۱» در <b>۵ فید</b> و «اسپورت ۲» در <b>۳ فید</b> جداگانه (SD/HD/کدهای ماهواره‌ای) در گزارش شمارش می‌شوند. یک تیزرِ واحد که هم‌زمان روی چند فید می‌رود، در گزارش چند رکورد می‌سازد؛ این «تعداد پخش» را بزرگ‌تر از «مواجههٔ واقعی مخاطب» نشان می‌دهد. اگر مخاطبِ این فیدها هم‌پوشان باشد (Audience Duplication)، فرکانس واقعی کمتر از عدد گزارش است.
+  </div>
+
+  <div class="chartbox" style="margin-top:8px">
+    <h3>وضعیت هر کانال: پخش‌شده در برابر «در صف»</h3>
+    <div class="cap">نسبت رکوردهای تأییدشده به رکوردهای در صف انتظار</div>
+    <div class="canvas-h" style="height:320px"><canvas id="statusChart"></canvas></div>
+  </div>
+</div></section>
+
+<!-- DATA QUALITY -->
+<section class="section" id="quality"><div class="wrap">
+  <div class="eyebrow">کیفیت و کامل‌بودن داده</div>
+  <div class="h2">داده‌ها چقدر برای تصمیم‌گیری آماده‌اند؟</div>
+  <p class="lead">پیش از هر بهینه‌سازی، باید بدانیم داده تا چه حد قابل‌اتکاست. این بخش کاستی‌های فعلی را صادقانه فهرست می‌کند — نه به‌عنوان ایراد، بلکه به‌عنوان فهرست کارهای مشترک.</p>
+  <div class="grid3">
+    <div class="card">
+      <h3>۲۶.۴٪ رکورد «در صف» <span class="badge b-fact">واقعیت</span></h3>
+      <p>۵۱۰ رکورد از ۱٬۹۳۳ وضعیت «در صف» دارند، نه «پخش‌شده». مشخص نیست این‌ها بعداً پخش شده‌اند یا خیر — پس شمارش پخش واقعی نامطمئن است.</p>
+    </div>
+    <div class="card">
+      <h3>۲۸۰ رکورد با مدت صفر <span class="badge b-fact">واقعیت</span></h3>
+      <p>۱۴.۵٪ رکوردها مدت‌زمان ۰ ثانیه دارند اما «پخش‌شده» علامت خورده‌اند. این ناسازگاری باید در منبع داده رفع شود.</p>
+    </div>
+    <div class="card">
+      <h3>بدون شناسهٔ مخاطب <span class="badge b-fact">واقعیت</span></h3>
+      <p>هیچ ستونی برای تعداد بیننده، ریچ، فرکانس یا دموگرافی وجود ندارد. تحلیل اثربخشی صرفاً از روی لاگ پخش ممکن نیست.</p>
+    </div>
+  </div>
+  <div class="callout warn" style="margin-top:20px">
+    <b>جمع‌بندی <span class="badge b-est">برآورد</span>:</b> با احتساب رکوردهای «در صف» و «مدت صفر»، تعداد پخش‌های <b>قطعاً تأییدشده</b> حدود ۱٬۴۲۳ است — نه ۱٬۹۳۳. یعنی حتی «تعداد پخش» هم بدون شفاف‌سازی وضعیت، عددی نامطمئن است.
+  </div>
+</div></section>
+
+<!-- AUDIENCE MATRIX -->
+<section class="section" id="audience"><div class="wrap">
+  <div class="eyebrow">ماتریس مخاطب × برنامه</div>
+  <div class="h2">کدام محتوا برای کدام مخاطب بنیس مناسب‌تر است؟</div>
+  <p class="lead">بنیس سه مخاطب هدف دارد. در نبود دادهٔ ریتینگ، تناسب مخاطب-محتوا را با تحلیل کیفی رسانه برآورد کرده‌ایم. این جدول یک <b>فرضیه</b> است که با دادهٔ واقعی پرشیانا باید تأیید یا اصلاح شود.</p>
+  <div class="matrix">
+  <table>
+    <thead><tr>
+      <th>کانال / محتوا</th><th>کودک و والدین</th><th>خانواده‌ها</th><th>بزرگسالان جوان</th><th>ارزیابی برای بنیس</th>
+    </tr></thead>
+    <tbody id="audRows"></tbody>
+  </table>
+  </div>
+  <p class="small" style="margin-top:10px">🟢 تناسب بالا · 🟡 متوسط · 🔴 پایین — همگی <span class="badge b-assume">فرض کارشناسی</span> و نیازمند اعتبارسنجی با دادهٔ مخاطب.</p>
+
+  <div class="callout insight">
+    <b>پیام کلیدی:</b> بیشترین تراکم پخش فعلی روی «اسپورت ۱ و ۲» است (۶۲۵ رکورد) که ۰٪ پرایم‌تایم دارند و مخاطبشان با هستهٔ خانوادگی/کودک بنیس کمترین هم‌پوشانی را دارد. در مقابل، «جونیور»، «فمیلی»، «سریز» و «سینما» — که تناسب بالاتری دارند — سهم کمتری از بازهٔ پرمخاطب گرفته‌اند.
+  </div>
+</div></section>
+
+<!-- VALUE MATRIX -->
+<section class="section" id="value"><div class="wrap">
+  <div class="eyebrow">ماتریس ارزش جایگاه + خلاقیت</div>
+  <div class="h2">جایگاه‌های باارزش، کم‌ارزش و فرصت‌های ازدست‌رفته</div>
+  <div class="grid2">
+    <div class="card">
+      <h3>🟢 جایگاه‌های باارزش (High-Value)</h3>
+      <ul class="clean">
+        <li>پخش‌های «جونیور» در بازهٔ عصر (۲۷٪ پرایم‌تایم) — نزدیک به مخاطب کودک/والد.</li>
+        <li>«سینما» و «فمیلی» با بیشترین سهم پرایم‌تایم پس از جونیور (۱۲.۱٪ و ۱۰.۳٪).</li>
+        <li>جایگاه‌های ابتدای بلوک تبلیغاتی (First-in-Break) — دیده‌شدن بالاتر.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>🔴 جایگاه‌های کم‌ارزش و فرصت‌های ازدست‌رفته</h3>
+      <ul class="clean">
+        <li>۸۲۷ پخش در بازهٔ ۰۰–۰۶ بامداد؛ کمترین احتمال دیده‌شدن.</li>
+        <li>پرایم‌تایم عصر تقریباً خالی از پخش بنیس است — فرصت اصلی ازدست‌رفته.</li>
+        <li>تک‌نسخه بودن تیزر: یک پیام واحد برای سه مخاطب متفاوت.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-top:20px">
+    <div class="chartbox">
+      <h3>توزیع جایگاه در بلوک تبلیغاتی (Pod Position)</h3>
+      <div class="cap">شمارش «بخش پخش» در لاگ — RUN / RP1 / RP2 / RP3 <span class="badge b-fact">واقعیت</span></div>
+      <div class="canvas-h"><canvas id="podChart"></canvas></div>
+      <p class="small" style="margin-top:10px">معنای دقیق کدهای RP1–RP3 و ترتیب دقیق تیزر در بلوک (اول/وسط/آخر) در داده مشخص نیست <span class="na">داده در دسترس نیست</span> — یکی از مواردی که باید از پرشیانا پرسید.</p>
+    </div>
+    <div class="card" style="display:flex;flex-direction:column;justify-content:center">
+      <h3>تحلیل خلاقیت: یک تیزر برای سه مخاطب <span class="badge b-fact">واقعیت</span></h3>
+      <p>در تمام ۱٬۹۳۳ رکورد، تنها فایل <b>Benis-Ad08</b> (تیزر ۳۴ ثانیه‌ای) پخش شده است. بنیس سه مخاطب متفاوت دارد (کودک/والد، خانواده، جوان) که هرکدام به پیام و اجرای متفاوت پاسخ می‌دهند.</p>
+      <p>پخش یک نسخهٔ واحد با فرکانس بالا روی مخاطب محدود، ریسک «اشباع و دل‌زدگی» را بالا می‌برد. راهکار کم‌هزینه: <b>چرخش ۲–۳ نسخهٔ مشتق از همان تیزر</b> با حفظ کدهای برند، متناسب با هر کانال/مخاطب. <span class="badge b-rec">توصیه</span></p>
+    </div>
+  </div>
+</div></section>
+
+<!-- COUNT VS AUDIENCE -->
+<section class="section"><div class="wrap">
+  <div class="eyebrow">قلبِ استدلال</div>
+  <div class="h2">برنامه‌ریزی مبتنی بر «تعداد پخش» در برابر مبتنی بر «مخاطب»</div>
+  <div class="matrix">
+  <table>
+    <thead><tr><th>معیار</th><th>رویکرد فعلی: بیشترین تعداد پخش</th><th>رویکرد پیشنهادی: مبتنی بر مخاطب</th></tr></thead>
+    <tbody>
+      <tr><td>هدف</td><td>حداکثر کردن تعداد نوبت پخش</td><td>حداکثر کردن ریچِ مؤثر روی مخاطب هدف</td></tr>
+      <tr><td>معیار موفقیت</td><td>تعداد پخش در گزارش</td><td>ریچ، فرکانس مؤثر (۳–۹)، GRP</td></tr>
+      <tr><td>ریسک</td><td>فرکانس بالا روی بینندهٔ محدود ← اشباع</td><td>پوشش گسترده‌تر مخاطب جدید</td></tr>
+      <tr><td>ساعت پخش</td><td>عمدتاً بامداد/صبح (ارزان/در دسترس)</td><td>تمرکز بر بازهٔ پرمخاطبِ هر مخاطب هدف</td></tr>
+      <tr><td>خلاقیت</td><td>یک نسخه برای همه</td><td>نسخهٔ متناسب با هر کانال/مخاطب</td></tr>
+      <tr><td>پیش‌نیاز داده</td><td>فقط لاگ پخش</td><td>لاگ پخش + دادهٔ مخاطب پرشیانا</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout crit">
+    <b>نتیجهٔ صریح:</b> افزایش تعداد پخش وقتی داده مخاطب نداریم، مثل ریختن آب بیشتر در سطلی است که نمی‌دانیم سوراخ کجاست. تا وقتی ندانیم هر پخش به چند نفرِ <b>جدید</b> می‌رسد، «بیشتر پخش کردن» لزوماً «بهتر دیده‌شدن» نیست.
+  </div>
+</div></section>
+
+<!-- GLOSSARY -->
+<section class="section" id="glossary"><div class="wrap">
+  <div class="eyebrow">واژه‌نامهٔ ساده</div>
+  <div class="h2">مفاهیم فنی، به زبان ساده</div>
+  <p class="lead">هر مفهوم شامل: تعریف · چرا مهم است · یک مثال ساده. برای فهم غیرمتخصص طراحی شده است.</p>
+  <div class="gloss" id="gloss"></div>
+</div></section>
+
+<!-- DATA NEEDED -->
+<section class="section" id="need"><div class="wrap">
+  <div class="eyebrow">درخواست داده از پرشیانا</div>
+  <div class="h2">چه اطلاعاتی لازم است تا بتوانیم بهینه کنیم؟</div>
+  <p class="lead">این فهرست، دستور کار مشترک بنیس و پرشیانا برای رساندن کمپین به سطح حرفه‌ای است.</p>
+  <div class="matrix">
+  <table>
+    <thead><tr><th>#</th><th>داده موردنیاز</th><th>چه چیزی را ممکن می‌کند</th><th>اولویت</th></tr></thead>
+    <tbody>
+      <tr><td>۱</td><td>تخمین تعداد بیننده هر کانال در هر بازهٔ زمانی</td><td>محاسبهٔ ریچ و GRP، انتخاب ساعت درست</td><td><span class="pill hi">بحرانی</span></td></tr>
+      <tr><td>۲</td><td>پروفایل دموگرافیک مخاطب هر کانال (سن/جنسیت/خانواده)</td><td>تطبیق کانال با مخاطب هدف بنیس</td><td><span class="pill hi">بحرانی</span></td></tr>
+      <tr><td>۳</td><td>هم‌پوشانی مخاطب میان کانال‌ها و فیدها</td><td>محاسبهٔ فرکانس واقعی و رفع Duplication</td><td><span class="pill hi">بالا</span></td></tr>
+      <tr><td>۴</td><td>تعریف رسمی پرایم‌تایم و دی‌پارت‌های شبکه</td><td>برنامه‌ریزی جایگاه بر اساس اوج تماشا</td><td><span class="pill mid">بالا</span></td></tr>
+      <tr><td>۵</td><td>معنای کدهای جایگاه (RUN/RP1/RP2/RP3) و ترتیب در بلوک</td><td>خرید جایگاه First-in-Break باارزش</td><td><span class="pill mid">متوسط</span></td></tr>
+      <tr><td>۶</td><td>شفاف‌سازی وضعیت «در صف» و رکوردهای مدت‌صفر</td><td>اطمینان از شمارش دقیق پخش</td><td><span class="pill mid">متوسط</span></td></tr>
+      <tr><td>۷</td><td>تعرفه به تفکیک بازهٔ زمانی و کانال</td><td>محاسبهٔ هزینه به‌ازای هر ریچ (بازدهی بودجه)</td><td><span class="pill mid">متوسط</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout insight">
+    اگر اندازه‌گیری مستقل مخاطب در دسترس نیست، حتی <b>تخمین‌های داخلی پرشیانا</b> (بر پایهٔ داده‌های پلتفرم پخش، اپ، یا ماهواره) نقطهٔ شروع بسیار خوبی است. هدف، «دقتِ کامل» نیست؛ «جهت‌گیری درست» است.
+  </div>
+</div></section>
+
+<!-- DECISION + REC -->
+<section class="section" id="decision"><div class="wrap">
+  <div class="eyebrow">ماتریس تصمیم و توصیهٔ نهایی</div>
+  <div class="h2">آیا برنامهٔ رسانه‌ای فعلی بهینه است؟</div>
+
+  <div class="matrix">
+  <table>
+    <thead><tr><th>پرسش کلیدی</th><th>پاسخ بر پایهٔ داده</th><th>اقدام پیشنهادی</th></tr></thead>
+    <tbody>
+      <tr><td>آیا برنامهٔ فعلی بهینه است؟</td><td><span class="pill lo">خیر، هنوز نه</span> تمرکز پخش در ساعات کم‌بیننده</td><td>بازچینش جایگاه‌ها به بازهٔ پرمخاطب</td></tr>
+      <tr><td>مناسب‌ترین برنامه‌ها کدام‌اند؟</td><td>جونیور، فمیلی، سریز، سینما (تناسب مخاطب بالاتر)</td><td>افزایش وزن این کانال‌ها در پرایم‌تایم</td></tr>
+      <tr><td>کدام فرصت‌ها از دست رفته؟</td><td>پرایم‌تایم عصر (۷.۷٪ سهم) و نسخه‌های خلاقیت</td><td>انتقال بخشی از پخش بامداد به عصر + چرخش تیزر</td></tr>
+      <tr><td>چه داده‌ای لازم است؟</td><td>ریچ/فرکانس/دموگرافی مخاطب (بخش «داده موردنیاز»)</td><td>توافق بنیس–پرشیانا بر تبادل شاخص‌های مخاطب</td></tr>
+      <tr><td>آیا بدون دادهٔ مخاطب می‌توان ریچ/فرکانس را بهینه کرد؟</td><td><span class="pill lo">خیر</span> این دو ذاتاً به دادهٔ بیننده وابسته‌اند</td><td>اولویت اول: تأمین حداقلِ دادهٔ مخاطب</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="grid3" style="margin-top:22px">
+    <div class="card"><h3>۱ · بازچینش، نه افزایش <span class="badge b-rec">توصیه</span></h3><p>با همین بودجه، بخشی از ۸۲۷ پخشِ بامدادی را به بازهٔ عصر و کانال‌های پرتناسب منتقل کنید. بازدهی بدون هزینهٔ اضافه بالا می‌رود.</p></div>
+    <div class="card"><h3>۲ · چرخش خلاقیت <span class="badge b-rec">توصیه</span></h3><p>۲–۳ نسخهٔ مشتق از تیزر فعلی با حفظ کدهای برند بسازید و متناسب با هر مخاطب/کانال پخش کنید تا از اشباع جلوگیری شود.</p></div>
+    <div class="card"><h3>۳ · قرارداد داده <span class="badge b-rec">توصیه</span></h3><p>یک تفاهم سادهٔ تبادل داده با پرشیانا: ماهانه، تخمین مخاطب کانال‌ها به تفکیک بازهٔ زمانی. این، پایهٔ هر بهینه‌سازی بعدی است.</p></div>
+  </div>
+
+  <div class="callout crit" style="margin-top:24px">
+    <b>جملهٔ پایانی برای جلسه:</b> بهبود <em>جدول پخش</em> به‌تنهایی کافی نیست اگر <b>اندازه‌گیری قابل‌اتکای مخاطب</b> وجود نداشته باشد. تعداد پخش، ورودیِ کار است؛ اما خروجیِ واقعی — یعنی چند نفرِ درست، چند بار تیزر را دیدند — تنها با دادهٔ مخاطب سنجیده می‌شود. پرشیانا و بنیس با هم می‌توانند این حلقهٔ گم‌شده را ببندند.
+  </div>
+</div></section>
+
+<!-- METHOD / SOURCES -->
+<section class="section"><div class="wrap">
+  <div class="eyebrow">روش‌شناسی و منابع</div>
+  <div class="h2">شفافیت داده</div>
+  <p class="lead">همهٔ اعداد کمی این گزارش مستقیماً از ۱۱ فایل «Detailed Broadcast Report» (۳۰ تیر تا ۱۰ مرداد ۱۴۰۵) استخراج و بازمحاسبه شده‌اند. برای پرهیز از دوباره‌شماری، نسخهٔ ویرایشی تکراری تاریخ ۲۹ تیر (edit faraz) از محاسبات کنار گذاشته شد و نسخهٔ استاندارد همان روز نگه داشته شد.</p>
+  <ul class="clean">
+    <li><b>واقعیت:</b> daypartها، توزیع کانالی، وضعیت پخش، جایگاه بلوک، تعداد فید و نسخهٔ تیزر — از داده.</li>
+    <li><b>برآورد:</b> جمع‌بندی‌های محاسباتی مانند سهم پخش تأییدشده.</li>
+    <li><b>فرض:</b> ماتریس تناسب مخاطب-محتوا و تفسیر علت تمرکز ساعات — تحلیل کیفی، نیازمند اعتبارسنجی.</li>
+    <li><b>توصیه:</b> پیشنهادهای اجرایی این گزارش.</li>
+  </ul>
+  <p class="small" style="margin-top:14px">شناخت ساختار کانال‌ها و ژانرهای پرشیانا از منابع عمومی و گزارش‌های پیشین تیم رهنگاشت تکمیل شده است. تعرفه و ریتینگ رسمی پرشیانا عمومی منتشر نمی‌شود؛ از این‌رو هرجا داده نبود، صریحاً «داده در دسترس نیست» ذکر شده است.</p>
+</div></section>
+
+<footer class="footer"><div class="wrap">
+  <b>گزارش بهینه‌سازی رسانه‌ای بنیس × پرشیانا</b> · تهیه‌شده توسط تیم مشاورین بازاریابی رهنگاشت<br>
+  جداسازی واقعیت از تفسیر · بدون داده‌سازی · آمادهٔ ارائه در جلسهٔ مدیریتی · مرداد ۱۴۰۵
+</div></footer>
+
+<script>
+// ---------- DATA (extracted from broadcast logs) ----------
+const FA = n => String(n).replace(/[0-9]/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+const daypart = {labels:['بامداد ۰۰–۰۶','صبح ۰۶–۱۲','بعدازظهر ۱۲–۱۷','پرایم‌تایم ۱۷–۲۱','شب ۲۱–۲۴'],data:[827,664,294,94,54]};
+const hourly = [136,123,146,153,120,149,117,153,163,63,77,91,77,63,38,67,49,31,25,19,19,17,15,22];
+const channels = [
+ {n:'اسپورت ۱',c:340,pt:0.0},{n:'جونیور',c:307,pt:27.0},{n:'اسپورت ۲',c:285,pt:0.0},
+ {n:'کمدی',c:160,pt:5.6},{n:'کره',c:147,pt:4.8},{n:'فمیلی',c:145,pt:10.3},
+ {n:'ریالیتی',c:145,pt:4.1},{n:'سریز',c:135,pt:3.7},{n:'سینما',c:132,pt:12.1},
+ {n:'موزیک',c:82,pt:2.4},{n:'اسپورت ۳',c:55,pt:9.1}];
+const status = [
+ ['اسپورت ۱',340,0],['جونیور',145,162],['اسپورت ۲',279,6],['کمدی',101,59],
+ ['کره',101,46],['فمیلی',86,59],['ریالیتی',97,48],['سریز',86,49],
+ ['سینما',92,40],['موزیک',54,28],['اسپورت ۳',42,13]];
+const pod = {labels:['RUN','RP1','RP2','RP3'],data:[1127,429,287,90]};
+
+const C={navy:'#173a5e',teal:'#0e9aa7',gold:'#c9a227',red:'#c0392b',amber:'#e08a1e',green:'#1e8a5a',grey:'#9fb2c0'};
+Chart.defaults.font.family="'Vazirmatn',Tahoma,sans-serif";
+Chart.defaults.font.size=12;
+Chart.defaults.plugins.legend.rtl=true;
+Chart.defaults.plugins.tooltip.rtl=true;
+
+new Chart(daypartChart,{type:'doughnut',data:{labels:daypart.labels,
+ datasets:[{data:daypart.data,backgroundColor:[C.navy,C.teal,C.gold,C.red,C.amber],borderWidth:2,borderColor:'#fff'}]},
+ options:{plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:x=>' '+x.label+': '+FA(x.raw)+' ('+FA(((x.raw/1933)*100).toFixed(1))+'٪)'}}},cutout:'55%'}});
+
+new Chart(hourlyChart,{type:'bar',data:{labels:[...Array(24).keys()].map(h=>FA(String(h).padStart(2,'0'))),
+ datasets:[{label:'تعداد پخش',data:hourly,backgroundColor:hourly.map((_,h)=>(h>=17&&h<24)?C.red:(h<12?C.gold:C.teal))}]},
+ options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:x=>' پخش: '+FA(x.raw)}}},
+ scales:{x:{grid:{display:false}},y:{ticks:{callback:v=>FA(v)}}}}});
+
+new Chart(channelChart,{type:'bar',data:{labels:channels.map(c=>c.n),
+ datasets:[{label:'تعداد پخش',data:channels.map(c=>c.c),backgroundColor:C.teal}]},
+ options:{indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:x=>' پخش: '+FA(x.raw)}}},
+ scales:{x:{ticks:{callback:v=>FA(v)}},y:{grid:{display:false}}}}});
+
+new Chart(ptChart,{type:'bar',data:{labels:channels.map(c=>c.n),
+ datasets:[{label:'٪ پرایم‌تایم',data:channels.map(c=>c.pt),backgroundColor:channels.map(c=>c.pt>=15?C.green:c.pt>=8?C.amber:C.red)}]},
+ options:{indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:x=>' '+FA(x.raw)+'٪ پرایم‌تایم'}}},
+ scales:{x:{ticks:{callback:v=>FA(v)+'٪'}},y:{grid:{display:false}}}}});
+
+new Chart(statusChart,{type:'bar',data:{labels:status.map(s=>s[0]),
+ datasets:[{label:'پخش‌شده',data:status.map(s=>s[1]),backgroundColor:C.green},
+           {label:'در صف',data:status.map(s=>s[2]),backgroundColor:C.amber}]},
+ options:{plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:x=>' '+x.dataset.label+': '+FA(x.raw)}}},
+ scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true,ticks:{callback:v=>FA(v)}}}}});
+
+new Chart(podChart,{type:'doughnut',data:{labels:pod.labels,
+ datasets:[{data:pod.data,backgroundColor:[C.navy,C.teal,C.gold,C.amber],borderWidth:2,borderColor:'#fff'}]},
+ options:{plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:x=>' '+x.label+': '+FA(x.raw)}}}}});
+
+(function(){
+ const max=Math.max(...hourly), h=document.getElementById('heat'), l=document.getElementById('heatlbl');
+ hourly.forEach((v,i)=>{
+   const t=v/max; const col='rgba(11,125,136,'+(0.15+t*0.85).toFixed(2)+')';
+   const d=document.createElement('div');d.className='cell';d.style.background=col;
+   d.title=FA(String(i).padStart(2,'0'))+':۰۰ — '+FA(v)+' پخش';d.textContent=FA(v);
+   h.appendChild(d);
+   const lb=document.createElement('div');lb.textContent=FA(i);l.appendChild(lb);
+ });
+})();
+
+const D=(cls)=>'<span class="dot" style="background:'+cls+'"></span>';
+const G='#1e8a5a',Y='#e0a417',R='#c0392b';
+const aud=[
+ ['جونیور (کودک)',G,Y,R,'هستهٔ مخاطب کودک/والد — بالاترین تناسب'],
+ ['فمیلی',Y,G,Y,'خانوادهٔ گسترده — تناسب بالا'],
+ ['سریز',R,G,G,'خانواده و جوان — تناسب بالا'],
+ ['سینما',Y,G,G,'خانواده و جوان — تناسب بالا'],
+ ['کمدی',R,Y,G,'بزرگسال جوان — تناسب متوسط/بالا'],
+ ['کره',R,Y,G,'جوان (به‌ویژه دختران) — متوسط'],
+ ['ریالیتی',R,Y,G,'جوان — متوسط'],
+ ['موزیک',R,R,G,'جوان — متمرکز'],
+ ['اسپورت ۱/۲/۳',R,Y,Y,'مرد-محور، ۰٪ پرایم‌تایم — کم‌تناسب با هستهٔ بنیس'],
+];
+document.getElementById('audRows').innerHTML=aud.map(r=>
+ '<tr><td><b>'+r[0]+'</b></td><td style="text-align:center">'+D(r[1])+'</td><td style="text-align:center">'+D(r[2])+'</td><td style="text-align:center">'+D(r[3])+'</td><td>'+r[4]+'</td></tr>').join('');
+
+const gloss=[
+ ['ریچ (Reach)','چند نفرِ متفاوت دست‌کم یک بار تیزر را دیده‌اند.','چون بدون آن نمی‌دانیم پیام به چند نفر رسیده — ریچ، «وسعت» کمپین است.','اگر ۱۰۰ نفر تیزر را ببینند (هرکدام حتی چند بار)، ریچ = ۱۰۰ نفر.'],
+ ['فرکانس (Frequency)','هر نفر به‌طور میانگین چند بار تیزر را دیده است.','تکرار کم = فراموشی؛ تکرار زیاد = اشباع و دل‌زدگی. باید متعادل باشد.','اگر ۳۰۰ مواجهه روی ۱۰۰ نفر باشد، فرکانس = ۳ بار.'],
+ ['فرکانس مؤثر (Effective Frequency)','حداقل دفعاتی که مخاطب باید تیزر را ببیند تا پیام «کار کند» (معمولاً ۳ تا ۹).','کمتر از آن بی‌اثر، بیشتر از آن اتلاف بودجه است.','اگر آستانه ۳ باشد، کسی که فقط ۱ بار دیده هنوز به مرحلهٔ اثر نرسیده.'],
+ ['GRP','مجموع درصد مخاطبی که پوشش داده‌اید = ریچ × فرکانس.','یک عدد واحد برای سنجش «حجم» کمپین رسانه‌ای.','ریچ ۵۰٪ × فرکانس ۴ = ۲۰۰ GRP.'],
+ ['پرایم‌تایم (Prime Time)','پربیننده‌ترین بازهٔ شبانه‌روز، معمولاً عصر تا شب (~۱۹–۲۳).','گران‌ترین و ارزشمندترین جایگاه، چون بیشترین بیننده حاضر است.','تیزری در ساعت ۲۱ به‌مراتب بیشتر از ساعت ۳ بامداد دیده می‌شود.'],
+ ['دی‌پارت (Daypart)','تقسیم شبانه‌روز به بازه‌های استاندارد (بامداد، صبح، بعدازظهر، پرایم‌تایم، شب).','هر بازه مخاطب و قیمت متفاوت دارد؛ پایهٔ برنامه‌ریزی زمان پخش است.','برنامهٔ کودک صبح، سریال خانوادگی پرایم‌تایم.'],
+ ['جایگاه در بلوک (Pod Position)','محل قرارگرفتن تیزر در میان مجموعه‌آگهی‌های یک وقفه.','آگهی اول/آخر بلوک بیشتر دیده و به‌خاطر سپرده می‌شود.','تیزر اولِ بلوک، پیش از رفتن بیننده، دیده می‌شود.'],
+ ['اول/آخر بلوک (First/Last in Break)','نخستین یا آخرین آگهیِ یک وقفهٔ تبلیغاتی.','این دو جایگاه، بیشترین توجه را در بلوک دریافت می‌کنند.','خرید جایگاه First-in-Break ارزش دیده‌شدن را بالا می‌برد.'],
+ ['اتلاف رسانه (Media Waste)','بخشی از پخش که به مخاطب هدف نمی‌رسد یا اثری ندارد.','هر ریال صرف‌شده روی مخاطب نامرتبط، بازدهی کمپین را کم می‌کند.','پخش تیزر کیک کودک در ساعت ۴ بامداد روی کانال ورزشی.'],
+ ['سهم صدا (Share of Voice)','سهم برند شما از کل تبلیغات یک دسته در رسانه.','SOV بالاتر از سهم بازار معمولاً به رشد برند می‌انجامد.','اگر ۳ برند کیک تبلیغ کنند و شما ۵۰٪ آگهی‌ها را داشته باشید، SOV=۵۰٪.'],
+ ['هم‌پوشانی مخاطب (Audience Duplication)','بینندگانی که هم‌زمان چند کانال/فید را می‌بینند و دوباره شمرده می‌شوند.','بدون رفع آن، فرکانس واقعی و ریچ اشتباه محاسبه می‌شود.','یک بیننده که تیزر را روی فید SD و HD می‌بیند، یک نفر است نه دو نفر.'],
+];
+document.getElementById('gloss').innerHTML=gloss.map((g,i)=>
+ '<details class="gitem" '+(i===0?'open':'')+'><summary>'+g[0]+'</summary>'+
+   '<div class="body">'+
+     '<div class="row"><span class="k">تعریف:</span> '+g[1]+'</div>'+
+     '<div class="row"><span class="k">چرا مهم است:</span> '+g[2]+'</div>'+
+     '<div class="row"><span class="k">مثال ساده:</span><div class="ex">'+g[3]+'</div></div>'+
+   '</div></details>').join('');
+</script>
+</body>
+</html>
