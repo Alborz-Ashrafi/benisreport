@@ -1,15 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f172a" />
 
-  <title>داشبورد استراتژیک | رهنگاشت</title>
+  <title>مرکز گزارش‌ها و داشبوردهای مدیریتی | رهنگاشت</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet"
@@ -17,784 +16,872 @@
 
   <style>
     :root {
-      --bg: #0a0a0f;
-      --surface: #13131a;
+      color-scheme: dark;
 
-      --accent-competitor: #c8390a;
-      --accent-strategy: #ff6b35;
-      --accent-dashboard: #10b981;
+      --bg: #0b1220;
+      --bg-deep: #070d18;
+      --surface: rgba(17, 27, 46, 0.82);
+      --surface-strong: #121d31;
+      --surface-soft: rgba(255, 255, 255, 0.035);
 
-      --text: #f0f0f8;
-      --text-secondary: #a0a0c0;
+      --text: #f3f6fb;
+      --text-muted: #a9b4c6;
+      --text-soft: #7f8da3;
 
-      --border: rgba(255, 255, 255, 0.07);
+      --brand: #d9a441;
+      --brand-soft: rgba(217, 164, 65, 0.14);
+
+      --border: rgba(255, 255, 255, 0.085);
+      --border-strong: rgba(255, 255, 255, 0.14);
+
+      --shadow-lg: 0 30px 90px rgba(0, 0, 0, 0.28);
+      --shadow-card: 0 18px 44px rgba(0, 0, 0, 0.2);
+
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+
+      --container: 1180px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
     }
 
-    html,
-    body {
-      width: 100%;
-      min-height: 100%;
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Vazirmatn", sans-serif;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
       overflow-x: hidden;
-      position: relative;
-
-      padding: 40px 16px;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(43, 105, 156, 0.18), transparent 32rem),
+        radial-gradient(circle at 88% 92%, rgba(217, 164, 65, 0.11), transparent 30rem),
+        linear-gradient(145deg, var(--bg-deep) 0%, var(--bg) 46%, #0d1728 100%);
+      font-family: "Vazirmatn", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
-
-    /* Glow Background */
 
     body::before {
       content: "";
-      position: absolute;
-
-      width: 320px;
-      height: 320px;
-
-      top: -100px;
-      left: -100px;
-
-      border-radius: 50%;
-
-      background: rgba(255, 107, 53, 0.06);
-
-      filter: blur(90px);
-
-      z-index: 0;
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      opacity: 0.42;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 52px 52px;
+      mask-image: linear-gradient(to bottom, black, transparent 92%);
     }
 
     body::after {
       content: "";
-      position: absolute;
-
-      width: 420px;
-      height: 420px;
-
-      bottom: -120px;
-      right: -120px;
-
-      border-radius: 50%;
-
-      background: rgba(200, 57, 10, 0.05);
-
-      filter: blur(100px);
-
-      z-index: 0;
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: linear-gradient(to bottom, rgba(7, 13, 24, 0.06), rgba(7, 13, 24, 0.44));
     }
 
-    .container {
-      width: 100%;
-      max-width: 1100px;
+    a {
+      color: inherit;
+    }
 
+    svg {
+      display: block;
+    }
+
+    .page-shell {
+      width: min(calc(100% - 32px), var(--container));
+      margin-inline: auto;
+      padding-block: clamp(28px, 5vw, 68px) 28px;
+    }
+
+    .hero {
       position: relative;
-      z-index: 1;
+      overflow: hidden;
+      margin-bottom: 28px;
+      padding: clamp(28px, 5vw, 56px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.012)),
+        rgba(13, 23, 40, 0.76);
+      box-shadow: var(--shadow-lg);
+      isolation: isolate;
     }
 
-    header {
-      text-align: center;
-      margin-bottom: 56px;
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 340px;
+      aspect-ratio: 1;
+      top: -210px;
+      left: -110px;
+      z-index: -1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(217, 164, 65, 0.22), transparent 68%);
     }
 
-    header h1 {
-      font-size: clamp(28px, 5vw, 42px);
-      font-weight: 900;
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      aspect-ratio: 1;
+      right: -230px;
+      bottom: -290px;
+      z-index: -1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(46, 117, 165, 0.22), transparent 66%);
+    }
 
+    .hero-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: clamp(34px, 6vw, 68px);
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: #dce5f2;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.1px;
+    }
+
+    .brand-symbol {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(217, 164, 65, 0.34);
+      border-radius: 11px;
+      background: var(--brand-soft);
+    }
+
+    .brand-symbol::before,
+    .brand-symbol::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      background: var(--brand);
+    }
+
+    .brand-symbol::before {
+      width: 16px;
+      height: 3px;
+      top: 10px;
+      right: 8px;
+      transform: rotate(-38deg);
+    }
+
+    .brand-symbol::after {
+      width: 12px;
+      height: 3px;
+      right: 7px;
+      bottom: 10px;
+      transform: rotate(38deg);
+    }
+
+    .hero-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 12px;
+      color: #cdd7e6;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .hero-status::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #68c29b;
+      box-shadow: 0 0 0 5px rgba(104, 194, 155, 0.1);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       margin-bottom: 16px;
-      letter-spacing: -0.5px;
-
-      background: linear-gradient(
-        135deg,
-        #ffffff 10%,
-        #d6d6e6 100%
-      );
-
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #e4b75d;
+      font-size: 12px;
+      font-weight: 700;
     }
 
-    header p {
-      max-width: 760px;
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+    }
 
-      margin: 0 auto;
+    h1 {
+      max-width: 850px;
+      margin: 0 0 18px;
+      font-size: clamp(30px, 5vw, 55px);
+      font-weight: 800;
+      line-height: 1.38;
+      letter-spacing: -1.3px;
+    }
 
-      color: var(--text-secondary);
-
-      line-height: 2;
-      font-size: 15px;
+    .hero-description {
+      max-width: 780px;
+      margin: 0;
+      color: var(--text-muted);
+      font-size: clamp(14px, 1.8vw, 16px);
       font-weight: 400;
+      line-height: 2.05;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 4px 18px;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 7px;
+      font-size: clamp(20px, 3vw, 27px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 12px;
+      line-height: 1.9;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-
-      gap: 24px;
-
-      margin-bottom: 56px;
-    }
-
-    @media (max-width: 900px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
     }
 
     .card {
-      background: rgba(19, 19, 26, 0.95);
-
-      border: 1px solid var(--border);
-
-      border-radius: 24px;
-
-      padding: 30px 24px;
-
-      min-height: 290px;
-
-      display: flex;
-      flex-direction: column;
-
-      text-decoration: none;
+      --accent: #67a6d9;
+      --accent-rgb: 103, 166, 217;
 
       position: relative;
+      display: flex;
+      min-width: 0;
+      min-height: 310px;
       overflow: hidden;
-
+      padding: 24px;
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(150deg, rgba(var(--accent-rgb), 0.065), transparent 42%),
+        var(--surface);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        background-color 180ms ease;
     }
 
     .card::before {
       content: "";
-
       position: absolute;
-      inset: 0;
-
-      background: linear-gradient(
-        180deg,
-        rgba(255,255,255,0.03) 0%,
-        transparent 100%
-      );
-
-      opacity: 0;
-
-      transition: opacity 0.3s ease;
+      top: 0;
+      right: 24px;
+      left: 24px;
+      height: 2px;
+      border-radius: 0 0 999px 999px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0.72;
     }
 
-    .card:hover::before {
-      opacity: 1;
+    .card::after {
+      content: "";
+      position: absolute;
+      width: 190px;
+      aspect-ratio: 1;
+      left: -110px;
+      bottom: -130px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(var(--accent-rgb), 0.14), transparent 68%);
+      transition: transform 260ms ease;
     }
 
     .card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-5px);
+      border-color: rgba(var(--accent-rgb), 0.4);
+      background-color: rgba(20, 32, 53, 0.94);
+      box-shadow: var(--shadow-card), 0 0 0 1px rgba(var(--accent-rgb), 0.05);
+    }
+
+    .card:hover::after {
+      transform: scale(1.16);
+    }
+
+    .card:focus-visible {
+      outline: 3px solid rgba(var(--accent-rgb), 0.38);
+      outline-offset: 4px;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex: 1;
+      min-width: 0;
+      flex-direction: column;
+    }
+
+    .card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
     }
 
     .icon {
-      width: 62px;
-      height: 62px;
-
-      border-radius: 18px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 28px;
-
-      margin-bottom: 22px;
-
-      background: rgba(255,255,255,0.03);
-
-      border: 1px solid rgba(255,255,255,0.06);
-
-      transition: all 0.3s ease;
+      display: grid;
+      flex: 0 0 auto;
+      width: 52px;
+      height: 52px;
+      place-items: center;
+      color: var(--accent);
+      border: 1px solid rgba(var(--accent-rgb), 0.24);
+      border-radius: var(--radius-md);
+      background: rgba(var(--accent-rgb), 0.105);
     }
 
-    .card h2 {
-      font-size: 22px;
-      font-weight: 800;
+    .icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
 
-      margin-bottom: 12px;
+    .category {
+      padding-top: 4px;
+      color: var(--text-soft);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1px;
+    }
+
+    .card h3 {
+      margin: 0 0 11px;
+      font-size: 19px;
+      font-weight: 800;
+      line-height: 1.65;
+      letter-spacing: -0.25px;
     }
 
     .card p {
-      color: var(--text-secondary);
-
-      font-size: 14px;
-      line-height: 1.9;
-
-      margin-bottom: auto;
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.95;
     }
 
-    .arrow {
-      padding-top: 28px;
-
-      font-size: 14px;
-      font-weight: 700;
-
+    .card-action {
       display: flex;
       align-items: center;
-
-      gap: 8px;
-
-      transition: transform 0.3s ease;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: auto;
+      padding-top: 24px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
     }
 
-    .arrow span {
-      transition: transform 0.3s ease;
+    .arrow-icon {
+      display: grid;
+      width: 31px;
+      height: 31px;
+      place-items: center;
+      border: 1px solid rgba(var(--accent-rgb), 0.2);
+      border-radius: 50%;
+      background: rgba(var(--accent-rgb), 0.08);
+      transition: transform 180ms ease, background-color 180ms ease;
     }
 
-    .card:hover .arrow span {
-      transform: translateX(-4px);
+    .arrow-icon svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
-    /* Competitor */
-
-    .card-competitor:hover {
-      border-color: var(--accent-competitor);
-
-      box-shadow:
-        0 12px 40px rgba(200, 57, 10, 0.18);
+    .card:hover .arrow-icon {
+      transform: translateX(-3px);
+      background: rgba(var(--accent-rgb), 0.14);
     }
 
-    .card-competitor:hover .icon {
-      background: rgba(200, 57, 10, 0.12);
-
-      border-color: rgba(200, 57, 10, 0.3);
+    .new-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 2;
+      padding: 5px 9px;
+      color: #fbe9bd;
+      border: 1px solid rgba(217, 164, 65, 0.28);
+      border-radius: 999px;
+      background: rgba(217, 164, 65, 0.12);
+      font-size: 9px;
+      font-weight: 800;
     }
 
-    .card-competitor .arrow {
-      color: var(--accent-competitor);
-    }
-
-    /* Strategy */
-
-    .card-strategy:hover {
-      border-color: var(--accent-strategy);
-
-      box-shadow:
-        0 12px 40px rgba(255, 107, 53, 0.18);
-    }
-
-    .card-strategy:hover .icon {
-      background: rgba(255, 107, 53, 0.12);
-
-      border-color: rgba(255, 107, 53, 0.3);
-    }
-
-    .card-strategy .arrow {
-      color: var(--accent-strategy);
-    }
-
-    /* Dashboard */
-
-    .card-dashboard:hover {
-      border-color: var(--accent-dashboard);
-
-      box-shadow:
-        0 12px 40px rgba(16, 185, 129, 0.18);
-    }
-
-    .card-dashboard:hover .icon {
-      background: rgba(16, 185, 129, 0.12);
-
-      border-color: rgba(16, 185, 129, 0.3);
-    }
-
-    .card-dashboard .arrow {
-      color: var(--accent-dashboard);
-    }
+    .card-competitor { --accent: #d99a66; --accent-rgb: 217, 154, 102; }
+    .card-strategy { --accent: #e0b75f; --accent-rgb: 224, 183, 95; }
+    .card-dashboard { --accent: #6ec6a2; --accent-rgb: 110, 198, 162; }
+    .card-brand { --accent: #a996dc; --accent-rgb: 169, 150, 220; }
+    .card-analysis { --accent: #73a9d8; --accent-rgb: 115, 169, 216; }
+    .card-media { --accent: #66bfc7; --accent-rgb: 102, 191, 199; }
+    .card-instagram { --accent: #d486a3; --accent-rgb: 212, 134, 163; }
+    .card-game { --accent: #d9ae67; --accent-rgb: 217, 174, 103; }
+    .card-roadmap { --accent: #8b9cdb; --accent-rgb: 139, 156, 219; }
+    .card-project { --accent: #b8c5d8; --accent-rgb: 184, 197, 216; }
+    .card-persiana { --accent: #d47d7d; --accent-rgb: 212, 125, 125; }
+    .card-hr { --accent: #a9c7be; --accent-rgb: 169, 199, 190; }
+    .card-tvreport { --accent: #8fa2de; --accent-rgb: 143, 162, 222; }
 
     footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 34px;
+      padding: 24px 4px 4px;
+      color: var(--text-soft);
       border-top: 1px solid var(--border);
-
-      padding-top: 26px;
-
-      text-align: center;
-
-      color: #5d5d75;
-
-      font-size: 12px;
-      line-height: 2;
+      font-size: 11px;
+      line-height: 1.9;
     }
-    /* Brand Health */
 
-.card-brand:hover {
-  border-color: #8b5cf6;
+    .footer-brand {
+      color: #c3cedd;
+      font-weight: 700;
+    }
 
-  box-shadow:
-    0 12px 40px rgba(139, 92, 246, 0.18);
-}
+    @media (max-width: 980px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
 
-.card-brand:hover .icon {
-  background: rgba(139, 92, 246, 0.12);
+      .card {
+        min-height: 292px;
+      }
+    }
 
-  border-color: rgba(139, 92, 246, 0.3);
-}
+    @media (max-width: 680px) {
+      .page-shell {
+        width: min(calc(100% - 22px), var(--container));
+        padding-top: 12px;
+      }
 
-.card-brand .arrow {
-  color: #8b5cf6;
-}
-    /* Comprehensive Brand Analysis */
+      .hero {
+        padding: 24px 20px 28px;
+        border-radius: 23px;
+      }
 
-.card-analysis:hover {
-  border-color: #3b82f6;
+      .hero-topline {
+        align-items: flex-start;
+        margin-bottom: 42px;
+      }
 
-  box-shadow:
-    0 12px 40px rgba(59, 130, 246, 0.18);
-}
+      .hero-status {
+        max-width: 145px;
+        white-space: normal;
+        line-height: 1.7;
+      }
 
-.card-analysis:hover .icon {
-  background: rgba(59, 130, 246, 0.12);
+      h1 {
+        letter-spacing: -0.65px;
+      }
 
-  border-color: rgba(59, 130, 246, 0.3);
-}
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+        padding-inline: 2px;
+      }
 
-.card-analysis .arrow {
-  color: #3b82f6;
-}
-    /* Media Investment Dashboard */
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 13px;
+      }
 
-.card-media:hover {
-  border-color: #06b6d4;
+      .card {
+        min-height: 0;
+        padding: 21px;
+        border-radius: 19px;
+      }
 
-  box-shadow:
-    0 12px 40px rgba(6, 182, 212, 0.18);
-}
+      .card-head {
+        margin-bottom: 18px;
+      }
 
-.card-media:hover .icon {
-  background: rgba(6, 182, 212, 0.12);
+      .card h3 {
+        font-size: 18px;
+      }
 
-  border-color: rgba(6, 182, 212, 0.3);
-}
+      .card-action {
+        padding-top: 22px;
+      }
 
-.card-media .arrow {
-  color: #06b6d4;
-}
-    .card-media {
-  position: relative;
-}
+      footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
 
-    /* Instagram Audit */
+    @media (max-width: 430px) {
+      .brand-mark span:last-child {
+        display: none;
+      }
 
-.card-instagram:hover {
-  border-color: #e1306c;
+      .hero-status {
+        padding-inline: 10px;
+        font-size: 10px;
+      }
+    }
 
-  box-shadow:
-    0 12px 40px rgba(225, 48, 108, 0.18);
-}
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
 
-.card-instagram:hover .icon {
-  background: rgba(225, 48, 108, 0.12);
-
-  border-color: rgba(225, 48, 108, 0.3);
-}
-
-.card-instagram .arrow {
-  color: #e1306c;
-}
-    .card-instagram {
-  position: relative;
-}
-
-    /* Gamification Demo */
-
-.card-game:hover {
-  border-color: #f59e0b;
-
-  box-shadow:
-    0 12px 40px rgba(245, 158, 11, 0.18);
-}
-
-.card-game:hover .icon {
-  background: rgba(245, 158, 11, 0.12);
-
-  border-color: rgba(245, 158, 11, 0.3);
-}
-
-.card-game .arrow {
-  color: #f59e0b;
-}
-    .card.new::after {
-  content: "جدید";
-
-  position: absolute;
-  top: 16px;
-  left: 16px;
-
-  padding: 4px 8px;
-
-  border-radius: 999px;
-
-  font-size: 10px;
-  font-weight: 700;
-
-  background: rgba(255,255,255,0.08);
-  color: white;
-
-  border: 1px solid rgba(255,255,255,0.15);
-}
-    /* Content Roadmap */
-
-.card-roadmap:hover {
-  border-color: #6366f1;
-
-  box-shadow:
-    0 12px 40px rgba(99, 102, 241, 0.18);
-}
-
-.card-roadmap:hover .icon {
-  background: rgba(99, 102, 241, 0.12);
-
-  border-color: rgba(99, 102, 241, 0.3);
-}
-
-.card-roadmap .arrow {
-  color: #6366f1;
-}
-    /* Project Roadmap */
-
-.card-project:hover {
-  border-color: #ffffff;
-
-  box-shadow:
-    0 12px 40px rgba(255, 255, 255, 0.18);
-}
-
-.card-project:hover .icon {
-  background: rgba(255, 255, 255, 0.10);
-
-  border-color: rgba(255, 255, 255, 0.28);
-}
-
-.card-project .arrow {
-  color: #ffffff;
-}
-    /* Persiana Campaign Analysis */
-
-.card-persiana:hover {
-  border-color: #ef4444;
-
-  box-shadow:
-    0 12px 40px rgba(239, 68, 68, 0.18);
-}
-
-.card-persiana:hover .icon {
-  background: rgba(239, 68, 68, 0.12);
-
-  border-color: rgba(239, 68, 68, 0.3);
-}
-
-.card-persiana .arrow {
-  color: #ef4444;
-}
-    /* Employer Branding */
-
-.card-hr:hover {
-  border-color: #f8fafc;
-
-  box-shadow:
-    0 12px 40px rgba(248, 250, 252, 0.20);
-}
-
-.card-hr:hover .icon {
-  background: rgba(248, 250, 252, 0.10);
-
-  border-color: rgba(248, 250, 252, 0.35);
-}
-
-.card-hr .arrow {
-  color: #f8fafc;
-}
-    /* Persiana Media Report */
-
-.card-tvreport:hover {
-  border-color: #6366f1;
-
-  box-shadow:
-    0 12px 40px rgba(99, 102, 241, 0.18);
-}
-
-.card-tvreport:hover .icon {
-  background: rgba(99, 102, 241, 0.12);
-
-  border-color: rgba(99, 102, 241, 0.3);
-}
-
-.card-tvreport .arrow {
-  color: #6366f1;
-}
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
   </style>
 </head>
 
 <body>
+  <main class="page-shell">
+    <header class="hero">
+      <div class="hero-topline">
+        <div class="brand-mark" aria-label="رهنگاشت">
+          <span class="brand-symbol" aria-hidden="true"></span>
+          <span>تیم مشاورین مارکتینگ رهنگاشت</span>
+        </div>
+        <div class="hero-status">مرکز یکپارچه خروجی‌های پروژه</div>
+      </div>
 
-  <div class="container">
-
-    <header>
-      <h1>مرکز گزارش‌ها و داشبوردهای مدیریتی رهنگاشت</h1>
-
-      <p>
-        فضایی برای دسترسی به گزارش‌های پژوهشی، داشبوردهای مدیریتی، ابزارهای تعاملی و پروژه‌های توسعه‌یافته بر پایه داده، تحلیل و تصمیم‌سازی توسط تیم رهنگاشت
+      <span class="eyebrow">مرکز تصمیم‌سازی مدیریتی</span>
+      <h1>گزارش‌ها، داشبوردها و ابزارهای راهبردی برند بنیس</h1>
+      <p class="hero-description">
+        دسترسی یکپارچه به گزارش‌های پژوهشی، تحلیل‌های مدیریتی، داشبوردهای داده‌محور و نمونه‌های تعاملی توسعه‌یافته برای پشتیبانی از تصمیم‌گیری، برنامه‌ریزی و اجرای پروژه.
       </p>
+
     </header>
 
- <div class="grid">
+    <section aria-labelledby="reports-heading">
+      <div class="section-heading">
+        <div>
+          <h2 id="reports-heading">کتابخانه خروجی‌های پروژه</h2>
+          <p>برای مشاهده هر گزارش یا ابزار، کارت مربوط به آن را انتخاب کنید.</p>
+        </div>
+      </div>
 
-  <!-- تحلیل رقبا -->
-  <a href="./competitor analysis.html" class="card card-competitor">
-    <div class="icon">📊</div>
-    <h2>تحلیل رقبا</h2>
-    <p>بررسی سهم بازار، استراتژی ارتباطی، مزیت رقابتی و نقاط ضعف برندهای فعال صنعت کیک و شکلات.</p>
-    <div class="arrow">مشاهده خروجی <span>←</span></div>
-  </a>
+      <div class="grid">
+        <!-- تحلیل رقبا -->
+        <a href="./competitor analysis.html" class="card card-competitor">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 19V10"/><path d="M10 19V5"/><path d="M16 19v-7"/><path d="M22 19V8"/><path d="M2 19h22"/></svg>
+              </div>
+              <span class="category">تحلیل بازار</span>
+            </div>
+            <h3>تحلیل رقبا</h3>
+            <p>بررسی سهم بازار، استراتژی ارتباطی، مزیت رقابتی و نقاط ضعف برندهای فعال صنعت کیک و شکلات.</p>
+            <div class="card-action">
+              <span>مشاهده خروجی</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
 
-  <!-- استراتژی -->
-  <a href="./benis strategy.html" class="card card-strategy">
-    <div class="icon">🎯</div>
-    <h2>برنامه راهبردی برند</h2>
-    <p>طراحی مسیر رشد برند، اهداف توسعه بازار، استراتژی فروش و سناریوهای توسعه برای برند بنیس.</p>
-    <div class="arrow">مشاهده خروجی <span>←</span></div>
-  </a>
+        <!-- استراتژی -->
+        <a href="./benis strategy.html" class="card card-strategy">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3"/><path d="M22 12h-3"/><path d="M12 22v-3"/><path d="M2 12h3"/></svg>
+              </div>
+              <span class="category">راهبرد برند</span>
+            </div>
+            <h3>برنامه راهبردی برند</h3>
+            <p>طراحی مسیر رشد برند، اهداف توسعه بازار، استراتژی فروش و سناریوهای توسعه برای برند بنیس.</p>
+            <div class="card-action">
+              <span>مشاهده خروجی</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
 
-  <!-- داشبورد -->
-  <a href="./sales-dashboard.html" class="card card-dashboard">
-    <div class="icon">📈</div>
-    <h2>گزارش جامع فروش</h2>
-    <p>پایش و تحلیل داده‌های فروش، دسته‌بندی محصولات، فیلتر هوشمند و تحلیل پارتو بر اساس فایل اکسل فروش.</p>
-    <div class="arrow">مشاهده داشبورد <span>←</span></div>
-  </a>
+        <!-- داشبورد فروش -->
+        <a href="./sales-dashboard.html" class="card card-dashboard">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 16 4-5 4 3 5-7"/><path d="M18 7h2v2"/></svg>
+              </div>
+              <span class="category">فروش و عملکرد</span>
+            </div>
+            <h3>گزارش جامع فروش</h3>
+            <p>پایش و تحلیل داده‌های فروش، دسته‌بندی محصولات، فیلتر هوشمند و تحلیل پارتو بر اساس فایل اکسل فروش.</p>
+            <div class="card-action">
+              <span>مشاهده داشبورد</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
 
-  <!-- تحلیل سلامت برند بنیس -->
-  <a href="./benis_brand_report.html" class="card card-brand">
-    <div class="icon">🧠</div>
+        <!-- تحلیل سلامت برند -->
+        <a href="./benis_brand_report.html" class="card card-brand">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M9.5 4a3.5 3.5 0 0 0-3.4 4.3A4 4 0 0 0 7 16v1a3 3 0 0 0 3 3h2V4Z"/><path d="M14.5 4a3.5 3.5 0 0 1 3.4 4.3A4 4 0 0 1 17 16v1a3 3 0 0 1-3 3h-2"/><path d="M8 9h4"/><path d="M12 14h4"/></svg>
+              </div>
+              <span class="category">سلامت برند</span>
+            </div>
+            <h3>تحلیل سلامت برند بنیس</h3>
+            <p>بررسی جایگاه مصرف‌کننده و تحلیل وضعیت برند در بازار کیک، کلوچه و شیرینی بسته‌بندی ایران بر اساس داده‌های رفتاری و رقابتی.</p>
+            <div class="card-action">
+              <span>مشاهده خروجی</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
 
-    <h2>تحلیل سلامت برند بنیس</h2>
+        <!-- تحلیل جامع برند -->
+        <a href="./benis_plan.html" class="card card-analysis">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M9 5h6"/><path d="M9 9h6"/><path d="M9 13h4"/><path d="M5 3h14v18H5z"/><path d="m15 17 2 2 3-4"/></svg>
+              </div>
+              <span class="category">تحلیل یکپارچه</span>
+            </div>
+            <h3>تحلیل جامع برند بنیس</h3>
+            <p>تحلیل یکپارچه برند، داده‌های فروش و روندهای بازار برای استخراج بینش‌های کلیدی و پشتیبانی از تصمیم‌گیری‌های مدیریتی.</p>
+            <div class="card-action">
+              <span>مشاهده خروجی</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
 
-    <p>
-      بررسی جایگاه مصرف‌کننده و تحلیل وضعیت برند در بازار کیک، کلوچه و شیرینی بسته‌بندی ایران
-      بر اساس داده‌های رفتاری و رقابتی.
-    </p>
+        <!-- داشبورد تصمیم‌یار سرمایه‌گذاری رسانه‌ای -->
+        <a href="./benis_media_decision_dashboard.html" class="card card-media">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="m8 12 2-2 2 2 4-4"/></svg>
+              </div>
+              <span class="category">سرمایه‌گذاری رسانه</span>
+            </div>
+            <h3>داشبورد تصمیم‌یار رسانه‌ای</h3>
+            <p>مقایسه تبلیغات تلویزیونی پرشیانا با ۹ کانال جایگزین برای یافتن بهینه‌ترین استراتژی تخصیص بودجه تبلیغات.</p>
+            <div class="card-action">
+              <span>مشاهده خروجی</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
 
-    <div class="arrow">
-      مشاهده خروجی <span>←</span>
-    </div>
-  </a>
-<!-- تحلیل جامع برند بنیس -->
-<a
-  href="./benis_plan.html"
-  class="card card-analysis"
->
-  <div class="icon">📋</div>
+        <!-- ممیزی اینستاگرام -->
+        <a href="./benis-instagram-audit.html" class="card card-instagram">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M9 6h6"/><path d="M8 17h8"/><circle cx="12" cy="12" r="2.5"/></svg>
+              </div>
+              <span class="category">رسانه اجتماعی</span>
+            </div>
+            <h3>ممیزی اینستاگرام بنیس</h3>
+            <p>ارزیابی عملکرد محتوایی و تعاملات صفحه اینستاگرام بنیس تا پایان خرداد ۱۴۰۵ همراه با شناسایی فرصت‌های رشد.</p>
+            <div class="card-action">
+              <span>مشاهده خروجی</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
 
-  <h2>تحلیل جامع برند بنیس</h2>
+        <!-- گیمیفیکیشن دو بعدی -->
+        <a href="./game-benis.html" class="card card-game">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 8h8a5 5 0 0 1 4.7 6.7l-1 2.8a2.2 2.2 0 0 1-3.7.8L14.5 17h-5L8 18.3a2.2 2.2 0 0 1-3.7-.8l-1-2.8A5 5 0 0 1 8 8Z"/><path d="M8 12v4"/><path d="M6 14h4"/><path d="M16 13h.01"/><path d="M18 15h.01"/></svg>
+              </div>
+              <span class="category">نمونه تعاملی</span>
+            </div>
+            <h3>گیمیفیکیشن دو بعدی برند بنیس</h3>
+            <p>نمونه اولیه یک بازی تعاملی مبتنی بر HTML برای ارزیابی ظرفیت‌های گیمیفیکیشن، کمپین‌های امتیازی، کدهای تخفیف و لیدربورد کاربران.</p>
+            <div class="card-action">
+              <span>اجرای نمونه</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
 
-  <p>
-    تحلیل یکپارچه برند، داده‌های فروش و روندهای بازار برای استخراج
-    بینش‌های کلیدی و پشتیبانی از تصمیم‌گیری‌های مدیریتی.
-  </p>
+        <!-- گیمیفیکیشن سه‌بعدی -->
+        <a href="./benis-torta-game.html" class="card card-game">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9Z"/><path d="m4.5 7.7 7.5 4.1 7.5-4.1"/><path d="M12 12v9"/></svg>
+              </div>
+              <span class="category">تجربه سه‌بعدی</span>
+            </div>
+            <h3>گیمیفیکیشن سه‌بعدی برند</h3>
+            <p>نمونه اولیه یک تجربه تعاملی سه‌بعدی برای برند تورتا بنیس با قابلیت توسعه به کمپین‌های نمایشگاهی، کدهای تخفیف، مسابقات امتیازی و لیدربورد کاربران.</p>
+            <div class="card-action">
+              <span>اجرای نمونه</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
 
-  <div class="arrow">
-    مشاهده خروجی
-    <span>←</span>
-  </div>
-</a>
-   <!-- داشبورد تصمیم‌یار سرمایه‌گذاری رسانه‌ای -->
-<a
-  href="./benis_media_decision_dashboard.html"
-  class="card card-media"
->
-  <div class="icon">📺</div>
+        <!-- نقشه راه بازاریابی محتوا -->
+        <a href="./benis-content-roadmap.html" class="card card-roadmap">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 5h5l2 3h9v11H4z"/><path d="M8 13h8"/><path d="M12 10v6"/></svg>
+              </div>
+              <span class="category">بازاریابی محتوا</span>
+            </div>
+            <h3>نقشه راه بازاریابی محتوا</h3>
+            <p>استراتژی محتوا، تقویم ۶۰ روزه چندکاناله، KPI فعالیت‌ها و چارچوب تصمیم‌گیری برای اجرای برنامه بازاریابی محتوایی بنیس.</p>
+            <div class="card-action">
+              <span>مشاهده نقشه راه</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
 
-  <h2>داشبورد تصمیم‌یار رسانه‌ای</h2>
+        <!-- مسیر پروژه برند بنیس -->
+        <a href="./benis-roadmap.html" class="card card-project">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M5 21 9 3"/><path d="m15 3 4 18"/><path d="M12 5v3"/><path d="M12 11v3"/><path d="M12 17v3"/></svg>
+              </div>
+              <span class="category">مدیریت پروژه</span>
+            </div>
+            <h3>مسیر پروژه برند بنیس</h3>
+            <p>گزارش روند اجرای پروژه، مراحل انجام‌شده، خروجی‌های هر فاز و مسیر حرکت از عارضه‌یابی تا طراحی راهکارهای اجرایی برند بنیس.</p>
+            <div class="card-action">
+              <span>مشاهده گزارش</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
 
-  <p>
-    مقایسه تبلیغات تلویزیونی پرشیانا با ۹ کانال جایگزین
-    برای یافتن بهینه‌ترین استراتژی تخصیص بودجه تبلیغات.
-  </p>
+        <!-- تحلیل کمپین پرشیانا و اینستاگرام -->
+        <a href="./persiana_instagram_benis.html" class="card card-persiana">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M6 18a12 12 0 0 1 12-12"/><path d="M6 13a7 7 0 0 1 7-7"/><circle cx="6" cy="18" r="2"/><path d="M18 10v8"/><path d="M15 15h6"/></svg>
+              </div>
+              <span class="category">تحلیل کمپین</span>
+            </div>
+            <h3>تحلیل کمپین پرشیانا و اینستاگرام</h3>
+            <p>ارزیابی اثربخشی کمپین تلویزیونی بنیس، ضرورت نوسازی تیزر و طراحی نقشه راه یکپارچه میان تبلیغات پرشیانا و اینفلوئنسرهای اینستاگرام.</p>
+            <div class="card-action">
+              <span>مشاهده گزارش</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
 
-  <div class="arrow">
-    مشاهده خروجی
-    <span>←</span>
-  </div>
-</a>
-<!-- ممیزی اینستاگرام بنیس -->
-<a
-  href="./benis-instagram-audit.html"
-  class="card card-instagram"
->
-  <div class="icon">📱</div>
+        <!-- نقشه راه برند کارفرمایی -->
+        <a href="./Benis_HR_Employer_Brand_Roadmap_FA.html" class="card card-hr">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2"/><path d="M16 14a5 5 0 0 1 5 5"/></svg>
+              </div>
+              <span class="category">سرمایه انسانی</span>
+            </div>
+            <h3>نقشه راه برند کارفرمایی</h3>
+            <p>از آگهی استخدام تا تجربه کامل کارکنان؛ چارچوبی برای جذب، انتخاب، ورود، توسعه و نگهداشت سرمایه انسانی همسو با برند «بنیس؛ اصالتی که ادامه دارد».</p>
+            <div class="card-action">
+              <span>مشاهده خروجی</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
 
-  <h2>ممیزی اینستاگرام بنیس</h2>
+        <!-- گزارش بهینه‌سازی رسانه پرشیانا -->
+        <a href="./benis_persiana_media_report.html" class="card card-tvreport">
+          <span class="new-badge">جدید</span>
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="m8 2 4 3 4-3"/><path d="M7 14h4"/><path d="M7 10h10"/><path d="M15 14h2"/></svg>
+              </div>
+              <span class="category">برنامه‌ریزی رسانه</span>
+            </div>
+            <h3>گزارش بهینه‌سازی رسانه</h3>
+            <p>تحلیل اثربخشی تبلیغات تلویزیونی بنیس در شبکه پرشیانا و ارائه چارچوبی برای برنامه‌ریزی رسانه بر پایه مخاطب، به‌جای صرفاً افزایش تعداد پخش.</p>
+            <div class="card-action">
+              <span>مشاهده گزارش</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
 
-  <p>
-    ارزیابی عملکرد محتوایی و تعاملات صفحه اینستاگرام بنیس
-    تا پایان خرداد ۱۴۰۵ همراه با شناسایی فرصت‌های رشد.
-  </p>
-
-  <div class="arrow">
-    مشاهده خروجی
-    <span>←</span>
-  </div>
-</a>
-
-<!-- نمونه گیمیفیکیشن برند بنیس -->
-<a
-  href="./game-benis.html"
-  class="card card-game"
->
-  <div class="icon">🎮</div>
-
-  <h2> گیمیفیکیشن  دو بعدی برند بنیس</h2>
-
-  <p>
-    نمونه اولیه یک بازی تعاملی مبتنی بر HTML برای ارزیابی ظرفیت‌های
-    گیمیفیکیشن، کمپین‌های امتیازی، کدهای تخفیف و لیدربورد کاربران.
-  </p>
-
-  <div class="arrow">
-    اجرای نمونه
-    <span>←</span>
-  </div>
-</a>
-   <!-- نمونه گیمیفیکیشن سه‌بعدی برند بنیس -->
-<a
-  href="./benis-torta-game.html"
-  class="card card-game"
->
- <div class="icon">🚀</div>
-
-  <h2>گیمیفیکیشن سه‌بعدی برند</h2>
- <p>
-  نمونه اولیه یک تجربه تعاملی سه‌بعدی برای برند تورتا بنیس
-  با قابلیت توسعه به کمپین‌های نمایشگاهی، کدهای تخفیف،
-  مسابقات امتیازی و لیدربورد کاربران.
-</p>
-  <div class="arrow">
-    اجرای نمونه
-    <span>←</span>
-  </div>
-</a>
-   <!-- نقشه راه بازاریابی محتوا -->
-<a
-  href="./benis-content-roadmap.html"
-  class="card card-roadmap"
->
-  <div class="icon">🗺️</div>
-
-  <h2>نقشه راه بازاریابی محتوا</h2>
-
-  <p>
-    استراتژی محتوا، تقویم ۶۰ روزه چندکاناله، KPI فعالیت‌ها
-    و چارچوب تصمیم‌گیری برای اجرای برنامه بازاریابی محتوایی بنیس.
-  </p>
-
-  <div class="arrow">
-    مشاهده نقشه راه
-    <span>←</span>
-  </div>
-</a>
-</div>
-    <!-- مسیر پروژه برند بنیس -->
-<a
-  href="./benis-roadmap.html"
-  class="card card-project"
->
-  <div class="icon">🛣️</div>
-
-  <h2>مسیر پروژه برند بنیس</h2>
-
-  <p>
-    گزارش روند اجرای پروژه، مراحل انجام‌شده، خروجی‌های هر فاز
-    و مسیر حرکت از عارضه‌یابی تا طراحی راهکارهای اجرایی برند بنیس.
-  </p>
-
-  <div class="arrow">
-    مشاهده گزارش
-    <span>←</span>
-  </div>
-</a>
-    <!-- تحلیل کمپین پرشیانا و اینستاگرام -->
-<a
-  href="./persiana_instagram_benis.html"
-  class="card card-persiana"
->
-  <div class="icon">📡</div>
-
-  <h2>تحلیل کمپین پرشیانا و اینستاگرام</h2>
-
-  <p>
-    ارزیابی اثربخشی کمپین تلویزیونی بنیس، ضرورت نوسازی تیزر و
-    طراحی نقشه راه یکپارچه میان تبلیغات پرشیانا و اینفلوئنسرهای اینستاگرام.
-  </p>
-
-  <div class="arrow">
-    مشاهده گزارش
-    <span>←</span>
-  </div>
-</a>
-    <!-- نقشه راه برند کارفرمایی بنیس -->
-<a
-  href="./Benis_HR_Employer_Brand_Roadmap_FA.html"
-  class="card card-hr"
->
-  <div class="icon">👥</div>
-
-  <h2>نقشه راه برند کارفرمایی</h2>
-
-  <p>
-    از آگهی استخدام تا تجربه کامل کارکنان؛
-    چارچوبی برای جذب، انتخاب، ورود، توسعه و نگهداشت
-    سرمایه انسانی همسو با برند «بنیس؛ اصالتی که ادامه دارد».
-  </p>
-
-  <div class="arrow">
-    مشاهده خروجی
-    <span>←</span>
-  </div>
-</a>
-    <!-- گزارش بهینه‌سازی رسانه پرشیانا -->
-<a
-  href="./benis_persiana_media_report.html"
-  class="card card-tvreport new"
->
-  <div class="icon">📺</div>
-
-  <h2>گزارش بهینه‌سازی رسانه</h2>
-
-  <p>
-    تحلیل اثربخشی تبلیغات تلویزیونی بنیس در شبکه پرشیانا و
-    ارائه چارچوبی برای برنامه‌ریزی رسانه بر پایه مخاطب،
-    به‌جای صرفاً افزایش تعداد پخش.
-  </p>
-
-  <div class="arrow">
-    مشاهده گزارش
-    <span>←</span>
-  </div>
-</a>
     <footer>
-      توسعه یافته توسط تیم مشاورین مارکتینگ رهنگاشت ©
-      <br>
-      خروجی رسمی فاز عارضه‌یابی و تدوین ساختار برنامه‌ریزی
+      <span><span class="footer-brand">تیم مشاورین مارکتینگ رهنگاشت</span> © تمامی حقوق محفوظ است.</span>
+      <span>خروجی رسمی فاز عارضه‌یابی و تدوین ساختار برنامه‌ریزی</span>
     </footer>
-
-  </div>
-
+  </main>
 </body>
 </html>
