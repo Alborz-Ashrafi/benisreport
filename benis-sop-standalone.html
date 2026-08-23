@@ -1,0 +1,2076 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>S&OP Benis</title>
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9IiNiOTJmMmIiLz4KICA8cGF0aCBkPSJNMTcgMThoMTZjOCAwIDE0IDYgMTQgMTRzLTYgMTQtMTQgMTRIMTdWMTh6bTEwIDl2MTBoNmMzIDAgNS0yIDUtNXMtMi01LTUtNWgtNnoiIGZpbGw9IiNmZmYiLz4KPC9zdmc+Cg==" type="image/svg+xml">
+    <!-- IRANSans: از assets/fonts بارگذاری می‌شود؛ در نبود فایل، local() و سپس Vazirmatn جایگزین است -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" media="print" onload="this.media='all'">
+    <style>
+/* ============================================================
+   Benis S&OP — Design System "Trust Teal"
+   Primary: Rahnegasht teal | Accent: Benis yellow
+   Font: IRANSansX/IRANSans (local/assets) → Vazirmatn → Tahoma
+   ============================================================ */
+
+/* ---------- Fonts ---------- */
+@font-face {
+  font-family: "IRANSansX";
+  src: local("IRANSansX"), local("IRANSansX Regular"), local("IRANSans"),
+    local("IRANSans(FaNum)"), local("Iran Sans"),
+    url("../fonts/IRANSansX-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANSansX";
+  src: local("IRANSansX Medium"), local("IRANSans Medium"),
+    url("../fonts/IRANSansX-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANSansX";
+  src: local("IRANSansX DemiBold"), local("IRANSans DemiBold"),
+    url("../fonts/IRANSansX-DemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANSansX";
+  src: local("IRANSansX Bold"), local("IRANSans Bold"), local("IRANSans(FaNum) Bold"),
+    url("../fonts/IRANSansX-Bold.woff2") format("woff2");
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Tokens ---------- */
+:root {
+  color-scheme: light;
+
+  /* brand */
+  --primary: #0f766e;
+  --primary-strong: #0b5d57;
+  --primary-soft: #d7f0ec;
+  --secondary: #14b8a6;
+  --accent: #ffcb05; /* Benis yellow */
+  --accent-ink: #4a3b00;
+  --rah-teal: #2cb1b5;
+  --rah-gray: #aebdc3;
+
+  /* surfaces */
+  --bg: #f6faf9;
+  --surface: #ffffff;
+  --surface-2: #eef4f3;
+  --ink: #12312d;
+  --ink-2: #1d2528;
+  --muted: #5b6f6c;
+  --line: #dbe6e3;
+  --line-strong: #b9cdc9;
+
+  /* semantic */
+  --green: #1e7f5c;
+  --blue: #21618f;
+  --amber: #b07a12;
+  --teal: #0f766e;
+  --danger: #c03530;
+  --warn: #d9901f;
+
+  /* elevation */
+  --shadow-1: 0 1px 2px rgba(18, 49, 45, 0.06), 0 4px 12px rgba(18, 49, 45, 0.06);
+  --shadow-2: 0 6px 18px rgba(18, 49, 45, 0.1), 0 2px 6px rgba(18, 49, 45, 0.06);
+  --shadow-3: 0 18px 44px rgba(18, 49, 45, 0.16);
+
+  /* shape & rhythm */
+  --radius-s: 10px;
+  --radius: 14px;
+  --radius-l: 20px;
+  --header: 76px;
+
+  /* motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 180ms;
+  --dur: 280ms;
+  --dur-slow: 480ms;
+
+  --font: "IRANSansX", "IRANSans", "Iran Sans", "Vazirmatn", "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header) + 18px);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button, input, select { font: inherit; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 3px solid var(--secondary); outline-offset: 2px; border-radius: 6px; }
+
+/* ---------- Entrance motion (CSS-driven, always ends visible) ----------
+   انیمیشن روی load اجرا می‌شود و با fill-mode: both همیشه به حالت نمایان می‌رسد؛
+   کاملاً مستقل از scroll / IntersectionObserver / setTimeout تا هیچ بخشی خالی نماند. */
+.reveal {
+  animation: revealIn var(--dur-slow) var(--ease-out) both;
+  animation-delay: var(--d, 0ms);
+  will-change: opacity, transform;
+}
+@keyframes revealIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: none; }
+}
+/* .in-view برای سازگاری عقب‌رو نگه داشته شده (بی‌اثر) */
+.reveal.in-view { opacity: 1; transform: none; }
+
+html.no-anim .reveal { animation: none !important; opacity: 1 !important; transform: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  min-height: var(--header);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px;
+  padding: 10px clamp(16px, 3vw, 40px);
+  background: rgba(255, 255, 255, 0.86);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(14px) saturate(1.2);
+}
+
+.brand { display: inline-flex; align-items: center; gap: 12px; white-space: nowrap; }
+
+.brand-logo { display: block; }
+.brand-logo.benis { width: 46px; height: 46px; border-radius: 11px; box-shadow: var(--shadow-1); }
+.brand-logo.rahnegasht { width: 54px; height: 42px; aspect-ratio: 329 / 256; }
+
+.brand-text { display: grid; line-height: 1.35; }
+.brand-text strong { font-size: 1.02rem; font-weight: 800; color: var(--ink); }
+.brand-text small { color: var(--muted); font-size: 0.72rem; }
+
+.consultant-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px 4px 4px;
+  border-radius: var(--radius-s);
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.consultant-brand:hover { background: var(--surface-2); }
+.consultant-text { display: grid; line-height: 1.3; text-align: left; direction: ltr; }
+.consultant-text strong { font-size: 0.72rem; letter-spacing: 0.16em; color: var(--rah-teal); font-weight: 800; }
+.consultant-text small { font-size: 0.56rem; letter-spacing: 0.22em; color: var(--rah-gray); font-weight: 700; }
+
+.site-nav { display: flex; justify-content: center; gap: 2px; flex-wrap: wrap; }
+.site-nav a {
+  position: relative;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+}
+.site-nav a:hover, .site-nav a:focus-visible { background: var(--primary-soft); color: var(--primary-strong); }
+.site-nav a.active { background: var(--primary); color: #fff; font-weight: 700; }
+
+.header-actions { display: inline-flex; align-items: center; gap: 8px; }
+
+.icon-button, .menu-toggle {
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: var(--radius-s);
+  min-width: 42px;
+  height: 42px;
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.icon-button:hover, .menu-toggle:hover { border-color: var(--primary); color: var(--primary); box-shadow: var(--shadow-1); }
+.icon-button:active, .menu-toggle:active { transform: scale(0.96); }
+.menu-toggle { display: none; }
+
+/* ---------- Sections ---------- */
+.section-band { padding: 84px clamp(18px, 5vw, 72px); }
+.muted-band { background: var(--surface-2); }
+
+.section-heading { max-width: 860px; margin-bottom: 34px; }
+.section-heading p:not(.eyebrow) { color: var(--muted); margin-bottom: 0; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 14px;
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--primary-soft);
+}
+
+h1, h2, h3, p { overflow-wrap: anywhere; }
+h1 { margin: 0; font-size: clamp(2rem, 4.6vw, 4.2rem); line-height: 1.25; font-weight: 900; }
+h2 { margin: 0; font-size: clamp(1.5rem, 2.8vw, 2.4rem); line-height: 1.35; font-weight: 800; }
+h3 { margin: 0 0 8px; font-size: 1.05rem; line-height: 1.5; font-weight: 700; }
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: calc(100svh - var(--header));
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+  gap: clamp(28px, 5vw, 70px);
+  align-items: center;
+  padding-top: 42px;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(900px 420px at 85% -10%, rgba(20, 184, 166, 0.12), transparent 60%),
+    radial-gradient(700px 380px at 8% 110%, rgba(255, 203, 5, 0.1), transparent 55%);
+}
+
+.hero-copy { max-width: 760px; }
+.hero-subtitle { max-width: 620px; font-size: 1.2rem; color: var(--muted); }
+.attribution { font-weight: 700; color: var(--primary-strong); }
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 28px; }
+
+.primary-action, .filter-chip, .data-filter, .tab-button, .scenario-preset {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  padding: 10px 18px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+.filter-chip:hover, .data-filter:hover, .scenario-preset:hover, .tab-button:hover {
+  border-color: var(--primary);
+  color: var(--primary-strong);
+  box-shadow: var(--shadow-1);
+}
+.primary-action {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+  font-weight: 800;
+  padding: 12px 24px;
+  box-shadow: 0 8px 20px rgba(15, 118, 110, 0.3);
+}
+.primary-action:hover { background: var(--primary-strong); transform: translateY(-1px); }
+.primary-action:active { transform: translateY(0) scale(0.98); }
+
+.tab-button.active, .filter-chip.active, .data-filter.active, .scenario-preset.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgba(15, 118, 110, 0.28);
+}
+
+.status-pill, .sample-badge, .unit-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 4px 10px;
+  background: #fff7d6;
+  color: var(--accent-ink);
+  border: 1px solid #ecd35e;
+  font-size: 0.74rem;
+  font-weight: 700;
+  vertical-align: middle;
+}
+.sample-badge::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 2px rgba(255, 203, 5, 0.35);
+}
+.status-pill { background: var(--surface); color: var(--muted); border-color: var(--line); }
+.unit-tag { background: var(--primary-soft); color: var(--primary-strong); border-color: #b5ded8; }
+
+.hero-map { min-height: 420px; display: grid; align-items: center; }
+
+.mini-flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.mini-node {
+  min-height: 78px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 10px;
+  border-radius: var(--radius);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.88rem;
+  box-shadow: var(--shadow-2);
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+}
+.mini-node:hover { transform: translateY(-4px); box-shadow: var(--shadow-3); }
+
+.mini-node.demand, .stage-node.demand { background: linear-gradient(150deg, #24906c, var(--green)); }
+.mini-node.supply, .stage-node.supply { background: linear-gradient(150deg, #2b74ad, var(--blue)); }
+.mini-node.finance, .stage-node.finance { background: linear-gradient(150deg, #c98d1c, var(--amber)); }
+.mini-node.control, .stage-node.control { background: linear-gradient(150deg, #13887e, var(--teal)); }
+
+/* ---------- Cards ---------- */
+.grid { display: grid; gap: 16px; }
+.cards-grid { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+
+.info-card, .meeting-card, .chart-card, .result-card, .formula-grid article {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow-1);
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out);
+}
+.info-card:hover, .meeting-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-2); border-color: var(--line-strong); }
+.info-card p, .meeting-card p, .formula-grid p { color: var(--muted); margin: 8px 0 0; }
+
+.metric-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 20px; }
+.metric-item {
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  border-top: 3px solid var(--secondary);
+  box-shadow: var(--shadow-1);
+}
+.metric-item strong { display: block; font-size: 1.9rem; font-weight: 900; color: var(--primary-strong); font-variant-numeric: tabular-nums; }
+
+.two-column { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-bottom: 20px; }
+.two-column > div { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow-1); }
+
+.check-list { list-style: none; margin: 0; padding: 0; }
+.check-list li { position: relative; padding: 8px 30px 8px 0; }
+.check-list li::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 15px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--green) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>') center/10px no-repeat;
+}
+.check-list.muted li::before {
+  background: var(--danger) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>') center/9px no-repeat;
+}
+
+.accordion { display: grid; gap: 10px; }
+details {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  padding: 12px 18px;
+  transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+}
+details[open] { border-color: var(--primary); box-shadow: var(--shadow-1); }
+details p { margin: 8px 0 4px; color: var(--muted); }
+summary { cursor: pointer; font-weight: 700; list-style: none; position: relative; padding-left: 26px; }
+summary::-webkit-details-marker { display: none; }
+summary::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border-left: 2.5px solid var(--primary);
+  border-bottom: 2.5px solid var(--primary);
+  transform: translateY(-70%) rotate(-45deg);
+  transition: transform var(--dur) var(--ease-out);
+}
+details[open] summary::after { transform: translateY(-40%) rotate(135deg); }
+
+.tabs, .filter-bar, .scenario-buttons { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+
+/* ============================================================
+   ROADMAP — خط شروع تا پایان
+   ============================================================ */
+.roadmap-wrap { position: relative; }
+
+.roadmap-rail {
+  position: relative;
+  display: grid;
+  grid-template-columns: 132px 1fr 132px;
+  gap: 18px;
+  align-items: start;
+}
+
+.roadmap-line {
+  position: absolute;
+  inset-inline: 20px;
+  top: 108px;
+  height: 6px;
+  border-radius: 999px;
+  background: repeating-linear-gradient(90deg, var(--line-strong) 0 10px, transparent 10px 18px);
+  z-index: 0;
+}
+.roadmap-line i {
+  display: block;
+  height: 100%;
+  width: 0%;
+  border-radius: inherit;
+  background: linear-gradient(270deg, var(--secondary), var(--primary));
+  box-shadow: 0 0 12px rgba(20, 184, 166, 0.5);
+  transition: width 900ms var(--ease-inout);
+}
+
+.roadmap-terminal {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 4px;
+  padding: 16px 10px;
+  margin-top: 68px;
+  border-radius: var(--radius);
+  border: 2px dashed var(--line-strong);
+  background: var(--surface);
+  color: var(--muted);
+}
+.roadmap-terminal svg { color: var(--primary); }
+.roadmap-terminal strong { font-size: 0.92rem; color: var(--ink); }
+.roadmap-terminal small { font-size: 0.72rem; }
+.roadmap-terminal.start { border-color: var(--green); }
+.roadmap-terminal.start svg { color: var(--green); }
+.roadmap-terminal.start::after {
+  content: "شما اینجا هستید";
+  position: absolute;
+  top: -14px;
+  right: 50%;
+  transform: translateX(50%);
+  background: var(--green);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+  box-shadow: var(--shadow-1);
+  animation: bob 2.6s var(--ease-inout) infinite;
+}
+@keyframes bob { 0%, 100% { transform: translateX(50%) translateY(0); } 50% { transform: translateX(50%) translateY(-5px); } }
+.roadmap-terminal.end { border-color: var(--accent); background: #fffdf2; }
+.roadmap-terminal.end svg { color: var(--amber); }
+
+.roadmap-milestones {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.milestone {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: center;
+}
+.milestone .dot {
+  order: 2;
+  width: 26px;
+  height: 26px;
+  margin: 8px 0;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 4px solid var(--line-strong);
+  box-shadow: 0 0 0 4px var(--bg);
+  transition: border-color var(--dur) var(--ease-out), transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+}
+.milestone .phase-chip {
+  order: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px 12px;
+  margin-bottom: 6px;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.milestone .m-card {
+  order: 3;
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 12px;
+  box-shadow: var(--shadow-1);
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out);
+}
+.milestone .m-card strong { display: block; font-size: 0.92rem; line-height: 1.5; }
+.milestone .m-card .m-range { display: block; font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
+.milestone .m-card .m-caption {
+  display: block;
+  font-size: 0.74rem;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line);
+}
+
+.milestone:hover .m-card { transform: translateY(-4px); box-shadow: var(--shadow-2); }
+.milestone:hover .dot { transform: scale(1.12); }
+
+.milestone.active .dot {
+  border-color: var(--primary);
+  background: var(--secondary);
+  transform: scale(1.2);
+  box-shadow: 0 0 0 4px var(--bg), 0 0 0 9px rgba(20, 184, 166, 0.18);
+}
+.milestone.active .phase-chip { background: var(--primary); border-color: var(--primary); color: #fff; }
+.milestone.active .m-card { border-color: var(--primary); box-shadow: var(--shadow-2); }
+
+.milestone.passed .dot { border-color: var(--secondary); }
+
+.roadmap-hint { color: var(--muted); font-size: 0.85rem; margin: 18px 0 12px; display: flex; align-items: center; gap: 8px; }
+.roadmap-hint::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--secondary); }
+
+.roadmap-panel { position: relative; }
+.roadmap-detail {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-right: 5px solid var(--primary);
+  border-radius: var(--radius);
+  padding: 26px;
+  box-shadow: var(--shadow-2);
+}
+.roadmap-detail.swap { animation: panelIn var(--dur-slow) var(--ease-out); }
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.roadmap-detail .why-box {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: start;
+  background: var(--primary-soft);
+  border: 1px solid #b5ded8;
+  border-radius: var(--radius-s);
+  padding: 14px 16px;
+  margin: 14px 0 4px;
+}
+.roadmap-detail .why-box svg { color: var(--primary); margin-top: 3px; }
+.roadmap-detail .why-box p { margin: 0; color: var(--primary-strong); font-size: 0.92rem; }
+.roadmap-detail .why-box strong { display: block; font-size: 0.8rem; margin-bottom: 2px; }
+.roadmap-detail .gives-line { color: var(--green); font-weight: 700; font-size: 0.9rem; margin: 10px 0 0; }
+
+.roadmap-detail dl, .detail-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 18px 0 0;
+}
+.roadmap-detail dl > div, .detail-list > div { border-top: 2px solid var(--surface-2); padding-top: 10px; }
+dt { font-weight: 800; color: var(--ink); font-size: 0.86rem; }
+dd { margin: 2px 0 0; color: var(--muted); font-size: 0.92rem; }
+
+/* ---------- Process flow ---------- */
+.process-band { background: linear-gradient(180deg, #fdfefd, var(--bg)); }
+
+.process-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.8fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.process-flow { display: grid; grid-template-columns: repeat(5, minmax(130px, 1fr)); gap: 12px; }
+
+.stage-node {
+  min-height: 116px;
+  border: 3px solid transparent;
+  border-radius: var(--radius);
+  color: #fff;
+  cursor: pointer;
+  padding: 14px;
+  text-align: right;
+  box-shadow: var(--shadow-1);
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out);
+}
+.stage-node:hover { transform: translateY(-3px); box-shadow: var(--shadow-2); }
+.stage-node:active { transform: scale(0.98); }
+.stage-node small {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.24);
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+.stage-node span { font-weight: 800; font-size: 0.92rem; }
+.stage-node.active { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 10px 26px rgba(18, 49, 45, 0.22); }
+
+.stage-detail {
+  position: sticky;
+  top: calc(var(--header) + 18px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow-2);
+}
+.stage-detail.swap { animation: panelIn var(--dur) var(--ease-out); }
+.detail-list > div { border-top: 1px solid var(--surface-2); padding-top: 10px; }
+
+/* ---------- Cycle & meetings ---------- */
+.cycle-timeline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 20px; }
+.cycle-timeline span {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  padding: 16px 16px 16px 12px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-align: center;
+  border-top: 3px solid var(--secondary);
+  box-shadow: var(--shadow-1);
+}
+
+.meeting-grid { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.meeting-card p { margin: 6px 0 0; font-size: 0.9rem; }
+
+.time-fence {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1.6fr;
+  margin-top: 24px;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+}
+.fence-zone { min-height: 96px; padding: 18px; color: #fff; }
+.fence-zone span { display: block; font-size: 1.2rem; font-weight: 900; direction: ltr; text-align: right; }
+.fence-zone small { opacity: 0.92; }
+.frozen { background: linear-gradient(135deg, #d24540, var(--danger)); }
+.slushy { background: linear-gradient(135deg, #e8a331, var(--warn)); }
+.flexible { background: linear-gradient(135deg, #2b9a72, var(--green)); }
+
+/* ---------- Calculator ---------- */
+.calculator-layout { display: grid; grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr); gap: 18px; align-items: start; }
+
+.scenario-form { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow-1); }
+.scenario-form label { display: grid; gap: 8px; margin-bottom: 20px; }
+.scenario-form label span { font-weight: 700; font-size: 0.92rem; }
+.scenario-form output { color: var(--primary-strong); font-weight: 900; font-variant-numeric: tabular-nums; }
+
+input[type="range"] { width: 100%; accent-color: var(--primary); cursor: pointer; height: 28px; }
+
+.result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+.result-card { border-top: 3px solid var(--primary); }
+.result-card span { color: var(--muted); font-size: 0.84rem; }
+.result-card strong {
+  display: block;
+  font-size: 1.45rem;
+  font-weight: 900;
+  margin: 6px 0;
+  font-variant-numeric: tabular-nums;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.result-card.flash strong { color: var(--secondary); }
+.scenario-note { grid-column: 1 / -1; color: var(--muted); margin: 0; font-size: 0.86rem; }
+
+.formula-grid, .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 20px; }
+
+code {
+  direction: ltr;
+  unicode-bidi: embed;
+  display: block;
+  background: #10312d;
+  color: #d7f0ec;
+  padding: 12px;
+  border-radius: var(--radius-s);
+  font-family: "Cascadia Code", Consolas, "Courier New", monospace;
+  font-size: 0.86rem;
+  overflow-x: auto;
+}
+
+/* ---------- Charts ---------- */
+.chart-card h3 { padding-bottom: 10px; border-bottom: 1px solid var(--surface-2); margin-bottom: 14px; }
+
+.bar-chart { display: grid; gap: 12px; }
+.bar-row { display: grid; grid-template-columns: 34px 1fr 1fr; gap: 8px; align-items: center; font-size: 0.82rem; }
+.bar-row span { color: var(--muted); font-weight: 700; }
+
+.bar-bg, .capacity-track {
+  position: relative;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.bar-bg i, .capacity-track i {
+  display: block;
+  height: 100%;
+  width: var(--w, 0%); /* حالت پایان همیشه معتبر است — بدون وابستگی به JS */
+  border-radius: inherit;
+  animation: growBar 900ms var(--ease-inout) both;
+}
+@keyframes growBar { from { width: 0; } to { width: var(--w, 0%); } }
+html.no-anim .bar-bg i, html.no-anim .capacity-track i { animation: none !important; }
+
+.demand-bar, .dot.demand { background: linear-gradient(90deg, var(--primary), var(--secondary)); }
+.supply-bar, .dot.supply { background: linear-gradient(90deg, #7c8f3d, var(--green)); }
+
+.chart-legend { color: var(--muted); font-size: 0.84rem; display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin: 0 6px; }
+
+.capacity-bars { display: grid; gap: 14px; }
+.capacity-bars > div { display: grid; grid-template-columns: 72px 1fr 54px; align-items: center; gap: 10px; font-size: 0.86rem; }
+.capacity-bars strong { font-variant-numeric: tabular-nums; }
+.capacity-track { height: 18px; }
+.capacity-track::after {
+  /* باند سالم ۷۵-۸۵٪ */
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 75%;
+  width: 10%;
+  background: rgba(30, 127, 92, 0.14);
+}
+.capacity-track i { background: linear-gradient(90deg, #2b9a72, var(--green)); }
+.capacity-track i.warn { background: linear-gradient(90deg, #e8a331, var(--warn)); }
+.capacity-track i.danger { background: linear-gradient(90deg, #d24540, var(--danger)); }
+
+/* ---------- Governance ---------- */
+.role-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.role-cloud span {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-size: 0.88rem;
+  transition: border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+.role-cloud span:hover { border-color: var(--primary); color: var(--primary-strong); }
+
+.table-filter { display: inline-grid; gap: 6px; margin-bottom: 14px; font-weight: 700; font-size: 0.9rem; }
+
+select, input[type="search"] {
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  background: var(--surface);
+  padding: 6px 12px;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+select:hover, input[type="search"]:hover { border-color: var(--primary); }
+
+.responsive-table { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow-1); }
+table { width: 100%; border-collapse: collapse; min-width: 760px; }
+th, td { padding: 13px 14px; border-bottom: 1px solid var(--line); text-align: right; vertical-align: top; font-size: 0.92rem; }
+th { background: var(--primary-soft); color: var(--primary-strong); font-weight: 800; position: sticky; top: 0; }
+tbody tr { transition: background var(--dur-fast) var(--ease-out); }
+tbody tr:hover { background: #f4faf8; }
+tbody tr:last-child td { border-bottom: 0; }
+
+.escalation-ladder { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 22px; align-items: end; }
+.escalation-ladder span {
+  position: relative;
+  display: grid;
+  place-items: center;
+  gap: 4px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-weight: 800;
+  font-size: 0.9rem;
+  padding: 14px 10px;
+}
+.escalation-ladder span:nth-child(1) { min-height: 74px; border-radius: 0 var(--radius) var(--radius) 0; }
+.escalation-ladder span:nth-child(2) { min-height: 94px; background: #f2f9f7; }
+.escalation-ladder span:nth-child(3) { min-height: 114px; background: var(--primary-soft); }
+.escalation-ladder span:nth-child(4) { min-height: 134px; background: var(--primary); color: #fff; border-color: var(--primary); border-radius: var(--radius) 0 0 var(--radius); }
+.escalation-ladder small {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 900;
+}
+
+/* ---------- KPI / decisions ---------- */
+.kpi-card { border-top: 3px solid var(--secondary); }
+.kpi-card code { margin: 10px 0; font-size: 0.8rem; }
+
+.decision-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+.decision-list article {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: start;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow-1);
+}
+.decision-list article p { margin: 0; }
+.decision-list article .sample-badge { grid-column: 2; justify-self: start; }
+.decision-list small {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--primary-soft);
+  color: var(--primary-strong);
+  font-weight: 900;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 28px clamp(18px, 5vw, 72px);
+  background: #0d2926;
+  color: #cfe5e1;
+}
+.site-footer p { margin: 0; font-size: 0.88rem; }
+.footer-brands { display: inline-flex; align-items: center; gap: 14px; }
+.footer-brands .brand-logo.benis { width: 40px; height: 40px; border-radius: 10px; }
+.footer-brands .brand-logo.rahnegasht { width: 50px; height: 39px; }
+
+/* ============================================================
+   Explainer panels (calc / charts)
+   ============================================================ */
+.explainer-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow-1);
+  margin-bottom: 20px;
+}
+#chart-explainer { margin-top: 20px; margin-bottom: 0; }
+.explainer-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; color: var(--primary-strong); }
+.explainer-head h3 { margin: 0; }
+.explainer-intro { color: var(--muted); margin: 0 0 16px; }
+.explainer-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.explainer-box { background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius-s); padding: 16px; }
+.explainer-box h4 { margin: 0 0 10px; font-size: 0.95rem; color: var(--ink); }
+.explainer-box p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+.explainer-note { margin: 16px 0 0; color: var(--primary-strong); font-weight: 700; font-size: 0.9rem; }
+
+.mini-dl { display: grid; gap: 10px; margin: 0; }
+.mini-dl > div { display: grid; grid-template-columns: 116px 1fr; gap: 10px; align-items: start; }
+.mini-dl dt { font-weight: 800; color: var(--ink); font-size: 0.86rem; }
+.mini-dl dd { margin: 0; color: var(--muted); font-size: 0.9rem; }
+
+.formula-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.formula-list li { display: grid; gap: 5px; }
+.formula-list b { font-size: 0.85rem; color: var(--primary-strong); }
+.formula-list code { font-size: 0.78rem; }
+
+/* ============================================================
+   Governance — CEO playbook + interactive roles/escalation
+   ============================================================ */
+.gov-subhead { margin: 30px 0 14px; font-size: 1.1rem; color: var(--ink); }
+
+.ceo-playbook {
+  background: linear-gradient(160deg, #0f4d48, #0d2926);
+  color: #e8f5f2;
+  border-radius: var(--radius-l);
+  padding: 26px;
+  box-shadow: var(--shadow-2);
+  border: 1px solid #0b5d57;
+}
+.ceo-head { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+.ceo-badge {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 900;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  box-shadow: 0 6px 16px rgba(255, 203, 5, 0.3);
+}
+.ceo-head h3 { margin: 0 0 6px; color: #fff; }
+.ceo-head p { margin: 0; color: #b9d9d3; font-size: 0.95rem; }
+.ceo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+.ceo-col { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: var(--radius-s); padding: 16px; }
+.ceo-col h4 { margin: 0 0 10px; color: var(--secondary); font-size: 0.95rem; }
+.ceo-col ul { margin: 0; padding-right: 18px; display: grid; gap: 7px; }
+.ceo-col li { color: #dcefeb; font-size: 0.88rem; line-height: 1.7; }
+.ceo-actions { margin-top: 18px; background: rgba(255, 203, 5, 0.1); border: 1px solid rgba(255, 203, 5, 0.35); border-radius: var(--radius-s); padding: 16px; }
+.ceo-actions strong { display: block; color: var(--accent); margin-bottom: 8px; }
+.ceo-actions ol { margin: 0; padding-right: 20px; display: grid; gap: 6px; }
+.ceo-actions li { color: #eef7f4; font-size: 0.9rem; }
+
+.role-chip {
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-out);
+}
+.role-chip:hover { border-color: var(--primary); color: var(--primary-strong); box-shadow: var(--shadow-1); }
+.role-chip.active { background: var(--primary); color: #fff; border-color: var(--primary); font-weight: 700; box-shadow: 0 6px 16px rgba(15, 118, 110, 0.28); }
+
+.gov-detail {
+  margin-top: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-right: 5px solid var(--primary);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow-1);
+}
+.gov-detail.swap { animation: panelIn var(--dur) var(--ease-out); }
+.gov-detail-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.gov-detail-head h4 { margin: 0; font-size: 1.1rem; }
+.esc-num {
+  display: grid; place-items: center;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--accent); color: var(--accent-ink); font-weight: 900;
+}
+
+.clickable-rows table tbody tr { cursor: default; }
+
+.esc-step {
+  position: relative;
+  display: grid;
+  place-items: center;
+  gap: 4px;
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-weight: 800;
+  font-size: 0.9rem;
+  padding: 14px 10px;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.esc-step:hover { border-color: var(--primary); transform: translateY(-2px); }
+.esc-step:nth-child(1) { min-height: 74px; border-radius: 0 var(--radius) var(--radius) 0; }
+.esc-step:nth-child(2) { min-height: 94px; background: #f2f9f7; }
+.esc-step:nth-child(3) { min-height: 114px; background: var(--primary-soft); }
+.esc-step:nth-child(4) { min-height: 134px; background: var(--primary); color: #fff; border-color: var(--primary); border-radius: var(--radius) 0 0 var(--radius); }
+.esc-step small {
+  display: grid; place-items: center;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--accent); color: var(--accent-ink); font-weight: 900;
+}
+.esc-step.active { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* ---------- Glossary dialog ---------- */
+.glossary-dialog {
+  width: min(760px, calc(100vw - 28px));
+  max-height: 80vh;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  padding: 24px;
+  box-shadow: var(--shadow-3);
+}
+.glossary-dialog[open] { animation: panelIn var(--dur) var(--ease-out); }
+.glossary-dialog::backdrop { background: rgba(13, 41, 38, 0.55); backdrop-filter: blur(3px); }
+.dialog-heading { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+.search-box { display: grid; gap: 6px; margin: 14px 0; font-weight: 700; }
+.glossary-list { display: grid; gap: 10px; }
+.glossary-list article { border-top: 1px solid var(--line); padding-top: 10px; }
+.glossary-list h3 { color: var(--primary-strong); }
+
+.load-error { padding: 40px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1180px) {
+  .roadmap-rail { grid-template-columns: 1fr; }
+  .roadmap-line { display: none; }
+  .roadmap-terminal { margin-top: 0; }
+  .roadmap-milestones { grid-template-columns: repeat(5, minmax(150px, 1fr)); overflow-x: auto; padding-bottom: 8px; }
+}
+
+@media (max-width: 980px) {
+  .site-header { grid-template-columns: auto auto 1fr; }
+  .menu-toggle { display: inline-grid; }
+  .site-nav { display: none; grid-column: 1 / -1; justify-content: start; }
+  .site-nav.open { display: flex; animation: panelIn var(--dur) var(--ease-out); }
+  .header-actions { justify-self: end; }
+  .consultant-text { display: none; }
+
+  .hero, .process-layout, .calculator-layout, .two-column { grid-template-columns: 1fr; }
+  .stage-detail { position: static; }
+  .process-flow { grid-template-columns: repeat(2, minmax(130px, 1fr)); }
+  .mini-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cycle-timeline { grid-template-columns: repeat(2, 1fr); }
+  .escalation-ladder { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .escalation-ladder span { min-height: 84px !important; border-radius: var(--radius-s) !important; }
+  .roadmap-milestones { grid-template-columns: 1fr; overflow: visible; }
+  .milestone { grid-template-columns: auto 1fr; text-align: right; gap: 0 12px; }
+  .milestone .phase-chip { order: 1; grid-column: 2; justify-self: start; }
+  .milestone .dot { order: 0; grid-row: 1 / 3; align-self: start; margin-top: 4px; }
+  .milestone .m-card { order: 2; grid-column: 2; }
+}
+
+@media (max-width: 620px) {
+  .section-band { padding: 48px 16px; }
+  .hero { min-height: auto; padding-top: 32px; }
+  .hero-map { min-height: auto; }
+  .process-flow, .mini-flow, .cycle-timeline, .time-fence { grid-template-columns: 1fr; }
+  .site-footer { display: block; }
+  .footer-brands { margin-bottom: 12px; }
+  .brand-text small { display: none; }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  :root { --bg: #fff; --surface: #fff; --surface-2: #fff; --ink: #111; --muted: #333; --line: #bbb; }
+  .site-header, .header-actions, .filter-bar, .scenario-form, .scenario-buttons, .glossary-dialog, .menu-toggle { display: none !important; }
+  body { background: #fff; font-size: 11pt; }
+  .section-band { padding: 14mm 0; break-inside: avoid; }
+  .hero, .process-layout, .calculator-layout, .two-column, .roadmap-rail { display: block; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .stage-detail, .info-card, .meeting-card, .chart-card, .result-card, .roadmap-detail { box-shadow: none; }
+  .bar-bg i, .capacity-track i { width: var(--w, 0%) !important; animation: none !important; }
+  .reveal { animation: none !important; opacity: 1 !important; transform: none !important; }
+  a { text-decoration: none; }
+}
+
+    </style>
+  </head>
+  <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <!-- لوگوی رسمی بنیس (از فایل برند Benis logo.png — ۲۵۶×۲۵۶) -->
+        <symbol id="logo-benis" viewBox="0 0 256 256">
+          <image href="data:image/png;base64,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" width="256" height="256"/>
+        </symbol>
+        <!-- لوگوی رسمی ره‌نگاشت (نشان مثلثی از فایل برند RAHNEGASHT.png — ۳۲۹×۲۵۶) -->
+        <symbol id="logo-rahnegasht" viewBox="0 0 329 256">
+          <image href="data:image/png;base64,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" width="329" height="256"/>
+        </symbol>
+      </defs>
+    </svg>
+    <header class="site-header">
+      <a class="brand" href="#intro" aria-label="بازگشت به معرفی">
+        <svg class="brand-logo benis" aria-label="لوگوی بنیس"><use href="#logo-benis"/></svg>
+        <span class="brand-text">
+          <strong id="brand-title">S&OP بنیس</strong>
+          <small>برنامه‌ریزی فروش و عملیات</small>
+        </span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="منو">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="ناوبری اصلی"></nav>
+      <div class="header-actions">
+        <a class="consultant-brand" href="#intro" title="ره‌نگاشت — Future is Now" aria-label="ره‌نگاشت">
+          <svg class="brand-logo rahnegasht" aria-hidden="true"><use href="#logo-rahnegasht"/></svg>
+          <span class="consultant-text"><strong>RAHNEGASHT</strong><small>FUTURE IS NOW</small></span>
+        </a>
+        <button id="glossary-toggle" class="icon-button" type="button" title="واژه‌نامه" aria-label="واژه‌نامه">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </button>
+        <button id="print-page" class="icon-button" type="button" title="چاپ" aria-label="چاپ">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section id="intro" class="hero section-band">
+        <div class="hero-copy">
+          <p class="eyebrow" id="hero-version"></p>
+          <h1 id="hero-title"></h1>
+          <p class="hero-subtitle" id="hero-subtitle"></p>
+          <p class="attribution" id="hero-attribution"></p>
+          <div class="hero-actions">
+            <a class="primary-action" href="#process">مشاهده جریان فرایند</a>
+            <span class="status-pill" id="hero-status"></span>
+          </div>
+        </div>
+        <div class="hero-map" aria-label="نمای فشرده زنجیره S&OP">
+          <div id="hero-mini-flow" class="mini-flow"></div>
+        </div>
+      </section>
+
+      <section id="problem" class="section-band">
+        <div class="section-heading">
+          <p class="eyebrow">قیف مسئله</p>
+          <h2>چرا بنیس به S&OP نیاز دارد</h2>
+          <p>شش ریسک ساختاری که فرایند باید هم‌زمان ببیند و به تصمیم مدیریتی تبدیل کند.</p>
+        </div>
+        <div id="risk-grid" class="grid cards-grid"></div>
+        <div id="benchmark-strip" class="metric-strip"></div>
+      </section>
+
+      <section id="definition" class="section-band muted-band">
+        <div class="section-heading">
+          <p class="eyebrow">تعریف</p>
+          <h2>S&OP چیست و چه نیست</h2>
+          <p id="definition-text"></p>
+        </div>
+        <div class="two-column">
+          <div>
+            <h3>هست</h3>
+            <ul id="is-list" class="check-list"></ul>
+          </div>
+          <div>
+            <h3>نیست</h3>
+            <ul id="is-not-list" class="check-list muted"></ul>
+          </div>
+        </div>
+        <div class="accordion" id="principles-accordion"></div>
+      </section>
+
+      <section id="roadmap" class="section-band">
+        <div class="section-heading">
+          <p class="eyebrow">اولویت اول</p>
+          <h2>رودمپ استقرار S&OP</h2>
+          <p>شروع از ممیزی فاز صفر و حرکت تدریجی از Minimum Viable S&OP به IBP.</p>
+        </div>
+        <div class="roadmap-wrap">
+          <div class="roadmap-line" aria-hidden="true"><i id="roadmap-progress"></i></div>
+          <div class="roadmap-rail">
+            <div class="roadmap-terminal start">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 22V4"/><path d="M4 4h13l-2.5 4L17 12H4"/></svg>
+              <strong id="roadmap-start-label"></strong>
+              <small id="roadmap-start-note"></small>
+            </div>
+            <div id="roadmap-milestones" class="roadmap-milestones" role="tablist" aria-label="فازهای رودمپ"></div>
+            <div class="roadmap-terminal end">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="m8.5 11 2.5 2.5 4.5-5"/></svg>
+              <strong id="roadmap-end-label"></strong>
+              <small id="roadmap-end-note"></small>
+            </div>
+          </div>
+          <p class="roadmap-hint" id="roadmap-hint"></p>
+          <div id="roadmap-panel" class="roadmap-panel" role="tabpanel" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section id="process" class="section-band process-band">
+        <div class="section-heading">
+          <p class="eyebrow">قلب سایت</p>
+          <h2>فلوچارت جامع فرایند ده‌مرحله‌ای</h2>
+          <p>روی هر گره کلیک کنید تا هدف، ورودی، خروجی، تصمیم و KPI همان مرحله باز شود.</p>
+        </div>
+        <div class="filter-bar" aria-label="فیلتر مراحل">
+          <button class="filter-chip active" data-filter="all" type="button">همه</button>
+          <button class="filter-chip" data-filter="demand" type="button">تقاضا</button>
+          <button class="filter-chip" data-filter="supply" type="button">عرضه</button>
+          <button class="filter-chip" data-filter="finance" type="button">مالی</button>
+          <button class="filter-chip" data-filter="control" type="button">کنترل</button>
+        </div>
+        <div class="process-layout">
+          <div id="process-flow" class="process-flow" aria-label="فلوچارت فرایند"></div>
+          <aside id="stage-detail" class="stage-detail" aria-live="polite"></aside>
+        </div>
+      </section>
+
+      <section id="cycle" class="section-band muted-band">
+        <div class="section-heading">
+          <p class="eyebrow">چرخه مدیریت</p>
+          <h2>جلسات ماهانه و Time Fence</h2>
+          <p>روایت هفتگی به‌جای روز دقیق؛ روزهای نهایی باید در کارگاه داخلی تأیید شوند.</p>
+        </div>
+        <div id="cycle-timeline" class="cycle-timeline"></div>
+        <div id="meeting-grid" class="grid meeting-grid"></div>
+        <div class="time-fence">
+          <div class="fence-zone frozen"><span>Frozen</span><small>تغییر فقط با بحران / مدیرعامل</small></div>
+          <div class="fence-zone slushy"><span>Slushy</span><small>تغییر با فرم اثرسنجی</small></div>
+          <div class="fence-zone flexible"><span>Flexible</span><small>تغییر آزاد در چرخه بعد</small></div>
+        </div>
+      </section>
+
+      <section id="calculator" class="section-band">
+        <div class="section-heading">
+          <p class="eyebrow">مدل محاسباتی</p>
+          <h2>سناریو و بازمحاسبه زنده</h2>
+          <p>فرمول‌ها از سند محاسباتی جدا شده‌اند؛ سناریوی پایه باید نیاز تولید ۹۷٬۰۰۰ و Utilization حدود ۹۱٪ بدهد.</p>
+        </div>
+        <div id="calc-explainer" class="explainer-panel"></div>
+        <div id="scenario-buttons" class="scenario-buttons"></div>
+        <div class="calculator-layout">
+          <form id="scenario-form" class="scenario-form"></form>
+          <div id="scenario-results" class="result-grid"></div>
+        </div>
+        <div class="formula-grid">
+          <article><h3>ProductionReq</h3><code>Demand + TargetEndInv − OpeningInv + Waste</code></article>
+          <article><h3>Safety Stock</h3><code>Z × σ × √(LeadTime + ReviewCycle)</code></article>
+          <article><h3>OEE</h3><code>Availability × Performance × Quality</code></article>
+          <article><h3>Bias</h3><code>Σ(Forecast − Actual) ÷ ΣActual</code><p>مثبت = بیش‌برآورد</p></article>
+        </div>
+        <div class="chart-grid">
+          <div class="chart-card"><h3>تقاضا در برابر عرضه</h3><div id="demand-chart"></div></div>
+          <div class="chart-card"><h3>بار ظرفیت خطوط</h3><div id="capacity-chart"></div></div>
+        </div>
+        <div id="chart-explainer" class="explainer-panel"></div>
+      </section>
+
+      <section id="governance" class="section-band muted-band">
+        <div class="section-heading">
+          <p class="eyebrow">حاکمیت</p>
+          <h2>نقش‌ها، RACI و مسیر تشدید</h2>
+          <p>روی هر نقش، ردیف RACI یا پله تشدید کلیک کنید تا جزئیات آن باز شود.</p>
+        </div>
+
+        <div id="ceo-playbook" class="ceo-playbook"></div>
+
+        <h3 class="gov-subhead">نقش‌های کلیدی — برای جزئیات کلیک کنید</h3>
+        <div id="role-cloud" class="role-cloud" role="list"></div>
+        <div id="role-detail" class="gov-detail" aria-live="polite"></div>
+
+        <h3 class="gov-subhead">ماتریس RACI</h3>
+        <label class="table-filter">فیلتر نقش
+          <select id="raci-filter"></select>
+        </label>
+        <div id="raci-table" class="responsive-table clickable-rows"></div>
+        <div id="raci-detail" class="gov-detail" aria-live="polite"></div>
+
+        <h3 class="gov-subhead">مسیر تشدید تصمیم — برای جزئیات هر پله کلیک کنید</h3>
+        <div id="escalation-ladder" class="escalation-ladder"></div>
+        <div id="escalation-detail" class="gov-detail" aria-live="polite"></div>
+      </section>
+
+      <section id="kpis" class="section-band">
+        <div class="section-heading">
+          <p class="eyebrow">داشبورد روز اول</p>
+          <h2>KPIها و هشدارهای استثنا</h2>
+        </div>
+        <label class="table-filter">حوزه KPI
+          <select id="kpi-filter"></select>
+        </label>
+        <div id="kpi-grid" class="grid cards-grid"></div>
+        <div id="alerts-table" class="responsive-table"></div>
+      </section>
+
+      <section id="data" class="section-band muted-band">
+        <div class="section-heading">
+          <p class="eyebrow">داده و کیفیت</p>
+          <h2>نیازمندی‌های داده</h2>
+          <p>وضعیت فعلی اقلام نامشخص است و باید با ممیزی منبع داده به‌روز شود.</p>
+        </div>
+        <div class="filter-bar">
+          <button class="data-filter active" data-priority="all" type="button">همه</button>
+          <button class="data-filter" data-priority="red" type="button">MVP</button>
+          <button class="data-filter" data-priority="yellow" type="button">فاز ۲</button>
+          <button class="data-filter" data-priority="green" type="button">فاز ۳+</button>
+        </div>
+        <div id="data-table" class="responsive-table"></div>
+        <h3>حداقل داده برای شروع</h3>
+        <ul id="mvp-list" class="check-list"></ul>
+      </section>
+
+      <section id="decisions" class="section-band">
+        <div class="section-heading">
+          <p class="eyebrow">کارگاه فاز صفر</p>
+          <h2>فرضیات و تصمیم‌های نیازمند تأیید</h2>
+          <p>این موارد باید در کارگاه داخلی بنیس تأیید یا اصلاح شوند.</p>
+        </div>
+        <div id="decision-list" class="decision-list"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brands" aria-hidden="true">
+        <svg class="brand-logo benis"><use href="#logo-benis"/></svg>
+        <svg class="brand-logo rahnegasht"><use href="#logo-rahnegasht"/></svg>
+      </div>
+      <p id="footer-meta"></p>
+      <p id="footer-attribution"></p>
+    </footer>
+
+    <dialog id="glossary-dialog" class="glossary-dialog">
+      <div class="dialog-heading">
+        <h2>واژه‌نامه</h2>
+        <button id="close-glossary" class="icon-button" type="button" aria-label="بستن">×</button>
+      </div>
+      <label class="search-box">جست‌وجو
+        <input id="glossary-search" type="search" placeholder="S&OP، WAPE، FEFO...">
+      </label>
+      <div id="glossary-list" class="glossary-list"></div>
+    </dialog>
+
+    <script>
+      window.__SOP_EMBED__ = {"data/sop-data.json":{"meta":{"title":"فرایند برنامه‌ریزی فروش و عملیات (S&OP) شرکت بنیس","subtitle":"یک برنامه، یک عدد، یک تصمیم؛ از تقاضای بازار تا تأمین مواد","version":"نسخه ارائه ۱.۰","date":"تیر ۱۴۰۵","attribution":"تهیه‌شده توسط گروه مشاور مارکتینگ ره‌نگاشت","sampleLabel":"Sample / Placeholder / نیازمند تأیید","client":"شرکت بنیس","consultant":"ره‌نگاشت | Future is Now"},"nav":[{"id":"intro","label":"معرفی"},{"id":"roadmap","label":"رودمپ"},{"id":"process","label":"فلوچارت"},{"id":"cycle","label":"جلسات"},{"id":"calculator","label":"سناریو"},{"id":"governance","label":"حاکمیت"},{"id":"kpis","label":"KPI"},{"id":"data","label":"داده"},{"id":"decisions","label":"فرضیات"}],"intro":{"status":"داده‌های نمایشی؛ همه اعداد نیازمند تأیید داخلی بنیس هستند.","definition":"S&OP فرایند مدیریتی ماهانه برای یکپارچه‌سازی فروش، بازاریابی، محصول، تولید، تأمین، توزیع و مالی در یک مجموعه عدد واحد است.","is":["چرخه تصمیم مدیریتی ماهانه","برنامه واحد تقاضا، عرضه و مالی","سازوکار تصمیم‌گیری استثنامحور","زبان مشترک فروش، تولید، تأمین، پخش و مالی"],"isNot":["وب‌اپلیکیشن عملیاتی","جایگزین ERP یا MPS روزانه","داشبورد صرف یا فایل اکسل جداافتاده","فرایند بدون مالک، لاگ تصمیم و قفل برنامه"]},"risks":[{"title":"ناهم‌راستایی فروش و تولید","unit":"تجاری / تولید","detail":"برنامه فروش، تولید و خرید باید روی یک عدد واحد قفل شود."},{"title":"تنوع SKU","unit":"محصول","detail":"برنامه‌ریزی در سطح خانواده محصول، با SKU برای اقلام A و گلوگاهی."},{"title":"انقضا و برگشتی","unit":"کیفیت / انبار","detail":"FEFO، ردیابی بچ و near-expiry در مرکز فرایند قرار می‌گیرد."},{"title":"تورم و ارز","unit":"مالی / تأمین","detail":"سناریوسازی برای جهش قیمت مواد و نرخ ارز اجباری است."},{"title":"قله‌های فصلی","unit":"تقاضا","detail":"نوروز، رمضان، یلدا و بازگشایی مدارس باید از baseline جدا شوند."},{"title":"وابستگی به پخش","unit":"توزیع","detail":"sell-in و sell-out جدا دیده می‌شوند تا Distributor Loading پنهان نماند."}],"benchmarks":[{"metric":"دقت پیش‌بینی","value":"+۱۸ تا ۲۵٪","status":"sample","note":"ارقام صنعتی؛ نه تعهد بنیس"},{"metric":"کاهش موجودی","value":"۱۸ تا ۴۶٪","status":"sample","note":"ارقام صنعتی؛ نه تعهد بنیس"},{"metric":"بهبود OTIF","value":"+۱۰ تا ۵۰٪","status":"sample","note":"ارقام صنعتی؛ نه تعهد بنیس"}],"principles":[{"title":"تقاضای بدون محدودیت عرضه","body":"ابتدا تقاضای واقعی بازار دیده می‌شود تا شکاف عرضه آشکار شود."},{"title":"تفکیک baseline از uplift","body":"اثر کمپین، لانچ و پروموشن از تقاضای پایه جدا ثبت و بعداً یادگیری می‌شود."},{"title":"ترجمه مالی برنامه حجمی","body":"هر برنامه باید به درآمد، حاشیه، نقدینگی و سرمایه در گردش ترجمه شود."},{"title":"تصمیم‌گیری استثنامحور","body":"جلسات روی شکاف‌ها، آستانه‌ها و تصمیم‌ها تمرکز دارند، نه مرور همه اعداد."},{"title":"مالکیت Executive S&OP","body":"مدیرعامل مالک تصمیم نهایی است و هر تصمیم مالک، موعد و KPI اثرپذیر دارد."},{"title":"ثبت فرضیات و Override","body":"هر override باید دلیل داشته باشد و با FVA سنجیده شود."},{"title":"داده تمیز قبل از ابزار پیشرفته","body":"Excel کنترل‌شده و BI ساده قبل از APS، AI یا ابزارهای پیچیده قرار می‌گیرند."},{"title":"پایش هفتگی اجرا","body":"S&OE هفتگی انحراف‌ها را می‌بیند، اما برنامه قفل‌شده را بی‌قاعده بازنویسی نمی‌کند."}],"processStages":[{"id":"market-demand","order":1,"title":"تقاضای بازار","domain":"demand","week":"هفته ۱","meeting":"فعالیت پشتیبان","goal":"برآورد تقاضای واقعی مصرف‌کننده برای هر خانواده محصول، مستقل از محدودیت عرضه و پاک‌شده از سیگنال کاذب.","inputs":"فروش پاک‌سازی‌شده ۱۲-۲۴ ماه، sell-out، برگشتی با کد علت، stockout، تقویم فصلی، قیمت و داده بازار.","activities":"قفل داده ماه قبل، پاک‌سازی outlier، بازسازی تقاضای گم‌شده، جداسازی baseline از uplift و محاسبه WAPE/Bias.","outputs":"Baseline Forecast، گزارش کیفیت داده و تقویم علت‌ها.","owner":"Demand Planner موقت + IT/Data","dependencies":"دروازه کیفیت داده و Master Data استاندارد.","decision":"تأیید کفایت داده یا ورود با Caveat.","kpis":"تکمیل داده، خطای Master Data، WAPE، Bias، زمان آماده‌سازی"},{"id":"attainable-demand","order":2,"title":"تقاضای قابل دستیابی بنیس","domain":"demand","week":"هفته ۱-۲","meeting":"Demand Review","goal":"تبدیل تقاضای بازار به سهم قابل دستیابی بنیس با برند، پوشش توزیع، پورتفولیو و فعالیت تجاری.","inputs":"Baseline، خروجی Portfolio Review، تعدیل فروش، Campaign Brief، uplift، cannibalization، سهم بازار و پوشش توزیع.","activities":"اعمال override مستند، افزودن uplift جدا از baseline، پیش‌بینی NPI با analog و توافق روی عدد واحد.","outputs":"Consensus Demand Plan، Assumption Log و سناریوهای بالا/پایه/پایین.","owner":"مدیر تجاری/بازرگانی؛ فروش، بازاریابی و Demand Planner","dependencies":"مرحله ۱، فرم کمپین و Portfolio Review.","decision":"override بدون دلیل حذف می‌شود؛ تغییر بزرگ به Pre-S&OP می‌رود.","kpis":"WAPE، Forecast Bias، FVA، دقت کمپین و محصول جدید"},{"id":"sales-target","order":3,"title":"هدف فروش","domain":"finance","week":"هفته ۲ و ۴","meeting":"Demand Review + Executive","goal":"تبدیل تقاضای قابل دستیابی به هدف فروش رسمی، مالی‌شده و قابل تعهد.","inputs":"Consensus Demand Plan، قیمت، تخفیف، بودجه، Rolling Forecast و ظرفیت‌سنجی اولیه.","activities":"پل حجم به ارزش، مقایسه با بودجه، تحلیل شکاف و تفکیک هدف فروش از پیش‌بینی تقاضا.","outputs":"هدف فروش مصوب، گزارش شکاف بودجه و Financial Impact Sheet.","owner":"مدیر تجاری + مدیر مالی؛ تصویب نهایی مدیرعامل","dependencies":"مرحله ۲، تطبیق مالی و تأیید امکان‌پذیری عرضه.","decision":"هدف بالاتر از توان عرضه یا کمتر از بودجه در Executive تصمیم‌گیری می‌شود.","kpis":"Sales vs Target، Sales vs Forecast، رشد حجمی/ریالی، Gross Margin"},{"id":"distribution","order":4,"title":"توزیع","domain":"supply","week":"هفته ۳","meeting":"Inventory & Distribution Review","goal":"تخصیص برنامه فروش به شبکه پخش به‌گونه‌ای که محصول درست، تازه و در منطقه درست باشد.","inputs":"هدف فروش منطقه‌ای، موجودی کارخانه و کانال، sell-out، سفارش باز، عمر بچ، ظرفیت انبار و ناوگان.","activities":"Allocation جغرافیایی بر اساس تقاضای واقعی و اجرای اولویت‌های تخصیص در کمبود.","outputs":"Distribution Plan، سهمیه منطقه‌ای و فهرست سفارش‌های رد/تعویق‌شده.","owner":"مدیر توزیع/پخش اطلس بنیس؛ مدیر زنجیره تأمین","dependencies":"هدف فروش، موجودی کانال و تولید قابل تحویل.","decision":"کمبود شدید یا ارسال به منطقه پرموجودی نیازمند تصمیم مدیریتی است.","kpis":"OTIF، Fill Rate، Distribution Coverage، Order Cycle Time، Freshness"},{"id":"inventory","order":5,"title":"موجودی بازار","domain":"supply","week":"هفته ۳","meeting":"Inventory & Distribution Review","goal":"کنترل موجودی کارخانه و کانال برای توازن ریسک کمبود و ریسک انقضا/مازاد.","inputs":"موجودی بچ/انقضا، موجودی هفتگی پخش، sell-out، برگشتی، سیاست Safety/Cycle/Promo Stock.","activities":"محاسبه DOS، پایش near-expiry، اجرای FEFO، شناسایی slow-mover و کشف Distributor Loading.","outputs":"Inventory Plan، Near-Expiry Report و ورودی اصلاح تولید.","owner":"مدیر انبار + مدیر پخش؛ مدیر زنجیره تأمین","dependencies":"ردیابی بچ، گزارش پخش و مرحله توزیع.","decision":"موجودی زیر ایمنی یا near-expiry بالا نیازمند اقدام فوری است.","kpis":"DOS، Inventory Turnover، Near-Expiry، Write-off، Stockout"},{"id":"shipping","order":6,"title":"حمل","domain":"supply","week":"هفته ۳ + اجرا","meeting":"Inventory & Distribution + Weekly","goal":"اجرای فیزیکی برنامه توزیع از کارخانه تا شبکه با حفظ تازگی و سلامت محصول.","inputs":"Distribution Plan، سفارش تأییدشده، موجودی FEFO، ظرفیت ناوگان، پنجره تحویل و الزامات QC.","activities":"برنامه بارگیری، انتخاب بچ FEFO، کنترل عمر تحویل و ثبت تحویل واقعی.","outputs":"ارسال‌های انجام‌شده، داده تحویل، گزارش برگشتی و آسیب حمل.","owner":"مدیر لجستیک/توزیع + انبار؛ مدیر زنجیره تأمین","dependencies":"مراحل توزیع و موجودی، ظرفیت انبار محصول نهایی و آزادسازی QC.","decision":"کمبود ناوگان یا سفارش خارج از Frozen نیازمند تأیید سطح مجاز است.","kpis":"OTIF، Order Cycle Time، هزینه توزیع، آسیب حمل، Return Rate"},{"id":"production","order":7,"title":"تولید","domain":"supply","week":"هفته ۳","meeting":"Supply Review","goal":"تبدیل تقاضای توافق‌شده و موجودی هدف به برنامه تولید قابل اجرا روی خطوط.","inputs":"Consensus Demand، موجودی ابتدا، backlog، ظرفیت مؤثر، OEE، Changeover، PM، Yield و QC.","activities":"محاسبه نیاز تولید، RCCP، شناسایی گلوگاه و سناریوهای پاسخ قبل از Capex.","outputs":"Production Plan، شکاف ظرفیت، گزینه‌های رفع محدودیت و MPS.","owner":"مدیر تولید؛ مدیر زنجیره تأمین","dependencies":"تقاضا، موجودی هدف و مواد در دسترس.","decision":"شکاف ظرفیت، تغییر Frozen، اضافه‌کاری یا برون‌سپاری به سطح مجاز تشدید می‌شود.","kpis":"Plan Adherence، Schedule Attainment، OEE، Yield، Waste، Utilization"},{"id":"procurement","order":8,"title":"تأمین","domain":"supply","week":"هفته ۳","meeting":"Supply Review","goal":"تضمین دسترسی به‌موقع و مقرون‌به‌صرفه مواد اولیه و بسته‌بندی با مدیریت ریسک ارز و تأمین‌کننده.","inputs":"Production Plan، BOM، موجودی مواد، PO باز، Lead Time، MOQ، Kraljic، قیمت و نرخ ارز.","activities":"MRP ساده، برنامه مواد محدودکننده، تعیین تاریخ سفارش، safety stock مواد و Commitment Review.","outputs":"Procurement Plan، گزارش ریسک تأمین و سناریوی قیمت/ارز.","owner":"مدیر خرید/تدارکات؛ مدیر زنجیره تأمین","dependencies":"برنامه تولید، تأیید QC برای جایگزینی و نقدینگی مالی.","decision":"پوشش ماده بحرانی کمتر از Lead Time یا جهش قیمت/ارز تشدید می‌شود.","kpis":"کمبود مواد، Lead Time، PPV، پوشش مواد بحرانی، ریسک تأمین‌کننده"},{"id":"actuals","order":9,"title":"عملکرد واقعی","domain":"control","week":"هر هفته","meeting":"Weekly S&OE","goal":"سنجش اجرای برنامه مصوب و شناسایی سریع انحراف‌ها بدون بازنویسی بی‌قاعده برنامه.","inputs":"فروش واقعی، تولید واقعی، توقفات، OTIF، موجودی، near-expiry، مواد بحرانی و Action Tracker.","activities":"جلسه هفتگی ۴۵-۶۰ دقیقه، بررسی استثنا با قالب علت، اثر، گزینه، تصمیم، مالک و موعد.","outputs":"گزارش انحراف هفتگی، اقدامات اصلاحی و موضوعات ارجاعی به چرخه بعد.","owner":"مدیر زنجیره تأمین + S&OP Coordinator","dependencies":"برنامه قفل‌شده، داشبورد KPI و آستانه‌های مصوب.","decision":"انحراف بزرگ فروش، خرابی خط، تأخیر ماده یا near-expiry بالا گزارش فوری می‌خواهد.","kpis":"Plan Attainment، OTIF، WAPE کوتاه‌مدت، Backorder، Action Closure"},{"id":"correction","order":10,"title":"اصلاح برنامه","domain":"control","week":"هفته ۴","meeting":"Pre-S&OP + Executive","goal":"بستن حلقه بازخورد و تبدیل انحراف‌ها و درس‌آموخته‌ها به برنامه ماه بعد.","inputs":"شکاف‌های حل‌نشده، سناریوها، گزارش KPI، FVA، Post-Campaign Review و کد علت ریشه‌ای.","activities":"Pre-S&OP، بسته تصمیم، Executive S&OP، قفل برنامه، ابلاغ و به‌روزرسانی فرضیات.","outputs":"برنامه S&OP مصوب، Decision Log، Action Tracker و پیام ارتباطی.","owner":"مدیرعامل + S&OP Coordinator","dependencies":"خروجی همه مراحل و حضور مدیران ارشد.","decision":"تعارض فروش/تولید/مالی با سه گزینه تصمیم به مدیرعامل می‌رسد.","kpis":"پایبندی تقویم، تصمیم دارای مالک/موعد، Action Closure، روند WAPE/Bias/OTIF"}],"meetings":[{"title":"Demand Review","week":"هفته ۱-۲","duration":"۹۰ دقیقه","chair":"مدیر تجاری","output":"Consensus Demand Plan","status":"sample"},{"title":"Supply Review","week":"هفته ۳","duration":"۱۲۰ دقیقه","chair":"زنجیره تأمین","output":"برنامه تولید و تأمین محدودشده","status":"sample"},{"title":"Inventory & Distribution","week":"هفته ۳","duration":"۷۵ دقیقه","chair":"زنجیره تأمین / پخش","output":"Distribution و Inventory Plan","status":"sample"},{"title":"Financial Review","week":"هفته ۳","duration":"۹۰ دقیقه","chair":"مالی","output":"Volume-to-Value Bridge","status":"sample"},{"title":"Pre-S&OP","week":"هفته ۴","duration":"۱۲۰ دقیقه","chair":"زنجیره تأمین","output":"بسته تصمیم ≤۱۰ صفحه","status":"sample"},{"title":"Executive S&OP","week":"هفته ۴","duration":"۹۰ دقیقه","chair":"مدیرعامل","output":"برنامه واحد مصوب","status":"sample"},{"title":"Weekly S&OE","week":"هر هفته","duration":"۴۵-۶۰ دقیقه","chair":"زنجیره تأمین","output":"اقدام اصلاحی و ارجاع استثنا","status":"sample"}],"roadmap":[{"phase":"فاز ۰","title":"ارزیابی آمادگی","range":"پیش از شروع","goal":"ممیزی داده، نقش‌ها، شکاف‌ها و انتخاب پایلوت","deliverable":"نقشه منبع داده و تصمیم‌های تأییدی","success":"مالک فرایند و خانواده‌های پایلوت مشخص شده‌اند","risk":"نبود مالک اجرایی","id":"phase-0","why":"بدون شناخت وضعیت واقعی داده، سیستم‌ها و نقش‌ها، هر طراحی روی فرض بنا می‌شود. این فاز نقطه شروع مطمئن می‌سازد و مشخص می‌کند از کجا و با کدام خانواده‌ها آغاز کنیم.","gives":"خروجی: نقشه منبع داده + فهرست تصمیم‌های نیازمند تأیید","status":"confirmed"},{"phase":"فاز ۱","title":"Minimum Viable S&OP","range":"ماه‌های ۱-۶","goal":"چرخه سبک برای ۲-۳ خانواده محصول","deliverable":"تقویم جلسات، KPI روز اول، Forecast/Plan قفل‌شده","success":"جلسات ماهانه منظم و لاگ تصمیم فعال","risk":"داده ناقص و مقاومت واحدها","id":"phase-1","why":"سازمان قبل از ابزار، به «ریتم و اعتماد» نیاز دارد. این فاز اولین برنامه واحد ماهانه را با کمترین پیچیدگی می‌سازد تا همه واحدها دور یک عدد جمع شوند.","gives":"خروجی: چرخه ماهانه زنده با ۲-۳ خانواده پایلوت","status":"sample"},{"phase":"فاز ۲","title":"تثبیت و مالی‌سازی","range":"ماه‌های ۷-۱۸","goal":"اتصال حجم به ارزش، BI و کنترل کیفیت داده","deliverable":"Volume-to-Value، داشبورد، Data Quality Gate","success":"تصمیم‌های Executive با اثر مالی دیده می‌شوند","risk":"تمرکز بر ابزار به جای فرایند","id":"phase-2","why":"عدد حجمی بدون ریال، تصمیم مدیریتی نمی‌سازد. این فاز برنامه را به درآمد و حاشیه ترجمه می‌کند و کیفیت داده را قابل اتکا می‌سازد.","gives":"خروجی: تصمیم‌های Executive با اثر مالی شفاف","status":"sample"},{"phase":"فاز ۳","title":"پیشرفته و سناریومحور","range":"پس از ماه ۱۸","goal":"FVA، داده پخش، سناریو و مدل آماری پیشرفته","deliverable":"سناریو پک، FVA، داده sell-out","success":"پیش‌بینی و تخصیص با داده کانال بهبود یافته","risk":"داده پخش غیرقابل اتکا","id":"phase-3","why":"پس از تثبیت، دقت و دید کانال ارزش می‌سازد. این فاز پیش‌بینی را با داده پخش و سناریو هوشمندتر می‌کند و اثر هر تعدیل انسانی را می‌سنجد.","gives":"خروجی: پیش‌بینی و تخصیص مبتنی بر داده کانال","status":"sample"},{"phase":"فاز ۴","title":"IBP","range":"۲۴ تا ۳۶ ماه","goal":"یکپارچگی کامل مالی، استراتژی، سناریو و فناوری","deliverable":"Integrated Business Planning و فرصت‌های AI کنترل‌شده","success":"تصمیم‌های میان‌مدت با سناریو و مالی یکپارچه‌اند","risk":"استفاده زودهنگام از AI بدون داده تمیز","id":"phase-4","why":"مقصد نهایی: اتصال برنامه عملیاتی به استراتژی و مالی شرکت. خروجی، برنامه‌ریزی یکپارچه کسب‌وکار با پشتیبانی کنترل‌شده AI است.","gives":"خروجی: برنامه واحد استراتژیک-مالی-عملیاتی","status":"sample"}],"governance":{"roles":["مدیرعامل","مدیر تجاری/فروش","بازاریابی","Demand Planner","زنجیره تأمین","تولید","تأمین","انبار","پخش اطلس بنیس","مالی","کیفیت","نت","IT/Data","S&OP Coordinator","مدیران منطقه"],"raci":[{"activity":"تأیید عدد تقاضا","responsible":"Demand Planner / فروش","accountable":"مدیر تجاری","consulted":"بازاریابی، مالی، زنجیره تأمین"},{"activity":"قفل برنامه تولید","responsible":"برنامه‌ریزی تولید","accountable":"مدیر زنجیره تأمین","consulted":"تولید، تأمین، مالی"},{"activity":"تخصیص در کمبود","responsible":"پخش / زنجیره تأمین","accountable":"مدیر تجاری","consulted":"مالی، تولید"},{"activity":"تصمیم Executive","responsible":"S&OP Coordinator","accountable":"مدیرعامل","consulted":"تمام مدیران ارشد"}],"escalation":["Review تخصصی","Pre-S&OP","Executive S&OP","مدیرعامل"],"roleDetails":[{"role":"مدیرعامل","tag":"مالک نهایی","responsibility":"مالک برنامه واحد شرکت؛ ریاست جلسه Executive S&OP؛ حل تعارض فروش/تولید/مالی و تصویب نهایی.","authority":"تصمیم نهایی تقاضا/عرضه/مالی، تخصیص ظرفیت و اولویت‌های کلان.","kpi":"تحقق فروش و حاشیه، OTIF، نقدینگی، اجرای تصمیم‌ها"},{"role":"مدیر تجاری/فروش","tag":"مالک تقاضا","responsibility":"مالک تقاضای اجماعی و هدف فروش؛ ریاست Demand Review؛ هم‌راستاسازی فروش و بازاریابی.","authority":"تأیید اجماع تجاری تقاضا در چارچوب سیاست؛ پیشنهاد قیمت/کمپین.","kpi":"دقت پیش‌بینی، Bias، تحقق فروش، حاشیه"},{"role":"بازاریابی","tag":"کمپین","responsibility":"مالک تقویم کمپین، محصول جدید و پروموشن؛ برآورد uplift و ثبت فرم کمپین حداقل ۶ هفته قبل.","authority":"پیشنهاد کمپین و حجم پروموشن با تأیید تجاری.","kpi":"تحقق uplift، ROI کمپین، خطای حجم کمپین"},{"role":"Demand Planner","tag":"پیش‌بینی","responsibility":"تولید پیش‌بینی آماری و اجماعی؛ سنجش WAPE/Bias/FVA؛ آماده‌سازی بسته تقاضا.","authority":"پیشنهاد forecast پایه؛ اختیار تصمیم عددی ندارد.","kpi":"WAPE، Bias، FVA، به‌موقع بودن داده"},{"role":"زنجیره تأمین","tag":"مالک عرضه","responsibility":"مالک برنامه عرضه یکپارچه و هماهنگی چرخه؛ ریاست Supply Review و جلسه هفتگی.","authority":"تأیید Supply Plan در چارچوب ظرفیت و بودجه؛ پیشنهاد سناریو.","kpi":"Plan Attainment، OTIF، کمبود مواد، هزینه لجستیک"},{"role":"تولید","tag":"ظرفیت","responsibility":"تبدیل برنامه عرضه به برنامه تولید؛ مدیریت ظرفیت خطوط، شیفت و تحقق تولید.","authority":"توالی تولید و شیفت در محدوده مصوب؛ پیشنهاد اضافه‌کاری.","kpi":"تحقق برنامه، OEE، ضایعات، توقف"},{"role":"تأمین","tag":"مواد","responsibility":"تأمین مواد اولیه و بسته‌بندی؛ مدیریت ریسک تأمین‌کننده و ارز.","authority":"خرید عادی در چارچوب بودجه؛ پیشنهاد خرید اضطراری.","kpi":"کمبود مواد، تحقق Lead Time، واریانس قیمت"},{"role":"انبار","tag":"موجودی","responsibility":"مدیریت موجودی محصول و مواد؛ کنترل FEFO و ریسک انقضا.","authority":"جابه‌جایی و چیدمان در چارچوب سیاست؛ پیشنهاد تعدیل موجودی.","kpi":"دقت موجودی، near-expiry، Days of Supply"},{"role":"پخش اطلس بنیس","tag":"توزیع","responsibility":"اجرای ارسال از کارخانه به شبکه؛ خدمت‌رسانی و گزارش فروش ثانویه.","authority":"تخصیص ارسال در چارچوب سیاست؛ پیشنهاد تغییر مسیر/اولویت.","kpi":"OTIF، Fill Rate، هزینه توزیع، سفارش معوق"},{"role":"مالی","tag":"ارزش","responsibility":"مالی‌سازی برنامه؛ کنترل بودجه، حاشیه، نقدینگی و سرمایه در گردش.","authority":"تأیید اثر مالی در محدوده بودجه؛ توقف تصمیم خارج از سیاست مالی.","kpi":"حاشیه ناخالص، سرمایه در گردش، واریانس بودجه"},{"role":"کیفیت","tag":"آزادسازی","responsibility":"تضمین قابلیت عرضه مطابق استاندارد؛ مدیریت ریسک کیفیت و آزادسازی QC.","authority":"توقف/آزادسازی کیفیت طبق سیاست؛ پیشنهاد محدودیت تولید.","kpi":"نرخ عدم انطباق، شکایت، زمان آزادسازی"},{"role":"نت","tag":"تعمیرات","responsibility":"تضمین آماده‌به‌کاری تجهیزات؛ برنامه تعمیرات پیشگیرانه و اضطراری.","authority":"زمان‌بندی PM در چارچوب برنامه؛ پیشنهاد توقف/سرمایه‌گذاری.","kpi":"OEE، downtime، MTBF/MTTR، PM compliance"},{"role":"IT/Data","tag":"داده","responsibility":"تأمین داده قابل اعتماد، داشبورد و «یک نسخه از حقیقت»؛ حاکمیت داده.","authority":"اختیار حاکمیت داده و کنترل نسخه؛ تصمیم تجاری ندارد.","kpi":"به‌موقع بودن داده، خطای داده، پوشش داشبورد"},{"role":"S&OP Coordinator","tag":"هماهنگی","responsibility":"مدیریت تقویم، دستور جلسه، صورت‌جلسه، Decision Log و پیگیری اقدامات.","authority":"اختیار فرآیندی برای رد بسته ناقص؛ تصمیم عددی ندارد.","kpi":"پایبندی تقویم، تکمیل اقدامات، کیفیت بسته"},{"role":"مدیران منطقه","tag":"بازار","responsibility":"ارائه واقعیت بازار، موجودی کانال و تقاضای منطقه‌ای؛ اجرای تصمیم فروش.","authority":"پیشنهاد تعدیل منطقه‌ای؛ تخصیص درون‌منطقه‌ای با سیاست مصوب.","kpi":"تحقق فروش منطقه، دقت ورودی، وصول/بازگشت"}],"escalationDetails":[{"level":"Review تخصصی","who":"مالک همان حوزه (تقاضا/عرضه/موجودی/مالی)","what":"اختلاف عددی ابتدا در جلسه تخصصی حل می‌شود. هر اختلاف باید حداقل دو گزینه (فروش‌محور و عملیات‌محور) داشته باشد.","exit":"زیر آستانه همین‌جا بسته می‌شود؛ بالای آستانه ← پله بعد."},{"level":"Pre-S&OP","who":"مدیر زنجیره تأمین + هم‌ریاستی تجاری/مالی","what":"اختلاف‌های حل‌نشده و سناریوها آماده تصمیم می‌شوند و بسته ≤۱۰ صفحه‌ای تصمیم ساخته می‌شود.","exit":"تصمیم زیر آستانه نهایی؛ تصمیم راهبردی/پرهزینه ← Executive."},{"level":"Executive S&OP","who":"مدیرعامل + مدیران ارشد","what":"تصمیم نهایی روی سناریوها، تخصیص ظرفیت، قیمت/کمپین و trade-offها و امضای برنامه واحد.","exit":"برنامه مصوب قفل و ابلاغ می‌شود؛ فراتر از اختیار ← مدیرعامل/هیئت‌مدیره."},{"level":"مدیرعامل","who":"مدیرعامل / Managing Director","what":"تصمیم نهایی برای اختلاف‌های حل‌نشده و عبور از آستانه‌های بحرانی (Capex بزرگ، تغییر ساختار، اصلاح بودجه).","exit":"حکم نهایی؛ مبنای اجرای ماه بعد."}],"ceo":{"title":"نقش مدیرعامل — چه باید بکند؟","intro":"S&OP بدون مالکیت فعال مدیرعامل معمولاً در شش ماه اول رها می‌شود. مدیرعامل مجری عملیات نیست؛ «مالک برنامه واحد و داور نهایی trade-offها» است.","before":["بسته Pre-S&OP و اثر مالی سناریوها را حداقل ۲۴ ساعت قبل مطالعه کند.","پیام رهبری را تکرار کند: هیچ واحدی به‌تنهایی مالک عدد نهایی نیست.","اولویت راهبردی ماه را روشن کند: رشد فروش / سود / نقدینگی / سطح خدمت."],"during":["ریاست Executive S&OP را شخصاً بر عهده بگیرد (به‌ویژه ۳ چرخه اول).","فقط استثناها را ببیند و جلسه را در سطح خانواده محصول نگه دارد.","در تعارض فروش/تولید تنها پس از دیدن سه گزینه تصمیم بگیرد: حفظ فروش با هزینه اضافه، حفظ هزینه با از دست دادن فروش، یا گزینه میانی.","هر تصمیم را با مالک، موعد و KPI اثرپذیر در Decision Log ثبت کند."],"after":["ابلاغ برنامه مصوب ظرف ۲۴ ساعت را مطالبه کند.","پایبندی واحدها به برنامه قفل‌شده را در جلسه هفتگی پیگیری کند.","پاداش مدیران را به KPIهای مشترک (نه محلی) گره بزند."],"fiveActions":["تعیین مالک فرایند (Process Owner / S&OP Coordinator)","اجرای تقویم ماهانه ثابت S&OP","الزام جداسازی baseline از پروموشن","تعریف دوره‌های Frozen/Slushy/Flexible","راه‌اندازی داشبورد ۷ شاخصی روز اول"]}},"decisions":["افق رسمی S&OP: شروع ۱۲ ماه و مهاجرت به ۱۸ ماه","طول Frozen/Slushy/Flexible در مقیاس هفتگی و ماهانه","تقویم دقیق روزهای جلسات","ساختار واقعی خانواده‌های محصول","اهداف عددی KPI و آستانه‌های تشدید","آستانه Near-Expiry بر اساس ماندگاری هر خانواده","مالک فرایند و نقش S&OP Coordinator","خانواده‌های پایلوت فاز ۱","تعریف دقیق OTIF و پنجره تحویل","سیستم‌های داده فعلی و سطح Master Data"],"glossary":[{"term":"S&OP","definition":"برنامه‌ریزی فروش و عملیات؛ چرخه مدیریتی ماهانه برای یک عدد واحد."},{"term":"IBP","definition":"برنامه‌ریزی یکپارچه کسب‌وکار با افق مالی و استراتژیک بلندتر."},{"term":"OTIF","definition":"تحویل به‌موقع و کامل سفارش."},{"term":"WAPE","definition":"خطای مطلق وزنی؛ شاخص اجرایی اصلی دقت پیش‌بینی."},{"term":"MAPE","definition":"میانگین درصد خطای مطلق؛ مناسب اقلام پایدار."},{"term":"Bias","definition":"Σ(Forecast − Actual) ÷ ΣActual؛ مثبت = بیش‌برآورد."},{"term":"FVA","definition":"ارزش افزوده پیش‌بینی؛ کاهش خطا پس از یک تعدیل یا مرحله."},{"term":"FEFO","definition":"اول خروج بر اساس زودترین انقضا."},{"term":"OEE","definition":"اثربخشی کلی تجهیزات؛ Availability × Performance × Quality."},{"term":"DOS","definition":"روزهای پوشش موجودی بر اساس تقاضای روزانه."},{"term":"SKU","definition":"شناسه یکتای محصول قابل فروش."},{"term":"Frozen Period","definition":"دوره‌ای که تغییر برنامه فقط در بحران و با سطح تصویب مجاز است."},{"term":"Sell-in","definition":"ارسال یا فروش به کانال/پخش."},{"term":"Sell-out","definition":"فروش واقعی کانال به خرده‌فروش یا مصرف‌کننده."},{"term":"RACI","definition":"Responsible, Accountable, Consulted, Informed برای روشن‌کردن نقش‌ها."},{"term":"MPS","definition":"برنامه اصلی تولید در سطح عملیاتی‌تر."},{"term":"BOM","definition":"فهرست مواد و مصرف استاندارد هر محصول."},{"term":"Kraljic","definition":"ماتریس طبقه‌بندی اقلام تأمین بر اساس ریسک و اثر کسب‌وکار."},{"term":"S&OE","definition":"Sales & Operations Execution؛ پایش کوتاه‌مدت اجرای برنامه."}],"roadmapMeta":{"start":"خط شروع","startNote":"امروز: پیش از فاز ۰","end":"خط پایان","endNote":"مقصد: IBP یکپارچه","hint":"روی هر فاز کلیک کنید تا جزئیات، دلیل نیاز و خروجی آن باز شود."},"calcExplainer":{"title":"محاسبات بر چه اساسی انجام می‌شود؟","intro":"موتور سناریو همان فرمول‌های سند «مدل محاسباتی» را اجرا می‌کند. چهار متغیر را تغییر می‌دهید و خروجی‌ها زنده بازمحاسبه می‌شوند. همه اعداد پایه نمونه‌اند و باید با داده واقعی بنیس جایگزین شوند.","inputs":[{"k":"تغییر تقاضا","v":"درصد تغییر تقاضای پایه نسبت به baseline نمونه (۱۰۰٬۰۰۰ کارتن)."},{"k":"Uplift کمپین","v":"درصد افزایش ناشی از کمپین؛ روی تقاضا و موجودی کمپین (PromoStock) اثر می‌گذارد."},{"k":"تغییر ظرفیت/OEE","v":"درصد تغییر ظرفیت مؤثر خط؛ مستقیماً Utilization و شکاف ظرفیت را جابه‌جا می‌کند."},{"k":"تغییر ارز","v":"درصد جهش نرخ ارز؛ فقط روی بخش ارزی مواد اثر می‌گذارد و حاشیه را کم می‌کند."}],"formulas":[{"out":"تقاضا","f":"baseline × (۱ + تغییر تقاضا) × (۱ + uplift)"},{"out":"موجودی هدف","f":"Safety Stock + Cycle Stock + Promo Stock"},{"out":"نیاز تولید","f":"تقاضا + موجودی هدف − موجودی ابتدای دوره"},{"out":"Gross Production","f":"نیاز تولید ÷ Yield"},{"out":"Utilization","f":"Gross Production ÷ ظرفیت مؤثر تعدیل‌شده"},{"out":"شکاف ظرفیت","f":"Gross Production − ظرفیت مؤثر (منفی = ظرفیت کافی)"},{"out":"Gross Margin","f":"(درآمد − تقاضا × COGS تعدیل‌شده با ارز) ÷ درآمد"},{"out":"DOS","f":"موجودی هدف ÷ متوسط تقاضای روزانه"},{"out":"Revenue","f":"تقاضا × قیمت هر کارتن"}],"note":"سناریوی «پایه» باید دقیقاً نیاز تولید ۹۷٬۰۰۰ کارتن و Utilization ۹۱٪ بدهد — معیار صحت موتور محاسبه."},"chartExplainer":{"title":"نمودارها بر چه اساسی ساخته می‌شوند؟","items":[{"chart":"تقاضا در برابر عرضه","basis":"سری ماهانه نمونه (۶ ماه) از فایل داده؛ هر ماه دو میله تقاضا و عرضه دارد. طول هر میله نسبت مقدار آن ماه به بزرگ‌ترین مقدار کل سری است. فاصله دو میله = شکاف عرضه که باید در Supply Review بسته شود."},{"chart":"بار ظرفیت خطوط","basis":"برای هر خط، درصد بار = نیاز ظرفیت ÷ ظرفیت مؤثر. سبز زیر ۸۵٪، زرد ۸۵ تا ۱۰۰٪ و قرمز بالای ۱۰۰٪ (کسری ظرفیت). ناحیه کم‌رنگ سبز، باند سالم بهره‌برداری ۷۵–۸۵٪ را نشان می‌دهد."}]}},"data/sample-scenarios.json":{"baseInputs":{"family":"کیک لایه‌ای","status":"sample","baselineDemand":100000,"pricePerCarton":2000000,"cogsPerCarton":1400000,"openingInventory":18000,"safetyStock":12000,"cycleStock":3000,"effectiveCapacity":110000,"yield":0.97,"oee":0.75,"shelfLifeDays":180,"maxDOS":60,"materialShare":0.6,"importedMaterialShare":0.3},"presets":[{"id":"base","title":"پایه","demandChange":0,"uplift":0,"oeeChange":0,"fxChange":0,"note":"نیاز تولید ۹۷٬۰۰۰ و Utilization حدود ۹۱٪"},{"id":"upside","title":"کمپین نوروزی","demandChange":0,"uplift":25,"oeeChange":0,"fxChange":0,"promoDays":15,"note":"Uplift بالای ۲۰٪ به Pre-S&OP می‌رود"},{"id":"downside","title":"افت تقاضا","demandChange":-15,"uplift":0,"oeeChange":0,"fxChange":0,"note":"کاهش تولید و کنترل near-expiry"},{"id":"fx","title":"جهش ارز","demandChange":0,"uplift":0,"oeeChange":0,"fxChange":20,"note":"اثر مستقیم روی COGS و Gross Margin"},{"id":"supply-risk","title":"اختلال ماده بحرانی","demandChange":0,"uplift":0,"oeeChange":-10,"fxChange":0,"note":"پوشش ماده باید با Lead Time مقایسه شود"},{"id":"capacity-loss","title":"افت ظرفیت","demandChange":0,"uplift":0,"oeeChange":-30,"fxChange":0,"note":"اولویت تخصیص و سناریوی برون‌سپاری"}],"monthlySeries":[{"month":"۱","demand":92000,"supply":90000,"wape":24,"bias":8},{"month":"۲","demand":96000,"supply":95000,"wape":22,"bias":6},{"month":"۳","demand":110000,"supply":104000,"wape":21,"bias":5},{"month":"۴","demand":126000,"supply":112000,"wape":20,"bias":3},{"month":"۵","demand":98000,"supply":100000,"wape":18,"bias":2},{"month":"۶","demand":94000,"supply":96000,"wape":17,"bias":1}],"capacityLines":[{"line":"کیک","load":91},{"line":"ویفر","load":78},{"line":"کروسان","load":104},{"line":"کوکی","load":72},{"line":"بسته‌بندی","load":88}]},"data/data-requirements.json":{"priorities":{"red":"لازم برای شروع MVP","yellow":"فاز ۲","green":"فاز ۳+"},"items":[{"id":1,"name":"Master Data کالا (SKU)","domain":"پایه","priority":"red","level":"SKU","source":"ERP","owner":"IT / مدیر داده محصول","frequency":"هنگام ایجاد/تغییر","statusText":"نامشخص؛ نیازمند ممیزی","validation":"کد غیرتکراری، خانواده یکتا، نگاشت کد مادر"},{"id":2,"name":"خانواده محصول","domain":"پایه","priority":"red","level":"خانواده","source":"Master Data","owner":"بازاریابی/محصول","frequency":"ماهانه","statusText":"ساختار Sample","validation":"هر SKU فقط یک خانواده"},{"id":3,"name":"عمر ماندگاری استاندارد","domain":"پایه","priority":"red","level":"SKU","source":"QA / Master Data","owner":"کیفیت","frequency":"هنگام تغییر فرمول","statusText":"نامشخص","validation":"تغییر فقط با مستند QA"},{"id":4,"name":"نرخ تبدیل واحدها","domain":"پایه","priority":"red","level":"SKU","source":"Master Data","owner":"IT / برنامه‌ریزی","frequency":"هنگام تغییر بسته‌بندی","statusText":"نامشخص","validation":"نسخه‌دار و قابل تراز"},{"id":5,"name":"Master Data مشتری/کانال/منطقه","domain":"فروش","priority":"red","level":"مشتری","source":"ERP / CRM / DMS","owner":"فروش + پخش","frequency":"هنگام ایجاد/تغییر","statusText":"نامشخص","validation":"کد تکراری Flag شود"},{"id":8,"name":"فروش فاکتورشده","domain":"فروش","priority":"red","level":"SKU×مشتری×منطقه×کانال×ماه","source":"ERP فروش/مالی","owner":"فروش + مالی","frequency":"روزانه/ماهانه","statusText":"حداقل ۱۲ ماه، مطلوب ۲۴-۳۶ ماه","validation":"تطبیق با دفاتر مالی"},{"id":9,"name":"سفارش‌های مشتری و کسری تحویل","domain":"فروش","priority":"red","level":"خط سفارش","source":"ERP / CRM","owner":"خدمات مشتری","frequency":"روزانه","statusText":"نامشخص","validation":"تاریخ، مشتری، SKU، مقدار و وضعیت اجباری"},{"id":10,"name":"برگشتی فروش با کد علت","domain":"فروش","priority":"red","level":"SKU×مشتری×علت","source":"ERP / انبار / QC","owner":"فروش + کیفیت","frequency":"هفتگی/ماهانه","statusText":"احتمالاً کد علت ثبت نمی‌شود","validation":"کد علت اجباری"},{"id":12,"name":"فروش ثانویه پخش (Sell-out)","domain":"توزیع","priority":"yellow","level":"SKU×منطقه×مسیر×هفته","source":"DMS / گزارش پخش","owner":"پخش اطلس بنیس","frequency":"هفتگی","statusText":"قالب گزارش باید مستقر شود","validation":"فروش پخش ≤ موجودی شعبه"},{"id":16,"name":"تقویم پروموشن و کمپین","domain":"تقاضا","priority":"red","level":"SKU×کانال×منطقه×هفته","source":"بازاریابی / فروش","owner":"بازاریابی","frequency":"ماهانه + ۶ هفته قبل اجرا","statusText":"نامشخص","validation":"uplift بدون baseline پذیرفته نشود"},{"id":19,"name":"موجودی محصول نهایی با بچ/انقضا","domain":"موجودی","priority":"red","level":"SKU×انبار×بچ","source":"WMS / ERP","owner":"انبار","frequency":"روزانه","statusText":"پیش‌نیاز فنی درجه ۱","validation":"موجودی منفی ممنوع؛ انقضا ≥ تولید"},{"id":20,"name":"موجودی نزدیک‌انقضا و منقضی","domain":"موجودی","priority":"red","level":"SKU×بچ×انبار","source":"WMS / QA","owner":"انبار + کیفیت","frequency":"روزانه/هفتگی","statusText":"آستانه ۶۰ روز Sample","validation":"امحا فقط با سند QA+مالی"},{"id":21,"name":"موجودی مواد اولیه و بسته‌بندی","domain":"تأمین","priority":"red","level":"ماده×انبار","source":"ERP / WMS","owner":"انبار مواد","frequency":"روزانه/هفتگی","statusText":"نامشخص","validation":"مواد حساس با expiry"},{"id":23,"name":"برنامه تولید مصوب (نسخه قفل)","domain":"تولید","priority":"red","level":"SKU×خط×هفته","source":"MPS / فایل تولید","owner":"برنامه‌ریزی تولید","frequency":"هفتگی/ماهانه","statusText":"نامشخص","validation":"نسخه ثبت و قفل شود"},{"id":24,"name":"تولید واقعی سالم + ضایعات","domain":"تولید","priority":"red","level":"SKU×خط×شیفت","source":"MES / گزارش تولید","owner":"تولید","frequency":"روزانه","statusText":"نامشخص","validation":"تولید سالم + ضایعات = کل"},{"id":28,"name":"سفارش‌های خرید باز (PO)","domain":"تأمین","priority":"red","level":"ماده×تأمین‌کننده","source":"ERP خرید","owner":"خرید","frequency":"روزانه/هفتگی","statusText":"نامشخص","validation":"تاریخ نیاز، قیمت، ارز و تأمین‌کننده"},{"id":29,"name":"Lead Time و MOQ تأمین‌کنندگان","domain":"تأمین","priority":"red","level":"ماده×تأمین‌کننده","source":"ERP خرید / سوابق","owner":"خرید","frequency":"ماهانه","statusText":"نامشخص","validation":"outlier تأخیر جدا علامت‌گذاری شود"},{"id":32,"name":"ارسال‌ها و تحویل واقعی","domain":"لجستیک","priority":"red","level":"خط سفارش/ارسال","source":"ERP / پخش","owner":"لجستیک","frequency":"روزانه","statusText":"نامشخص","validation":"تحویل واقعی برای هر سفارش"},{"id":36,"name":"بهای تمام‌شده استاندارد/واقعی","domain":"مالی","priority":"red","level":"SKU×دوره","source":"ERP مالی / Costing","owner":"مالی صنعتی","frequency":"ماهانه/فصلی","statusText":"نامشخص","validation":"نسخه استاندارد با تاریخ اعتبار"},{"id":37,"name":"بودجه/هدف فروش سالانه","domain":"مالی","priority":"red","level":"خانواده×کانال×ماه","source":"مالی / فروش","owner":"مالی","frequency":"سالانه/ماهانه","statusText":"نامشخص","validation":"نسخه قفل و تغییرات ثبت‌شده"},{"id":41,"name":"نسخه‌های قفل‌شده Forecast/Plan","domain":"فرایندی","priority":"yellow","level":"ماهانه","source":"S&OP","owner":"S&OP Coordinator","frequency":"ماهانه","statusText":"باید ساخته شود","validation":"نسخه‌بندی و نگهداری ۲۴ ماه"},{"id":44,"name":"Decision Log + Action Tracker","domain":"فرایندی","priority":"yellow","level":"هر جلسه","source":"S&OP","owner":"S&OP Coordinator","frequency":"هر جلسه","statusText":"باید ساخته شود","validation":"تصمیم بدون مالک/موعد Flag شود"}],"mvp":["Master Data کالا + خانواده + عمر ماندگاری + نرخ تبدیل واحد","فروش خالص و برگشتی ۱۲ ماه، مطلوب ۲۴ ماه","سفارش‌ها و کسری تحویل برای OTIF/Lost Sales","موجودی محصول نهایی به تفکیک بچ/انقضا","برنامه و خروجی واقعی تولید + ظرفیت تقریبی خطوط","تقویم پروموشن با baseline/uplift","PO باز، Lead Time و موجودی مواد کلیدی","قیمت، بهای تمام‌شده و بودجه برای پل حجم به ارزش"]},"data/kpi-definitions.json":{"kpis":[{"name":"WAPE","domain":"تقاضا","definition":"خطای مطلق وزنی و شاخص اجرایی اصلی دقت پیش‌بینی","formula":"Σ|Actual − Forecast| ÷ Σ|Actual|","owner":"Demand Planner","target":"≤۲۰٪ شروع","status":"sample"},{"name":"Forecast Bias","domain":"تقاضا","definition":"جهت خطای پیش‌بینی؛ مثبت یعنی بیش‌برآورد","formula":"Σ(Forecast − Actual) ÷ ΣActual","owner":"Demand Planner","target":"±۵٪","status":"sample"},{"name":"FVA","domain":"تقاضا","definition":"ارزش افزوده تعدیل نسبت به baseline","formula":"Error_baseline − Error_after_step","owner":"Demand Review","target":"مثبت","status":"sample"},{"name":"OTIF","domain":"توزیع","definition":"تحویل به‌موقع و کامل سفارش","formula":"On-time & in-full orders ÷ total orders × 100","owner":"لجستیک / پخش","target":"≥۹۵٪","status":"sample"},{"name":"Plan Adherence","domain":"تولید","definition":"پایبندی تولید واقعی به برنامه قفل‌شده","formula":"Actual good production ÷ locked plan × 100","owner":"تولید","target":"≥۹۵٪","status":"sample"},{"name":"OEE","domain":"تولید","definition":"اثربخشی کلی تجهیزات","formula":"Availability × Performance × Quality","owner":"تولید / نت","target":"۷۵-۸۵٪ دامنه سالم","status":"sample"},{"name":"DOS","domain":"موجودی","definition":"روزهای پوشش موجودی","formula":"Inventory ÷ AvgDailyDemand","owner":"زنجیره تأمین","target":"بر اساس Shelf Life","status":"sample"},{"name":"Near-Expiry","domain":"موجودی","definition":"سهم موجودی نزدیک‌انقضا","formula":"RemLife < threshold ÷ total inventory × 100","owner":"انبار / کیفیت","target":"<۱۰٪","status":"sample"},{"name":"Action Closure","domain":"حاکمیت","definition":"درصد اقدامات بسته‌شده در موعد","formula":"Closed actions ÷ due actions × 100","owner":"S&OP Coordinator","target":"≥۹۰٪","status":"sample"},{"name":"Gross Margin","domain":"مالی","definition":"حاشیه سود ناخالص","formula":"(Revenue − COGS) ÷ Revenue × 100","owner":"مالی","target":"نیازمند baseline","status":"sample"}],"alerts":[{"condition":"Uplift کمپین >۲۰٪","action":"ارجاع به Pre-S&OP","status":"sample"},{"condition":"شکاف ظرفیت >۷٪ خانواده","action":"تشدید به Executive","status":"sample"},{"condition":"SKU-A زیر ۵۰٪ Safety Stock","action":"اقدام فوری S&OE","status":"sample"},{"condition":"near-expiry بالای آستانه","action":"انتقال، تخفیف کنترل‌شده یا توقف تولید","status":"sample"},{"condition":"جهش قیمت مواد >۱۰٪","action":"گزارش مالی و تصمیم خرید","status":"sample"}]}};
+    </script>
+    <script>
+(function () {
+  "use strict";
+
+  function round(value, digits = 0) {
+    const factor = 10 ** digits;
+    return Math.round((value + Number.EPSILON) * factor) / factor;
+  }
+
+  function calculateScenario(base, controls) {
+    const demand = base.baselineDemand * (1 + controls.demandChange / 100) * (1 + controls.uplift / 100);
+    const promoStock = controls.uplift > 0 ? (base.baselineDemand * (controls.uplift / 100) * (controls.promoDays || 15)) / 30 : 0;
+    const targetEndInventory = base.safetyStock + base.cycleStock + promoStock;
+    const productionReq = demand + targetEndInventory - base.openingInventory;
+    const grossProduction = productionReq / base.yield;
+    const adjustedCapacity = base.effectiveCapacity * (1 + controls.oeeChange / 100);
+    const utilization = grossProduction / adjustedCapacity;
+    const revenue = demand * base.pricePerCarton;
+    const fxCostImpact = base.cogsPerCarton * base.materialShare * base.importedMaterialShare * (controls.fxChange / 100);
+    const adjustedCogs = base.cogsPerCarton + fxCostImpact;
+    const grossMargin = revenue > 0 ? (revenue - demand * adjustedCogs) / revenue : 0;
+    const avgDailyDemand = demand / 30;
+    const dos = avgDailyDemand > 0 ? targetEndInventory / avgDailyDemand : 0;
+    const capacityGap = grossProduction - adjustedCapacity;
+
+    return {
+      demand: round(demand),
+      targetEndInventory: round(targetEndInventory),
+      productionReq: round(productionReq),
+      grossProduction: round(grossProduction),
+      adjustedCapacity: round(adjustedCapacity),
+      utilization: round(utilization * 100),
+      capacityGap: round(capacityGap),
+      revenue: round(revenue),
+      grossMargin: round(grossMargin * 100, 1),
+      dos: round(dos, 1),
+      adjustedCogs: round(adjustedCogs)
+    };
+  }
+
+  window.SOpCalculations = { calculateScenario, round };
+})();
+
+    </script>
+    <script>
+(function () {
+  "use strict";
+
+  const state = {
+    data: null,
+    scenarios: null,
+    requirements: null,
+    kpis: null,
+    activeStage: null,
+    controls: {
+      demandChange: 0,
+      uplift: 0,
+      oeeChange: 0,
+      fxChange: 0,
+      promoDays: 15
+    }
+  };
+
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+  const nf = new Intl.NumberFormat("fa-IR");
+  const money = new Intl.NumberFormat("fa-IR", { notation: "compact", maximumFractionDigits: 1 });
+
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function badge(status, note) {
+    if (status !== "sample") return "";
+    return `<span class="sample-badge">${escapeHtml(note || state.data.meta.sampleLabel)}</span>`;
+  }
+
+  async function loadJson(path) {
+    const data = window.__SOP_EMBED__ && window.__SOP_EMBED__[path];
+    if (!data) throw new Error(`Cannot load ${path}`);
+    return data;
+  }
+
+  async function init() {
+    [state.data, state.scenarios, state.requirements, state.kpis] = await Promise.all([
+      loadJson("data/sop-data.json"),
+      loadJson("data/sample-scenarios.json"),
+      loadJson("data/data-requirements.json"),
+      loadJson("data/kpi-definitions.json")
+    ]);
+
+    state.activeStage = state.data.processStages[0];
+    renderShell();
+    renderIntro();
+    renderProblem();
+    renderDefinition();
+    renderRoadmap();
+    renderProcess();
+    renderCycle();
+    renderCalculator();
+    renderGovernance();
+    renderKpis();
+    renderDataRequirements();
+    renderDecisions();
+    renderGlossary();
+    bindGlobalActions();
+    initMotion();
+    initScrollSpy();
+  }
+
+  /* ---------- Motion ----------
+     نمایان‌بودن کاملاً توسط CSS (@keyframes revealIn/growBar با fill-mode: both) تضمین می‌شود
+     و به scroll / IntersectionObserver / تایمر وابسته نیست. اینجا فقط:
+     ۱) کلاس‌های reveal + تأخیر پلکانی روی عناصر تزئینی افزوده می‌شود؛
+     ۲) در حالت reduced-motion انیمیشن خاموش می‌شود؛
+     ۳) نوار پیشرفت رودمپ روی load مقداردهی می‌شود. */
+  function initMotion() {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) document.documentElement.classList.add("no-anim");
+
+    const revealTargets = $$(
+      ".section-heading, .info-card, .meeting-card, .metric-item, .two-column > div, " +
+      ".cycle-timeline span, .formula-grid article, .chart-card, .decision-list article, " +
+      ".ceo-playbook, .explainer-panel, .role-cloud, .escalation-ladder"
+    );
+    revealTargets.forEach((el, index) => {
+      el.classList.add("reveal");
+      el.style.setProperty("--d", `${(index % 5) * 60}ms`);
+    });
+
+    armRoadmapProgress(true); /* بدون تأخیر، مستقل از اسکرول */
+  }
+
+  function armRoadmapProgress(instant) {
+    const bar = $("#roadmap-progress");
+    if (!bar) return;
+    const active = state.activeRoadmap ?? 0;
+    const pct = ((active + 1) / state.data.roadmap.length) * 100;
+    if (instant) {
+      /* مقدار همگام (بدون تایمر) تا در هر محیطی فوراً اعمال شود */
+      bar.style.transition = "none";
+      bar.style.width = `${pct}%`;
+      window.setTimeout(() => { bar.style.transition = ""; }, 60); /* بازگردانی ترنزیشن برای کلیک‌های بعدی */
+    } else {
+      bar.style.width = `${pct}%`;
+    }
+  }
+
+  /* ---------- Scroll spy for nav ---------- */
+  function initScrollSpy() {
+    if (!("IntersectionObserver" in window)) return;
+    const links = $$("#site-nav a");
+    const byId = new Map(links.map((link) => [link.getAttribute("href").slice(1), link]));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const link = byId.get(entry.target.id);
+        if (!link) return;
+        if (entry.isIntersecting) {
+          links.forEach((item) => item.classList.remove("active"));
+          link.classList.add("active");
+        }
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    $$("main section[id]").forEach((section) => io.observe(section));
+  }
+
+  function renderShell() {
+    document.title = state.data.meta.title;
+    $("#brand-title").textContent = "S&OP بنیس";
+    $("#site-nav").innerHTML = state.data.nav
+      .map((item) => `<a href="#${item.id}">${escapeHtml(item.label)}</a>`)
+      .join("");
+    $("#footer-meta").textContent = `${state.data.meta.version} | ${state.data.meta.date}`;
+    $("#footer-attribution").textContent = state.data.meta.attribution;
+  }
+
+  function renderIntro() {
+    $("#hero-version").textContent = `${state.data.meta.version} | ${state.data.meta.date}`;
+    $("#hero-title").textContent = state.data.meta.title;
+    $("#hero-subtitle").textContent = state.data.meta.subtitle;
+    $("#hero-attribution").textContent = state.data.meta.attribution;
+    $("#hero-status").textContent = state.data.intro.status;
+    $("#hero-mini-flow").innerHTML = state.data.processStages
+      .map((stage) => `<span class="mini-node ${stage.domain}">${escapeHtml(stage.title)}</span>`)
+      .join("");
+  }
+
+  function renderProblem() {
+    $("#risk-grid").innerHTML = state.data.risks
+      .map((risk) => `
+        <article class="info-card">
+          <span class="unit-tag">${escapeHtml(risk.unit)}</span>
+          <h3>${escapeHtml(risk.title)}</h3>
+          <p>${escapeHtml(risk.detail)}</p>
+        </article>
+      `)
+      .join("");
+    $("#benchmark-strip").innerHTML = state.data.benchmarks
+      .map((metric) => `
+        <div class="metric-item">
+          <strong>${escapeHtml(metric.value)}</strong>
+          <span>${escapeHtml(metric.metric)}</span>
+          ${badge(metric.status, metric.note)}
+        </div>
+      `)
+      .join("");
+  }
+
+  function renderDefinition() {
+    $("#definition-text").textContent = state.data.intro.definition;
+    $("#is-list").innerHTML = state.data.intro.is.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+    $("#is-not-list").innerHTML = state.data.intro.isNot.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+    $("#principles-accordion").innerHTML = state.data.principles
+      .map((item, index) => `
+        <details ${index === 0 ? "open" : ""}>
+          <summary>${escapeHtml(item.title)}</summary>
+          <p>${escapeHtml(item.body)}</p>
+        </details>
+      `)
+      .join("");
+  }
+
+  function renderRoadmap() {
+    const meta = state.data.roadmapMeta || {};
+    state.activeRoadmap = 0;
+    $("#roadmap-start-label").textContent = meta.start || "خط شروع";
+    $("#roadmap-start-note").textContent = meta.startNote || "";
+    $("#roadmap-end-label").textContent = meta.end || "خط پایان";
+    $("#roadmap-end-note").textContent = meta.endNote || "";
+    $("#roadmap-hint").textContent = meta.hint || "";
+
+    const milestones = $("#roadmap-milestones");
+    milestones.innerHTML = state.data.roadmap
+      .map((phase, index) => `
+        <button class="milestone" data-phase="${index}" type="button" role="tab"
+          id="roadmap-tab-${index}" aria-selected="${index === 0}" aria-controls="roadmap-panel">
+          <span class="phase-chip">${escapeHtml(phase.phase)}</span>
+          <span class="dot" aria-hidden="true"></span>
+          <span class="m-card">
+            <strong>${escapeHtml(phase.title)}</strong>
+            <span class="m-range">${escapeHtml(phase.range)}</span>
+            <span class="m-caption">${escapeHtml(phase.gives || "")}</span>
+          </span>
+        </button>
+      `)
+      .join("");
+
+    milestones.addEventListener("click", (event) => {
+      const button = event.target.closest(".milestone");
+      if (!button) return;
+      selectRoadmapPhase(Number(button.dataset.phase));
+    });
+
+    milestones.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+      const delta = event.key === "ArrowLeft" ? 1 : -1; /* RTL */
+      const next = Math.min(Math.max(state.activeRoadmap + delta, 0), state.data.roadmap.length - 1);
+      selectRoadmapPhase(next);
+      $(`#roadmap-tab-${next}`)?.focus();
+    });
+
+    selectRoadmapPhase(0, true);
+  }
+
+  function selectRoadmapPhase(index, initial = false) {
+    state.activeRoadmap = index;
+    $$("#roadmap-milestones .milestone").forEach((node, nodeIndex) => {
+      node.classList.toggle("active", nodeIndex === index);
+      node.classList.toggle("passed", nodeIndex < index);
+      node.setAttribute("aria-selected", String(nodeIndex === index));
+    });
+    if (!initial) armRoadmapProgress(false);
+    renderRoadmapPanel(index, initial);
+  }
+
+  function renderRoadmapPanel(index, initial = false) {
+    const phase = state.data.roadmap[index];
+    const panel = $("#roadmap-panel");
+    panel.innerHTML = `
+      <article class="roadmap-detail${initial ? "" : " swap"}">
+        <span class="unit-tag">${escapeHtml(phase.phase)} | ${escapeHtml(phase.range)}</span>
+        ${phase.status === "sample" ? badge("sample") : ""}
+        <h3>${escapeHtml(phase.title)}</h3>
+        <div class="why-box">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          <p><strong>چرا این فاز لازم است؟</strong>${escapeHtml(phase.why || "")}</p>
+        </div>
+        <p class="gives-line">${escapeHtml(phase.gives || "")}</p>
+        <dl>
+          <div><dt>هدف</dt><dd>${escapeHtml(phase.goal)}</dd></div>
+          <div><dt>تحویل‌شدنی</dt><dd>${escapeHtml(phase.deliverable)}</dd></div>
+          <div><dt>معیار موفقیت</dt><dd>${escapeHtml(phase.success)}</dd></div>
+          <div><dt>ریسک اصلی</dt><dd>${escapeHtml(phase.risk)}</dd></div>
+        </dl>
+      </article>
+    `;
+  }
+
+  function renderProcess(filter = "all") {
+    const stages = filter === "all" ? state.data.processStages : state.data.processStages.filter((stage) => stage.domain === filter);
+    $("#process-flow").innerHTML = stages
+      .map((stage) => `
+        <button class="stage-node ${stage.domain} ${stage.id === state.activeStage.id ? "active" : ""}" data-stage="${stage.id}" type="button">
+          <small>${nf.format(stage.order)}</small>
+          <span>${escapeHtml(stage.title)}</span>
+        </button>
+      `)
+      .join("");
+    renderStageDetail(state.activeStage);
+
+    $("#process-flow").onclick = (event) => {
+      const button = event.target.closest(".stage-node");
+      if (!button) return;
+      state.activeStage = state.data.processStages.find((stage) => stage.id === button.dataset.stage);
+      renderProcess(filter);
+    };
+
+    $$(".filter-chip").forEach((chip) => {
+      chip.onclick = () => {
+        $$(".filter-chip").forEach((item) => item.classList.remove("active"));
+        chip.classList.add("active");
+        const nextFilter = chip.dataset.filter;
+        const nextStages = nextFilter === "all" ? state.data.processStages : state.data.processStages.filter((stage) => stage.domain === nextFilter);
+        state.activeStage = nextStages.includes(state.activeStage) ? state.activeStage : nextStages[0] || state.data.processStages[0];
+        renderProcess(nextFilter);
+      };
+    });
+  }
+
+  function renderStageDetail(stage) {
+    const rows = [
+      ["هدف", stage.goal],
+      ["ورودی", stage.inputs],
+      ["فعالیت", stage.activities],
+      ["خروجی", stage.outputs],
+      ["مسئول", stage.owner],
+      ["وابستگی", stage.dependencies],
+      ["نقطه تصمیم", stage.decision],
+      ["KPI", stage.kpis]
+    ];
+    const detail = $("#stage-detail");
+    detail.classList.remove("swap");
+    void detail.offsetWidth; /* restart animation */
+    detail.classList.add("swap");
+    detail.innerHTML = `
+      <span class="unit-tag">${escapeHtml(stage.week)} | ${escapeHtml(stage.meeting)}</span>
+      <h3>${nf.format(stage.order)}. ${escapeHtml(stage.title)}</h3>
+      <div class="detail-list">
+        ${rows.map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`).join("")}
+      </div>
+    `;
+  }
+
+  function renderCycle() {
+    const weeks = ["هفته ۱: داده و baseline", "هفته ۲: Demand Review", "هفته ۳: Supply / Inventory / Finance", "هفته ۴: Pre-S&OP و Executive"];
+    $("#cycle-timeline").innerHTML = weeks.map((week) => `<span>${escapeHtml(week)}</span>`).join("");
+    $("#meeting-grid").innerHTML = state.data.meetings
+      .map((meeting) => `
+        <article class="meeting-card">
+          <span class="unit-tag">${escapeHtml(meeting.week)} ${badge(meeting.status)}</span>
+          <h3>${escapeHtml(meeting.title)}</h3>
+          <p><strong>رئیس:</strong> ${escapeHtml(meeting.chair)}</p>
+          <p><strong>مدت:</strong> ${escapeHtml(meeting.duration)}</p>
+          <p><strong>خروجی:</strong> ${escapeHtml(meeting.output)}</p>
+        </article>
+      `)
+      .join("");
+  }
+
+  function renderCalculator() {
+    renderCalcExplainer();
+    renderChartExplainer();
+    $("#scenario-buttons").innerHTML = state.scenarios.presets
+      .map((preset) => `<button class="scenario-preset" data-id="${preset.id}" type="button">${escapeHtml(preset.title)}</button>`)
+      .join("");
+    $("#scenario-form").innerHTML = [
+      ["demandChange", "تغییر تقاضا", -30, 40, "%"],
+      ["uplift", "Uplift کمپین", 0, 50, "%"],
+      ["oeeChange", "تغییر ظرفیت/OEE", -40, 20, "%"],
+      ["fxChange", "تغییر ارز", -10, 40, "%"]
+    ].map(([key, label, min, max, unit]) => `
+      <label>
+        <span>${label}</span>
+        <output id="${key}-value">${nf.format(state.controls[key])}${unit}</output>
+        <input type="range" name="${key}" min="${min}" max="${max}" value="${state.controls[key]}">
+      </label>
+    `).join("");
+
+    $("#scenario-form").addEventListener("input", (event) => {
+      const input = event.target;
+      state.controls[input.name] = Number(input.value);
+      $(`#${input.name}-value`).textContent = `${nf.format(state.controls[input.name])}%`;
+      updateScenarioResults();
+    });
+
+    $("#scenario-buttons").addEventListener("click", (event) => {
+      const button = event.target.closest(".scenario-preset");
+      if (!button) return;
+      const preset = state.scenarios.presets.find((item) => item.id === button.dataset.id);
+      Object.assign(state.controls, {
+        demandChange: preset.demandChange,
+        uplift: preset.uplift,
+        oeeChange: preset.oeeChange,
+        fxChange: preset.fxChange,
+        promoDays: preset.promoDays || 15
+      });
+      $$("#scenario-form input").forEach((input) => {
+        input.value = state.controls[input.name];
+        $(`#${input.name}-value`).textContent = `${nf.format(state.controls[input.name])}%`;
+      });
+      $$(".scenario-preset").forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+      updateScenarioResults(preset.note);
+    });
+
+    updateScenarioResults();
+    renderCharts();
+  }
+
+  function renderCalcExplainer() {
+    const ex = state.data.calcExplainer;
+    if (!ex) return;
+    $("#calc-explainer").innerHTML = `
+      <div class="explainer-head">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-4"/><path d="M9 3v6h6V3"/><path d="M8 13h8M8 17h5"/></svg>
+        <h3>${escapeHtml(ex.title)}</h3>
+      </div>
+      <p class="explainer-intro">${escapeHtml(ex.intro)}</p>
+      <div class="explainer-cols">
+        <div class="explainer-box">
+          <h4>ورودی‌ها (چهار متغیر اسلایدر)</h4>
+          <dl class="mini-dl">
+            ${ex.inputs.map((i) => `<div><dt>${escapeHtml(i.k)}</dt><dd>${escapeHtml(i.v)}</dd></div>`).join("")}
+          </dl>
+        </div>
+        <div class="explainer-box">
+          <h4>فرمول هر خروجی</h4>
+          <ul class="formula-list">
+            ${ex.formulas.map((f) => `<li><b>${escapeHtml(f.out)}</b><code>${escapeHtml(f.f)}</code></li>`).join("")}
+          </ul>
+        </div>
+      </div>
+      <p class="explainer-note">${escapeHtml(ex.note)} ${badge("sample")}</p>
+    `;
+  }
+
+  function renderChartExplainer() {
+    const ex = state.data.chartExplainer;
+    if (!ex) return;
+    $("#chart-explainer").innerHTML = `
+      <div class="explainer-head">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
+        <h3>${escapeHtml(ex.title)}</h3>
+      </div>
+      <div class="explainer-cols">
+        ${ex.items.map((i) => `
+          <div class="explainer-box">
+            <h4>${escapeHtml(i.chart)}</h4>
+            <p>${escapeHtml(i.basis)}</p>
+          </div>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  function updateScenarioResults(note = "") {
+    const result = window.SOpCalculations.calculateScenario(state.scenarios.baseInputs, state.controls);
+    const items = [
+      ["تقاضا", `${nf.format(result.demand)} کارتن`],
+      ["نیاز تولید", `${nf.format(result.productionReq)} کارتن`],
+      ["Gross Production", `${nf.format(result.grossProduction)} کارتن`],
+      ["Utilization", `${nf.format(result.utilization)}٪`],
+      ["شکاف ظرفیت", `${nf.format(result.capacityGap)} کارتن`],
+      ["Gross Margin", `${nf.format(result.grossMargin)}٪`],
+      ["DOS", `${nf.format(result.dos)} روز`],
+      ["Revenue", `${money.format(result.revenue)} ریال`]
+    ];
+    const resultsBox = $("#scenario-results");
+    resultsBox.innerHTML = items
+      .map(([label, value]) => `
+        <article class="result-card flash">
+          <span>${escapeHtml(label)}</span>
+          <strong>${escapeHtml(value)}</strong>
+          ${badge("sample")}
+        </article>
+      `)
+      .join("") + `<p class="scenario-note">${escapeHtml(note || "همه خروجی‌ها نمونه‌اند و داده واقعی بنیس محسوب نمی‌شوند.")}</p>`;
+    window.setTimeout(() => {
+      $$(".result-card.flash", resultsBox).forEach((card) => card.classList.remove("flash"));
+    }, 320);
+  }
+
+  function renderCharts() {
+    const series = state.scenarios.monthlySeries;
+    const max = Math.max(...series.flatMap((item) => [item.demand, item.supply]));
+    $("#demand-chart").innerHTML = `
+      <div class="bar-chart">
+        ${series.map((item) => `
+          <div class="bar-row">
+            <span>${escapeHtml(item.month)}</span>
+            <div class="bar-bg" title="تقاضا: ${nf.format(item.demand)}"><i class="demand-bar" style="--w:${(item.demand / max) * 100}%"></i></div>
+            <div class="bar-bg" title="عرضه: ${nf.format(item.supply)}"><i class="supply-bar" style="--w:${(item.supply / max) * 100}%"></i></div>
+          </div>
+        `).join("")}
+      </div>
+      <p class="chart-legend"><span class="dot demand"></span>تقاضا <span class="dot supply"></span>عرضه ${badge("sample")}</p>
+    `;
+    $("#capacity-chart").innerHTML = `
+      <div class="capacity-bars">
+        ${state.scenarios.capacityLines.map((line) => `
+          <div>
+            <span>${escapeHtml(line.line)}</span>
+            <div class="capacity-track" title="بار: ${nf.format(line.load)}٪"><i style="--w:${Math.min(line.load, 120)}%" class="${line.load > 100 ? "danger" : line.load > 85 ? "warn" : ""}"></i></div>
+            <strong>${nf.format(line.load)}٪</strong>
+          </div>
+        `).join("")}
+      </div>
+      <p class="chart-legend">${badge("sample")} ناحیه کم‌رنگ سبز = باند سالم ۷۵-۸۵٪</p>
+    `;
+  }
+
+  function renderGovernance() {
+    const gov = state.data.governance;
+
+    /* پلی‌بوک مدیرعامل */
+    if (gov.ceo) {
+      const c = gov.ceo;
+      const col = (title, items, icon) => `
+        <div class="ceo-col">
+          <h4>${icon} ${escapeHtml(title)}</h4>
+          <ul>${items.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul>
+        </div>`;
+      $("#ceo-playbook").innerHTML = `
+        <div class="ceo-head">
+          <span class="ceo-badge">CEO</span>
+          <div>
+            <h3>${escapeHtml(c.title)}</h3>
+            <p>${escapeHtml(c.intro)}</p>
+          </div>
+        </div>
+        <div class="ceo-grid">
+          ${col("پیش از جلسه", c.before, "①")}
+          ${col("حین جلسه", c.during, "②")}
+          ${col("پس از جلسه", c.after, "③")}
+        </div>
+        <div class="ceo-actions">
+          <strong>پنج اقدام فوری مدیرعامل:</strong>
+          <ol>${c.fiveActions.map((a) => `<li>${escapeHtml(a)}</li>`).join("")}</ol>
+        </div>
+      `;
+    }
+
+    /* چیپ‌های نقش — کلیک‌پذیر */
+    const details = gov.roleDetails || [];
+    $("#role-cloud").innerHTML = details
+      .map((role, index) => `<button class="role-chip" data-role="${index}" type="button" role="listitem" aria-expanded="false">${escapeHtml(role.role)}</button>`)
+      .join("");
+    $("#role-cloud").onclick = (event) => {
+      const button = event.target.closest(".role-chip");
+      if (!button) return;
+      const index = Number(button.dataset.role);
+      $$(".role-chip").forEach((chip) => chip.setAttribute("aria-expanded", "false"));
+      button.setAttribute("aria-expanded", "true");
+      $$(".role-chip").forEach((chip) => chip.classList.remove("active"));
+      button.classList.add("active");
+      renderRoleDetail(details[index]);
+    };
+    renderRoleDetail(details[0], true);
+    $(".role-chip")?.classList.add("active");
+    $(".role-chip")?.setAttribute("aria-expanded", "true");
+
+    /* RACI */
+    const roles = ["همه", ...new Set(gov.raci.flatMap((row) => [row.responsible, row.accountable]))];
+    $("#raci-filter").innerHTML = roles.map((role) => `<option value="${escapeHtml(role)}">${escapeHtml(role)}</option>`).join("");
+    $("#raci-filter").onchange = () => renderRaciTable($("#raci-filter").value);
+    renderRaciTable("همه");
+
+    /* پله‌های تشدید — کلیک‌پذیر */
+    const esc = gov.escalationDetails || gov.escalation.map((level) => ({ level, who: "", what: "", exit: "" }));
+    $("#escalation-ladder").innerHTML = esc
+      .map((step, index) => `<button class="esc-step" data-step="${index}" type="button" aria-expanded="false"><small>${nf.format(index + 1)}</small>${escapeHtml(step.level)}</button>`)
+      .join("");
+    $("#escalation-ladder").onclick = (event) => {
+      const button = event.target.closest(".esc-step");
+      if (!button) return;
+      const index = Number(button.dataset.step);
+      $$(".esc-step").forEach((step) => { step.classList.remove("active"); step.setAttribute("aria-expanded", "false"); });
+      button.classList.add("active");
+      button.setAttribute("aria-expanded", "true");
+      renderEscalationDetail(esc[index], index);
+    };
+    renderEscalationDetail(esc[0], 0, true);
+    $(".esc-step")?.classList.add("active");
+  }
+
+  function renderRoleDetail(role, initial = false) {
+    if (!role) return;
+    const box = $("#role-detail");
+    box.classList.remove("swap");
+    if (!initial) { void box.offsetWidth; box.classList.add("swap"); }
+    box.innerHTML = `
+      <div class="gov-detail-head"><span class="unit-tag">${escapeHtml(role.tag)}</span><h4>${escapeHtml(role.role)}</h4></div>
+      <dl class="mini-dl">
+        <div><dt>مسئولیت</dt><dd>${escapeHtml(role.responsibility)}</dd></div>
+        <div><dt>اختیار تصمیم</dt><dd>${escapeHtml(role.authority)}</dd></div>
+        <div><dt>KPI</dt><dd>${escapeHtml(role.kpi)}</dd></div>
+      </dl>
+    `;
+  }
+
+  function renderEscalationDetail(step, index, initial = false) {
+    if (!step) return;
+    const box = $("#escalation-detail");
+    box.classList.remove("swap");
+    if (!initial) { void box.offsetWidth; box.classList.add("swap"); }
+    box.innerHTML = `
+      <div class="gov-detail-head"><span class="esc-num">${nf.format(index + 1)}</span><h4>${escapeHtml(step.level)}</h4></div>
+      <dl class="mini-dl">
+        ${step.who ? `<div><dt>چه کسی</dt><dd>${escapeHtml(step.who)}</dd></div>` : ""}
+        ${step.what ? `<div><dt>چه اتفاقی می‌افتد</dt><dd>${escapeHtml(step.what)}</dd></div>` : ""}
+        ${step.exit ? `<div><dt>خروج / پله بعد</dt><dd>${escapeHtml(step.exit)}</dd></div>` : ""}
+      </dl>
+    `;
+  }
+
+  function renderRaciTable(filter) {
+    const rows = filter === "همه" ? state.data.governance.raci : state.data.governance.raci.filter((row) => Object.values(row).some((value) => value.includes(filter)));
+    $("#raci-table").innerHTML = table(["فعالیت", "Responsible", "Accountable", "Consulted"], rows.map((row) => [row.activity, row.responsible, row.accountable, row.consulted]));
+  }
+
+  function renderKpis() {
+    const domains = ["همه", ...new Set(state.kpis.kpis.map((kpi) => kpi.domain))];
+    $("#kpi-filter").innerHTML = domains.map((domain) => `<option value="${escapeHtml(domain)}">${escapeHtml(domain)}</option>`).join("");
+    $("#kpi-filter").onchange = () => renderKpiCards($("#kpi-filter").value);
+    renderKpiCards("همه");
+    $("#alerts-table").innerHTML = table(["شرط", "اقدام"], state.kpis.alerts.map((alert) => [`${alert.condition} ${badge(alert.status)}`, alert.action]));
+  }
+
+  function renderKpiCards(filter) {
+    const items = filter === "همه" ? state.kpis.kpis : state.kpis.kpis.filter((kpi) => kpi.domain === filter);
+    $("#kpi-grid").innerHTML = items.map((kpi) => `
+      <article class="info-card kpi-card">
+        <span class="unit-tag">${escapeHtml(kpi.domain)} ${badge(kpi.status)}</span>
+        <h3>${escapeHtml(kpi.name)}</h3>
+        <p>${escapeHtml(kpi.definition)}</p>
+        <code>${escapeHtml(kpi.formula)}</code>
+        <p><strong>مالک:</strong> ${escapeHtml(kpi.owner)}</p>
+        <p><strong>هدف نمونه:</strong> ${escapeHtml(kpi.target)}</p>
+      </article>
+    `).join("");
+  }
+
+  function renderDataRequirements(priority = "all") {
+    const items = priority === "all" ? state.requirements.items : state.requirements.items.filter((item) => item.priority === priority);
+    $("#data-table").innerHTML = table(
+      ["#", "نام داده", "حوزه", "اولویت", "سطح", "مالک", "وضعیت"],
+      items.map((item) => [nf.format(item.id), item.name, item.domain, priorityLabel(item.priority), item.level, item.owner, item.statusText])
+    );
+    $("#mvp-list").innerHTML = state.requirements.mvp.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+    $$(".data-filter").forEach((button) => {
+      button.onclick = () => {
+        $$(".data-filter").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        renderDataRequirements(button.dataset.priority);
+      };
+    });
+  }
+
+  function priorityLabel(priority) {
+    return { red: "MVP", yellow: "فاز ۲", green: "فاز ۳+" }[priority] || priority;
+  }
+
+  function renderDecisions() {
+    $("#decision-list").innerHTML = state.data.decisions
+      .map((item, index) => `<article><small>${nf.format(index + 1)}</small><p>${escapeHtml(item)}</p>${badge("sample")}</article>`)
+      .join("");
+  }
+
+  function renderGlossary(filter = "") {
+    const q = filter.trim().toLowerCase();
+    const items = state.data.glossary.filter((item) => !q || item.term.toLowerCase().includes(q) || item.definition.includes(filter));
+    $("#glossary-list").innerHTML = items.map((item) => `<article><h3 dir="ltr">${escapeHtml(item.term)}</h3><p>${escapeHtml(item.definition)}</p></article>`).join("");
+  }
+
+  function table(headers, rows) {
+    return `
+      <table>
+        <thead><tr>${headers.map((header) => `<th>${escapeHtml(header)}</th>`).join("")}</tr></thead>
+        <tbody>
+          ${rows.map((row) => `<tr>${row.map((cell) => `<td>${String(cell).includes("<span") ? cell : escapeHtml(cell)}</td>`).join("")}</tr>`).join("")}
+        </tbody>
+      </table>
+    `;
+  }
+
+  function bindGlobalActions() {
+    $("#print-page").onclick = () => window.print();
+    $(".menu-toggle").onclick = () => {
+      const nav = $("#site-nav");
+      nav.classList.toggle("open");
+      $(".menu-toggle").setAttribute("aria-expanded", String(nav.classList.contains("open")));
+    };
+    $("#glossary-toggle").onclick = () => $("#glossary-dialog").showModal();
+    $("#close-glossary").onclick = () => $("#glossary-dialog").close();
+    $("#glossary-search").oninput = (event) => renderGlossary(event.target.value);
+  }
+
+  init().catch((error) => {
+    document.body.innerHTML = `<main class="load-error"><h1>خطا در بارگذاری سایت</h1><p>${escapeHtml(error.message)}</p><p>برای بارگذاری JSONها سایت را از طریق یک static server اجرا کنید.</p></main>`;
+    console.error(error);
+  });
+})();
+
+    </script>
+  </body>
+</html>
