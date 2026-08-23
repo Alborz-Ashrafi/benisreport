@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="استاندارد اجرایی چیدمان، ممیزی و بهبود شلف‌های VIP بنیس؛ تهیه‌شده توسط رهنگاشت">
+  <title>استاندارد شلف VIP بنیس | رهنگاشت</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+    :root{
+      --ink:#17191a;--muted:#5f625f;--paper:#fffdf8;--soft:#f4f2eb;
+      --gold:#f6bd18;--gold2:#ffd970;--brown:#4a2b16;--red:#c63b2f;
+      --green:#137a55;--blue:#2563a7;--teal:#22b4be;--line:#d9d7d0;--shadow:0 18px 55px rgba(50,37,19,.10);
+      --cake:#ffc56e;--wafer:#d9b7ff;--biscuit:#ffe28c;--cookie:#dcb08c;
+      --choco:#86c8ee;--layer:#b9d995;--roll:#9adbb8;--family:#e7c89d;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:88px}
+    body{margin:0;background:linear-gradient(180deg,#f2f0e9,#fbfaf7 480px);color:var(--ink);font-family:"Vazirmatn",Tahoma,Arial,sans-serif;line-height:1.9;font-size:15px;text-rendering:optimizeLegibility}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    .topbar{position:sticky;top:0;z-index:50;background:rgba(255,253,248,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .topbar-inner{max-width:1440px;margin:auto;padding:9px 22px;display:flex;align-items:center;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;min-width:max-content}
+    .brand-logos{display:flex;align-items:center;gap:7px;direction:ltr}
+    .brand-logo{width:44px;height:44px;border:1px solid #d8d6cf;border-radius:11px;object-fit:contain;background:white;padding:3px;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+    .brand-logo.rahnegasht{background:#0f1112;border-color:#272b2d}
+    .brand-divider{width:1px;height:31px;background:#d7d4cc}
+    .brand b{display:block;font-size:13px;line-height:1.5}.brand small{display:block;color:var(--muted);font-size:10px;font-weight:600}
+    .nav{display:flex;gap:6px;overflow:auto;scrollbar-width:none;flex:1;padding:2px}
+    .nav a{white-space:nowrap;color:#4f514f;text-decoration:none;border-radius:999px;padding:7px 11px;font-size:11px;font-weight:750;transition:.18s ease}
+    .nav a:hover,.nav a.active{background:#fff1b5;color:#3d2d00}
+    .top-actions{display:flex;gap:7px;min-width:max-content}
+    .btn{border:1px solid var(--line);background:white;color:var(--ink);border-radius:11px;padding:9px 13px;font-weight:800;font-size:12px}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(0,0,0,.08)}
+    .btn.primary{background:var(--gold);border-color:#d99e00;color:#1d1605}
+    .btn.dark{background:#211d18;color:white;border-color:#211d18}
+    .wrap{max-width:1440px;margin:auto;padding:26px 22px 80px}
+    .hero{min-height:440px;border-radius:30px;overflow:hidden;position:relative;padding:54px;display:grid;grid-template-columns:1.05fr .95fr;gap:42px;align-items:center;background:linear-gradient(125deg,#151819 0%,#25231d 56%,#5d460e 100%);color:white;box-shadow:var(--shadow)}
+    .hero:before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;left:-90px;top:-230px;background:radial-gradient(circle,rgba(246,189,24,.32),transparent 65%)}
+    .hero-copy,.hero-visual{position:relative;z-index:1}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(246,189,24,.14);border:1px solid rgba(246,189,24,.4);color:#ffe18c;border-radius:999px;padding:7px 11px;font-size:11px;font-weight:900;letter-spacing:.7px}
+    h1{font-size:clamp(32px,4.2vw,62px);line-height:1.28;margin:18px 0 14px;letter-spacing:-1px}
+    .hero p{font-size:16px;color:#e3ded4;max-width:680px;margin:0}
+    .prepared-by{display:inline-flex;align-items:center;gap:8px;margin-top:18px;color:#c8eeef;font-size:11px;font-weight:700}
+    .prepared-by:before{content:"";width:22px;height:2px;background:var(--teal);border-radius:9px}
+    .hero-quote{margin-top:24px;border-right:4px solid var(--gold);padding:8px 15px;background:rgba(255,255,255,.06);border-radius:12px;color:#fff2c6;font-weight:700}
+    .hero-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:26px}
+    .hero .btn{padding:12px 17px}
+    .mini-shelf{background:#f4efe6;border:10px solid #5b4731;border-top-width:16px;border-radius:12px;padding:12px;box-shadow:0 24px 50px rgba(0,0,0,.38);transform:perspective(900px) rotateY(5deg)}
+    .mini-row{height:58px;display:flex;gap:4px;align-items:flex-end;padding:5px 4px 8px;border-bottom:7px solid #6e5740}
+    .mini-product{height:38px;flex:1;border-radius:5px 5px 2px 2px;background:var(--cake);border:1px solid rgba(0,0,0,.12)}
+    .mini-row:nth-child(1) .mini-product{background:var(--choco)}.mini-row:nth-child(3) .mini-product{background:var(--wafer)}.mini-row:nth-child(4) .mini-product{background:var(--layer)}.mini-row:nth-child(5) .mini-product{background:var(--family);height:44px}
+    .mini-talker{background:var(--gold);color:#271b00;text-align:center;font-weight:1000;font-size:11px;padding:5px;margin-top:9px;border-radius:5px}
+    .section{margin-top:34px;background:rgba(255,253,248,.95);border:1px solid var(--line);border-radius:25px;padding:28px;box-shadow:0 12px 34px rgba(47,36,22,.06)}
+    .section-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:22px}
+    .section h2{font-size:27px;line-height:1.45;margin:0 0 6px;letter-spacing:-.2px}.section-head p{margin:0;color:var(--muted);font-size:13px;max-width:880px}
+    .section-no{min-width:45px;height:45px;border-radius:13px;background:var(--gold);display:grid;place-items:center;font-weight:1000;color:#241a03}
+    .story-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .story-card{background:var(--soft);border:1px solid #e7dfd1;border-radius:17px;padding:17px}
+    .story-card .num{font-size:11px;color:#896100;font-weight:1000}.story-card h3{font-size:15px;margin:5px 0 7px}.story-card p{font-size:12.5px;color:var(--muted);margin:0}
+    .speak{margin-top:16px;background:#202424;color:#f4efe7;border-radius:17px;padding:17px 19px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;border-right:4px solid var(--teal)}
+    .speak b{color:#82e0e4;font-size:11px;white-space:nowrap}.speak p{margin:0;font-size:13px}
+    .rules{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+    .rule{border:1px solid var(--line);border-radius:16px;padding:15px;background:white;min-height:130px}
+    .rule b{display:block;font-size:12.5px;margin-bottom:5px}.rule p{font-size:11.5px;color:var(--muted);margin:0}.rule .icon{font-size:20px;margin-bottom:7px}
+    .zone-stack{display:grid;gap:8px;max-width:980px;margin:auto}
+    .zone-row{display:grid;grid-template-columns:95px 145px 1fr;align-items:center;gap:10px;border:1px solid var(--line);border-radius:13px;padding:10px 13px;background:white}
+    .zone-row:nth-child(2),.zone-row:nth-child(3){border-color:#dda600;background:#fff9e5}
+    .zone-code{font-weight:1000;color:#8d6600}.zone-title{font-weight:900;font-size:12px}.zone-row p{margin:0;color:var(--muted);font-size:11px}
+    .standard-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .standard-card{border:1px solid var(--line);border-radius:19px;background:white;overflow:hidden}
+    .standard-title{padding:15px 17px;background:#241f19;color:white;display:flex;justify-content:space-between;gap:10px;align-items:center}
+    .standard-title b{font-size:14px}.standard-title span{font-size:10px;color:#d9d1c6}
+    .standard-body{padding:14px}
+    .std-row{display:grid;grid-template-columns:76px 1fr;gap:8px;align-items:stretch;margin-bottom:7px}
+    .std-zone{background:var(--soft);border-radius:9px;padding:7px;text-align:center;font-size:10px;display:grid;place-items:center;font-weight:800}
+    .std-items{display:flex;direction:ltr;gap:3px;min-height:48px;border-bottom:6px solid #76624d;padding:3px 3px 5px}
+    .std-item{display:grid;place-items:center;text-align:center;border-radius:6px 6px 2px 2px;padding:4px 3px;font-size:8.5px;font-weight:900;line-height:1.3;overflow:hidden;min-width:0;color:#17202a}
+    .warning{border-right:4px solid var(--gold);background:#fff8df;padding:12px 14px;border-radius:12px;font-size:12px;margin-top:14px;color:#4e4122}
+    .builder-layout{display:grid;grid-template-columns:minmax(315px,355px) minmax(0,1fr);gap:18px;align-items:stretch}
+    .form-card{position:sticky;top:82px;border:1px solid var(--line);border-radius:19px;padding:16px;background:#f8f7f3;max-height:calc(100vh - 105px);overflow:auto;scrollbar-width:thin}
+    .form-card h3{font-size:16px;margin:0 0 4px}.form-intro{font-size:10px;color:var(--muted);margin:0 0 12px}
+    .field{margin-bottom:11px}.field label{display:block;font-size:11px;font-weight:850;margin-bottom:5px;color:#3f423f}
+    input,select,textarea{width:100%;border:1px solid #cbc9c2;border-radius:10px;padding:10px 11px;background:white;color:#202322;outline:none;font-size:12px}
+    input:focus,select:focus,textarea:focus{border-color:#d19c00;box-shadow:0 0 0 3px rgba(246,189,24,.13)}
+    textarea{resize:vertical;min-height:66px}.row2{display:grid;grid-template-columns:1fr 1fr;gap:9px}.form-actions{display:grid;grid-template-columns:1.35fr 1fr;gap:8px;margin-top:14px}
+    .micro{font-size:10px;color:var(--muted);margin:8px 0 0}.hidden{display:none!important}
+    .result{min-height:520px;border:1px solid var(--line);border-radius:19px;background:white;padding:20px;overflow:auto}
+    .result-placeholder{min-height:480px;display:grid;place-items:center;text-align:center;color:#8b8276}.result-placeholder b{display:block;color:#3b352d;font-size:17px}
+    .result-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.result-head h3{font-size:19px;margin:0 0 6px}.chips{display:flex;gap:6px;flex-wrap:wrap}.chip{border:1px solid var(--line);border-radius:999px;padding:5px 8px;font-size:9px;background:#faf8f3}.chip.ok{background:#e8f7f0;border-color:#b5dec9;color:#0c6545}.chip.exception{background:#fff0ed;border-color:#f1c1bb;color:#a42f24}
+    .result-note{margin:13px 0;background:#f8f5ee;border:1px solid #e3dbcf;border-radius:12px;padding:10px 12px;font-size:11px;color:#5f584f}
+    .shelf-output{margin:18px auto 12px;max-width:950px;border:8px solid #594832;border-top-width:13px;border-radius:10px;padding:10px 9px;background:#eee7dc}
+    .out-row{margin-bottom:8px}.out-title{display:flex;justify-content:space-between;gap:9px;font-size:10px;margin-bottom:3px;color:#454842}
+    .out-products{display:flex;direction:ltr;align-items:flex-end;gap:3px;min-height:66px;border-bottom:8px solid #715c43;padding:4px 3px 5px}
+    .product{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-width:0;min-height:48px;border-radius:7px 7px 2px 2px;padding:5px 3px;font-size:9px;font-weight:900;line-height:1.25;color:#16202a;box-shadow:inset 0 -12px 20px rgba(0,0,0,.08)}
+    .product small{font-size:7.5px;opacity:.78;margin-top:3px}.cat-cake{background:var(--cake)}.cat-wafer{background:var(--wafer)}.cat-biscuit{background:var(--biscuit)}.cat-cookie{background:var(--cookie)}.cat-choco{background:var(--choco)}.cat-layer{background:var(--layer)}.cat-roll{background:var(--roll)}.cat-family{background:var(--family)}
+    .talker{background:var(--gold);border:2px solid #6a4a00;color:#221800;text-align:center;font-weight:1000;padding:7px;border-radius:6px;margin-top:7px;font-size:11px}
+    .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:13px 0}.metric{background:#f8f5ef;border:1px solid var(--line);border-radius:12px;padding:10px}.metric b{display:block;font-size:17px;color:#805e00}.metric span{font-size:9px;color:var(--muted)}
+    table{width:100%;border-collapse:collapse;font-size:11px}th,td{border:1px solid var(--line);padding:9px;text-align:right;vertical-align:top}th{background:#28231e;color:white}.table-wrap{overflow:auto;border-radius:12px;margin-top:13px}
+    .result-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}
+    .builder-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin:12px 0;padding:4px;background:#eae8e1;border-radius:12px}
+    .builder-tab{border:0;background:transparent;color:#626560;border-radius:9px;padding:8px 5px;font-size:10px;font-weight:850}
+    .builder-tab.active{background:white;color:#1c201f;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+    .form-panel{display:none;animation:panelIn .18s ease}.form-panel.active{display:block}
+    @keyframes panelIn{from{opacity:.35;transform:translateY(3px)}to{opacity:1;transform:none}}
+    .builder-head-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+    .focus-btn{border-color:#93dfe2;background:#edfbfb;color:#08636a}
+    body.builder-focus{overflow:hidden}
+    #builder.workspace-mode{position:fixed;inset:10px;z-index:150;margin:0;background:#f7f6f2;border:1px solid #c8c8c1;box-shadow:0 30px 90px rgba(0,0,0,.28);display:flex;flex-direction:column;padding:16px;border-radius:24px}
+    #builder.workspace-mode .section-head{margin-bottom:10px;align-items:center}
+    #builder.workspace-mode .section-head p{display:none}
+    #builder.workspace-mode .section-no{display:none}
+    #builder.workspace-mode .builder-layout{flex:1;min-height:0;align-items:stretch}
+    #builder.workspace-mode .form-card{position:static;max-height:none;height:100%;overflow:auto}
+    #builder.workspace-mode .result{height:100%;min-height:0;overflow:auto}
+    #builder.workspace-mode .shelf-output{margin-top:12px}
+    .kbd{display:inline-grid;place-items:center;min-width:22px;height:20px;padding:0 5px;border:1px solid #c9c7bf;border-bottom-width:2px;border-radius:5px;background:white;color:#5b5d59;font-size:9px;font-weight:800}
+    .ops-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.checklist,.audit-box{border:1px solid var(--line);border-radius:18px;padding:18px;background:white}.checklist h3,.audit-box h3{font-size:15px;margin:0 0 12px}.check{display:flex;gap:9px;align-items:flex-start;border-bottom:1px dashed #e5ddd0;padding:8px 0;font-size:11px}.check:last-child{border:0}.check input{width:auto;margin-top:5px;accent-color:#d09d00}
+    .kpi-table td:first-child{font-weight:900;direction:ltr;text-align:left}.target{color:var(--green);font-weight:900}
+    .calc{margin-top:14px;background:#f7f3ea;border-radius:13px;padding:13px}.calc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.calc-result{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}.score{background:white;border:1px solid var(--line);border-radius:10px;padding:9px}.score b{font-size:19px;color:#896500}.score span{display:block;font-size:9px;color:var(--muted)}
+    .pilot{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.week{border:1px solid var(--line);border-radius:15px;padding:14px;background:white}.week b{display:block;color:#8b6500;font-size:11px}.week h3{font-size:13px;margin:3px 0 6px}.week p{font-size:10px;color:var(--muted);margin:0}
+    .decision{margin-top:16px;border:2px solid var(--gold);background:#fff8df;border-radius:17px;padding:17px}.decision h3{font-size:15px;margin:0 0 8px}.decision ul{margin:0;padding-right:18px;font-size:12px}
+    .glossary{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.term{border:1px solid var(--line);border-radius:13px;padding:11px;background:white}.term b{font-size:11px;direction:ltr;display:block}.term p{margin:2px 0 0;color:var(--muted);font-size:9px}
+    footer{text-align:center;color:#82796d;font-size:10px;margin-top:24px}
+    .presenter{position:fixed;inset:0;z-index:200;background:#171512;color:white;display:none;align-items:center;justify-content:center;padding:34px}
+    .presenter.active{display:flex}.slide{width:min(1100px,94vw);min-height:620px;background:linear-gradient(130deg,#211e1a,#3c2e15);border:1px solid #665632;border-radius:28px;padding:56px;display:grid;grid-template-rows:auto 1fr auto;box-shadow:0 30px 100px rgba(0,0,0,.55)}
+    .slide-top{display:flex;justify-content:space-between;gap:12px;color:#cfc6b6;font-size:11px}.slide-content{display:flex;flex-direction:column;justify-content:center;max-width:900px}.slide-kicker{color:var(--gold2);font-weight:1000;font-size:12px}.slide h2{font-size:clamp(34px,5vw,63px);line-height:1.3;margin:12px 0 18px}.slide-body{font-size:18px;color:#e4ded4;line-height:2}.slide-note{margin-top:25px;border-right:4px solid var(--teal);background:rgba(255,255,255,.06);border-radius:12px;padding:13px 16px;color:#c9f4f5;font-size:14px}.slide-note:before{content:"پیام کلیدی";display:block;color:#72dbe0;font-size:10px;font-weight:900;margin-bottom:4px}.slide-bottom{display:flex;justify-content:space-between;gap:10px;align-items:center}.slide-controls{display:flex;gap:7px}.slide .btn{background:#fff;color:#181511}.slide .btn.primary{background:var(--gold)}
+    @media(max-width:1050px){.story-grid{grid-template-columns:1fr 1fr}.rules{grid-template-columns:1fr 1fr 1fr}.builder-layout{grid-template-columns:1fr}.form-card{position:static;max-height:none}.pilot{grid-template-columns:1fr 1fr 1fr}.glossary{grid-template-columns:repeat(3,1fr)}#builder.workspace-mode .builder-layout{grid-template-columns:300px minmax(0,1fr)}#builder.workspace-mode .form-card{max-height:none}}
+    @media(max-width:720px){.topbar-inner{padding:7px 10px}.brand-logo{width:36px;height:36px}.brand-divider{height:25px}.brand small{display:none}.nav{display:none}.top-actions .btn:not(.primary){display:none}.wrap{padding:16px 11px 55px}.hero{padding:31px 22px;grid-template-columns:1fr;min-height:auto}.hero-visual{display:none}.section{padding:18px;border-radius:18px}.section-head{flex-direction:column-reverse}.story-grid,.standard-grid,.ops-grid{grid-template-columns:1fr}.rules{grid-template-columns:1fr 1fr}.zone-row{grid-template-columns:68px 100px 1fr}.metrics{grid-template-columns:1fr 1fr}.pilot{grid-template-columns:1fr}.glossary{grid-template-columns:1fr 1fr}.slide{padding:28px;min-height:82vh}.slide-body{font-size:15px}.presenter{padding:10px}.row2{grid-template-columns:1fr}#builder.workspace-mode{inset:0;border-radius:0;padding:10px}#builder.workspace-mode .builder-layout{grid-template-columns:1fr;overflow:auto}#builder.workspace-mode .form-card,#builder.workspace-mode .result{height:auto;overflow:visible}#builder.workspace-mode .section-head{flex-direction:row;margin-bottom:8px}#builder.workspace-mode .section-head h2{font-size:18px}.kbd{display:none}}
+    @media print{
+      @page{size:A4 landscape;margin:10mm}
+      body{background:white;font-size:10pt}.topbar,.hero,.story-section,.presenter,.no-print,.form-card,footer{display:none!important}.wrap{max-width:none;padding:0}.section{box-shadow:none;border:0;border-radius:0;padding:8px 0;margin:0;break-after:page}.section h2{font-size:20px}.section-head{margin-bottom:12px}.standard-grid,.ops-grid{gap:10px}.standard-card,.checklist,.audit-box,.result{break-inside:avoid}.builder-layout{display:block}.result{border:0;padding:0}.pilot{grid-template-columns:repeat(5,1fr)}.glossary{grid-template-columns:repeat(5,1fr)}.result-actions{display:none}.product{-webkit-print-color-adjust:exact;print-color-adjust:exact}.std-item,.talker,.standard-title,.zone-row:nth-child(2),.zone-row:nth-child(3){-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      body.print-generated #principles,body.print-generated #standard,body.print-generated #sop,body.print-generated #pilot,body.print-generated #glossary{display:none!important}body.print-generated #builder{display:block!important;break-after:auto}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-logos">
+          <img class="brand-logo" src="data:image/webp;base64,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" alt="لوگوی بنیس">
+          <span class="brand-divider" aria-hidden="true"></span>
+          <img class="brand-logo rahnegasht" src="data:image/webp;base64,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" alt="لوگوی رهنگاشت">
+        </div>
+        <div><b>استاندارد شلف VIP بنیس</b><small>تهیه‌شده توسط رهنگاشت • نسخه ۱.۰ پایلوت</small></div>
+      </div>
+      <nav class="nav">
+        <a href="#story">مسیر استقرار</a><a href="#principles">قواعد استاندارد</a><a href="#standard">نقشه‌های ۶۰/۹۰</a><a href="#builder">پلانوگرام‌ساز</a><a href="#sop">اجرا و ممیزی</a><a href="#pilot">پایلوت</a>
+      </nav>
+      <div class="top-actions"><button class="btn" id="printGuide">چاپ راهنما</button><button class="btn primary" id="presentBtn">حالت ارائه</button></div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">BENIS VIP SHELF STANDARD • v1.0</span>
+        <h1>از «شلف اجاره‌شده» تا «دارایی قابل مدیریت»</h1>
+        <p>یک استاندارد واحد برای چیدمان شلف‌های VIP بنیس؛ قابل اجرا برای ویزیتور، قابل ممیزی برای مدیر منطقه، و قابل بهینه‌سازی با داده فروش.</p>
+        <div class="prepared-by">تهیه‌شده توسط تیم مشاوره رهنگاشت برای شرکت ارس پر بنیس</div>
+        <div class="hero-quote">«از این به بعد شلف‌های VIP بنیس طبق این منطق چیده، ثبت و ممیزی شوند.»</div>
+        <div class="hero-actions"><button class="btn primary" onclick="document.querySelector('#standard').scrollIntoView()">دیدن استاندارد ۶۰/۹۰</button><button class="btn" onclick="document.querySelector('#builder').scrollIntoView()">ساخت پلانوگرام فروشگاه</button></div>
+      </div>
+      <div class="hero-visual" aria-label="نمای شماتیک شلف پنج طبقه">
+        <div class="mini-shelf">
+          <div class="mini-row"><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i></div>
+          <div class="mini-row"><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i></div>
+          <div class="mini-row"><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i></div>
+          <div class="mini-row"><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i></div>
+          <div class="mini-row"><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i><i class="mini-product"></i></div>
+          <div class="mini-talker">BENIS • بلوک یکپارچه، قیمت واضح، انتخاب آسان</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section story-section" id="story">
+      <div class="section-head"><div><h2>مسیر استقرار استاندارد شلف VIP</h2><p>حرکت از چیدمان سلیقه‌ای و غیرقابل‌کنترل به یک استاندارد مشترک، قابل اجرا، قابل ممیزی و قابل بهبود با داده فروش.</p></div><div class="section-no">01</div></div>
+      <div class="story-grid">
+        <article class="story-card"><span class="num">۱ • وضع موجود</span><h3>چیدمان سلیقه‌ای قابل کنترل نیست</h3><p>وقتی هر فروشگاه شلف را متفاوت می‌چیند، فضای اجاره‌شده نه قابل ممیزی است و نه می‌توان اثرش بر فروش را سنجید.</p></article>
+        <article class="story-card"><span class="num">۲ • استاندارد مرجع</span><h3>دو نقشه ثابت ۶۰ و ۹۰ سانتی‌متری</h3><p>دو POG مرجع با پنج Zone، Facing مشخص و قاعده روشن برای مدیریت OOS.</p></article>
+        <article class="story-card"><span class="num">۳ • اجرای میدانی</span><h3>فرآیند واحد برای ویزیتورها</h3><p>اندازه‌گیری، عکس قبل، FEFO، چیدمان، Fronting، قیمت، Talker، ثبت OOS و عکس بعد.</p></article>
+        <article class="story-card"><span class="num">۴ • یادگیری و بهبود</span><h3>اصلاح نسخه با داده چهار هفته</h3><p>کنترل Compliance و OSA و سپس بازنگری نسخه ۱.۱ بر اساس فروش به‌ازای هر Facing.</p></article>
+      </div>
+      <div class="speak"><b>خروجی مورد انتظار</b><p>یک استاندارد اجرایی مشترک که مدیران منطقه و ویزیتورها بتوانند بر اساس آن هر شلف VIP بنیس را با منطق ثابت بچینند، ثبت کنند و مورد ممیزی قرار دهند.</p></div>
+    </section>
+
+    <section class="section" id="principles">
+      <div class="section-head"><div><h2>ده قانون ساده‌ی استاندارد بنیس</h2><p>اگر تیم فقط همین ده قانون را درست اجرا کند، بخش بزرگی از اختلاف سلیقه و افت کیفیت شلف حذف می‌شود.</p></div><div class="section-no">02</div></div>
+      <div class="rules">
+        <div class="rule"><div class="icon">★</div><b>Core قبل از Variety</b><p>اول پرفروش‌ها و اقلام اصلی فضا بگیرند؛ تنوع بعد از آن.</p></div>
+        <div class="rule"><div class="icon">◎</div><b>Hero در Hot Zone</b><p>سطح چشم و دست برای کیک و ویفر قهرمان حفظ شود.</p></div>
+        <div class="rule"><div class="icon">▦</div><b>Block، نه پراکندگی</b><p>محصولات بنیس یک بلوک پیوسته بسازند.</p></div>
+        <div class="rule"><div class="icon">↔</div><b>Facing متناسب با گردش</b><p>SKU سریع‌تر، Facing بیشتر؛ نه یک عدد از همه چیز.</p></div>
+        <div class="rule"><div class="icon">▼</div><b>بسته بزرگ پایین</b><p>Family و Take-home در طبقه پایین قرار گیرند.</p></div>
+        <div class="rule"><div class="icon">≡</div><b>قیمت دقیقاً زیر SKU</b><p>Price Tag و محصول باید کاملاً هم‌راستا باشند.</p></div>
+        <div class="rule"><div class="icon">↻</div><b>FEFO و Fronting</b><p>تاریخ نزدیک جلو؛ همه بسته‌ها رو به مشتری.</p></div>
+        <div class="rule"><div class="icon">∅</div><b>شکاف مرده ممنوع</b><p>فضای خالی فقط با جایگزین مصوب هم‌خانواده پر شود.</p></div>
+        <div class="rule"><div class="icon">▰</div><b>Talker مکمل است</b><p>نباید محصول، قیمت یا دسترسی را بپوشاند.</p></div>
+        <div class="rule"><div class="icon">v1.1</div><b>نسخه با داده تغییر کند</b><p>تغییر سلیقه‌ای ممنوع؛ Revision با فروش و OOS.</p></div>
+      </div>
+      <div class="zone-stack" style="margin-top:20px">
+        <div class="zone-row"><div class="zone-code">Z5 • بالا</div><div class="zone-title">Discovery</div><p>محصولات جدید، تصویری و Trial؛ تنوع بیشتر و Facing کمتر.</p></div>
+        <div class="zone-row"><div class="zone-code">Z4 • خط دید</div><div class="zone-title">Hero Cakes</div><p>قوی‌ترین نقطه برای کیک تک‌نفره و محرک امتحان محصول.</p></div>
+        <div class="zone-row"><div class="zone-code">Z3 • دست/دید</div><div class="zone-title">Hero Wafers</div><p>ویفر و اقلام سریع‌برداشت با Facing بیشتر.</p></div>
+        <div class="zone-row"><div class="zone-code">Z2 • دست</div><div class="zone-title">Tea-time / Core</div><p>کیک لایه‌ای، رول، کوکی و بیسکویت؛ تنوع کنترل‌شده.</p></div>
+        <div class="zone-row"><div class="zone-code">Z1 • پایین</div><div class="zone-title">Family / Take-home</div><p>بسته‌های بزرگ‌تر، خانوادگی و خرید برای خانه.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="standard">
+      <div class="section-head"><div><h2>دو پلانوگرام مرجع برای شلف VIP</h2><p>این‌ها «استاندارد پیشنهادی v1.0» هستند. Facingها فعلاً واحد نسبی‌اند، نه سانتی‌متر مهندسی‌شده.</p></div><div class="section-no">03</div></div>
+      <div class="standard-grid" id="standardCards"></div>
+      <div class="warning"><b>قاعده تغییرناپذیر:</b> در OOS ابتدا Refill؛ سپس فقط جایگزین هم‌خانواده از لیست مصوب. Hero Zone با Variety تصادفی پر نمی‌شود. اگر OOS بیش از یک چرخه تأمین ادامه داشت، POG موقتاً Revision می‌خورد؛ فروشگاه خودش نقشه را تغییر نمی‌دهد.</div>
+      <div class="speak"><b>منطق نسخه ۱.۰</b><p>نسخه حاضر یک فرضیه اجرایی منظم بر مبنای سبد فعلی بنیس است. بهینه‌سازی نهایی پس از اجرای پایلوت و تحلیل Sell-out، OSA و فروش به‌ازای هر Facing انجام می‌شود.</p></div>
+    </section>
+
+    <section class="section" id="builder">
+      <div class="section-head">
+        <div><h2>Benis VIP Planogram Builder</h2><p>مشخصات فروشگاه در سه گام کوتاه ثبت می‌شود. برای حالت‌های مرجع، نقشه استاندارد و برای شرایط متفاوت، نسخه پیشنهادی پایلوت تولید خواهد شد.</p></div>
+        <div class="builder-head-actions no-print"><button class="btn focus-btn" id="focusBuilder" type="button">نمای تمام‌صفحه</button><span class="kbd">Esc</span><div class="section-no">04</div></div>
+      </div>
+      <div class="builder-layout">
+        <aside class="form-card no-print">
+          <h3>تنظیمات پلانوگرام</h3>
+          <p class="form-intro">هر گام فقط اطلاعات ضروری همان بخش را نمایش می‌دهد.</p>
+          <div class="builder-tabs" role="tablist" aria-label="مراحل تنظیم پلانوگرام">
+            <button class="builder-tab active" type="button" data-form-tab="store">۱. فروشگاه</button>
+            <button class="builder-tab" type="button" data-form-tab="fixture">۲. شلف</button>
+            <button class="builder-tab" type="button" data-form-tab="advanced">۳. تکمیلی</button>
+          </div>
+          <div class="form-panel active" data-form-panel="store">
+            <div class="row2"><div class="field"><label for="storeName">نام فروشگاه</label><input id="storeName" placeholder="مثلاً هایپر آزادی"></div><div class="field"><label for="storeCode">کد فروشگاه</label><input id="storeCode" placeholder="مثلاً THR-024"></div></div>
+            <div class="field"><label for="goal">هدف اصلی فروشگاه</label><select id="goal"><option value="sales" selected>افزایش فروش و گردش</option><option value="visibility">دیده‌شدن بلوک برند</option><option value="trial">Trial / معرفی محصول</option><option value="basket">افزایش خرید خانوادگی</option></select></div>
+            <div class="field"><label for="hasData">داده فروش SKU در دسترس است؟</label><select id="hasData"><option value="no" selected>خیر؛ نقشه مرجع اجرا شود</option><option value="yes">بله؛ Hero فروشگاه ثبت شود</option></select></div>
+          </div>
+          <div class="form-panel" data-form-panel="fixture">
+            <div class="row2"><div class="field"><label for="width">عرض بلوک بنیس</label><select id="width"><option value="60">۶۰ cm</option><option value="90" selected>۹۰ cm</option><option value="120">۱۲۰ cm</option></select></div><div class="field"><label for="shelves">تعداد طبقات</label><select id="shelves"><option value="3">۳ طبقه</option><option value="4">۴ طبقه</option><option value="5" selected>۵ طبقه</option><option value="6">۶ طبقه</option></select></div></div>
+            <div class="row2"><div class="field"><label for="spaceMode">نوع فضا</label><select id="spaceMode"><option value="exclusive" selected>اختصاصی بنیس</option><option value="shared">مشترک / استثنا</option></select></div><div class="field"><label for="flow">جهت جریان مشتری</label><select id="flow"><option value="ltr">چپ ← راست</option><option value="rtl">راست ← چپ</option><option value="unknown" selected>نامشخص</option></select></div></div>
+            <div class="field"><label for="talker">پیام Shelf Talker</label><select id="talker"><option value="BENIS • انتخاب آسان، شلف منظم">انتخاب آسان، شلف منظم</option><option value="BENIS • محصول جدید">محصول جدید</option><option value="BENIS • پیشنهاد این هفته">پیشنهاد این هفته</option><option value="BENIS • تنوعی برای هر سلیقه">تنوع برای هر سلیقه</option></select></div>
+          </div>
+          <div class="form-panel" data-form-panel="advanced">
+            <div id="heroFields" class="hidden"><div class="row2"><div class="field"><label for="heroCat">خانواده Hero</label><select id="heroCat"><option value="cake">کیک</option><option value="wafer">ویفر</option><option value="choco">شکلاتی</option><option value="layer">لایه‌ای</option><option value="biscuit">بیسکویت</option></select></div><div class="field"><label for="heroSku">نام Hero SKU</label><input id="heroSku" placeholder="مثلاً Bomba Cocoa"></div></div></div>
+            <div class="field"><label for="oos">SKUهای OOS (اختیاری)</label><textarea id="oos" placeholder="با ویرگول جدا شود؛ مثلاً Chocopie Cocoa, Matrix Wafer"></textarea></div>
+            <div class="warning"><b>قاعده:</b> جایگزینی OOS فقط در همان خانواده محصول انجام می‌شود.</div>
+          </div>
+          <div class="form-actions"><button class="btn primary" id="generate">ساخت / به‌روزرسانی</button><button class="btn" id="demo">نمونه آماده</button></div>
+          <p class="micro">این خروجی تا ورود ابعاد واقعی بسته، Sell-out، مارجین و ظرفیت شلف، «Facing Unit» است.</p>
+        </aside>
+        <div class="result" id="result"><div class="result-placeholder"><div><span style="font-size:45px">▦</span><b>پلانوگرام آماده تولید است</b><span>پس از ثبت مشخصات فروشگاه، خروجی در همین پنل نمایش داده می‌شود.</span></div></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="sop">
+      <div class="section-head"><div><h2>SOP اجرای فروشگاه و ممیزی</h2><p>ویزیتور باید بتواند بدون تفسیر شخصی این ده مرحله را انجام دهد. مدیر منطقه نیز با عکس و اعداد، اجرا را کنترل می‌کند.</p></div><div class="section-no">05</div></div>
+      <div class="ops-grid">
+        <div class="checklist"><h3>چک‌لیست ویزیتور</h3>
+          <label class="check"><input type="checkbox">۱. عرض واقعی بلوک و POG ID تطبیق داده شود.</label><label class="check"><input type="checkbox">۲. عکس کامل و روبه‌روی «قبل» ثبت شود.</label><label class="check"><input type="checkbox">۳. محصول غیر بنیس از فضای اختصاصی خارج شود.</label><label class="check"><input type="checkbox">۴. شلف و Price Rail تمیز و مرتب شود.</label><label class="check"><input type="checkbox">۵. FEFO اجرا شود؛ تاریخ نزدیک‌تر جلو باشد.</label><label class="check"><input type="checkbox">۶. SKU و Facing مطابق Zone چیده شود.</label><label class="check"><input type="checkbox">۷. همه محصولات Front و هم‌راستا شوند.</label><label class="check"><input type="checkbox">۸. قیمت و Talker دقیقاً زیر SKU قرار گیرد.</label><label class="check"><input type="checkbox">۹. OOS ثبت؛ جایگزینی فقط طبق Rule انجام شود.</label><label class="check"><input type="checkbox">۱۰. عکس «بعد» با همان زاویه ثبت شود.</label>
+        </div>
+        <div class="audit-box"><h3>KPIهای کنترل</h3><div class="table-wrap"><table class="kpi-table"><thead><tr><th>KPI</th><th>تعریف</th><th>هدف پایلوت</th></tr></thead><tbody><tr><td>Compliance</td><td>Facing درست ÷ Facing برنامه</td><td class="target">≥ 90%</td></tr><tr><td>OSA</td><td>SKU حاضر ÷ SKU برنامه</td><td class="target">≥ 95% Hero/Core</td></tr><tr><td>OOS Rate</td><td>SKU ناموجود ÷ SKU برنامه</td><td>روند کاهشی</td></tr><tr><td>Sales / Facing</td><td>فروش هفتگی SKU ÷ Facing</td><td>مبنای Revision</td></tr><tr><td>Uplift</td><td>فروش بعد در برابر Baseline/Control</td><td>مثبت و قابل توضیح</td></tr></tbody></table></div>
+          <div class="calc"><b style="font-size:12px">ماشین حساب ممیزی سریع</b><div class="calc-grid"><div class="field"><label>Facing برنامه</label><input id="plannedF" type="number" min="1" value="45"></div><div class="field"><label>Facing درست</label><input id="correctF" type="number" min="0" value="41"></div><div class="field"><label>SKU برنامه</label><input id="plannedSku" type="number" min="1" value="31"></div><div class="field"><label>SKU حاضر</label><input id="presentSku" type="number" min="0" value="30"></div></div><div class="calc-result"><div class="score"><b id="complianceScore">91%</b><span>Planogram Compliance</span></div><div class="score"><b id="osaScore">97%</b><span>On-Shelf Availability</span></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pilot">
+      <div class="section-head"><div><h2>پیشنهاد اجرایی: پایلوت چهار هفته‌ای</h2><p>هدف، زیباترشدن عکس نیست؛ هدف این است که بدانیم کدام SKU به فضای بیشتر پاسخ می‌دهد و کدام Facing اضافه فقط موجودی را کند می‌کند.</p></div><div class="section-no">06</div></div>
+      <div class="pilot"><div class="week"><b>هفته ۰</b><h3>Baseline</h3><p>انتخاب فروشگاه، اندازه Fixture، فروش ۲ تا ۴ هفته قبل.</p></div><div class="week"><b>هفته ۱</b><h3>اجرا</h3><p>POG v1.0، آموزش ویزیتور، عکس و موجودی اولیه.</p></div><div class="week"><b>هفته ۲</b><h3>کنترل اجرا</h3><p>Auditِ Compliance و OSA؛ اصلاح اجرا، بدون تغییر نقشه.</p></div><div class="week"><b>هفته ۳</b><h3>تحلیل</h3><p>فروش بر Facing، OOS و Refill؛ کشف Hero واقعی.</p></div><div class="week"><b>هفته ۴</b><h3>Revision</h3><p>افزایش/کاهش Facing، حذف Variety کم‌اثر، انتشار v1.1.</p></div></div>
+      <div class="decision"><h3>سه تصمیم پیشنهادی برای آغاز پایلوت</h3><ul><li>تأیید دو استاندارد پیشنهادی ۶۰ و ۹۰ سانتی‌متری به‌عنوان v1.0 پایلوت.</li><li>انتخاب چند فروشگاه VIP نماینده و تعیین مالک اجرا در فروش تهران.</li><li>تعیین منبع داده Baseline، عکس‌های ممیزی و گزارش هفتگی KPI.</li></ul></div>
+      <div class="speak"><b>نتیجه مورد انتظار</b><p>با تصویب این سه تصمیم، نسخه ۱.۰ در فروشگاه‌های منتخب اجرا می‌شود؛ پس از چهار هفته جمع‌آوری داده، نسخه ۱.۱ بر اساس واقعیت فروشگاه و عملکرد فروش بازنگری خواهد شد.</p></div>
+    </section>
+
+    <section class="section" id="glossary">
+      <div class="section-head"><div><h2>واژه‌نامه‌ی یک‌دقیقه‌ای</h2><p>همین تعریف‌های کوتاه برای جلسه کافی است.</p></div><div class="section-no">07</div></div>
+      <div class="glossary"><div class="term"><b>Planogram (POG)</b><p>نقشه اینکه هر SKU کجا و با چند Facing باشد.</p></div><div class="term"><b>SKU</b><p>یک محصول مشخص با طعم، وزن و بسته مشخص.</p></div><div class="term"><b>Facing</b><p>تعداد نمای روبه‌روی یک SKU در لبه شلف.</p></div><div class="term"><b>Fronting</b><p>کشیدن کالا به جلو و هم‌راستا کردن بسته‌ها.</p></div><div class="term"><b>OSA</b><p>حاضر بودن SKU برنامه‌ریزی‌شده روی شلف.</p></div><div class="term"><b>Compliance</b><p>درصد انطباق شلف واقعی با نقشه مصوب.</p></div><div class="term"><b>FEFO</b><p>کالای با انقضای نزدیک‌تر، زودتر فروخته شود.</p></div><div class="term"><b>Hero SKU</b><p>محصول اولویت‌دارِ فروش، Trial یا مارجین.</p></div><div class="term"><b>Shelf Talker</b><p>پیام کوتاه لبه شلف؛ مکمل نقشه، نه جایگزین آن.</p></div><div class="term"><b>Facing Unit</b><p>واحد نسبی فضا تا پیش از ثبت عرض واقعی بسته.</p></div></div>
+    </section>
+    <footer>Benis VIP Planogram Guideline • v1.0 Pilot • تهیه‌شده توسط تیم مشاوره رهنگاشت برای شرکت ارس پر بنیس</footer>
+  </main>
+
+  <div class="presenter" id="presenter" role="dialog" aria-modal="true">
+    <div class="slide"><div class="slide-top"><span>BENIS × RAHNEGASHT • VIP PLANOGRAM STANDARD</span><span id="slideCount"></span></div><div class="slide-content"><span class="slide-kicker" id="slideKicker"></span><h2 id="slideTitle"></h2><div class="slide-body" id="slideBody"></div><div class="slide-note" id="slideNote"></div></div><div class="slide-bottom"><button class="btn" id="closePresent">بستن ×</button><div class="slide-controls"><button class="btn" id="prevSlide">قبلی</button><button class="btn primary" id="nextSlide">بعدی</button></div></div></div>
+  </div>
+
+  <script>
+    const products={
+      "Chocopie Cocoa":{cat:"choco"},"Chocopie White":{cat:"choco"},"Benis Triple":{cat:"choco"},"Smile Choco":{cat:"choco"},"Morsin Heart":{cat:"cake"},"Minibar Caramel":{cat:"choco"},"Minibar Coconut":{cat:"choco"},
+      "Bomba Vanilla":{cat:"cake"},"Bomba Cocoa":{cat:"cake"},"Brownie Cup Cake":{cat:"cake"},"Breakfast 2-Color":{cat:"cake"},"Royal Cake":{cat:"cake"},"Torta Cocoa Coated":{cat:"layer"},
+      "Matrix Wafer":{cat:"wafer"},"Balta Cocoa":{cat:"wafer"},"Wafer Hazelnut":{cat:"wafer"},"Wafer Banana":{cat:"wafer"},"Wafer Bitter":{cat:"wafer"},"Mini Matrix":{cat:"wafer"},"Chocoroll":{cat:"wafer"},
+      "Ocho 3-Layer":{cat:"layer"},"Sponge Vanilla":{cat:"layer"},"Sponge Cocoa":{cat:"layer"},"Roll Cheese Cake":{cat:"roll"},"Chica Cookie":{cat:"cookie"},"Bisco":{cat:"biscuit"},"Digestive 200g":{cat:"biscuit"},"Coconut Cookie":{cat:"cookie"},
+      "Family Biscuit Large":{cat:"family"},"Family Biscuit 540g":{cat:"family"},"Dragee Cup":{cat:"choco"},"Breakfast Chocolate":{cat:"choco"},"2 Color Cream":{cat:"choco"}
+    };
+    const catFa={cake:"کیک",wafer:"ویفر",biscuit:"بیسکویت",cookie:"کوکی",choco:"شکلاتی",layer:"کیک لایه‌ای",roll:"رول",family:"خانوادگی"};
+    const standards={
+      90:[
+        {zone:"Z5 • بالا",role:"Discovery",items:[["Chocopie Cocoa",2],["Chocopie White",2],["Benis Triple",1],["Smile Choco",1],["Morsin Heart",1],["Minibar Caramel",1],["Minibar Coconut",1]]},
+        {zone:"Z4 • خط دید",role:"Hero Cakes",items:[["Bomba Vanilla",2],["Bomba Cocoa",2],["Brownie Cup Cake",2],["Breakfast 2-Color",1],["Royal Cake",1],["Torta Cocoa Coated",1]]},
+        {zone:"Z3 • دست/دید",role:"Hero Wafers",items:[["Matrix Wafer",2],["Balta Cocoa",2],["Wafer Hazelnut",1],["Wafer Banana",1],["Wafer Bitter",1],["Mini Matrix",1],["Chocoroll",1]]},
+        {zone:"Z2 • دست",role:"Tea-time / Core",items:[["Ocho 3-Layer",2],["Sponge Vanilla",1],["Sponge Cocoa",1],["Roll Cheese Cake",1],["Chica Cookie",1],["Bisco",1],["Digestive 200g",1],["Coconut Cookie",1]]},
+        {zone:"Z1 • پایین",role:"Family / Take-home",items:[["Family Biscuit Large",2],["Family Biscuit 540g",2],["Digestive 200g",1],["Dragee Cup",1],["Breakfast Chocolate",1],["2 Color Cream",2]]}
+      ],
+      60:[
+        {zone:"Z5 • بالا",role:"Discovery",items:[["Chocopie Cocoa",1],["Chocopie White",1],["Benis Triple",1],["Smile Choco",1],["Minibar Caramel",1],["Minibar Coconut",1]]},
+        {zone:"Z4 • خط دید",role:"Hero Cakes",items:[["Bomba Vanilla",2],["Bomba Cocoa",1],["Brownie Cup Cake",1],["Breakfast 2-Color",1],["Royal Cake",1]]},
+        {zone:"Z3 • دست/دید",role:"Hero Wafers",items:[["Matrix Wafer",2],["Balta Cocoa",1],["Wafer Hazelnut",1],["Wafer Banana",1],["Chocoroll",1]]},
+        {zone:"Z2 • دست",role:"Tea-time / Core",items:[["Ocho 3-Layer",1],["Sponge Vanilla",1],["Roll Cheese Cake",1],["Chica Cookie",1],["Bisco",1],["Digestive 200g",1]]},
+        {zone:"Z1 • پایین",role:"Family / Take-home",items:[["Family Biscuit Large",2],["Dragee Cup",1],["Breakfast Chocolate",1],["2 Color Cream",1],["Family Biscuit 540g",1]]}
+      ]
+    };
+    const clone=x=>JSON.parse(JSON.stringify(x));
+    function itemHtml(name,f){const cat=(products[name]||{cat:"cake"}).cat;return `<div class="std-item cat-${cat}" style="flex:${f}">${name}<small>${f}F</small></div>`}
+    function standardCard(width){const rows=standards[width].map(r=>`<div class="std-row"><div class="std-zone">${r.zone}<br>${r.role}</div><div class="std-items">${r.items.map(x=>itemHtml(x[0],x[1])).join("")}</div></div>`).join("");return `<article class="standard-card"><div class="standard-title"><b>VIP ${width} cm • 5 Shelf</b><span>POG-BENIS-VIP-${width}-5S-v1.0</span></div><div class="standard-body">${rows}</div></article>`}
+    document.getElementById("standardCards").innerHTML=standardCard(90)+standardCard(60);
+
+    function scaleRows(base,width){const target=Math.round(width/10);return clone(base).map(row=>{let total=row.items.reduce((s,x)=>s+x[1],0);while(total<target){row.items[total%Math.min(2,row.items.length)][1]++;total++}while(total>target){const i=row.items.findIndex(x=>x[1]>1);if(i<0)break;row.items[i][1]--;total--}return row})}
+    function adaptShelves(rows,n){if(n===5)return rows;if(n===3)return [rows[1],rows[2],rows[4]];if(n===4)return [rows[0],rows[1],rows[2],rows[4]];if(n===6){const extra=clone(rows[3]);extra.zone="Z2b • میانی";extra.role="Core / Basket";extra.items=[["Torta Cocoa Coated",2],["Roll Cheese Cake",1],["Chica Cookie",1],["Bisco",1],["Digestive 200g",1]];return [rows[0],rows[1],rows[2],rows[3],extra,rows[4]]}return rows}
+    function substituteOos(rows,oos){const pools={cake:["Bomba Vanilla","Bomba Cocoa","Brownie Cup Cake","Breakfast 2-Color","Royal Cake","Morsin Heart"],wafer:["Matrix Wafer","Balta Cocoa","Wafer Hazelnut","Wafer Banana","Wafer Bitter","Mini Matrix","Chocoroll"],choco:["Chocopie Cocoa","Chocopie White","Benis Triple","Smile Choco","Minibar Caramel","Minibar Coconut","Dragee Cup","Breakfast Chocolate","2 Color Cream"],layer:["Ocho 3-Layer","Sponge Vanilla","Sponge Cocoa","Torta Cocoa Coated"],roll:["Roll Cheese Cake"],cookie:["Chica Cookie","Coconut Cookie"],biscuit:["Bisco","Digestive 200g"],family:["Family Biscuit Large","Family Biscuit 540g"]};const used=new Set(rows.flatMap(r=>r.items.map(x=>x[0])));rows.forEach(r=>r.items.forEach(x=>{if(oos.some(v=>v&&x[0].toLowerCase().includes(v))){const cat=(products[x[0]]||{cat:"cake"}).cat;const replacement=(pools[cat]||[]).find(v=>!used.has(v)&&!oos.some(q=>v.toLowerCase().includes(q)))||(pools[cat]||[]).find(v=>!oos.some(q=>v.toLowerCase().includes(q)));if(replacement){x[0]=replacement;used.add(replacement);x.push("جایگزین OOS")}}}));return rows}
+    function applyHero(rows,cat,name){if(!name)return rows;const preferred=cat==="wafer"?rows.find(r=>r.role.includes("Wafer")):rows.find(r=>r.role.includes("Hero"));if(!preferred)return rows;const old=preferred.items[0];preferred.items[0]=[name,Math.max(2,old[1]),"Hero مبتنی بر داده"];products[name]={cat};return rows}
+    function buildPlan(cfg){const official=(cfg.shelves===5&&(cfg.width===60||cfg.width===90)&&cfg.spaceMode==="exclusive"&&cfg.hasData==="no"&&!cfg.oos.length);const base=cfg.width===60?standards[60]:standards[90];let rows=scaleRows(base,cfg.width);rows=adaptShelves(rows,cfg.shelves);rows=substituteOos(rows,cfg.oos);if(cfg.hasData==="yes")rows=applyHero(rows,cfg.heroCat,cfg.heroSku);return {rows,official}}
+    function getCfg(){return {storeName:document.getElementById("storeName").value.trim()||"فروشگاه نمونه",storeCode:document.getElementById("storeCode").value.trim()||"بدون کد",width:+document.getElementById("width").value,shelves:+document.getElementById("shelves").value,spaceMode:document.getElementById("spaceMode").value,flow:document.getElementById("flow").value,goal:document.getElementById("goal").value,hasData:document.getElementById("hasData").value,heroCat:document.getElementById("heroCat").value,heroSku:document.getElementById("heroSku").value.trim(),oos:document.getElementById("oos").value.split(/[,،\n]/).map(s=>s.trim().toLowerCase()).filter(Boolean),talker:document.getElementById("talker").value}}
+    function renderPlan(){const cfg=getCfg(),plan=buildPlan(cfg);const totalF=plan.rows.reduce((s,r)=>s+r.items.reduce((a,x)=>a+x[1],0),0);const skuSet=new Set(plan.rows.flatMap(r=>r.items.map(x=>x[0])));const id=`POG-BENIS-VIP-${cfg.width}-${cfg.shelves}S-${plan.official?"v1.0":"PILOT"}`;const goalFa={sales:"فروش و گردش",visibility:"دیده‌شدن برند",trial:"Trial محصول",basket:"خرید خانوادگی"}[cfg.goal];const visualRows=plan.rows.map((r,i)=>{let items=[...r.items];if(cfg.flow==="rtl")items=items.reverse();return `<div class="out-row"><div class="out-title"><b>طبقه ${i+1} از بالا • ${r.zone}</b><span>${r.role}</span></div><div class="out-products">${items.map(x=>{const cat=(products[x[0]]||{cat:"cake"}).cat;return `<div class="product cat-${cat}" style="flex:${x[1]}">${x[0]}<small>${catFa[cat]} • ${x[1]} Facing${x[2]?" • "+x[2]:""}</small></div>`}).join("")}</div></div>`}).join("");const tableRows=plan.rows.map((r,i)=>`<tr><td>${i+1}</td><td>${r.zone}<br><small>${r.role}</small></td><td>${r.items.map(x=>`${x[0]}${x[2]?` <b>(${x[2]})</b>`:""}`).join("<br>")}</td><td>${r.items.map(x=>`${x[0]}: ${x[1]}`).join("<br>")}</td><td>${r.role.includes("Hero")?"حفظ Hero Zone و Facing بیشتر":r.role.includes("Family")?"بسته‌های حجیم و Take-home":"بلوک هم‌خانواده و تنوع کنترل‌شده"}</td></tr>`).join("");document.getElementById("result").innerHTML=`<div class="result-head"><div><h3>پلانوگرام پیشنهادی • ${cfg.storeName}</h3><div class="chips"><span class="chip">${id}</span><span class="chip">${cfg.storeCode}</span><span class="chip">${cfg.width} cm / ${cfg.shelves} طبقه</span><span class="chip">هدف: ${goalFa}</span><span class="chip ${plan.official?"ok":"exception"}">${plan.official?"استاندارد مرجع v1.0":"نسخه استثنا / پایلوت"}</span></div></div></div><div class="result-note"><b>وضعیت خروجی:</b> ${plan.official?"این تنظیمات دقیقاً با استاندارد مرجع VIP منطبق است.":"این خروجی از قواعد استاندارد مشتق شده اما به‌دلیل داده Hero، OOS، فضای مشترک یا ابعاد متفاوت باید پیش از اجرا توسط مدیر منطقه تأیید شود."} ترتیب بصری ${cfg.flow==="rtl"?"برای جریان راست به چپ Mirror شده":"به صورت مرجع حفظ شده"} است.</div><div class="metrics"><div class="metric"><b>${skuSet.size}</b><span>SKU پیشنهادی</span></div><div class="metric"><b>${totalF}</b><span>Facing Unit کل</span></div><div class="metric"><b>${cfg.shelves>=4?"طبقه ۲":"طبقه ۱"}</b><span>Hot Zone اصلی</span></div><div class="metric"><b>${cfg.oos.length}</b><span>OOS اعلام‌شده</span></div></div><div class="shelf-output">${visualRows}<div class="talker">${cfg.talker}</div></div><div class="table-wrap"><table><thead><tr><th>طبقه</th><th>Zone</th><th>SKUها</th><th>Facing</th><th>منطق اجرا</th></tr></thead><tbody>${tableRows}</tbody></table></div><div class="warning"><b>اجرای فروشگاه:</b> FEFO + Fronting + قیمت دقیقاً زیر SKU. در OOS فقط جایگزین هم‌خانواده مصوب؛ تغییر خودسرانه Zone ممنوع.</div><div class="result-actions"><button class="btn primary" onclick="printGenerated()">چاپ این پلانوگرام</button><button class="btn" onclick="copyPlan()">کپی خلاصه</button><button class="btn" onclick="renderPlan()">بازمحاسبه</button></div>`;document.getElementById("plannedF").value=totalF;document.getElementById("correctF").value=Math.round(totalF*.9);document.getElementById("plannedSku").value=skuSet.size;document.getElementById("presentSku").value=Math.max(0,skuSet.size-cfg.oos.length);calcScores()}
+    async function copyPlan(){const cfg=getCfg(),plan=buildPlan(cfg);const txt=`${cfg.storeName} • ${cfg.width}cm / ${cfg.shelves} Shelf\n`+plan.rows.map((r,i)=>`طبقه ${i+1} (${r.zone}): `+r.items.map(x=>`${x[0]} × ${x[1]}F`).join(" | ")).join("\n")+`\nShelf Talker: ${cfg.talker}`;try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(txt)}else{const area=document.createElement("textarea");area.value=txt;area.style.position="fixed";area.style.opacity="0";document.body.appendChild(area);area.select();document.execCommand("copy");area.remove()}alert("خلاصه پلانوگرام کپی شد.")}catch{alert("امکان کپی خودکار وجود ندارد؛ از گزینه چاپ استفاده شود.")}}
+    function printGenerated(){document.body.classList.add("print-generated");window.print();setTimeout(()=>document.body.classList.remove("print-generated"),400)}
+    const tabButtons=[...document.querySelectorAll("[data-form-tab]")];
+    const formPanels=[...document.querySelectorAll("[data-form-panel]")];
+    function activateFormTab(name){tabButtons.forEach(btn=>btn.classList.toggle("active",btn.dataset.formTab===name));formPanels.forEach(panel=>panel.classList.toggle("active",panel.dataset.formPanel===name))}
+    tabButtons.forEach(btn=>btn.addEventListener("click",()=>activateFormTab(btn.dataset.formTab)));
+    document.getElementById("hasData").addEventListener("change",e=>{document.getElementById("heroFields").classList.toggle("hidden",e.target.value!=="yes");if(e.target.value==="yes")activateFormTab("advanced")});
+    document.getElementById("generate").addEventListener("click",renderPlan);document.getElementById("demo").addEventListener("click",()=>{document.getElementById("storeName").value="سوپرمارکت VIP نمونه تهران";document.getElementById("storeCode").value="THR-VIP-01";document.getElementById("width").value="90";document.getElementById("shelves").value="5";document.getElementById("spaceMode").value="exclusive";document.getElementById("flow").value="unknown";document.getElementById("goal").value="sales";document.getElementById("hasData").value="no";document.getElementById("heroFields").classList.add("hidden");document.getElementById("oos").value="";renderPlan()});
+    let renderTimer;["storeName","storeCode","width","shelves","spaceMode","flow","goal","hasData","heroCat","heroSku","oos","talker"].forEach(id=>document.getElementById(id).addEventListener("input",()=>{clearTimeout(renderTimer);renderTimer=setTimeout(renderPlan,180)}));
+    const builderSection=document.getElementById("builder"),focusBuilder=document.getElementById("focusBuilder");
+    function setBuilderFocus(active){builderSection.classList.toggle("workspace-mode",active);document.body.classList.toggle("builder-focus",active);focusBuilder.textContent=active?"بستن فضای کار":"نمای تمام‌صفحه";if(active)document.getElementById("result").scrollTop=0}
+    focusBuilder.addEventListener("click",()=>setBuilderFocus(!builderSection.classList.contains("workspace-mode")));
+    document.getElementById("printGuide").addEventListener("click",()=>{document.body.classList.remove("print-generated");window.print()});
+    function calcScores(){const p=+document.getElementById("plannedF").value||1,c=+document.getElementById("correctF").value||0,ps=+document.getElementById("plannedSku").value||1,pr=+document.getElementById("presentSku").value||0;document.getElementById("complianceScore").textContent=Math.min(100,Math.round(c/p*100))+"%";document.getElementById("osaScore").textContent=Math.min(100,Math.round(pr/ps*100))+"%"}
+    ["plannedF","correctF","plannedSku","presentSku"].forEach(id=>document.getElementById(id).addEventListener("input",calcScores));
+    const slides=[
+      {k:"چشم‌انداز",t:"هدف، یک تصویر زیبا نیست؛ یک استاندارد اجرایی است.",b:"فضای VIP بنیس در همه فروشگاه‌های منتخب با یک منطق ثابت چیده، ثبت و ممیزی می‌شود.",n:"مسئله فقط در اختیار گرفتن شلف نیست؛ مسئله تبدیل آن به یک دارایی قابل مدیریت است."},
+      {k:"وضع موجود",t:"چیدمان سلیقه‌ای، سنجش‌پذیر نیست.",b:"وقتی هر فروشگاه SKU و Facing را مستقل تعیین می‌کند، Compliance قابل اتکا نیست، اثر اجاره شلف مشخص نمی‌شود و OOS با چیدمان تصادفی پنهان می‌ماند.",n:"تعریف مسئله: نبود یک استاندارد مشترک برای چیدمان، ثبت و ممیزی."},
+      {k:"استاندارد v1.0",t:"دو نقشه مرجع: ۶۰ و ۹۰ سانتی‌متر، پنج طبقه.",b:"بالا برای Discovery؛ خط دید برای Hero Cakes؛ دست/دید برای Hero Wafers؛ طبقه میانی برای Tea-time؛ پایین برای Family و Take-home.",n:"Facingها در این نسخه واحد نسبی فضا هستند و پس از ثبت ابعاد واقعی بسته‌ها مهندسی می‌شوند."},
+      {k:"قواعد اجرا",t:"POG بدون SOP، فقط یک تصویر است.",b:"اندازه‌گیری، عکس قبل، FEFO، چیدمان Zone و Facing، Fronting، قیمت و Talker، ثبت OOS و عکس بعد؛ این زنجیره در تمام فروشگاه‌های پایلوت ثابت می‌ماند.",n:"Shelf Talker مکمل پلانوگرام است و نباید محصول، قیمت یا دسترسی مشتری را بپوشاند."},
+      {k:"ابزار اجرایی",t:"Builder، هر فروشگاه را به نسخه مناسب متصل می‌کند.",b:"برای حالت استاندارد، نقشه مرجع تولید می‌شود. Hero مبتنی بر داده، OOS یا ابعاد متفاوت با برچسب «پایلوت/استثنا» برای تأیید مدیر منطقه نمایش داده می‌شود.",n:"این ابزار تصمیم‌یار اجرای پایلوت است؛ بهینه‌سازی نهایی پس از ورود داده فروش انجام می‌شود."},
+      {k:"اندازه‌گیری",t:"سه عدد حیاتی: Compliance، OSA، Sales per Facing.",b:"ابتدا صحت اجرا و حضور کالا کنترل می‌شود؛ سپس اثر چیدمان بر فروش مورد قضاوت قرار می‌گیرد.",n:"تفسیر عملکرد فروش تنها زمانی معتبر است که Compliance و OSA در سطح هدف قرار داشته باشند."},
+      {k:"تصمیم آغاز",t:"سه تصمیم برای شروع پایلوت لازم است.",b:"تأیید v1.0؛ انتخاب فروشگاه‌های نماینده و مالک اجرا؛ تعیین منبع Baseline، عکس ممیزی و گزارش هفتگی.",n:"خروجی جلسه باید تصمیم اجرایی باشد؛ جزئیات SKUها پس از پایلوت و بر اساس داده بازنگری می‌شوند."}
+    ];
+    let slideIndex=0;const presenter=document.getElementById("presenter");function showSlide(){const s=slides[slideIndex];document.getElementById("slideKicker").textContent=s.k;document.getElementById("slideTitle").textContent=s.t;document.getElementById("slideBody").textContent=s.b;document.getElementById("slideNote").textContent=s.n;document.getElementById("slideCount").textContent=`${slideIndex+1} / ${slides.length}`;document.getElementById("prevSlide").disabled=slideIndex===0;document.getElementById("nextSlide").textContent=slideIndex===slides.length-1?"پایان":"بعدی"}
+    function openPresenter(){slideIndex=0;showSlide();presenter.classList.add("active");document.body.style.overflow="hidden"}function closePresenter(){presenter.classList.remove("active");document.body.style.overflow=""}
+    document.getElementById("presentBtn").addEventListener("click",openPresenter);document.getElementById("closePresent").addEventListener("click",closePresenter);document.getElementById("nextSlide").addEventListener("click",()=>{if(slideIndex<slides.length-1){slideIndex++;showSlide()}else closePresenter()});document.getElementById("prevSlide").addEventListener("click",()=>{if(slideIndex>0){slideIndex--;showSlide()}});document.addEventListener("keydown",e=>{if(presenter.classList.contains("active")){if(e.key==="Escape")closePresenter();if(e.key==="ArrowLeft"&&slideIndex<slides.length-1){slideIndex++;showSlide()}if(e.key==="ArrowRight"&&slideIndex>0){slideIndex--;showSlide()}return}if(e.key==="Escape"&&builderSection.classList.contains("workspace-mode"))setBuilderFocus(false)});
+    const navLinks=[...document.querySelectorAll(".nav a")];const observedSections=navLinks.map(link=>document.querySelector(link.getAttribute("href"))).filter(Boolean);if("IntersectionObserver" in window){const navObserver=new IntersectionObserver(entries=>{entries.filter(e=>e.isIntersecting).forEach(entry=>navLinks.forEach(link=>link.classList.toggle("active",link.getAttribute("href")==="#"+entry.target.id)))},{rootMargin:"-35% 0px -55% 0px"});observedSections.forEach(section=>navObserver.observe(section))}
+    document.getElementById("demo").click();calcScores();
+  </script>
+</body>
+</html>
