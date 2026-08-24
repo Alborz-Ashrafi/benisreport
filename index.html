@@ -242,6 +242,179 @@
       line-height: 2.05;
     }
 
+    .executive-entry {
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 22px;
+      overflow: hidden;
+      margin-bottom: 18px;
+      padding: 22px 24px;
+      color: var(--text);
+      text-decoration: none;
+      border: 1px solid rgba(217, 164, 65, 0.25);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(105deg, rgba(217, 164, 65, 0.13), transparent 42%),
+        linear-gradient(145deg, rgba(25, 39, 61, 0.96), rgba(13, 23, 40, 0.9));
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.18);
+      transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+    }
+
+    .executive-entry::before {
+      content: "";
+      position: absolute;
+      inset-block: 18px;
+      right: 0;
+      width: 3px;
+      border-radius: 999px 0 0 999px;
+      background: linear-gradient(to bottom, transparent, var(--brand), transparent);
+    }
+
+    .executive-entry::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 240px;
+      aspect-ratio: 1;
+      left: -120px;
+      bottom: -165px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(104, 194, 155, 0.15), transparent 68%);
+      transition: transform 260ms ease;
+    }
+
+    .executive-entry:hover {
+      transform: translateY(-3px);
+      border-color: rgba(217, 164, 65, 0.46);
+      box-shadow: 0 24px 58px rgba(0, 0, 0, 0.24);
+    }
+
+    .executive-entry:hover::after {
+      transform: scale(1.12);
+    }
+
+    .executive-entry:focus-visible {
+      outline: 3px solid rgba(217, 164, 65, 0.38);
+      outline-offset: 4px;
+    }
+
+    .executive-icon {
+      display: grid;
+      width: 58px;
+      height: 58px;
+      place-items: center;
+      color: #edc46f;
+      border: 1px solid rgba(217, 164, 65, 0.28);
+      border-radius: 18px;
+      background: rgba(217, 164, 65, 0.11);
+    }
+
+    .executive-icon svg {
+      width: 27px;
+      height: 27px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.65;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .executive-copy {
+      min-width: 0;
+    }
+
+    .executive-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+      margin-bottom: 7px;
+    }
+
+    .executive-label {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 9px;
+      color: #f5d991;
+      border: 1px solid rgba(217, 164, 65, 0.26);
+      border-radius: 999px;
+      background: rgba(217, 164, 65, 0.09);
+      font-size: 9px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .executive-update {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: #a9cfc1;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .executive-update::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #68c29b;
+      box-shadow: 0 0 0 4px rgba(104, 194, 155, 0.09);
+    }
+
+    .executive-entry h2 {
+      margin: 0 0 5px;
+      font-size: clamp(18px, 2.5vw, 23px);
+      font-weight: 800;
+      line-height: 1.65;
+      letter-spacing: -0.35px;
+    }
+
+    .executive-entry p {
+      max-width: 720px;
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .executive-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 44px;
+      padding: 0 15px;
+      color: #f5dda5;
+      border: 1px solid rgba(217, 164, 65, 0.28);
+      border-radius: 13px;
+      background: rgba(217, 164, 65, 0.1);
+      font-size: 11px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .executive-action svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 180ms ease;
+    }
+
+    .executive-entry:hover .executive-action svg {
+      transform: translateX(-3px);
+    }
+
     .section-heading {
       display: flex;
       align-items: end;
@@ -529,6 +702,19 @@
         letter-spacing: -0.65px;
       }
 
+      .executive-entry {
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 16px;
+        padding: 20px;
+        border-radius: 19px;
+      }
+
+      .executive-action {
+        grid-column: 1 / -1;
+        justify-content: space-between;
+        width: 100%;
+      }
+
       .section-heading {
         align-items: flex-start;
         flex-direction: column;
@@ -624,6 +810,38 @@
       </p>
 
     </header>
+
+    <aside aria-labelledby="executive-report-heading">
+      <a
+        href="https://alborzashrafi.com/benisroadmap/"
+        class="executive-entry"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="مشاهده گزارش مدیریتی همکاری رهنگاشت و بنیس"
+      >
+        <span class="executive-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 19V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14"/>
+            <path d="M8 7h8"/><path d="M8 11h5"/><path d="M8 15h3"/>
+            <path d="M3 21h18"/>
+          </svg>
+        </span>
+
+        <span class="executive-copy">
+          <span class="executive-meta">
+            <span class="executive-label">ویژه مدیران ارشد</span>
+            <span class="executive-update">به‌روزرسانی مستمر</span>
+          </span>
+          <h2 id="executive-report-heading">گزارش مدیریتی همکاری رهنگاشت و بنیس</h2>
+          <p>مرور یکپارچه پیشرفت پروژه، اقدامات اجرایی و خروجی‌های تحویل‌شده؛ مرجع جمع‌بندی و ارائه پایان هر ماه.</p>
+        </span>
+
+        <span class="executive-action">
+          <span>ورود به گزارش مدیریتی</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+        </span>
+      </a>
+    </aside>
 
     <section aria-labelledby="reports-heading">
       <div class="section-heading">
@@ -809,24 +1027,6 @@
             <p>استراتژی محتوا، تقویم ۶۰ روزه چندکاناله، KPI فعالیت‌ها و چارچوب تصمیم‌گیری برای اجرای برنامه بازاریابی محتوایی بنیس.</p>
             <div class="card-action">
               <span>مشاهده نقشه راه</span>
-              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- مسیر پروژه برند بنیس -->
-        <a href="./benis-roadmap.html" class="card card-project">
-          <div class="card-inner">
-            <div class="card-head">
-              <div class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M5 21 9 3"/><path d="m15 3 4 18"/><path d="M12 5v3"/><path d="M12 11v3"/><path d="M12 17v3"/></svg>
-              </div>
-              <span class="category">مدیریت پروژه</span>
-            </div>
-            <h3>مسیر پروژه برند بنیس</h3>
-            <p>گزارش روند اجرای پروژه، مراحل انجام‌شده، خروجی‌های هر فاز و مسیر حرکت از عارضه‌یابی تا طراحی راهکارهای اجرایی برند بنیس.</p>
-            <div class="card-action">
-              <span>مشاهده گزارش</span>
               <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
             </div>
           </div>
