@@ -1,0 +1,1755 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14243a">
+  <meta name="description" content="برنامه اجرایی پروموشن زنجیره‌ای مهر بنیس؛ پیشنهاد قطعی کمپین، معماری محصول و پیشنهاد خرید، تخصیص بودجه، تقویم اجرا و برگه تصویب.">
+  <title>Benis Mehr Chain Promotion Action Plan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f3f5f7;
+      --paper: #ffffff;
+      --paper-warm: #fffdf8;
+      --ink: #172234;
+      --ink-soft: #4d5c70;
+      --muted: #748195;
+      --line: #dfe5eb;
+      --line-strong: #cbd4de;
+      --navy: #14243a;
+      --navy-2: #203d5d;
+      --red: #cf202b;
+      --red-dark: #991722;
+      --green: #24764b;
+      --teal: #087b74;
+      --amber: #a56b0b;
+      --blue: #3567a8;
+      --soft-red: #fff1f2;
+      --soft-green: #edf8f1;
+      --soft-teal: #edf9f7;
+      --soft-amber: #fff7e7;
+      --soft-blue: #eef4fb;
+      --shadow-sm: 0 7px 22px rgba(20, 36, 58, .07);
+      --shadow: 0 20px 62px rgba(20, 36, 58, .12);
+      --radius-sm: 14px;
+      --radius: 22px;
+      --radius-lg: 32px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 96% 1%, rgba(207, 32, 43, .07), transparent 23rem),
+        radial-gradient(circle at 3% 38%, rgba(8, 123, 116, .06), transparent 25rem),
+        var(--bg);
+      font-family: "Vazirmatn", Tahoma, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.85;
+    }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid rgba(53, 103, 168, .32); outline-offset: 3px; }
+
+    .skip-link {
+      position: fixed;
+      top: -80px;
+      right: 16px;
+      z-index: 200;
+      padding: 9px 15px;
+      border-radius: 10px;
+      color: #fff;
+      background: var(--navy);
+      text-decoration: none;
+    }
+    .skip-link:focus { top: 12px; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 80;
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px max(18px, calc((100vw - 1240px) / 2));
+      border-bottom: 1px solid rgba(20, 36, 58, .1);
+      background: rgba(247, 249, 250, .93);
+      backdrop-filter: blur(18px);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: auto;
+      white-space: nowrap;
+      font-weight: 900;
+    }
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      color: #fff;
+      background: var(--red);
+      box-shadow: 0 5px 15px rgba(207, 32, 43, .25);
+      font-size: 13px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 3px; }
+    .nav-links a {
+      padding: 7px 9px;
+      border-radius: 9px;
+      color: var(--ink-soft);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .nav-links a:hover { color: var(--navy); background: #fff; }
+    .top-actions { display: flex; align-items: center; gap: 7px; }
+
+    .btn {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 8px 15px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      color: #fff;
+      background: var(--navy);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 13px;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .btn:hover { transform: translateY(-1px); background: var(--navy-2); box-shadow: var(--shadow-sm); }
+    .btn.red { background: var(--red); }
+    .btn.red:hover { background: var(--red-dark); }
+    .btn.secondary { color: var(--navy); border-color: var(--line-strong); background: #fff; }
+    .btn.secondary:hover { background: var(--soft-blue); }
+    .btn.ghost { color: var(--ink-soft); border-color: var(--line); background: transparent; }
+    .btn.small { min-height: 36px; padding: 6px 11px; font-size: 11px; }
+
+    .wrap { width: min(1240px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 78px; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 34px;
+      align-items: center;
+      min-height: 465px;
+      padding: clamp(30px, 5vw, 58px);
+      border-radius: var(--radius-lg);
+      color: #fff;
+      background:
+        radial-gradient(circle at 12% 15%, rgba(255,255,255,.1), transparent 14rem),
+        radial-gradient(circle at 84% 81%, rgba(207,32,43,.38), transparent 18rem),
+        linear-gradient(135deg, #101d30 0%, #1a3452 65%, #311820 100%);
+      box-shadow: var(--shadow);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: -190px;
+      bottom: -275px;
+      width: 480px;
+      height: 480px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 50%;
+      box-shadow: 0 0 0 62px rgba(255,255,255,.024), 0 0 0 124px rgba(255,255,255,.016);
+      pointer-events: none;
+    }
+    .hero-copy, .decision-board { position: relative; z-index: 2; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      color: #ffc7cb;
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .eyebrow::before { content: ""; width: 25px; height: 2px; background: #ff6d76; }
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(38px, 5.2vw, 66px);
+      line-height: 1.18;
+      letter-spacing: -1.5px;
+    }
+    .hero .lead {
+      max-width: 760px;
+      margin: 20px 0 0;
+      color: #dce6f1;
+      font-size: clamp(17px, 1.65vw, 20px);
+      line-height: 1.95;
+    }
+    .hero .lead b { color: #fff; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 27px; }
+    .hero-actions .secondary { color: #fff; border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.08); }
+    .hero-actions .secondary:hover { background: rgba(255,255,255,.15); }
+    .decision-board {
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 24px;
+      background: rgba(255,255,255,.085);
+      backdrop-filter: blur(9px);
+    }
+    .decision-board .board-label { color: #c7d4e3; font-size: 12px; }
+    .decision-board h2 { margin: 5px 0 14px; color: #fff; font-size: 23px; line-height: 1.55; }
+    .board-row {
+      display: grid;
+      grid-template-columns: 35px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 11px 0;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .board-row .num {
+      width: 31px;
+      height: 31px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      color: #fff;
+      background: rgba(255,255,255,.12);
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .board-row b { display: block; font-size: 14px; }
+    .board-row span { display: block; color: #cbd7e5; font-size: 11px; line-height: 1.7; }
+    .board-rule {
+      margin-top: 13px;
+      padding: 13px 14px;
+      border-right: 4px solid #ff6972;
+      border-radius: 12px;
+      color: #edf4fb;
+      background: rgba(0,0,0,.15);
+      font-size: 12px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 13px;
+      margin-top: 17px;
+    }
+    .summary-card {
+      min-height: 145px;
+      padding: 19px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: var(--shadow-sm);
+    }
+    .summary-card .label { color: var(--muted); font-size: 11px; font-weight: 800; }
+    .summary-card strong { display: block; margin: 6px 0 5px; color: var(--navy); font-size: 18px; line-height: 1.55; }
+    .summary-card p { margin: 0; color: var(--ink-soft); font-size: 12px; line-height: 1.75; }
+
+    .section {
+      margin-top: 22px;
+      padding: clamp(24px, 4vw, 38px);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--paper);
+      box-shadow: 0 9px 30px rgba(20,36,58,.045);
+    }
+    .section.tint { background: var(--paper-warm); }
+    .section.dark { color: #fff; border-color: var(--navy); background: var(--navy); }
+    .section-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 17px;
+      margin-bottom: 23px;
+    }
+    .section-title { display: flex; align-items: flex-start; gap: 13px; }
+    .section-num {
+      flex: 0 0 43px;
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: #fff;
+      background: var(--navy);
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .section h2 { margin: 0; color: var(--navy); font-size: clamp(24px, 2.7vw, 32px); line-height: 1.45; }
+    .section.dark h2 { color: #fff; }
+    .section-sub { margin: 5px 0 0; color: var(--muted); font-size: 13px; }
+    .section.dark .section-sub { color: #becada; }
+    h3 { margin: 0; color: var(--navy); font-size: 18px; line-height: 1.6; }
+    p { margin-top: 9px; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      width: fit-content;
+      padding: 5px 10px;
+      border-radius: 999px;
+      color: #465367;
+      background: #eef1f4;
+      font-size: 10px;
+      font-weight: 900;
+    }
+    .badge.red { color: #941722; background: #ffe3e5; }
+    .badge.green { color: #205d3d; background: #dff1e7; }
+    .badge.teal { color: #075d58; background: #dff4f1; }
+    .badge.amber { color: #795007; background: #ffefcc; }
+    .badge.blue { color: #294f83; background: #e2edf9; }
+
+    .banner {
+      padding: 16px 18px;
+      border: 1px solid;
+      border-right-width: 5px;
+      border-radius: 16px;
+      font-size: 13px;
+    }
+    .banner strong { color: var(--navy); }
+    .banner.green { color: #245a3e; border-color: #c9e3d3; border-right-color: var(--green); background: var(--soft-green); }
+    .banner.amber { color: #68480e; border-color: #ead7b0; border-right-color: var(--amber); background: var(--soft-amber); }
+    .banner.blue { color: #294a75; border-color: #c9d9ed; border-right-color: var(--blue); background: var(--soft-blue); }
+    .banner.red { color: #7f2028; border-color: #efc8cc; border-right-color: var(--red); background: var(--soft-red); }
+
+    .decision-grid { display: grid; grid-template-columns: 1.12fr .88fr; gap: 15px; }
+    .action-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: #fff;
+    }
+    .action-card.primary { color: #fff; border-color: var(--navy); background: linear-gradient(145deg, #13243a, #234462); }
+    .action-card.primary h3 { color: #fff; font-size: 22px; }
+    .action-card.primary p { color: #d3deea; }
+    .action-card .formula {
+      margin-top: 15px;
+      padding: 14px;
+      border-radius: 13px;
+      color: #fff;
+      background: rgba(255,255,255,.09);
+      direction: ltr;
+      text-align: right;
+      font-size: 16px;
+      font-weight: 900;
+    }
+    .plain-list { margin: 12px 0 0; padding: 0; list-style: none; }
+    .plain-list li {
+      position: relative;
+      margin-top: 8px;
+      padding-right: 18px;
+      color: #415064;
+      font-size: 13px;
+    }
+    .plain-list li::before { content: "•"; position: absolute; right: 2px; color: var(--red); font-weight: 900; }
+    .action-card.primary .plain-list li { color: #dce6f1; }
+    .action-card.primary .plain-list li::before { color: #ff8088; }
+    .avoid-list li::before { content: "×"; color: var(--red); }
+
+    .campaign-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .campaign-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 205px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+    }
+    .campaign-card::before { content: ""; position: absolute; inset: 0 0 auto; height: 5px; background: var(--line-strong); }
+    .campaign-card.red::before { background: var(--red); }
+    .campaign-card.green::before { background: var(--green); }
+    .campaign-card.teal::before { background: var(--teal); }
+    .campaign-card.amber::before { background: var(--amber); }
+    .campaign-card h3 { margin-top: 10px; font-size: 17px; }
+    .campaign-card p { color: var(--ink-soft); font-size: 12px; }
+
+    .offer-box {
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: 17px;
+      align-items: stretch;
+      margin-top: 14px;
+    }
+    .offer-signature {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 245px;
+      padding: 25px;
+      border-radius: 20px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 82% 12%, rgba(207,32,43,.4), transparent 9rem),
+        linear-gradient(145deg, #102038, #1e3d5c);
+    }
+    .offer-signature small { color: #bdccdc; }
+    .offer-signature strong { margin: 7px 0; font-size: 28px; line-height: 1.45; }
+    .offer-signature span { color: #e5edf5; font-size: 14px; }
+    .offer-detail { padding: 22px; border: 1px solid var(--line); border-radius: 20px; background: #fff; }
+    .offer-detail h3 { font-size: 21px; }
+
+    .evidence-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 11px; }
+    .evidence-card { padding: 17px; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+    .evidence-card strong { display: block; color: var(--navy); font-size: 20px; line-height: 1.5; }
+    .evidence-card span { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; }
+    .evidence-card p { margin: 8px 0 0; color: var(--ink-soft); font-size: 11px; }
+
+    details.detail-block {
+      margin-top: 13px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+    }
+    details.detail-block > summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      color: var(--navy);
+      cursor: pointer;
+      list-style: none;
+      font-weight: 900;
+      font-size: 13px;
+    }
+    details.detail-block > summary::-webkit-details-marker { display: none; }
+    details.detail-block > summary::after {
+      content: "+";
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      color: var(--navy);
+      background: #edf1f5;
+      font-size: 18px;
+    }
+    details.detail-block[open] > summary::after { content: "−"; }
+    .detail-content { padding: 0 16px 16px; border-top: 1px solid var(--line); }
+
+    .sku-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 16px; }
+    .sku-cards { display: grid; gap: 11px; }
+    .sku-card {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 13px;
+      align-items: center;
+      padding: 17px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: #fff;
+    }
+    .sku-role { color: var(--red); font-size: 12px; font-weight: 900; }
+    .sku-card h3 { font-size: 16px; }
+    .sku-card p { margin: 3px 0 0; color: var(--ink-soft); font-size: 11px; }
+    .filter-panel { padding: 21px; border-radius: 19px; color: #e9f1f8; background: var(--navy); }
+    .filter-panel h3 { color: #fff; }
+    .filter-panel p { color: #c6d3e1; font-size: 12px; }
+    .filter-item {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 9px;
+      margin-top: 11px;
+      padding-top: 11px;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .filter-item .check {
+      width: 27px;
+      height: 27px;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      color: #fff;
+      background: rgba(255,255,255,.1);
+      font-weight: 900;
+    }
+    .filter-item b { display: block; font-size: 13px; }
+    .filter-item span { display: block; color: #bdcad8; font-size: 10px; }
+
+    .planner-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(340px, .88fr);
+      gap: 17px;
+      align-items: start;
+    }
+    .form-panel, .approval-panel { border: 1px solid var(--line); border-radius: 21px; background: #fff; }
+    .form-panel { padding: 20px; }
+    .approval-panel { position: sticky; top: 87px; overflow: hidden; box-shadow: var(--shadow-sm); }
+    .approval-head { padding: 20px; color: #fff; background: linear-gradient(135deg, var(--navy), #254664); }
+    .approval-head small { color: #c7d5e4; }
+    .approval-head h3 { margin-top: 4px; color: #fff; font-size: 22px; }
+    .approval-body { padding: 18px; }
+
+    fieldset.form-group {
+      margin: 0;
+      padding: 0 0 19px;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+    }
+    fieldset.form-group + fieldset.form-group { padding-top: 19px; }
+    fieldset.form-group:last-child { padding-bottom: 0; border-bottom: 0; }
+    .form-group legend { width: 100%; margin-bottom: 12px; color: var(--navy); font-size: 15px; font-weight: 900; }
+    .field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+    .field-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .field { min-width: 0; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { display: block; min-height: 26px; margin-bottom: 4px; color: #3f4d5e; font-size: 11px; font-weight: 800; }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      min-height: 43px;
+      padding: 9px 11px;
+      border: 1px solid var(--line-strong);
+      border-radius: 10px;
+      color: var(--navy);
+      background: #fff;
+      font-size: 13px;
+      outline: none;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: #6f96c8; box-shadow: 0 0 0 3px rgba(53,103,168,.12); }
+    .field small { display: block; margin-top: 4px; color: var(--muted); font-size: 9px; line-height: 1.6; }
+
+    .allocation-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 11px; }
+    .allocation {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #f8fafb;
+    }
+    .allocation label { display: block; min-height: 36px; color: var(--ink-soft); font-size: 10px; font-weight: 800; }
+    .allocation input { width: 100%; min-height: 38px; padding: 7px; border: 1px solid var(--line-strong); border-radius: 9px; color: var(--navy); background: #fff; }
+    .allocation-output { display: block; margin-top: 5px; color: var(--navy); font-size: 11px; font-weight: 900; }
+    .sum-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 11px;
+      color: #3e4d5f;
+      background: #f1f4f7;
+      font-size: 11px;
+    }
+    .sum-line.good { color: #245a3e; background: var(--soft-green); }
+    .sum-line.bad { color: #7f2028; background: var(--soft-red); }
+
+    .approval-summary { display: grid; gap: 8px; }
+    .summary-line {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      gap: 9px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed var(--line);
+      font-size: 11px;
+    }
+    .summary-line:last-child { border-bottom: 0; }
+    .summary-line span { color: var(--muted); }
+    .summary-line b { color: var(--navy); }
+    .offer-health {
+      margin-top: 13px;
+      padding: 13px;
+      border-radius: 12px;
+      color: #58410f;
+      background: var(--soft-amber);
+      font-size: 11px;
+    }
+    .approval-actions { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 13px; }
+
+    .commitment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .commitment {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+    }
+    .commitment .icon {
+      width: 31px;
+      height: 31px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      color: #fff;
+      background: var(--navy);
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .commitment b { display: block; color: var(--navy); font-size: 13px; }
+    .commitment span { display: block; color: var(--ink-soft); font-size: 10px; line-height: 1.7; }
+
+    .gate-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; }
+    .gate {
+      padding: 14px;
+      border-radius: 14px;
+      font-size: 11px;
+    }
+    .gate b { display: block; margin-bottom: 3px; font-size: 13px; }
+    .gate.green { color: #235a3d; background: var(--soft-green); }
+    .gate.amber { color: #63470e; background: var(--soft-amber); }
+    .gate.red { color: #7b2028; background: var(--soft-red); }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+    }
+    .time-step {
+      position: relative;
+      min-height: 150px;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #fff;
+    }
+    .time-step .time { color: var(--red); font-size: 11px; font-weight: 900; }
+    .time-step b { display: block; margin: 5px 0; color: var(--navy); font-size: 13px; }
+    .time-step span { color: var(--ink-soft); font-size: 10px; line-height: 1.65; }
+
+    .monitor-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 9px; }
+    .monitor-card { padding: 15px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+    .monitor-card b { display: block; color: var(--navy); font-size: 13px; }
+    .monitor-card span { display: block; margin-top: 4px; color: var(--muted); font-size: 10px; }
+    .response-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 13px; }
+    .response { padding: 14px; border-radius: 14px; background: #f5f7f9; }
+    .response b { display: block; color: var(--navy); font-size: 12px; }
+    .response span { color: var(--ink-soft); font-size: 10px; }
+
+    .meeting-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 15px; }
+    .talk-track { padding: 23px; border-radius: 19px; color: #e9f1f8; background: var(--navy); }
+    .talk-track h3 { color: #fff; }
+    .talk-track p { color: #d2dde9; font-size: 13px; }
+    .talk-track .quote {
+      margin-top: 13px;
+      padding: 15px;
+      border-right: 4px solid #ff737c;
+      border-radius: 12px;
+      color: #fff;
+      background: rgba(255,255,255,.07);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .meeting-checklist { padding: 20px; border: 1px solid var(--line); border-radius: 18px; background: #fff; }
+    .check-list { display: grid; gap: 7px; margin-top: 11px; }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 9px 10px;
+      border-radius: 10px;
+      color: #405064;
+      background: #f7f9fa;
+      font-size: 11px;
+    }
+    .check-item input { width: 17px; height: 17px; flex: 0 0 auto; accent-color: var(--green); }
+    .progress-track { height: 11px; overflow: hidden; margin-top: 12px; border-radius: 999px; background: #e1e7ed; }
+    .progress-bar { width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--red), var(--green)); transition: width .25s ease; }
+    .progress-text { margin-top: 5px; color: var(--muted); font-size: 10px; }
+
+    .term-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 1px 7px;
+      border: 1px dashed #9ba9b8;
+      border-radius: 999px;
+      color: #2b568a;
+      background: #f3f7fb;
+      vertical-align: baseline;
+      font-size: .82em;
+      font-weight: 900;
+      line-height: 1.7;
+    }
+    .term-link:hover { border-style: solid; background: #e7f0fa; }
+    .term-link .q { width: 15px; height: 15px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--blue); font-size: 9px; }
+
+    .final-card {
+      display: grid;
+      grid-template-columns: .78fr 1.22fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .final-signature {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 275px;
+      padding: 27px;
+      border-radius: 21px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 80% 15%, rgba(207,32,43,.38), transparent 10rem),
+        linear-gradient(145deg, #101e31, #203f5e);
+    }
+    .final-signature small { color: #beccda; }
+    .final-signature strong { margin: 7px 0; font-size: 25px; line-height: 1.45; }
+    .final-signature span { color: #e7eef6; font-size: 14px; }
+    .final-body { padding: 20px; border: 1px solid var(--line); border-radius: 20px; background: #fff; }
+    .final-body h3 { font-size: 22px; }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      align-items: flex-end;
+      margin-top: 22px;
+      padding: 27px;
+      border-radius: 22px;
+      color: #edf3fa;
+      background: #101d30;
+    }
+    .footer strong { font-size: 18px; }
+    .footer small { color: #adbdce; }
+    .footer .sources { color: #c0ccda; font-size: 9px; line-height: 1.9; }
+
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 110;
+      opacity: 0;
+      visibility: hidden;
+      background: rgba(12,23,38,.5);
+      transition: opacity .2s ease, visibility .2s ease;
+    }
+    .glossary-drawer {
+      position: fixed;
+      inset: 0 0 0 auto;
+      z-index: 120;
+      width: min(470px, 94vw);
+      display: flex;
+      flex-direction: column;
+      transform: translateX(105%);
+      background: #fff;
+      box-shadow: -25px 0 60px rgba(10,20,35,.23);
+      transition: transform .25s ease;
+    }
+    body.drawer-open { overflow: hidden; }
+    body.drawer-open .drawer-overlay { opacity: 1; visibility: visible; }
+    body.drawer-open .glossary-drawer { transform: translateX(0); }
+    .drawer-head { padding: 20px; color: #fff; background: var(--navy); }
+    .drawer-head-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .drawer-head h2 { margin: 0; font-size: 22px; }
+    .drawer-head p { margin: 4px 0 0; color: #c5d2e0; font-size: 11px; }
+    .drawer-close {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 11px;
+      color: #fff;
+      background: rgba(255,255,255,.08);
+      font-size: 20px;
+    }
+    .glossary-search { padding: 14px 18px 0; }
+    .glossary-search input { width: 100%; min-height: 44px; padding: 9px 12px; border: 1px solid var(--line-strong); border-radius: 12px; color: var(--navy); background: #f8fafb; }
+    .glossary-list { overflow-y: auto; padding: 10px 18px 26px; }
+    .glossary-item { padding: 14px 2px; border-bottom: 1px solid var(--line); scroll-margin-top: 20px; }
+    .glossary-item:last-child { border-bottom: 0; }
+    .glossary-item.highlight { animation: highlightTerm 1.6s ease; }
+    @keyframes highlightTerm { 0%,100% { background: transparent; } 30% { background: #fff0c9; } }
+    .glossary-item b { color: var(--navy); font-size: 14px; }
+    .glossary-item .english { margin-right: 6px; color: var(--blue); font-size: 10px; font-weight: 900; direction: ltr; }
+    .glossary-item p { margin: 4px 0 0; color: var(--ink-soft); font-size: 11px; line-height: 1.8; }
+    .glossary-empty { display: none; padding: 22px; color: var(--muted); text-align: center; }
+
+    .toast {
+      position: fixed;
+      right: 50%;
+      bottom: 24px;
+      z-index: 150;
+      opacity: 0;
+      transform: translate(50%, 15px);
+      padding: 10px 15px;
+      border-radius: 12px;
+      color: #fff;
+      background: var(--navy);
+      box-shadow: var(--shadow);
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .toast.show { opacity: 1; transform: translate(50%, 0); }
+
+    @media (max-width: 1080px) {
+      .nav-links { display: none; }
+      .summary-grid, .campaign-grid { grid-template-columns: repeat(2, 1fr); }
+      .planner-layout { grid-template-columns: 1fr; }
+      .approval-panel { position: static; }
+      .timeline { grid-template-columns: repeat(3, 1fr); }
+      .monitor-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 820px) {
+      .hero, .decision-grid, .offer-box, .sku-grid, .meeting-grid, .final-card { grid-template-columns: 1fr; }
+      .hero { min-height: auto; }
+      .evidence-grid { grid-template-columns: repeat(2, 1fr); }
+      .commitment-grid, .gate-row, .response-grid { grid-template-columns: 1fr; }
+      .top-actions .print-btn { display: none; }
+    }
+    @media (max-width: 600px) {
+      body { font-size: 15px; }
+      .topbar { min-height: 62px; padding: 9px 12px; }
+      .brand { font-size: 12px; }
+      .brand-mark { width: 29px; height: 29px; }
+      .top-actions .btn { padding: 7px 9px; font-size: 10px; }
+      .wrap { width: min(100% - 20px, 1240px); padding-top: 10px; }
+      .hero { padding: 25px 21px; border-radius: 23px; }
+      .summary-grid, .campaign-grid, .evidence-grid, .field-grid, .field-grid.three, .allocation-grid, .timeline, .monitor-grid { grid-template-columns: 1fr; }
+      .section { margin-top: 13px; padding: 21px 17px; border-radius: 21px; }
+      .section-head { flex-direction: column; }
+      .section-title { gap: 10px; }
+      .section-num { flex-basis: 38px; width: 38px; height: 38px; }
+      .sku-card { grid-template-columns: 1fr; }
+      .footer { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media print {
+      @page { size: A4; margin: 12mm; }
+      body { color: #111; background: #fff; font-size: 10.5pt; }
+      .no-print, .topbar, .drawer-overlay, .glossary-drawer, .toast, .approval-actions { display: none !important; }
+      .wrap { width: 100%; padding: 0; }
+      .hero, .section, .summary-card, .footer { box-shadow: none; break-inside: avoid; }
+      .hero { min-height: 175mm; border-radius: 16px; }
+      .section { margin-top: 7mm; padding: 7mm; border-radius: 14px; }
+      .planner-layout { grid-template-columns: 1fr; }
+      .approval-panel { position: static; }
+      details.detail-block:not([open]) { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">رفتن به محتوای اصلی</a>
+
+  <nav class="topbar" aria-label="ناوبری صفحه">
+    <div class="brand"><span class="brand-mark">B</span> BENIS × RAHNEGASHT</div>
+    <div class="nav-links">
+      <a href="#decision">تصمیم نهایی</a>
+      <a href="#campaign">کمپین مهر</a>
+      <a href="#planner">برنامه و بودجه</a>
+      <a href="#partner">تعهد زنجیره</a>
+      <a href="#execution">اجرا</a>
+      <a href="#meeting">جلسه مدیران</a>
+    </div>
+    <div class="top-actions">
+      <button class="btn secondary small" type="button" data-open-glossary>واژه‌نامه ساده</button>
+      <button class="btn small print-btn no-print" type="button" onclick="window.print()">چاپ / PDF</button>
+    </div>
+  </nav>
+
+  <main class="wrap" id="main">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">تصمیم اجرایی برای مهر ۱۴۰۵</div>
+        <h1>برنامه اقدام پروموشن زنجیره‌ای بنیس</h1>
+        <p class="lead">این سند یک آزمایش جداگانه نیست. پیشنهاد، اجرای <b>کمپین اصلی مهر</b> با یک بودجه، یک پیام و یک پیشنهاد خرید روشن است؛ همراه با کنترل دقیق اجرا تا بودجه یک‌باره هدر نرود.</p>
+        <div class="hero-actions no-print">
+          <a class="btn red" href="#decision">دیدن تصمیم پیشنهادی</a>
+          <a class="btn secondary" href="#planner">تکمیل برگه تصویب</a>
+        </div>
+      </div>
+      <aside class="decision-board" aria-label="تصمیم در یک نگاه">
+        <span class="board-label">تصمیم پیشنهادی در یک نگاه</span>
+        <h2>کمپین «میان‌وعده مهر» اجرا شود</h2>
+        <div class="board-row">
+          <span class="num">01</span>
+          <div><b>محصول قهرمان: بارکیک پرفروش</b><span>مطابق اطلاعات مدیران فروش، بارکیک نقطه شروع مطمئن‌تری است.</span></div>
+        </div>
+        <div class="board-row">
+          <span class="num">02</span>
+          <div><b>پیشنهاد خرید: بسته کوچک و قیمت روشن</b><span>بارکیک + یک ویفر یا کروسان تک‌نفره؛ بدون بزرگ‌کردن بیش از حد مبلغ پرداختی.</span></div>
+        </div>
+        <div class="board-row">
+          <span class="num">03</span>
+          <div><b>اجرا: تهران × یک زنجیره × ۲۱ روز</b><span>زنجیره‌ای انتخاب شود که تعهد موجودی، جایگاه و گزارش فروش را مکتوب کند.</span></div>
+        </div>
+        <div class="board-rule"><b>خط قرمز:</b> کل بودجه به زنجیره‌ای که مدرک اجرا و گزارش فروش نمی‌دهد، واگذار نشود.</div>
+      </aside>
+    </section>
+
+    <div class="summary-grid">
+      <article class="summary-card">
+        <span class="label">نوع تصمیم</span>
+        <strong>اجرا، نه آزمایش جداگانه</strong>
+        <p>زمان محدود است؛ کمپین مهر مستقیماً اجرا می‌شود و کنترل‌ها داخل همان اجرا قرار می‌گیرند.</p>
+      </article>
+      <article class="summary-card">
+        <span class="label">هدف واحد</span>
+        <strong>افزایش فروش سبد میان‌وعده</strong>
+        <p>بودجه بین سه هدف مختلف پخش نمی‌شود؛ یک رفتار روشن دنبال می‌شود.</p>
+      </article>
+      <article class="summary-card">
+        <span class="label">حفاظت از بودجه</span>
+        <strong>تعهد مکتوب و پرداخت مشروط</strong>
+        <p>جایگاه، زمان، موجودی، گزارش فروش و سهم زنجیره پیش از شروع مشخص می‌شود.</p>
+      </article>
+      <article class="summary-card">
+        <span class="label">واقعیت مدیریتی</span>
+        <strong>تصمیم قطعی؛ نتیجه غیرقابل تضمین</strong>
+        <p>می‌توانیم دقیقاً بگوییم چه اجرا شود، اما هیچ کمپینی فروش آینده را صددرصد تضمین نمی‌کند.</p>
+      </article>
+    </div>
+
+    <section class="section tint" id="decision">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">01</span>
+          <div>
+            <h2>پیشنهاد قطعی: چه کاری انجام شود؟</h2>
+            <p class="section-sub">یک کمپین متمرکز که با محدودیت زمان، بودجه یک‌باره و وضعیت رابطه با زنجیره سازگار است.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="decision-grid">
+        <article class="action-card primary">
+          <span class="badge red">GO · پیشنهاد اجرا</span>
+          <h3>کمپین «میان‌وعده مهر»</h3>
+          <p>مناسبت مهر، مصرف روزمره در مدرسه، دانشگاه و محل کار را به یک پیشنهاد خرید قابل‌فهم متصل می‌کند.</p>
+          <div class="formula">Tehran × Selected Chain × Bar Cake + 1 Companion SKU × 21 Days</div>
+          <ul class="plain-list">
+            <li>یک بارکیک پرفروش به‌عنوان محصول اصلی</li>
+            <li>یک ویفر یا کروسان تک‌نفره به‌عنوان محصول مکمل</li>
+            <li>پیشنهاد دو یا سه‌عددی با قیمت نهایی واضح</li>
+            <li>شروع از تهران به‌دلیل سهم و تمرکز اجرایی بالاتر</li>
+            <li>حضور هم‌زمان در قفسه یا اپلیکیشن و نقطه خرید</li>
+          </ul>
+        </article>
+        <article class="action-card">
+          <span class="badge amber">فعلاً انجام نشود</span>
+          <h3>بودجه را پخش نکنیم</h3>
+          <ul class="plain-list avoid-list">
+            <li>سه کمپین جدا با سه هدف متفاوت</li>
+            <li>تخفیف عمومی روی تعداد زیادی محصول</li>
+            <li>نمونه‌دهی گسترده در این پنجره زمانی کوتاه</li>
+            <li>خرید بنر یا کروسل گران بدون تعهد فروش و اجرا</li>
+            <li>انتخاب زنجیره فقط به‌دلیل سابقه، بدون بررسی آمادگی امروز</li>
+          </ul>
+          <div class="banner amber" style="margin-top:15px">
+            <strong>منطق:</strong> بودجه یک‌باره باید آن‌قدر متمرکز باشد که مشتری پیشنهاد را ببیند و بفهمد؛ نه اینکه در چند ابزار کم‌اثر گم شود.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="campaign">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">02</span>
+          <div>
+            <h2>معماری کمپین مهر</h2>
+            <p class="section-sub">چهار تصمیمی که کمپین را برای مشتری ساده و برای مدیران قابل اجرا می‌کند.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="campaign-grid">
+        <article class="campaign-card red">
+          <span class="badge red">موقعیت مصرف</span>
+          <h3>میان‌وعده روزانه مهر</h3>
+          <p>مدرسه، دانشگاه، محل کار و رفت‌وآمد؛ موقعیتی تکرارشونده و آشنا، نه یک پیام تبلیغاتی انتزاعی.</p>
+        </article>
+        <article class="campaign-card green">
+          <span class="badge green">محصول</span>
+          <h3>بارکیک + یک مکمل</h3>
+          <p>بارکیک پرفروش به‌عنوان لنگر فروش و یک ویفر یا کروسان تک‌نفره برای ساخت پیشنهاد ترکیبی.</p>
+        </article>
+        <article class="campaign-card teal">
+          <span class="badge teal">پیشنهاد خرید</span>
+          <h3>بسته کوچک با قیمت روشن</h3>
+          <p>دو یا سه قلم با یک قیمت نهایی قابل‌دیدن؛ ارزش خرید باید بدون محاسبه پیچیده برای مشتری روشن باشد.</p>
+        </article>
+        <article class="campaign-card amber">
+          <span class="badge amber">پیام</span>
+          <h3>ارزش روزمره، نه ارزانی برند</h3>
+          <p>پیام روی «میان‌وعده آماده و به‌صرفه برای روزهای مهر» قرار گیرد، نه «حراج همیشگی بنیس».</p>
+        </article>
+      </div>
+
+      <div class="offer-box">
+        <div class="offer-signature">
+          <small>پیشنهاد مصرف‌کننده</small>
+          <strong>۳ میان‌وعده<br>با یک قیمت روشن</strong>
+          <span>Mix & Match از SKUهای منتخب؛ بارکیک در ترکیب ثابت باشد.</span>
+        </div>
+        <div class="offer-detail">
+          <h3>مکانیزم پیشنهادی</h3>
+          <ul class="plain-list">
+            <li><b>در فروشگاه آنلاین:</b> بسته ترکیبی آنلاین <span dir="ltr">(E-Bundle)</span> با قیمت نهایی مشخص.</li>
+            <li><b>در فروشگاه فیزیکی:</b> خرید چندتایی از دو SKU منتخب با شلف‌تاکر و قیمت واحد بسته.</li>
+            <li><b>طراحی قیمت:</b> ارزش خرید برای مشتری قابل مشاهده باشد، اما از کف حاشیه مصوب مالی عبور نکند.</li>
+            <li><b>تأمین تخفیف:</b> سهم بنیس و سهم زنجیره جدا و مکتوب شود؛ تمام تخفیف از بنیس پرداخت نشود.</li>
+          </ul>
+          <div class="banner blue" style="margin-top:13px">
+            <strong>برنامه جایگزین:</strong> اگر زنجیره امکان بسته ترکیبی ندارد، فقط بارکیک قهرمان با تخفیف محدود و جایگاه تضمین‌شده اجرا شود. کمپین به سه محصول مستقل شکسته نشود.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tint" id="logic">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">03</span>
+          <div>
+            <h2>چرا این تصمیم از گزارش‌ها بیرون می‌آید؟</h2>
+            <p class="section-sub">منطق تبدیل Affordability و داده‌های زنجیره‌ای به یک اقدام فوری.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="evidence-grid">
+        <article class="evidence-card">
+          <strong>فشار قدرت خرید</strong>
+          <span>نتیجه گزارش Affordability</span>
+          <p>مشتری به مبلغ پرداختی حساس‌تر است؛ پس پیشنهاد باید کوچک، واضح و ارزشمند باشد.</p>
+        </article>
+        <article class="evidence-card">
+          <strong>۴۸٪ سهم تهران</strong>
+          <span>گزارش عملکرد جغرافیایی موجود</span>
+          <p>تمرکز اولیه روی تهران، اجرا و کنترل موجودی را نسبت به پراکندگی کشوری ساده‌تر می‌کند.</p>
+        </article>
+        <article class="evidence-card">
+          <strong>بارکیک پرفروش</strong>
+          <span>اطلاعات دریافتی از مدیران فروش</span>
+          <p>در زمان کم، محصول با گردش بالاتر ریسک کمتری از یک SKU ناشناخته دارد.</p>
+        </article>
+        <article class="evidence-card">
+          <strong>رسانه‌های گران اکالا</strong>
+          <span>Rate Card موجود</span>
+          <p>ابزارهای وسیع می‌توانند بخش بزرگی از بودجه را ببلعند؛ جایگاه تضمین‌شده و هدفمند اولویت دارد.</p>
+        </article>
+      </div>
+
+      <details class="detail-block">
+        <summary>اطلاعات تاریخی اکالا دقیقاً چه کمکی کرد؟</summary>
+        <div class="detail-content">
+          <p>داده تاریخی نشان داد بنیس در کانال آنلاین سابقه فروش دارد و تهران نقطه مهمی است. همچنین ابزارهایی مانند بسته ترکیبی، جایگاه جست‌وجو و رسانه داخل اپلیکیشن در دسترس‌اند.</p>
+          <p>اما سابقه فروش به‌تنهایی به معنی انتخاب قطعی اکالا نیست. با توجه به وضعیت فعلی رابطه، اکالا فقط وقتی انتخاب می‌شود که هزینه نهایی، جایگاه، زمان اجرا، موجودی و گزارش فروش را مکتوب کند.</p>
+        </div>
+      </details>
+      <details class="detail-block">
+        <summary>چرا دیگر از سه مأموریت جدا استفاده نمی‌کنیم؟</summary>
+        <div class="detail-content">
+          <p>وقتی زمان و بودجه کافی وجود دارد، می‌توان حفظ مشتری، جذب مشتری جدید و افزایش سبد را جداگانه طراحی کرد. اما با بودجه یک‌باره و زمان کوتاه، این کار اثر کمپین را پخش می‌کند.</p>
+          <p>در این نسخه، هدف واحد «افزایش فروش سبد میان‌وعده مهر» است. خرید مجدد و فروش محصول اصلی همچنان سنجیده می‌شود، اما بودجه بین سه برنامه جدا تقسیم نمی‌شود.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="section" id="sku">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">04</span>
+          <div>
+            <h2>تصمیم محصول: دقیق اما سریع</h2>
+            <p class="section-sub">دسته محصول مشخص است؛ کد دقیق SKU در همان جلسه با موجودی و حاشیه جاری انتخاب می‌شود.</p>
+          </div>
+        </div>
+        <button class="btn secondary small no-print" type="button" data-open-glossary>SKU یعنی چه؟</button>
+      </div>
+
+      <div class="sku-grid">
+        <div class="sku-cards">
+          <article class="sku-card">
+            <span class="sku-role">محصول ثابت</span>
+            <div>
+              <h3>بارکیک پرفروش بنیس</h3>
+              <p>محصول قهرمان کمپین؛ باید موجودی، بارکد و پخش مطمئن داشته باشد.</p>
+            </div>
+          </article>
+          <article class="sku-card">
+            <span class="sku-role">مکمل اولویت ۱</span>
+            <div>
+              <h3>ویفر تک‌نفره با قیمت ورودی مناسب</h3>
+              <p>اگر حاشیه و موجودی آن بهتر باشد، مکمل بسته انتخاب شود.</p>
+            </div>
+          </article>
+          <article class="sku-card">
+            <span class="sku-role">مکمل جایگزین</span>
+            <div>
+              <h3>کروسان تک‌نفره</h3>
+              <p>در صورت موجودی بالاتر، برگشتی کمتر یا همکاری بهتر زنجیره جایگزین ویفر شود.</p>
+            </div>
+          </article>
+        </div>
+        <aside class="filter-panel">
+          <h3>فیلتر نهایی انتخاب SKU</h3>
+          <p>انتخاب کد دقیق بیش از ۱۵ دقیقه زمان نمی‌خواهد، اگر این چهار عدد روی میز باشد.</p>
+          <div class="filter-item"><span class="check">۱</span><div><b>حداقل ۲۸ روز پوشش موجودی</b><span>۲۱ روز اجرا + حاشیه امن تأمین</span></div></div>
+          <div class="filter-item"><span class="check">۲</span><div><b>حاشیه مشارکت پس از تخفیف مثبت</b><span>واحد مالی کف مجاز را تأیید کند</span></div></div>
+          <div class="filter-item"><span class="check">۳</span><div><b>بارکد و لیستینگ آماده</b><span>ریسک تأخیر عملیاتی نداشته باشد</span></div></div>
+          <div class="filter-item"><span class="check">۴</span><div><b>ریسک برگشتی و انقضا پایین</b><span>فروش اضافه با ضایعات خنثی نشود</span></div></div>
+        </aside>
+      </div>
+
+      <div class="banner amber" style="margin-top:14px">
+        <strong>چرا نام دقیق محصول را از پیش قطعی نکردیم؟</strong> چون آخرین موجودی، حاشیه مشارکت و وضعیت لیستینگ ۱۴۰۵ در فایل موجود نبود. قطعی‌کردن نام بدون این سه داده، ظاهر قاطع دارد اما تصمیم حرفه‌ای نیست.
+      </div>
+    </section>
+
+    <section class="section tint" id="planner">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">05</span>
+          <div>
+            <h2>میز برنامه‌ریزی و برگه تصویب</h2>
+            <p class="section-sub">اعداد جلسه را وارد کنید تا برنامه یک‌صفحه‌ای کمپین آماده شود.</p>
+          </div>
+        </div>
+        <button class="btn secondary small no-print" type="button" data-open-glossary>توضیح اصطلاحات</button>
+      </div>
+
+      <div class="planner-layout">
+        <form class="form-panel" id="actionForm" novalidate>
+          <fieldset class="form-group">
+            <legend>الف) تصمیم‌های اجرایی</legend>
+            <div class="field-grid three">
+              <div class="field">
+                <label for="chainName">زنجیره / پلتفرم منتخب</label>
+                <input id="chainName" type="text" placeholder="پس از مذاکره نهایی">
+              </div>
+              <div class="field">
+                <label for="startDate">تاریخ شروع</label>
+                <input id="startDate" type="text" placeholder="مثلاً ۲۵ شهریور ۱۴۰۵">
+              </div>
+              <div class="field">
+                <label for="duration">مدت اجرا</label>
+                <input id="duration" type="number" min="7" max="35" value="21">
+                <small>روز</small>
+              </div>
+              <div class="field">
+                <label for="heroSku">بارکیک قهرمان</label>
+                <input id="heroSku" type="text" value="بارکیک پرفروش بنیس">
+              </div>
+              <div class="field">
+                <label for="supportSku">محصول مکمل</label>
+                <input id="supportSku" type="text" value="ویفر تک‌نفره">
+              </div>
+              <div class="field">
+                <label for="offerMechanic">مکانیزم پیشنهاد</label>
+                <select id="offerMechanic">
+                  <option>بسته ۳ عددی با قیمت ثابت</option>
+                  <option>بسته ۲ عددی با قیمت ثابت</option>
+                  <option>تخفیف محدود فقط روی بارکیک قهرمان</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <legend>ب) قیمت و پیشنهاد مشتری</legend>
+            <div class="field-grid">
+              <div class="field">
+                <label for="normalPrice">قیمت عادی مجموع بسته</label>
+                <input id="normalPrice" type="number" min="0" step="1000" placeholder="تومان">
+              </div>
+              <div class="field">
+                <label for="offerPrice">قیمت نهایی پیشنهادی</label>
+                <input id="offerPrice" type="number" min="0" step="1000" placeholder="تومان">
+              </div>
+              <div class="field">
+                <label for="brandShare">سهم بنیس از تخفیف</label>
+                <input id="brandShare" type="number" min="0" step="1000" placeholder="تومان برای هر بسته">
+              </div>
+              <div class="field">
+                <label for="retailerShare">سهم زنجیره از تخفیف</label>
+                <input id="retailerShare" type="number" min="0" step="1000" placeholder="تومان برای هر بسته">
+              </div>
+            </div>
+            <div class="sum-line" id="offerLine"><span>ارزش پیشنهادی برای مشتری</span><b id="offerValue">قیمت‌ها را وارد کنید</b></div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <legend>ج) بودجه یک‌باره کمپین</legend>
+            <div class="field-grid">
+              <div class="field">
+                <label for="totalBudget">کل بودجه مصوب</label>
+                <input id="totalBudget" type="number" min="0" step="1" placeholder="میلیون تومان">
+              </div>
+              <div class="field">
+                <label for="targetOrders">هدف تعداد بسته / سفارش</label>
+                <input id="targetOrders" type="number" min="0" step="100" placeholder="مثلاً ۲۰۰۰۰">
+              </div>
+            </div>
+            <div class="allocation-grid">
+              <div class="allocation">
+                <label for="pctOffer">ارزش پیشنهادی و تخفیف مشتری</label>
+                <input class="pct-input" id="pctOffer" type="number" min="0" max="100" value="55">
+                <span class="allocation-output" id="amountOffer">—</span>
+              </div>
+              <div class="allocation">
+                <label for="pctMedia">جایگاه و دیده‌شدن تضمین‌شده</label>
+                <input class="pct-input" id="pctMedia" type="number" min="0" max="100" value="25">
+                <span class="allocation-output" id="amountMedia">—</span>
+              </div>
+              <div class="allocation">
+                <label for="pctExecution">طراحی، اجرا و کنترل فروشگاه</label>
+                <input class="pct-input" id="pctExecution" type="number" min="0" max="100" value="10">
+                <span class="allocation-output" id="amountExecution">—</span>
+              </div>
+              <div class="allocation">
+                <label for="pctReserve">ذخیره اصلاح موجودی یا اجرا</label>
+                <input class="pct-input" id="pctReserve" type="number" min="0" max="100" value="10">
+                <span class="allocation-output" id="amountReserve">—</span>
+              </div>
+            </div>
+            <div class="sum-line good" id="allocationLine"><span>جمع تخصیص بودجه</span><b id="allocationSum">۱۰۰٪</b></div>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <legend>د) مسئولان و تأییدها</legend>
+            <div class="field-grid">
+              <div class="field">
+                <label for="dataOwner">مسئول گزارش فروش خروجی</label>
+                <input id="dataOwner" type="text" placeholder="نام و واحد">
+              </div>
+              <div class="field">
+                <label for="financeOwner">تأییدکننده حاشیه و بودجه</label>
+                <input id="financeOwner" type="text" placeholder="نام و واحد">
+              </div>
+              <div class="field">
+                <label for="chainOwner">مسئول هماهنگی زنجیره</label>
+                <input id="chainOwner" type="text" placeholder="نام و واحد">
+              </div>
+              <div class="field">
+                <label for="reportCadence">تناوب گزارش در زمان اجرا</label>
+                <select id="reportCadence">
+                  <option>هر ۴۸ ساعت</option>
+                  <option>روزانه</option>
+                  <option>هفته‌ای دو بار</option>
+                  <option>هفتگی</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+
+        <aside class="approval-panel" aria-live="polite">
+          <div class="approval-head">
+            <small>برگه تصویب کمپین مهر</small>
+            <h3 id="approvalTitle">میان‌وعده مهر بنیس</h3>
+          </div>
+          <div class="approval-body">
+            <div class="approval-summary">
+              <div class="summary-line"><span>زنجیره</span><b id="summaryChain">تعیین نشده</b></div>
+              <div class="summary-line"><span>بازه اجرا</span><b id="summaryDates">۲۱ روز · تاریخ شروع تعیین نشده</b></div>
+              <div class="summary-line"><span>محصول اصلی</span><b id="summaryHero">بارکیک پرفروش بنیس</b></div>
+              <div class="summary-line"><span>محصول مکمل</span><b id="summarySupport">ویفر تک‌نفره</b></div>
+              <div class="summary-line"><span>پیشنهاد خرید</span><b id="summaryMechanic">بسته ۳ عددی با قیمت ثابت</b></div>
+              <div class="summary-line"><span>قیمت نهایی</span><b id="summaryPrice">تعیین نشده</b></div>
+              <div class="summary-line"><span>بودجه</span><b id="summaryBudget">تعیین نشده</b></div>
+              <div class="summary-line"><span>گزارش اجرا</span><b id="summaryReport">هر ۴۸ ساعت</b></div>
+            </div>
+            <div class="offer-health" id="healthMessage">برای نهایی‌کردن پیشنهاد، قیمت عادی، قیمت کمپین و کل بودجه را وارد کنید.</div>
+            <div class="approval-actions no-print">
+              <button class="btn small" type="button" id="copyPlan">کپی برنامه اجرایی</button>
+              <button class="btn secondary small" type="button" id="downloadPlan">دانلود خلاصه</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="partner">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">06</span>
+          <div>
+            <h2>تعهداتی که باید از زنجیره گرفته شود</h2>
+            <p class="section-sub">با توجه به وضعیت نه‌چندان خوب رابطه، بودجه باید به خروجی مشخص و قابل اثبات متصل شود.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="commitment-grid">
+        <article class="commitment"><span class="icon">۱</span><div><b>نرخ و هزینه نهایی مکتوب</b><span>کارت نرخ، تخفیف مذاکره‌ای، مالیات و هر هزینه جانبی قبل از امضا روشن شود.</span></div></article>
+        <article class="commitment"><span class="icon">۲</span><div><b>جایگاه، تاریخ و تعداد نمایش مشخص</b><span>عبارت‌هایی مثل «حضور در جشنواره» کافی نیست؛ محل و مدت دقیق نوشته شود.</span></div></article>
+        <article class="commitment"><span class="icon">۳</span><div><b>مدرک اجرا</b><span>اسکرین‌شات، عکس قفسه، گزارش نمایش یا مدرک قابل قبول در قرارداد تعیین شود.</span></div></article>
+        <article class="commitment"><span class="icon">۴</span><div><b>فروش خروجی و موجودی</b><span>فروش واقعی مشتری و نبود کالا حداقل هر ۴۸ ساعت یا طبق توافق تحویل شود.</span></div></article>
+        <article class="commitment"><span class="icon">۵</span><div><b>سهم مشارکت زنجیره</b><span>زنجیره بخشی از تخفیف یا رسانه را تأمین کند؛ تمام هزینه روی بنیس نیفتد.</span></div></article>
+        <article class="commitment"><span class="icon">۶</span><div><b>پرداخت متصل به اجرا</b><span>بخش رسانه‌ای بودجه در برابر تأیید جایگاه و مدرک اجرا آزاد شود.</span></div></article>
+      </div>
+
+      <div class="gate-row">
+        <div class="gate green"><b>سبز: اجرا شود</b>تعهد فروش، موجودی، جایگاه، نرخ و مدرک اجرا مکتوب شده است.</div>
+        <div class="gate amber"><b>زرد: دامنه محدود شود</b>بخشی از تعهدها پذیرفته شده؛ فقط مکانیزم کم‌ریسک و جایگاه محدود اجرا شود.</div>
+        <div class="gate red"><b>قرمز: کل بودجه داده نشود</b>زنجیره گزارش فروش یا مدرک اجرا نمی‌دهد، یا موجودی و نرخ نهایی مبهم است.</div>
+      </div>
+    </section>
+
+    <section class="section tint" id="execution">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">07</span>
+          <div>
+            <h2>تقویم فوری اجرا</h2>
+            <p class="section-sub">هفت روز آماده‌سازی، بیست‌ویک روز اجرای اصلی و یک جمع‌بندی کوتاه.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <article class="time-step"><span class="time">T−7</span><b>تصمیم نهایی</b><span>زنجیره، بارکیک، مکمل، قیمت، بودجه و مسئولان تصویب شوند.</span></article>
+        <article class="time-step"><span class="time">T−5</span><b>قفل موجودی و قرارداد</b><span>۲۸ روز پوشش، بارکد، جایگاه، نرخ، سهم زنجیره و مدرک اجرا تأیید شود.</span></article>
+        <article class="time-step"><span class="time">T−3</span><b>آماده‌سازی اجرا</b><span>بنر، شلف‌تاکر، کد تخفیف، بسته آنلاین و تقویم نمایش آماده شود.</span></article>
+        <article class="time-step"><span class="time">T−1</span><b>کنترل نهایی</b><span>موجودی، قیمت نهایی، نمایش صحیح و مسیر گزارش‌گیری بررسی شود.</span></article>
+        <article class="time-step"><span class="time">D1–D21</span><b>کمپین اصلی مهر</b><span>اجرای پیوسته؛ بررسی فروش، موجودی، بودجه و مدرک جایگاه هر ۴۸ ساعت.</span></article>
+        <article class="time-step"><span class="time">D+2</span><b>جمع‌بندی مدیران</b><span>فروش، حاشیه، هزینه، برگشتی و درس‌های اجرای بعدی ثبت شود.</span></article>
+      </div>
+    </section>
+
+    <section class="section" id="monitoring">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">08</span>
+          <div>
+            <h2>کنترل حین اجرا؛ نه آزمایش جداگانه</h2>
+            <p class="section-sub">کمپین از روز اول اصلی است، اما رها نمی‌شود تا بودجه یک‌باره بی‌صدا مصرف شود.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="monitor-grid">
+        <article class="monitor-card"><b>فروش خروجی</b><span>فروش واقعی به مصرف‌کننده در برابر میانگین چهار هفته قبل</span></article>
+        <article class="monitor-card"><b>نبود کالا</b><span>درصد زمان یا نقاطی که محصول برای خرید موجود نیست</span></article>
+        <article class="monitor-card"><b>مصرف بودجه</b><span>هزینه واقعی در برابر تخصیص مصوب و مدرک اجرا</span></article>
+        <article class="monitor-card"><b>حاشیه مشارکت</b><span>فروش پس از کسر تخفیف و هزینه‌های مستقیم کمپین</span></article>
+        <article class="monitor-card"><b>اجرای جایگاه</b><span>عکس، اسکرین‌شات و گزارش حضور در موقعیت توافق‌شده</span></article>
+      </div>
+
+      <div class="response-grid">
+        <div class="response"><b>اگر موجودی کم شد</b><span>رسانه روی SKU ناموجود متوقف و ابتدا تأمین اصلاح شود.</span></div>
+        <div class="response"><b>اگر جایگاه اجرا نشد</b><span>تعهد قراردادی فعال و پرداخت رسانه‌ای تا ارائه مدرک نگه داشته شود.</span></div>
+        <div class="response"><b>اگر فروش ضعیف بود</b><span>پیام، تصویر، دیده‌شدن یا قیمت بسته در همان کمپین اصلاح شود؛ بودجه روی رسانه کم‌اثر ادامه پیدا نکند.</span></div>
+      </div>
+    </section>
+
+    <section class="section tint" id="meeting">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">09</span>
+          <div>
+            <h2>جلسه مدیران باید با چه چیزی تمام شود؟</h2>
+            <p class="section-sub">این جلسه برای بحث نظری نیست؛ باید تصمیم‌های اجرا را در همان روز ببندد.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="meeting-grid">
+        <article class="talk-track">
+          <h3>متن پیشنهادی برای شروع جلسه</h3>
+          <div class="quote">«با توجه به نزدیک بودن مهر و یک‌باره بودن بودجه، پیشنهاد یک تست جداگانه نداریم. پیشنهاد، اجرای مستقیم یک کمپین متمرکز میان‌وعده مهر است: بارکیک پرفروش به‌عنوان محصول اصلی، یک محصول تک‌نفره مکمل و یک بسته کوچک با قیمت روشن.»</div>
+          <p>«برای اینکه بودجه در رابطه‌ای که هنوز کاملاً مطمئن نیست هدر نرود، اجرا را به پنج تعهد متصل می‌کنیم: موجودی، جایگاه مشخص، سهم مشارکت زنجیره، مدرک اجرا و گزارش فروش خروجی.»</p>
+          <p>«امروز باید زنجیره، دو SKU، قیمت بسته، بودجه و مسئولان را نهایی کنیم تا ظرف هفت روز آماده اجرا شویم.»</p>
+        </article>
+        <aside class="meeting-checklist">
+          <h3>تصمیم‌های لازم در همین جلسه</h3>
+          <div class="check-list">
+            <label class="check-item"><input class="meeting-check" type="checkbox"> زنجیره یا پلتفرم نهایی انتخاب شد</label>
+            <label class="check-item"><input class="meeting-check" type="checkbox"> بارکیک قهرمان انتخاب شد</label>
+            <label class="check-item"><input class="meeting-check" type="checkbox"> محصول مکمل انتخاب شد</label>
+            <label class="check-item"><input class="meeting-check" type="checkbox"> قیمت عادی و قیمت کمپین مشخص شد</label>
+            <label class="check-item"><input class="meeting-check" type="checkbox"> سهم تخفیف بنیس و زنجیره مشخص شد</label>
+            <label class="check-item"><input class="meeting-check" type="checkbox"> کل بودجه و تقسیم آن تصویب شد</label>
+            <label class="check-item"><input class="meeting-check" type="checkbox"> مسئول فروش، مالی و زنجیره تعیین شدند</label>
+            <label class="check-item"><input class="meeting-check" type="checkbox"> تاریخ شروع و تعهدات زنجیره مکتوب شد</label>
+          </div>
+          <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="meetingBar"></div></div>
+          <div class="progress-text" id="meetingText">۰ از ۸ تصمیم نهایی شده است</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="final">
+      <div class="section-head">
+        <div class="section-title">
+          <span class="section-num">10</span>
+          <div>
+            <h2>جمع‌بندی نهایی برای تصویب</h2>
+            <p class="section-sub">یک تصمیم روشن با یک برنامه جایگزین و خطوط قرمز مشخص.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="final-card">
+        <div class="final-signature">
+          <small>BENIS MEHR CHAIN PROMOTION</small>
+          <strong>One Budget<br>One Campaign<br>One Clear Offer</strong>
+          <span>تهران × زنجیره منتخب × بارکیک + مکمل × ۲۱ روز</span>
+        </div>
+        <div class="final-body">
+          <span class="badge green">پیشنهاد تصویب</span>
+          <h3>کمپین «میان‌وعده مهر» اجرا شود</h3>
+          <ul class="plain-list">
+            <li>بارکیک پرفروش، محصول قهرمان باشد.</li>
+            <li>یک ویفر یا کروسان تک‌نفره با موجودی و حاشیه مناسب به آن اضافه شود.</li>
+            <li>پیشنهاد خرید به‌صورت بسته کوچک با قیمت نهایی روشن اجرا شود.</li>
+            <li>۵۵٪ بودجه برای ارزش مشتری، ۲۵٪ برای جایگاه تضمین‌شده، ۱۰٪ برای اجرا و ۱۰٪ به‌صورت ذخیره نگه داشته شود.</li>
+            <li>اکالا یا هر زنجیره دیگر فقط پس از پذیرش تعهدات اجرایی انتخاب شود.</li>
+            <li>کمپین هر ۴۸ ساعت کنترل شود، اما به‌عنوان کمپین اصلی مهر اجرا شود.</li>
+          </ul>
+          <div class="banner red" style="margin-top:13px">
+            <strong>خط قرمز تصویب:</strong> بدون موجودی کافی، حاشیه مثبت، قیمت نهایی روشن، مدرک جایگاه و گزارش فروش خروجی، کل بودجه آزاد نشود.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <strong>BENIS MEHR CHAIN PROMOTION ACTION PLAN</strong><br>
+        <small>برنامه اقدام مدیریتی · رهنگاشت × پخش اطلس بنیس</small>
+      </div>
+      <div class="sources">
+        مبنا: Benis Affordability & Consumer Pressure · مرداد ۱۴۰۵<br>
+        BENIS & Okala 1402–1404 Performance · Okala Rate Card 1405<br>
+        اطلاعات تکمیلی فروش: بارکیک به‌عنوان گروه پرگردش
+      </div>
+    </footer>
+  </main>
+
+  <div class="drawer-overlay" data-close-glossary aria-hidden="true"></div>
+  <aside class="glossary-drawer" id="glossaryDrawer" aria-hidden="true" aria-labelledby="glossaryTitle">
+    <div class="drawer-head">
+      <div class="drawer-head-row">
+        <div>
+          <h2 id="glossaryTitle">واژه‌نامه ساده</h2>
+          <p>معنی اصطلاحات برنامه به زبان مدیریتی و غیرتخصصی</p>
+        </div>
+        <button class="drawer-close" type="button" data-close-glossary aria-label="بستن واژه‌نامه">×</button>
+      </div>
+    </div>
+    <div class="glossary-search">
+      <label for="glossarySearch" style="position:absolute;right:-9999px">جست‌وجوی واژه</label>
+      <input id="glossarySearch" type="search" placeholder="مثلاً SKU، OOS یا فروش خروجی">
+    </div>
+    <div class="glossary-list">
+      <article class="glossary-item" id="term-sku" data-search="sku شناسه محصول کالا">
+        <b>شناسه محصول</b><span class="english">SKU</span>
+        <p>یک محصول دقیق با وزن، طعم و بسته‌بندی مشخص؛ مثلاً یک بارکیک با وزن و طعم مشخص یک SKU است.</p>
+      </article>
+      <article class="glossary-item" id="term-hero" data-search="hero sku محصول قهرمان اصلی پرفروش">
+        <b>محصول قهرمان</b><span class="english">Hero SKU</span>
+        <p>محصول اصلی کمپین که پیام، موجودی و دیده‌شدن حول آن متمرکز می‌شود.</p>
+      </article>
+      <article class="glossary-item" id="term-sellout" data-search="sell-out فروش خروجی مصرف کننده">
+        <b>فروش خروجی</b><span class="english">Sell-out</span>
+        <p>فروش واقعی زنجیره به مصرف‌کننده؛ نه صرفاً کالایی که بنیس وارد انبار زنجیره کرده است.</p>
+      </article>
+      <article class="glossary-item" id="term-baseline" data-search="baseline فروش عادی مبنا">
+        <b>فروش عادی مبنا</b><span class="english">Baseline</span>
+        <p>میانگین فروش پیش از کمپین که برای مقایسه عملکرد مهر استفاده می‌شود.</p>
+      </article>
+      <article class="glossary-item" id="term-stock" data-search="stock موجودی">
+        <b>موجودی قابل فروش</b><span class="english">Stock</span>
+        <p>تعداد کالایی که واقعاً در انبار یا نقطه فروش آماده پاسخ‌گویی به مشتری است.</p>
+      </article>
+      <article class="glossary-item" id="term-oos" data-search="oos out of stock نبود کالا کسری">
+        <b>نبود کالا</b><span class="english">OOS · Out of Stock</span>
+        <p>مشتری محصول را می‌خواهد اما در آن لحظه کالا موجود نیست. تبلیغ محصول ناموجود، بودجه را هدر می‌دهد.</p>
+      </article>
+      <article class="glossary-item" id="term-days" data-search="days inventory روز پوشش موجودی">
+        <b>روزهای پوشش موجودی</b><span class="english">Days Inventory</span>
+        <p>با سرعت فروش فعلی، موجودی موجود تقریباً برای چند روز کافی است.</p>
+      </article>
+      <article class="glossary-item" id="term-fulfillment" data-search="fulfillment تکمیل تحویل سفارش">
+        <b>نرخ تکمیل سفارش</b><span class="english">Fulfillment</span>
+        <p>چه درصدی از سفارش زنجیره کامل، درست و به‌موقع تحویل شده است.</p>
+      </article>
+      <article class="glossary-item" id="term-contribution" data-search="contribution margin cm حاشیه مشارکت">
+        <b>حاشیه مشارکت</b><span class="english">Contribution Margin</span>
+        <p>مبلغ باقی‌مانده بعد از کسر هزینه‌های متغیر و مستقیم؛ این عدد با سود نهایی شرکت یکسان نیست.</p>
+      </article>
+      <article class="glossary-item" id="term-floor" data-search="margin floor کف حاشیه">
+        <b>کف حاشیه</b><span class="english">Margin Floor</span>
+        <p>کمترین حاشیه‌ای که واحد مالی اجازه می‌دهد محصول پس از تخفیف داشته باشد.</p>
+      </article>
+      <article class="glossary-item" id="term-trade" data-search="trade spend هزینه تجاری تخفیف رسانه">
+        <b>هزینه تجاری</b><span class="english">Trade Spend</span>
+        <p>تخفیف، جایزه، رسانه فروشگاه و سایر هزینه‌های مستقیم همکاری با زنجیره.</p>
+      </article>
+      <article class="glossary-item" id="term-dso" data-search="dso روز وصول پول">
+        <b>میانگین روزهای وصول</b><span class="english">DSO</span>
+        <p>به‌طور متوسط چند روز طول می‌کشد پول فروش از زنجیره دریافت شود.</p>
+      </article>
+      <article class="glossary-item" id="term-bundle" data-search="e-bundle bundle بسته ترکیبی آنلاین">
+        <b>بسته ترکیبی آنلاین</b><span class="english">E-Bundle</span>
+        <p>دو یا چند محصول که داخل فروشگاه آنلاین با یک پیشنهاد و قیمت مشترک نمایش داده می‌شوند.</p>
+      </article>
+      <article class="glossary-item" id="term-proof" data-search="proof of execution مدرک اجرا جایگاه">
+        <b>مدرک اجرا</b><span class="english">Proof of Execution</span>
+        <p>عکس، اسکرین‌شات یا گزارش قابل‌اعتمادی که نشان دهد جایگاه و تبلیغ توافق‌شده واقعاً اجرا شده است.</p>
+      </article>
+      <article class="glossary-item" id="term-expiry" data-search="expiry returns انقضا برگشتی">
+        <b>انقضا و برگشتی</b><span class="english">Expiry / Returns</span>
+        <p>کالای نزدیک انقضا یا کالایی که از زنجیره به بنیس برمی‌گردد و می‌تواند سود فروش را کاهش دهد.</p>
+      </article>
+    </div>
+    <div class="glossary-empty" id="glossaryEmpty">واژه‌ای با این عبارت پیدا نشد.</div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var faNumber = new Intl.NumberFormat("fa-IR", { maximumFractionDigits: 1 });
+      var integerNumber = new Intl.NumberFormat("fa-IR", { maximumFractionDigits: 0 });
+
+      function byId(id) { return document.getElementById(id); }
+      function numeric(id) {
+        var value = Number(byId(id).value);
+        return Number.isFinite(value) ? value : NaN;
+      }
+      function money(value, unit) {
+        if (!Number.isFinite(value)) return "—";
+        return faNumber.format(value) + " " + unit;
+      }
+      function textValue(id, fallback) {
+        var value = byId(id).value.trim();
+        return value || fallback;
+      }
+
+      function updatePlanner() {
+        var total = numeric("totalBudget");
+        var pctOffer = numeric("pctOffer");
+        var pctMedia = numeric("pctMedia");
+        var pctExecution = numeric("pctExecution");
+        var pctReserve = numeric("pctReserve");
+        var sum = [pctOffer, pctMedia, pctExecution, pctReserve].reduce(function (acc, value) {
+          return acc + (Number.isFinite(value) ? value : 0);
+        }, 0);
+
+        byId("allocationSum").textContent = faNumber.format(sum) + "٪";
+        byId("allocationLine").className = "sum-line " + (sum === 100 ? "good" : "bad");
+        byId("allocationLine").querySelector("span").textContent = sum === 100 ? "جمع تخصیص بودجه درست است" : "جمع تخصیص باید دقیقاً ۱۰۰٪ باشد";
+
+        [
+          ["amountOffer", pctOffer],
+          ["amountMedia", pctMedia],
+          ["amountExecution", pctExecution],
+          ["amountReserve", pctReserve]
+        ].forEach(function (entry) {
+          byId(entry[0]).textContent = Number.isFinite(total) && total > 0
+            ? money(total * entry[1] / 100, "میلیون تومان")
+            : "—";
+        });
+
+        var normal = numeric("normalPrice");
+        var offer = numeric("offerPrice");
+        var brand = numeric("brandShare");
+        var retailer = numeric("retailerShare");
+        var discount = Number.isFinite(normal) && Number.isFinite(offer) ? normal - offer : NaN;
+        var discountPct = Number.isFinite(discount) && normal > 0 ? (discount / normal) * 100 : NaN;
+        var funded = (Number.isFinite(brand) ? brand : 0) + (Number.isFinite(retailer) ? retailer : 0);
+        var offerLine = byId("offerLine");
+
+        if (!Number.isFinite(discount) || normal <= 0 || offer <= 0) {
+          byId("offerValue").textContent = "قیمت‌ها را وارد کنید";
+          offerLine.className = "sum-line";
+        } else if (discount <= 0) {
+          byId("offerValue").textContent = "قیمت کمپین باید کمتر از قیمت عادی باشد";
+          offerLine.className = "sum-line bad";
+        } else {
+          var fundingText = Number.isFinite(brand) || Number.isFinite(retailer)
+            ? " · تأمین ثبت‌شده: " + integerNumber.format(funded) + " تومان"
+            : "";
+          byId("offerValue").textContent = faNumber.format(discountPct) + "٪ صرفه‌جویی" + fundingText;
+          offerLine.className = "sum-line " + (Math.abs(funded - discount) < 1 ? "good" : "bad");
+        }
+
+        byId("summaryChain").textContent = textValue("chainName", "تعیین نشده");
+        byId("summaryDates").textContent = textValue("duration", "۲۱") + " روز · " + textValue("startDate", "تاریخ شروع تعیین نشده");
+        byId("summaryHero").textContent = textValue("heroSku", "بارکیک پرفروش بنیس");
+        byId("summarySupport").textContent = textValue("supportSku", "محصول مکمل تعیین نشده");
+        byId("summaryMechanic").textContent = byId("offerMechanic").value;
+        byId("summaryPrice").textContent = Number.isFinite(offer) && offer > 0 ? integerNumber.format(offer) + " تومان" : "تعیین نشده";
+        byId("summaryBudget").textContent = Number.isFinite(total) && total > 0 ? money(total, "میلیون تومان") : "تعیین نشده";
+        byId("summaryReport").textContent = byId("reportCadence").value;
+
+        var health = byId("healthMessage");
+        var issues = [];
+        if (!textValue("chainName", "")) issues.push("زنجیره");
+        if (!Number.isFinite(normal) || normal <= 0 || !Number.isFinite(offer) || offer <= 0) issues.push("قیمت");
+        if (!Number.isFinite(total) || total <= 0) issues.push("بودجه");
+        if (sum !== 100) issues.push("جمع تخصیص بودجه");
+        if (Number.isFinite(discount) && discount > 0 && Math.abs(funded - discount) >= 1) issues.push("جمع سهم بنیس و زنجیره با فاصله قیمت برابر نیست");
+
+        if (issues.length === 0) {
+          var rangeMessage = discountPct < 5
+            ? "ارزش خرید ممکن است برای مشتری کم‌اثر باشد؛ دیده‌شدن قیمت را تقویت کنید."
+            : discountPct > 15
+              ? "تخفیف عمیق است؛ کف حاشیه و سهم زنجیره حتماً کنترل شود."
+              : "ارزش خرید قابل مشاهده است؛ پس از تأیید حاشیه و تعهدات زنجیره آماده تصویب است.";
+          health.textContent = rangeMessage;
+          health.style.background = "var(--soft-green)";
+          health.style.color = "#245a3e";
+        } else {
+          health.textContent = "موارد تکمیل‌نشده: " + issues.join("، ");
+          health.style.background = "var(--soft-amber)";
+          health.style.color = "#58410f";
+        }
+      }
+
+      function buildPlanText() {
+        var total = numeric("totalBudget");
+        var normal = numeric("normalPrice");
+        var offer = numeric("offerPrice");
+        var pctIds = ["pctOffer", "pctMedia", "pctExecution", "pctReserve"];
+        var pctValues = pctIds.map(numeric);
+        var lines = [
+          "برنامه اقدام پروموشن زنجیره‌ای مهر بنیس",
+          "",
+          "تصمیم: اجرای کمپین متمرکز «میان‌وعده مهر»",
+          "زنجیره: " + textValue("chainName", "تعیین نشده"),
+          "شروع: " + textValue("startDate", "تعیین نشده"),
+          "مدت: " + textValue("duration", "۲۱") + " روز",
+          "محصول قهرمان: " + textValue("heroSku", "بارکیک پرفروش بنیس"),
+          "محصول مکمل: " + textValue("supportSku", "تعیین نشده"),
+          "پیشنهاد خرید: " + byId("offerMechanic").value,
+          "قیمت عادی بسته: " + (Number.isFinite(normal) && normal > 0 ? integerNumber.format(normal) + " تومان" : "تعیین نشده"),
+          "قیمت کمپین: " + (Number.isFinite(offer) && offer > 0 ? integerNumber.format(offer) + " تومان" : "تعیین نشده"),
+          "سهم بنیس از تخفیف: " + (Number.isFinite(numeric("brandShare")) ? integerNumber.format(numeric("brandShare")) + " تومان برای هر بسته" : "تعیین نشده"),
+          "سهم زنجیره از تخفیف: " + (Number.isFinite(numeric("retailerShare")) ? integerNumber.format(numeric("retailerShare")) + " تومان برای هر بسته" : "تعیین نشده"),
+          "کل بودجه: " + (Number.isFinite(total) && total > 0 ? money(total, "میلیون تومان") : "تعیین نشده"),
+          "",
+          "تقسیم بودجه:",
+          "- ارزش پیشنهادی مشتری: " + faNumber.format(pctValues[0]) + "٪",
+          "- جایگاه تضمین‌شده: " + faNumber.format(pctValues[1]) + "٪",
+          "- طراحی و اجرا: " + faNumber.format(pctValues[2]) + "٪",
+          "- ذخیره اصلاح: " + faNumber.format(pctValues[3]) + "٪",
+          "",
+          "مسئول گزارش فروش: " + textValue("dataOwner", "تعیین نشده"),
+          "تأیید مالی: " + textValue("financeOwner", "تعیین نشده"),
+          "مسئول زنجیره: " + textValue("chainOwner", "تعیین نشده"),
+          "تناوب گزارش: " + byId("reportCadence").value,
+          "",
+          "شروط اجرا: موجودی کافی، حاشیه مثبت، نرخ نهایی مکتوب، جایگاه مشخص، مدرک اجرا و گزارش فروش خروجی.",
+          "خط قرمز: بدون این تعهدات، کل بودجه آزاد نشود."
+        ];
+        return lines.join("\n");
+      }
+
+      function showToast(message) {
+        var toast = byId("toast");
+        toast.textContent = message;
+        toast.classList.add("show");
+        window.clearTimeout(showToast.timer);
+        showToast.timer = window.setTimeout(function () { toast.classList.remove("show"); }, 2200);
+      }
+      function fallbackCopy(text) {
+        var area = document.createElement("textarea");
+        area.value = text;
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand("copy");
+        document.body.removeChild(area);
+      }
+
+      document.querySelectorAll("#actionForm input, #actionForm select").forEach(function (input) {
+        input.addEventListener("input", updatePlanner);
+        input.addEventListener("change", updatePlanner);
+      });
+
+      byId("copyPlan").addEventListener("click", function () {
+        var plan = buildPlanText();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(plan).then(function () {
+            showToast("برنامه اجرایی کپی شد.");
+          }).catch(function () {
+            fallbackCopy(plan);
+            showToast("برنامه اجرایی کپی شد.");
+          });
+        } else {
+          fallbackCopy(plan);
+          showToast("برنامه اجرایی کپی شد.");
+        }
+      });
+      byId("downloadPlan").addEventListener("click", function () {
+        var blob = new Blob([buildPlanText()], { type: "text/plain;charset=utf-8" });
+        var link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "Benis_Mehr_Chain_Action_Brief.txt";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(link.href);
+        showToast("خلاصه برنامه آماده دانلود شد.");
+      });
+
+      function updateMeeting() {
+        var checks = Array.prototype.slice.call(document.querySelectorAll(".meeting-check"));
+        var checked = checks.filter(function (item) { return item.checked; }).length;
+        var percent = Math.round((checked / checks.length) * 100);
+        byId("meetingBar").style.width = percent + "%";
+        byId("meetingText").textContent = integerNumber.format(checked) + " از " + integerNumber.format(checks.length) + " تصمیم نهایی شده است — " + integerNumber.format(percent) + "٪";
+      }
+      document.querySelectorAll(".meeting-check").forEach(function (item) {
+        item.addEventListener("change", updateMeeting);
+      });
+
+      function openGlossary(term) {
+        document.body.classList.add("drawer-open");
+        byId("glossaryDrawer").setAttribute("aria-hidden", "false");
+        if (term) {
+          var item = byId("term-" + term);
+          if (item) {
+            window.setTimeout(function () {
+              item.scrollIntoView({ block: "center" });
+              item.classList.add("highlight");
+              window.setTimeout(function () { item.classList.remove("highlight"); }, 1700);
+            }, 260);
+          }
+        } else {
+          window.setTimeout(function () { byId("glossarySearch").focus(); }, 260);
+        }
+      }
+      function closeGlossary() {
+        document.body.classList.remove("drawer-open");
+        byId("glossaryDrawer").setAttribute("aria-hidden", "true");
+      }
+      document.querySelectorAll("[data-open-glossary]").forEach(function (button) {
+        button.addEventListener("click", function () { openGlossary(button.textContent.indexOf("SKU") !== -1 ? "sku" : ""); });
+      });
+      document.querySelectorAll("[data-close-glossary]").forEach(function (button) {
+        button.addEventListener("click", closeGlossary);
+      });
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") closeGlossary();
+      });
+      byId("glossarySearch").addEventListener("input", function () {
+        var query = this.value.trim().toLowerCase();
+        var visible = 0;
+        document.querySelectorAll(".glossary-item").forEach(function (item) {
+          var haystack = (item.getAttribute("data-search") + " " + item.textContent).toLowerCase();
+          var match = !query || haystack.indexOf(query) !== -1;
+          item.style.display = match ? "" : "none";
+          if (match) visible += 1;
+        });
+        byId("glossaryEmpty").style.display = visible ? "none" : "block";
+      });
+
+      updatePlanner();
+      updateMeeting();
+    }());
+  </script>
+</body>
+</html>
