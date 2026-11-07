@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0f172a" />
+  <meta name="theme-color" content="#0f4a55" />
 
-  <title>مرکز گزارش‌ها و داشبوردهای مدیریتی | رهنگاشت</title>
+  <title>کتابخانه گزارش‌های مدیریتی بنیس | رهنگاشت</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -787,10 +787,125 @@
         animation-iteration-count: 1 !important;
       }
     }
+  
+/* Organized Benis management report library */
+:root { color-scheme: light; --bg:#f5f7f5; --bg-deep:#f5f7f5; --surface:#fff; --surface-strong:#fff; --surface-soft:#f7f9f8; --text:#1c2c33; --text-muted:#51616a; --text-soft:#657781; --brand:#118a9b; --brand-soft:#e2f3f4; --border:#e4eae9; --border-strong:#d4e2df; --shadow-lg:0 12px 32px rgba(20,55,64,.06); --shadow-card:0 10px 28px rgba(20,55,64,.08); --radius-xl:18px; --radius-lg:14px; --radius-md:12px; --container:1240px; }
+body { background:linear-gradient(180deg,#edf6f4 0,#f8f9f7 350px,#f8f9f7 100%); }
+body::before,body::after,.hero::before,.hero::after,.card::after,.executive-entry::after {display:none;}
+.page-shell {padding-top:22px}
+.hero {padding:28px 34px 34px; background:#fff; border:1px solid #e1e9e7; box-shadow:var(--shadow-lg);margin-bottom:16px;}
+.hero-topline {margin-bottom:24px;}.hero-status {color:#3c6670;background:#eaf6f5;border-color:#cfebe8;}
+.brand-mark {color:#233f48}.eyebrow {color:#148f9b}.eyebrow::before {background:#148f9b}
+h1 {max-width:100%;font-size:clamp(25px,3.5vw,37px);letter-spacing:-.4px;margin-bottom:10px;line-height:1.5}
+.hero-description {color:#64757d;font-size:13px;line-height:1.9;max-width:960px}
+.executive-entry {background:#173f4b;border-color:#173f4b;padding:19px 24px;box-shadow:none;border-radius:14px;color:#fff}
+.executive-entry h2 {color:#fff}.executive-entry p {color:#cbdde0}.executive-icon {color:#75d5d6;background:#ffffff14;border-color:#ffffff30}
+.executive-action {color:#fff;background:#ffffff19;border-color:#ffffff2d}.executive-label {color:#ffdc9a}.executive-update {color:#a7e1c2}
+.section-heading {padding:23px 4px 13px}.section-heading h2 {color:#203c44;font-size:24px}
+.library-note {display:flex;align-items:center;gap:9px;color:#637981;font-size:11px;padding:11px 14px;background:#edf5f4;border:1px solid #d9e8e5;border-radius:10px;margin-bottom:17px}
+.note-dot {width:7px;height:7px;flex:none;border-radius:50%;background:#238b9b}
+.report-group {--group:#168a99;--group-rgb:22,138,153;margin-bottom:25px;background:#fff;border:1px solid #e2e9e6;border-radius:18px;padding:23px 23px 25px;box-shadow:0 5px 18px rgba(28,54,56,.03)}
+.theme-data{--group:#0d8fa2;--group-rgb:13,143,162}
+.theme-sales{--group:#c05e36;--group-rgb:192,94,54}
+.theme-marketing{--group:#6554a5;--group-rgb:101,84,165}
+.theme-creative{--group:#bd8b2b;--group-rgb:189,139,43}
+.theme-people{--group:#417b61;--group-rgb:65,123,97}
+.group-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:17px;padding-bottom:15px;border-bottom:1px solid #edf0ef}
+.group-heading-copy{display:flex;align-items:center;gap:13px}.group-index{display:grid;place-items:center;font:800 18px system-ui;direction:ltr;color:var(--group);background:rgba(var(--group-rgb),.08);width:46px;height:46px;border-radius:12px}
+.group-heading h3{margin:0 0 3px;font-size:19px;letter-spacing:-.2px;color:#1d3840}.group-heading p{margin:0;color:#7a898d;font-size:11px;line-height:1.8}
+.group-count{color:var(--group);background:rgba(var(--group-rgb),.07);border-radius:999px;padding:6px 11px;font-size:10px;white-space:nowrap}
+.grid{gap:13px}.card{--accent:var(--group);--accent-rgb:var(--group-rgb);min-height:215px;background:#fbfcfb;box-shadow:none;border:1px solid #e9eeec;padding:19px 19px 17px;border-radius:13px;backdrop-filter:none;-webkit-backdrop-filter:none}
+.card-competitor,.card-strategy,.card-dashboard,.card-brand,.card-analysis,.card-media,.card-instagram,.card-game,.card-roadmap,.card-project,.card-persiana,.card-hr,.card-tvreport{--accent:var(--group);--accent-rgb:var(--group-rgb)}
+.card::before{top:0;right:0;left:auto;width:4px;height:100%;opacity:.84;background:var(--group);border-radius:0 13px 13px 0}
+.card:hover{transform:translateY(-2px);background:#fff;border-color:rgba(var(--group-rgb),.32);box-shadow:0 8px 20px rgba(26,62,70,.07)}
+.card-head{margin-bottom:12px}.icon{width:39px;height:39px;border-radius:10px}.icon svg{width:19px;height:19px}
+.category{font-size:10px;color:var(--group)}.card h3{font-size:15px;font-weight:800;color:#243c44;margin-bottom:7px;line-height:1.65}
+.card p{font-size:11px;line-height:1.9;color:#63747b}.card-action{padding-top:13px;font-size:10px}
+.arrow-icon{width:27px;height:27px}.new-badge{color:#9e5b1e;background:#fff3dc;border-color:#f2dbb3}
+footer {color:#76878a;border-top-color:#dce7e3}.footer-brand{color:#4e6369}
+@media(max-width:680px){.hero{padding:22px 18px}.hero-topline{margin-bottom:20px}.report-group{padding:16px 13px 18px;margin-bottom:14px}.group-heading h3{font-size:17px}.group-heading p{font-size:10px}.group-count{font-size:9px}.group-index{width:36px;height:36px;font-size:14px}.card{padding:17px;min-height:0}.library-note{line-height:1.8}}
+
+  
+/* Rahnegasht-branded section navigation */
+:root {--brand:#087c8a}
+body {background:linear-gradient(180deg,#cce8e6 0,#edf7f5 420px,#f5f7f5 421px)}
+.preview-identity {display:flex;align-items:center;flex-wrap:wrap;gap:8px 17px;margin:0 0 14px;padding:12px 19px;background:#0f4a55;color:#e3f8f7;border-radius:12px;border:1px solid #216774;font-size:12px}
+.preview-identity strong {font-size:13px;color:#fff}
+.preview-identity span:last-child {margin-inline-start:auto;color:#b7d4d8;font-size:11px}
+.preview-identity-flag {display:inline-block;padding:5px 10px;border-radius:6px;background:#d7f1eb;color:#0c525c;font-weight:800}
+.hero {border-top:5px solid #18a2a9;padding-top:24px}
+.category-jump {display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:20px}
+.category-jump-link {display:flex;align-items:center;min-height:62px;gap:9px;justify-content:flex-start;flex-wrap:wrap;padding:12px 10px;text-decoration:none;color:#1a3c43;font-weight:800;font-size:12px;background:#fff;border:1px solid #d7e4e1;border-radius:11px;transition:transform .15s,border-color .15s}
+.category-jump-link:hover {transform:translateY(-2px);border-color:#2799a5}
+.category-jump-link small {margin-inline-start:auto;font-size:10px;color:#75878c;border-radius:7px;background:#f2f6f4;padding:3px 7px}
+.nav-swatch{width:8px;height:27px;flex:none;border-radius:6px;background:#158e9d}
+.nav-sales{background:#c05e36}.nav-marketing{background:#6554a5}.nav-experience{background:#bd8b2b}.nav-people{background:#417b61}
+.report-group{scroll-margin-top:18px;border-top:4px solid var(--group)}
+.group-heading{border-bottom-color:rgba(var(--group-rgb),.18)}
+@media(max-width:980px){.category-jump{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:620px){.category-jump{grid-template-columns:repeat(2,minmax(0,1fr))}.preview-identity{align-items:flex-start}.preview-identity span:last-child{margin-inline-start:0}}
+@media(max-width:360px){.category-jump{grid-template-columns:1fr}}
+
+
+    /* Presentation-only login. The public static report URLs are not access-controlled. */
+    html:not(.benis-authorized) body > main.page-shell { display:none !important; }
+    html:not(.benis-authorized) body { overflow:hidden; }
+    html.benis-authorized #benis-access { display:none !important; }
+    #benis-access {
+      position:fixed;inset:0;z-index:99999;display:flex;justify-content:center;align-items:center;
+      padding:24px 14px;overflow-y:auto;min-height:100vh;min-height:100dvh;direction:rtl;
+      font-family:"Vazirmatn",system-ui,sans-serif;color:#203d46;
+      background:radial-gradient(circle at 72% 7%,rgba(19,148,158,.20),transparent 40%),
+      linear-gradient(155deg,#d9eeed 0%,#e8f4f1 46%,#f8faf7 100%);
+    }
+    #benis-access * {box-sizing:border-box}
+    .gate-card {
+      width:min(100%,436px);padding:34px 33px 31px;background:#fff;
+      border:1px solid #d8e7e3;border-top:5px solid #108e99;border-radius:17px;
+      box-shadow:0 22px 75px rgba(22,65,72,.12);text-align:right;
+    }
+    .gate-brand {display:flex;align-items:center;gap:11px;margin-bottom:27px;color:#176a74;font-size:12px;font-weight:800}
+    .gate-brand-symbol {width:40px;height:40px;display:grid;place-items:center;background:#e5f5f3;border:1px solid #cce8e4;border-radius:11px;color:#0c818b;font-size:19px;font-weight:900}
+    .gate-eyebrow {display:block;margin-bottom:9px;font-size:10px;letter-spacing:.05px;font-weight:800;color:#16808d}
+    .gate-card h2 {font-size:25px;line-height:1.65;margin:0 0 7px;color:#173943;font-weight:850}
+    .gate-description {font-size:12px;line-height:2;color:#647a80;margin:0 0 24px}
+    #benis-access label {display:block;margin-bottom:9px;color:#314f56;font-size:12px;font-weight:800}
+    .gate-field {display:flex;align-items:center;gap:8px;padding:5px;border:1px solid #cfdfdd;background:#f9fbfa;border-radius:11px}
+    .gate-field:focus-within{border-color:#178f9b;box-shadow:0 0 0 3px rgba(23,143,155,.12)}
+    .gate-field input {width:100%;min-width:0;flex:1;border:0;outline:0;background:transparent;color:#233b42;font:500 14px system-ui,sans-serif;direction:ltr;text-align:left;padding:11px}
+    .gate-field button {flex-shrink:0;padding:9px 12px;border:0;border-radius:8px;background:#eaf3f2;color:#286c75;font:700 10px "Vazirmatn",sans-serif;cursor:pointer}
+    .gate-submit{width:100%;padding:13px 16px;border:0;border-radius:11px;background:#116e7b;color:white;font:800 13px "Vazirmatn",sans-serif;margin-top:16px;cursor:pointer}
+    .gate-submit:hover{background:#0d5a65}.gate-submit:disabled{opacity:.55;cursor:wait}
+    .gate-error {min-height:22px;margin:8px 0 0;font-size:11px;color:#b64232;line-height:1.8}
+    .gate-help {margin:15px 0 0;padding-top:17px;border-top:1px solid #e5edeb;color:#6a7f82;font-size:11px;line-height:1.9;text-align:center}
+    .gate-foot {margin-top:14px;text-align:center;font-size:10px;color:#8a9d9f}
+    @media(max-width:480px){.gate-card{padding:27px 20px 24px}.gate-card h2{font-size:22px}}
+
   </style>
 </head>
 
 <body>
+  <div id="benis-access" role="region" aria-label="ورود به کتابخانه گزارش‌های بنیس">
+    <section class="gate-card" aria-labelledby="gate-heading">
+      <div class="gate-brand"><span class="gate-brand-symbol" aria-hidden="true">ر</span><span>رهنگاشت <span style="color:#89a3a3;padding:0 5px">×</span> اطلس بنیس</span></div>
+      <span class="gate-eyebrow">دسترسی به گزارش‌های مدیریتی</span>
+      <h2 id="gate-heading">ورود به کتابخانه بنیس</h2>
+      <p class="gate-description">مجموعه گزارش‌ها، تحلیل‌ها و ابزارهای تصمیم‌سازی پروژه بنیس، تهیه‌شده توسط تیم مشاوره رهنگاشت.</p>
+      <form id="benis-login-form">
+        <label for="benis-password">رمز ورود</label>
+        <div class="gate-field">
+          <input type="password" id="benis-password" autocomplete="current-password" spellcheck="false" autocapitalize="off" inputmode="text" placeholder="رمز عبور را وارد کنید" required aria-describedby="benis-password-error"/>
+          <button id="benis-toggle-password" type="button" aria-label="نمایش یا مخفی کردن رمز عبور" aria-pressed="false">نمایش</button>
+        </div>
+        <p id="benis-password-error" class="gate-error" role="status" aria-live="polite"></p>
+        <button id="benis-enter" class="gate-submit" type="submit">ورود به داشبورد</button>
+      </form>
+      <p class="gate-help">برای دریافت رمز ورود، لطفاً با تیم رهنگاشت در ارتباط باشید.</p>
+      <div class="gate-foot">Rahnegasht × Benis | Management Reports</div>
+      <noscript><p class="gate-error">برای ورود به داشبورد باید جاوااسکریپت مرورگر فعال باشد.</p></noscript>
+    </section>
+  </div>
+
   <main class="page-shell">
     <header class="hero">
       <div class="hero-topline">
@@ -851,10 +966,19 @@
         </div>
       </div>
 
-      <div class="grid">
-
-        <!-- داشبورد تحلیلی فروش بنیس (لینک خارجی) -->
-        <a href="https://ashkanaksha.github.io/benissalesreport/" class="card card-dashboard" target="_blank" rel="noopener noreferrer">
+      <!-- نسخه نمایشی دسته‌بندی: بدون تغییر در فایل‌های گزارش -->
+      <nav class="category-jump" aria-label="دسترسی سریع به بخش‌ها">
+        <a href="#analysis" class="category-jump-link"><span class="nav-swatch nav-analysis"></span>تحلیل و داده<small>۶</small></a>
+        <a href="#sales" class="category-jump-link"><span class="nav-swatch nav-sales"></span>فروش و عملیات<small>۷</small></a>
+        <a href="#marketing" class="category-jump-link"><span class="nav-swatch nav-marketing"></span>بازاریابی و ارتباطات<small>۷</small></a>
+        <a href="#experience" class="category-jump-link"><span class="nav-swatch nav-experience"></span>کمپین و تجربه برند<small>۳</small></a>
+        <a href="#people" class="category-jump-link"><span class="nav-swatch nav-people"></span>سازمان و منابع انسانی<small>۲</small></a>
+      </nav>
+      <div class="library-note"><span class="note-dot"></span>گزارش‌ها در پنج بخش موضوعی مرتب شده‌اند؛ برای دسترسی سریع از دسته‌بندی‌های بالا استفاده کنید.</div>
+      <section id="analysis" class="report-group theme-data" aria-label="تحلیل و داده">
+        <div class="group-heading"><div class="group-heading-copy"><span class="group-index">01</span><div><h3>تحلیل و داده</h3><p>تصویر روشن از بازار، برند و عملکرد فروش</p></div></div><span class="group-count">۶ گزارش</span></div>
+        <div class="grid">
+<a href="https://ashkanaksha.github.io/benissalesreport/" class="card card-dashboard" target="_blank" rel="noopener noreferrer">
           <div class="card-inner">
             <div class="card-head">
               <div class="icon" aria-hidden="true">
@@ -873,9 +997,94 @@
             </div>
           </div>
         </a>
-
-        <!-- طرح فروش پارتیزانی بنیس (فایل HTML داخلی) -->
-        <a href="./Atlas_Benis_Guerrilla_Sales.html" class="card card-strategy">
+<a href="./sales-dashboard.html" class="card card-dashboard">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 16 4-5 4 3 5-7"/><path d="M18 7h2v2"/></svg>
+              </div>
+              <span class="category">فروش و عملکرد</span>
+            </div>
+            <h3>گزارش جامع فروش</h3>
+            <p>پایش و تحلیل داده‌های فروش، دسته‌بندی محصولات، فیلتر هوشمند و تحلیل پارتو بر اساس فایل اکسل فروش.</p>
+            <div class="card-action">
+              <span>مشاهده داشبورد</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
+<a href="./competitor analysis.html" class="card card-competitor">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 19V10"/><path d="M10 19V5"/><path d="M16 19v-7"/><path d="M22 19V8"/><path d="M2 19h22"/></svg>
+              </div>
+              <span class="category">تحلیل بازار</span>
+            </div>
+            <h3>تحلیل رقبا</h3>
+            <p>بررسی سهم بازار، استراتژی ارتباطی، مزیت رقابتی و نقاط ضعف برندهای فعال صنعت کیک و شکلات.</p>
+            <div class="card-action">
+              <span>مشاهده خروجی</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
+<a href="./benis_brand_report.html" class="card card-brand">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M9.5 4a3.5 3.5 0 0 0-3.4 4.3A4 4 0 0 0 7 16v1a3 3 0 0 0 3 3h2V4Z"/><path d="M14.5 4a3.5 3.5 0 0 1 3.4 4.3A4 4 0 0 1 17 16v1a3 3 0 0 1-3 3h-2"/><path d="M8 9h4"/><path d="M12 14h4"/></svg>
+              </div>
+              <span class="category">سلامت برند</span>
+            </div>
+            <h3>تحلیل سلامت برند بنیس</h3>
+            <p>بررسی جایگاه مصرف‌کننده و تحلیل وضعیت برند در بازار کیک، کلوچه و شیرینی بسته‌بندی ایران بر اساس داده‌های رفتاری و رقابتی.</p>
+            <div class="card-action">
+              <span>مشاهده خروجی</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
+<a href="./benis_plan.html" class="card card-analysis">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M9 5h6"/><path d="M9 9h6"/><path d="M9 13h4"/><path d="M5 3h14v18H5z"/><path d="m15 17 2 2 3-4"/></svg>
+              </div>
+              <span class="category">تحلیل یکپارچه</span>
+            </div>
+            <h3>تحلیل جامع برند بنیس</h3>
+            <p>تحلیل یکپارچه برند، داده‌های فروش و روندهای بازار برای استخراج بینش‌های کلیدی و پشتیبانی از تصمیم‌گیری‌های مدیریتی.</p>
+            <div class="card-action">
+              <span>مشاهده خروجی</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
+<a href="./Benis_Affordability_Consumer_Pressure.html" class="card card-analysis">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 19V9"/><path d="M10 19V5"/><path d="M16 19v-6"/><path d="M22 19v-3"/><path d="M2 19h22"/><path d="m5 7 5-4 6 7 5-4"/></svg>
+              </div>
+              <div class="card-meta">
+                <span class="category">تحلیل بازار</span>
+              </div>
+            </div>
+            <h3>فشار قدرت خرید مصرف‌کننده</h3>
+            <p>تحلیل اثر فشار اقتصادی بر سبد خرید و ارائه تصمیم‌های ۹۰روزه برای قیمت، بسته‌بندی، پروموشن و حفظ حاشیه سود بنیس.</p>
+            <div class="card-action">
+              <span>مشاهده گزارش</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
+        </div>
+      </section>
+      <section id="sales" class="report-group theme-sales" aria-label="فروش و عملیات">
+        <div class="group-heading"><div class="group-heading-copy"><span class="group-index">02</span><div><h3>فروش و عملیات</h3><p>ابزارهای اجرایی برای بهبود فروش، توزیع و تصمیم‌های میدانی</p></div></div><span class="group-count">۷ گزارش</span></div>
+        <div class="grid">
+<a href="./Atlas_Benis_Guerrilla_Sales.html" class="card card-strategy">
           <div class="card-inner">
             <div class="card-head">
               <div class="icon" aria-hidden="true">
@@ -894,262 +1103,7 @@
             </div>
           </div>
         </a>
-        <!-- تحلیل رقبا -->
-        <a href="./competitor analysis.html" class="card card-competitor">
-          <div class="card-inner">
-            <div class="card-head">
-              <div class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M4 19V10"/><path d="M10 19V5"/><path d="M16 19v-7"/><path d="M22 19V8"/><path d="M2 19h22"/></svg>
-              </div>
-              <span class="category">تحلیل بازار</span>
-            </div>
-            <h3>تحلیل رقبا</h3>
-            <p>بررسی سهم بازار، استراتژی ارتباطی، مزیت رقابتی و نقاط ضعف برندهای فعال صنعت کیک و شکلات.</p>
-            <div class="card-action">
-              <span>مشاهده خروجی</span>
-              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- استراتژی -->
-        <a href="./benis strategy.html" class="card card-strategy">
-          <div class="card-inner">
-            <div class="card-head">
-              <div class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3"/><path d="M22 12h-3"/><path d="M12 22v-3"/><path d="M2 12h3"/></svg>
-              </div>
-              <span class="category">راهبرد برند</span>
-            </div>
-            <h3>برنامه راهبردی برند</h3>
-            <p>طراحی مسیر رشد برند، اهداف توسعه بازار، استراتژی فروش و سناریوهای توسعه برای برند بنیس.</p>
-            <div class="card-action">
-              <span>مشاهده خروجی</span>
-              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- داشبورد فروش -->
-        <a href="./sales-dashboard.html" class="card card-dashboard">
-          <div class="card-inner">
-            <div class="card-head">
-              <div class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 16 4-5 4 3 5-7"/><path d="M18 7h2v2"/></svg>
-              </div>
-              <span class="category">فروش و عملکرد</span>
-            </div>
-            <h3>گزارش جامع فروش</h3>
-            <p>پایش و تحلیل داده‌های فروش، دسته‌بندی محصولات، فیلتر هوشمند و تحلیل پارتو بر اساس فایل اکسل فروش.</p>
-            <div class="card-action">
-              <span>مشاهده داشبورد</span>
-              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- تحلیل سلامت برند -->
-        <a href="./benis_brand_report.html" class="card card-brand">
-          <div class="card-inner">
-            <div class="card-head">
-              <div class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M9.5 4a3.5 3.5 0 0 0-3.4 4.3A4 4 0 0 0 7 16v1a3 3 0 0 0 3 3h2V4Z"/><path d="M14.5 4a3.5 3.5 0 0 1 3.4 4.3A4 4 0 0 1 17 16v1a3 3 0 0 1-3 3h-2"/><path d="M8 9h4"/><path d="M12 14h4"/></svg>
-              </div>
-              <span class="category">سلامت برند</span>
-            </div>
-            <h3>تحلیل سلامت برند بنیس</h3>
-            <p>بررسی جایگاه مصرف‌کننده و تحلیل وضعیت برند در بازار کیک، کلوچه و شیرینی بسته‌بندی ایران بر اساس داده‌های رفتاری و رقابتی.</p>
-            <div class="card-action">
-              <span>مشاهده خروجی</span>
-              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- تحلیل جامع برند -->
-        <a href="./benis_plan.html" class="card card-analysis">
-          <div class="card-inner">
-            <div class="card-head">
-              <div class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M9 5h6"/><path d="M9 9h6"/><path d="M9 13h4"/><path d="M5 3h14v18H5z"/><path d="m15 17 2 2 3-4"/></svg>
-              </div>
-              <span class="category">تحلیل یکپارچه</span>
-            </div>
-            <h3>تحلیل جامع برند بنیس</h3>
-            <p>تحلیل یکپارچه برند، داده‌های فروش و روندهای بازار برای استخراج بینش‌های کلیدی و پشتیبانی از تصمیم‌گیری‌های مدیریتی.</p>
-            <div class="card-action">
-              <span>مشاهده خروجی</span>
-              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- داشبورد تصمیم‌یار سرمایه‌گذاری رسانه‌ای -->
-        <a href="./benis_media_decision_dashboard.html" class="card card-media">
-          <div class="card-inner">
-            <div class="card-head">
-              <div class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="m8 12 2-2 2 2 4-4"/></svg>
-              </div>
-              <span class="category">سرمایه‌گذاری رسانه</span>
-            </div>
-            <h3>داشبورد تصمیم‌یار رسانه‌ای</h3>
-            <p>مقایسه تبلیغات تلویزیونی پرشیانا با ۹ کانال جایگزین برای یافتن بهینه‌ترین استراتژی تخصیص بودجه تبلیغات.</p>
-            <div class="card-action">
-              <span>مشاهده خروجی</span>
-              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- ممیزی اینستاگرام -->
-        <a href="./benis-instagram-audit.html" class="card card-instagram">
-          <div class="card-inner">
-            <div class="card-head">
-              <div class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M9 6h6"/><path d="M8 17h8"/><circle cx="12" cy="12" r="2.5"/></svg>
-              </div>
-              <span class="category">رسانه اجتماعی</span>
-            </div>
-            <h3>ممیزی اینستاگرام بنیس</h3>
-            <p>ارزیابی عملکرد محتوایی و تعاملات صفحه اینستاگرام بنیس تا پایان خرداد ۱۴۰۵ همراه با شناسایی فرصت‌های رشد.</p>
-            <div class="card-action">
-              <span>مشاهده خروجی</span>
-              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- گیمیفیکیشن دو بعدی -->
-        <a href="./game-benis.html" class="card card-game">
-          <div class="card-inner">
-            <div class="card-head">
-              <div class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M8 8h8a5 5 0 0 1 4.7 6.7l-1 2.8a2.2 2.2 0 0 1-3.7.8L14.5 17h-5L8 18.3a2.2 2.2 0 0 1-3.7-.8l-1-2.8A5 5 0 0 1 8 8Z"/><path d="M8 12v4"/><path d="M6 14h4"/><path d="M16 13h.01"/><path d="M18 15h.01"/></svg>
-              </div>
-              <span class="category">نمونه تعاملی</span>
-            </div>
-            <h3>گیمیفیکیشن دو بعدی برند بنیس</h3>
-            <p>نمونه اولیه یک بازی تعاملی مبتنی بر HTML برای ارزیابی ظرفیت‌های گیمیفیکیشن، کمپین‌های امتیازی، کدهای تخفیف و لیدربورد کاربران.</p>
-            <div class="card-action">
-              <span>اجرای نمونه</span>
-              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- گیمیفیکیشن سه‌بعدی -->
-        <a href="./benis-torta-game.html" class="card card-game">
-          <div class="card-inner">
-            <div class="card-head">
-              <div class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9Z"/><path d="m4.5 7.7 7.5 4.1 7.5-4.1"/><path d="M12 12v9"/></svg>
-              </div>
-              <span class="category">تجربه سه‌بعدی</span>
-            </div>
-            <h3>گیمیفیکیشن سه‌بعدی برند</h3>
-            <p>نمونه اولیه یک تجربه تعاملی سه‌بعدی برای برند تورتا بنیس با قابلیت توسعه به کمپین‌های نمایشگاهی، کدهای تخفیف، مسابقات امتیازی و لیدربورد کاربران.</p>
-            <div class="card-action">
-              <span>اجرای نمونه</span>
-              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- نقشه راه بازاریابی محتوا -->
-        <a href="./benis-content-roadmap.html" class="card card-roadmap">
-          <div class="card-inner">
-            <div class="card-head">
-              <div class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M4 5h5l2 3h9v11H4z"/><path d="M8 13h8"/><path d="M12 10v6"/></svg>
-              </div>
-              <span class="category">بازاریابی محتوا</span>
-            </div>
-            <h3>نقشه راه بازاریابی محتوا</h3>
-            <p>استراتژی محتوا، تقویم ۶۰ روزه چندکاناله، KPI فعالیت‌ها و چارچوب تصمیم‌گیری برای اجرای برنامه بازاریابی محتوایی بنیس.</p>
-            <div class="card-action">
-              <span>مشاهده نقشه راه</span>
-              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- تحلیل کمپین پرشیانا و اینستاگرام -->
-        <a href="./persiana_instagram_benis.html" class="card card-persiana">
-          <div class="card-inner">
-            <div class="card-head">
-              <div class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M6 18a12 12 0 0 1 12-12"/><path d="M6 13a7 7 0 0 1 7-7"/><circle cx="6" cy="18" r="2"/><path d="M18 10v8"/><path d="M15 15h6"/></svg>
-              </div>
-              <span class="category">تحلیل کمپین</span>
-            </div>
-            <h3>تحلیل کمپین پرشیانا و اینستاگرام</h3>
-            <p>ارزیابی اثربخشی کمپین تلویزیونی بنیس، ضرورت نوسازی تیزر و طراحی نقشه راه یکپارچه میان تبلیغات پرشیانا و اینفلوئنسرهای اینستاگرام.</p>
-            <div class="card-action">
-              <span>مشاهده گزارش</span>
-              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- نقشه راه برند کارفرمایی -->
-        <a href="./Benis_HR_Employer_Brand_Roadmap_FA.html" class="card card-hr">
-          <div class="card-inner">
-            <div class="card-head">
-              <div class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2"/><path d="M16 14a5 5 0 0 1 5 5"/></svg>
-              </div>
-              <span class="category">سرمایه انسانی</span>
-            </div>
-            <h3>نقشه راه برند کارفرمایی</h3>
-            <p>از آگهی استخدام تا تجربه کامل کارکنان؛ چارچوبی برای جذب، انتخاب، ورود، توسعه و نگهداشت سرمایه انسانی همسو با برند «بنیس؛ اصالتی که ادامه دارد».</p>
-            <div class="card-action">
-              <span>مشاهده خروجی</span>
-              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- گزارش بهینه‌سازی رسانه پرشیانا -->
-        <a href="./benis_persiana_media_report.html" class="card card-tvreport">
-          <div class="card-inner">
-            <div class="card-head">
-              <div class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="m8 2 4 3 4-3"/><path d="M7 14h4"/><path d="M7 10h10"/><path d="M15 14h2"/></svg>
-              </div>
-              <span class="category">برنامه‌ریزی رسانه</span>
-            </div>
-            <h3>گزارش بهینه‌سازی رسانه</h3>
-            <p>تحلیل اثربخشی تبلیغات تلویزیونی بنیس در شبکه پرشیانا و ارائه چارچوبی برای برنامه‌ریزی رسانه بر پایه مخاطب، به‌جای صرفاً افزایش تعداد پخش.</p>
-            <div class="card-action">
-              <span>مشاهده گزارش</span>
-              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- فشار قدرت خرید مصرف‌کننده -->
-        <a href="./Benis_Affordability_Consumer_Pressure.html" class="card card-analysis">
-          <div class="card-inner">
-            <div class="card-head">
-              <div class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M4 19V9"/><path d="M10 19V5"/><path d="M16 19v-6"/><path d="M22 19v-3"/><path d="M2 19h22"/><path d="m5 7 5-4 6 7 5-4"/></svg>
-              </div>
-              <div class="card-meta">
-                <span class="category">تحلیل بازار</span>
-              </div>
-            </div>
-            <h3>فشار قدرت خرید مصرف‌کننده</h3>
-            <p>تحلیل اثر فشار اقتصادی بر سبد خرید و ارائه تصمیم‌های ۹۰روزه برای قیمت، بسته‌بندی، پروموشن و حفظ حاشیه سود بنیس.</p>
-            <div class="card-action">
-              <span>مشاهده گزارش</span>
-              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- برنامه اقدام پروموشن زنجیره‌ای -->
-        <a href="./Benis_Chain_Promotion_Pilott.html" class="card card-dashboard">
+<a href="./Benis_Chain_Promotion_Pilott.html" class="card card-dashboard">
           <div class="card-inner">
             <div class="card-head">
               <div class="icon" aria-hidden="true">
@@ -1167,29 +1121,7 @@
             </div>
           </div>
         </a>
-
-        <!-- استراتژی نمایشگاهی بنیس -->
-        <a href="./Benis_Exhibition_Strategy_v2_1.html" class="card card-game">
-          <div class="card-inner">
-            <div class="card-head">
-              <div class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M4 21V8l8-5 8 5v13"/><path d="M2 21h20"/><path d="M8 21v-7h8v7"/><path d="M9 9h.01"/><path d="M15 9h.01"/></svg>
-              </div>
-              <div class="card-meta">
-                <span class="category">تحلیل کمپین</span>
-              </div>
-            </div>
-            <h3>استراتژی نمایشگاهی بنیس</h3>
-            <p>طراحی تجربه غرفه، گیمیفیکیشن و فعال‌سازی برند برای افزایش یادآوری، تعامل بازدیدکننده و تبدیل تجربه نمایشگاه به خرید.</p>
-            <div class="card-action">
-              <span>مشاهده استراتژی</span>
-              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
-            </div>
-          </div>
-        </a>
-
-        <!-- راهنمای قرارداد شلف -->
-        <a href="./Benis_Shelf_Agreement_Rahnegasht.html" class="card card-project">
+<a href="./Benis_Shelf_Agreement_Rahnegasht.html" class="card card-project">
           <div class="card-inner">
             <div class="card-head">
               <div class="icon" aria-hidden="true">
@@ -1207,9 +1139,7 @@
             </div>
           </div>
         </a>
-
-        <!-- برنامه‌ریزی فروش و عملیات -->
-        <a href="./benis-sop-standalone.html" class="card card-dashboard">
+<a href="./benis-sop-standalone.html" class="card card-dashboard">
           <div class="card-inner">
             <div class="card-head">
               <div class="icon" aria-hidden="true">
@@ -1227,9 +1157,7 @@
             </div>
           </div>
         </a>
-
-        <!-- استودیو پلانوگرام VIP -->
-        <a href="./Benis_VIP_Planogram_Studio(2).html" class="card card-strategy">
+<a href="./Benis_VIP_Planogram_Studio(2).html" class="card card-strategy">
           <div class="card-inner">
             <div class="card-head">
               <div class="icon" aria-hidden="true">
@@ -1247,28 +1175,7 @@
             </div>
           </div>
         </a>
-
-        <!-- برنامه تغییر رفتار سازمانی بنیس -->
-        <a href="https://alborzashrafi.com/Behavioralchangebenis/" class="card card-hr" target="_blank" rel="noopener noreferrer">
-          <div class="card-inner">
-            <div class="card-head">
-              <div class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 0-4 4v2"/><path d="M12 3a4 4 0 0 1 4 4v2"/><path d="M8 9a3 3 0 0 0-3 3 4 4 0 0 0 4 4"/><path d="M16 9a3 3 0 0 1 3 3 4 4 0 0 1-4 4"/><path d="M9 16v1a3 3 0 0 0 3 3"/><path d="M15 16v1a3 3 0 0 1-3 3"/><path d="M12 7v13"/></svg>
-              </div>
-              <div class="card-meta">
-                <span class="category">سرمایه انسانی</span>
-              </div>
-            </div>
-            <h3>برنامه تغییر رفتار سازمانی بنیس</h3>
-            <p>چارچوب تشخیص و اصلاح رفتارهای مدیریتی و نقاط تماس منابع انسانی برای افزایش تعهد، مشارکت و اثربخشی سازمانی در بنیس.</p>
-            <div class="card-action">
-              <span>مشاهده برنامه</span>
-              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
-            </div>
-          </div>
-        </a>
-        <!-- تصمیم‌یار ضمانت و اعتبار مشتریان بنیس -->
-        <a href="./benis-credit-studio.html" class="card card-dashboard">
+<a href="./benis-credit-studio.html" class="card card-dashboard">
           <div class="card-inner">
             <div class="card-head">
               <div class="icon" aria-hidden="true">
@@ -1286,27 +1193,7 @@
             </div>
           </div>
         </a>
-        <!-- تحلیل دیدگاه‌های اینستاگرام بنیس -->
-        <a href="./benis-instagram-sentiment-fixed.html" class="card card-instagram">
-          <div class="card-inner">
-            <div class="card-head">
-              <div class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9H13a8.5 8.5 0 0 1 8 8z"/><path d="M8 12h8M8 8h5"/></svg>
-              </div>
-              <div class="card-meta">
-                <span class="category">رسانه اجتماعی</span>
-              </div>
-            </div>
-            <h3>تحلیل دیدگاه‌های اینستاگرام بنیس</h3>
-            <p>بررسی نظرهای مثبت و منفی درباره محصول و برند، همراه با نمودارها، جدول‌ها و فهرست افراد.</p>
-            <div class="card-action">
-              <span>مشاهده گزارش</span>
-              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
-            </div>
-          </div>
-        </a>
-        <!-- بررسی و اصلاح نظام پورسانت بنیس -->
-        <a href="./benis-commission-comprehensive.html" class="card card-dashboard">
+<a href="./benis-commission-comprehensive.html" class="card card-dashboard">
           <div class="card-inner">
             <div class="card-head">
               <div class="icon" aria-hidden="true">
@@ -1324,7 +1211,222 @@
             </div>
           </div>
         </a>
-      </div>
+        </div>
+      </section>
+      <section id="marketing" class="report-group theme-marketing" aria-label="بازاریابی و ارتباطات">
+        <div class="group-heading"><div class="group-heading-copy"><span class="group-index">03</span><div><h3>بازاریابی و ارتباطات</h3><p>پژوهش، طراحی رسانه و توسعه ارتباط با مخاطب</p></div></div><span class="group-count">۷ گزارش</span></div>
+        <div class="grid">
+<a href="./benis strategy.html" class="card card-strategy">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3"/><path d="M22 12h-3"/><path d="M12 22v-3"/><path d="M2 12h3"/></svg>
+              </div>
+              <span class="category">راهبرد برند</span>
+            </div>
+            <h3>برنامه راهبردی برند</h3>
+            <p>طراحی مسیر رشد برند، اهداف توسعه بازار، استراتژی فروش و سناریوهای توسعه برای برند بنیس.</p>
+            <div class="card-action">
+              <span>مشاهده خروجی</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
+<a href="./benis_media_decision_dashboard.html" class="card card-media">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="m8 12 2-2 2 2 4-4"/></svg>
+              </div>
+              <span class="category">سرمایه‌گذاری رسانه</span>
+            </div>
+            <h3>داشبورد تصمیم‌یار رسانه‌ای</h3>
+            <p>مقایسه تبلیغات تلویزیونی پرشیانا با ۹ کانال جایگزین برای یافتن بهینه‌ترین استراتژی تخصیص بودجه تبلیغات.</p>
+            <div class="card-action">
+              <span>مشاهده خروجی</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
+<a href="./benis-instagram-audit.html" class="card card-instagram">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M9 6h6"/><path d="M8 17h8"/><circle cx="12" cy="12" r="2.5"/></svg>
+              </div>
+              <span class="category">رسانه اجتماعی</span>
+            </div>
+            <h3>ممیزی اینستاگرام بنیس</h3>
+            <p>ارزیابی عملکرد محتوایی و تعاملات صفحه اینستاگرام بنیس تا پایان خرداد ۱۴۰۵ همراه با شناسایی فرصت‌های رشد.</p>
+            <div class="card-action">
+              <span>مشاهده خروجی</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
+<a href="./benis-content-roadmap.html" class="card card-roadmap">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 5h5l2 3h9v11H4z"/><path d="M8 13h8"/><path d="M12 10v6"/></svg>
+              </div>
+              <span class="category">بازاریابی محتوا</span>
+            </div>
+            <h3>نقشه راه بازاریابی محتوا</h3>
+            <p>استراتژی محتوا، تقویم ۶۰ روزه چندکاناله، KPI فعالیت‌ها و چارچوب تصمیم‌گیری برای اجرای برنامه بازاریابی محتوایی بنیس.</p>
+            <div class="card-action">
+              <span>مشاهده نقشه راه</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
+<a href="./persiana_instagram_benis.html" class="card card-persiana">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M6 18a12 12 0 0 1 12-12"/><path d="M6 13a7 7 0 0 1 7-7"/><circle cx="6" cy="18" r="2"/><path d="M18 10v8"/><path d="M15 15h6"/></svg>
+              </div>
+              <span class="category">تحلیل کمپین</span>
+            </div>
+            <h3>تحلیل کمپین پرشیانا و اینستاگرام</h3>
+            <p>ارزیابی اثربخشی کمپین تلویزیونی بنیس، ضرورت نوسازی تیزر و طراحی نقشه راه یکپارچه میان تبلیغات پرشیانا و اینفلوئنسرهای اینستاگرام.</p>
+            <div class="card-action">
+              <span>مشاهده گزارش</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
+<a href="./benis_persiana_media_report.html" class="card card-tvreport">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="m8 2 4 3 4-3"/><path d="M7 14h4"/><path d="M7 10h10"/><path d="M15 14h2"/></svg>
+              </div>
+              <span class="category">برنامه‌ریزی رسانه</span>
+            </div>
+            <h3>گزارش بهینه‌سازی رسانه</h3>
+            <p>تحلیل اثربخشی تبلیغات تلویزیونی بنیس در شبکه پرشیانا و ارائه چارچوبی برای برنامه‌ریزی رسانه بر پایه مخاطب، به‌جای صرفاً افزایش تعداد پخش.</p>
+            <div class="card-action">
+              <span>مشاهده گزارش</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
+<a href="./benis-instagram-sentiment-fixed.html" class="card card-instagram">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9H13a8.5 8.5 0 0 1 8 8z"/><path d="M8 12h8M8 8h5"/></svg>
+              </div>
+              <div class="card-meta">
+                <span class="category">رسانه اجتماعی</span>
+              </div>
+            </div>
+            <h3>تحلیل دیدگاه‌های اینستاگرام بنیس</h3>
+            <p>بررسی نظرهای مثبت و منفی درباره محصول و برند، همراه با نمودارها، جدول‌ها و فهرست افراد.</p>
+            <div class="card-action">
+              <span>مشاهده گزارش</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
+        </div>
+      </section>
+      <section id="experience" class="report-group theme-creative" aria-label="کمپین و تجربه برند">
+        <div class="group-heading"><div class="group-heading-copy"><span class="group-index">04</span><div><h3>کمپین و تجربه برند</h3><p>ایده‌ها و نمونه‌های تعاملی برای فعال‌سازی برند</p></div></div><span class="group-count">۳ گزارش</span></div>
+        <div class="grid">
+<a href="./game-benis.html" class="card card-game">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M8 8h8a5 5 0 0 1 4.7 6.7l-1 2.8a2.2 2.2 0 0 1-3.7.8L14.5 17h-5L8 18.3a2.2 2.2 0 0 1-3.7-.8l-1-2.8A5 5 0 0 1 8 8Z"/><path d="M8 12v4"/><path d="M6 14h4"/><path d="M16 13h.01"/><path d="M18 15h.01"/></svg>
+              </div>
+              <span class="category">نمونه تعاملی</span>
+            </div>
+            <h3>گیمیفیکیشن دو بعدی برند بنیس</h3>
+            <p>نمونه اولیه یک بازی تعاملی مبتنی بر HTML برای ارزیابی ظرفیت‌های گیمیفیکیشن، کمپین‌های امتیازی، کدهای تخفیف و لیدربورد کاربران.</p>
+            <div class="card-action">
+              <span>اجرای نمونه</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
+<a href="./benis-torta-game.html" class="card card-game">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9Z"/><path d="m4.5 7.7 7.5 4.1 7.5-4.1"/><path d="M12 12v9"/></svg>
+              </div>
+              <span class="category">تجربه سه‌بعدی</span>
+            </div>
+            <h3>گیمیفیکیشن سه‌بعدی برند</h3>
+            <p>نمونه اولیه یک تجربه تعاملی سه‌بعدی برای برند تورتا بنیس با قابلیت توسعه به کمپین‌های نمایشگاهی، کدهای تخفیف، مسابقات امتیازی و لیدربورد کاربران.</p>
+            <div class="card-action">
+              <span>اجرای نمونه</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
+<a href="./Benis_Exhibition_Strategy_v2_1.html" class="card card-game">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 21V8l8-5 8 5v13"/><path d="M2 21h20"/><path d="M8 21v-7h8v7"/><path d="M9 9h.01"/><path d="M15 9h.01"/></svg>
+              </div>
+              <div class="card-meta">
+                <span class="category">تحلیل کمپین</span>
+              </div>
+            </div>
+            <h3>استراتژی نمایشگاهی بنیس</h3>
+            <p>طراحی تجربه غرفه، گیمیفیکیشن و فعال‌سازی برند برای افزایش یادآوری، تعامل بازدیدکننده و تبدیل تجربه نمایشگاه به خرید.</p>
+            <div class="card-action">
+              <span>مشاهده استراتژی</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
+        </div>
+      </section>
+      <section id="people" class="report-group theme-people" aria-label="سازمان و منابع انسانی">
+        <div class="group-heading"><div class="group-heading-copy"><span class="group-index">05</span><div><h3>سازمان و منابع انسانی</h3><p>جذب، توسعه و تغییر رفتار در مسیر رشد</p></div></div><span class="group-count">۲ گزارش</span></div>
+        <div class="grid">
+<a href="./Benis_HR_Employer_Brand_Roadmap_FA.html" class="card card-hr">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2"/><path d="M16 14a5 5 0 0 1 5 5"/></svg>
+              </div>
+              <span class="category">سرمایه انسانی</span>
+            </div>
+            <h3>نقشه راه برند کارفرمایی</h3>
+            <p>از آگهی استخدام تا تجربه کامل کارکنان؛ چارچوبی برای جذب، انتخاب، ورود، توسعه و نگهداشت سرمایه انسانی همسو با برند «بنیس؛ اصالتی که ادامه دارد».</p>
+            <div class="card-action">
+              <span>مشاهده خروجی</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
+<a href="https://alborzashrafi.com/Behavioralchangebenis/" class="card card-hr" target="_blank" rel="noopener noreferrer">
+          <div class="card-inner">
+            <div class="card-head">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 0-4 4v2"/><path d="M12 3a4 4 0 0 1 4 4v2"/><path d="M8 9a3 3 0 0 0-3 3 4 4 0 0 0 4 4"/><path d="M16 9a3 3 0 0 1 3 3 4 4 0 0 1-4 4"/><path d="M9 16v1a3 3 0 0 0 3 3"/><path d="M15 16v1a3 3 0 0 1-3 3"/><path d="M12 7v13"/></svg>
+              </div>
+              <div class="card-meta">
+                <span class="category">سرمایه انسانی</span>
+              </div>
+            </div>
+            <h3>برنامه تغییر رفتار سازمانی بنیس</h3>
+            <p>چارچوب تشخیص و اصلاح رفتارهای مدیریتی و نقاط تماس منابع انسانی برای افزایش تعهد، مشارکت و اثربخشی سازمانی در بنیس.</p>
+            <div class="card-action">
+              <span>مشاهده برنامه</span>
+              <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg></span>
+            </div>
+          </div>
+        </a>
+        </div>
+      </section>
+
     </section>
 
     <footer>
@@ -1332,5 +1434,55 @@
       <span>خروجی رسمی فاز عارضه‌یابی و تدوین ساختار برنامه‌ریزی</span>
     </footer>
   </main>
+<script>
+(function () {
+  "use strict";
+  var expectedHash="ca0664fd8370f051a7c249ede9eeff8f953f306728b543a3a6358b7e5e512d9b";
+  var key="benisreport-rahn-access-v1";
+  var form=document.getElementById("benis-login-form");
+  var password=document.getElementById("benis-password");
+  var error=document.getElementById("benis-password-error");
+  var submit=document.getElementById("benis-enter");
+  var toggle=document.getElementById("benis-toggle-password");
+  function authorize(){
+    document.documentElement.classList.add("benis-authorized");
+    password.value="";
+  }
+  try {if(sessionStorage.getItem(key)==="1"){authorize();return;}}catch(e){}
+  toggle.addEventListener("click",function(){
+    var isVisible=password.type==="text";
+    password.type=isVisible?"password":"text";
+    toggle.textContent=isVisible?"نمایش":"مخفی";
+    toggle.setAttribute("aria-pressed",String(!isVisible));
+    password.focus();
+  });
+  password.addEventListener("input",function(){error.textContent="";});
+  form.addEventListener("submit",async function(e){
+    e.preventDefault();
+    var entered=password.value;
+    if(!entered){error.textContent="رمز ورود را وارد کنید.";password.focus();return;}
+    submit.disabled=true;
+    submit.textContent="در حال بررسی...";
+    try{
+      if(!window.crypto || !crypto.subtle || !window.TextEncoder)throw new Error("Unsupported");
+      var digest=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(entered));
+      var actual=Array.from(new Uint8Array(digest)).map(function(b){return b.toString(16).padStart(2,"0");}).join("");
+      if(actual===expectedHash){
+        try{sessionStorage.setItem(key,"1");}catch(e){}
+        authorize();
+      }else{
+        error.textContent="رمز عبور صحیح نیست. لطفاً دوباره تلاش کنید.";
+        password.focus();
+        password.select();
+      }
+    }catch(err){
+      error.textContent="بررسی رمز در این مرورگر ممکن نیست؛ لطفاً با مرورگر به‌روز و اتصال امن وارد شوید.";
+    }finally{
+      submit.disabled=false;
+      submit.textContent="ورود به داشبورد";
+    }
+  });
+})();
+</script>
 </body>
 </html>
